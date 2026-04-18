@@ -1,0 +1,449 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Right Vision Securities Color System */
+    --background: 210 40% 98%;
+    --foreground: 211 30% 13%;
+    
+    --primary: 206 63% 16%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 212 23% 39%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 188 81% 26%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 210 40% 98%;
+    --muted-foreground: 214 15% 45%;
+    
+    --card: 0 0% 100%;
+    --card-foreground: 211 30% 13%;
+    
+    --popover: 0 0% 100%;
+    --popover-foreground: 211 30% 13%;
+    
+    --border: 210 29% 88%;
+    --input: 210 29% 88%;
+    --ring: 188 81% 26%;
+    
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --positive: 150 60% 29%;
+    --positive-foreground: 0 0% 100%;
+    
+    --gold: 43 61% 45%;
+    --gold-foreground: 0 0% 100%;
+    
+    --radius: 0.5rem;
+    
+    /* Admin Dashboard Colors */
+    --admin-navy: 206 63% 16%;
+    --admin-navy-foreground: 0 0% 100%;
+    --admin-teal: 188 81% 26%;
+    --admin-teal-foreground: 0 0% 100%;
+    --admin-bg: 210 40% 98%;
+    --admin-sidebar: 211 30% 13%;
+    --admin-sidebar-foreground: 0 0% 100%;
+    --admin-border: 210 29% 88%;
+    
+    /* Sidebar tokens */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  
+  .dark {
+    --background: 211 30% 13%;
+    --foreground: 0 0% 98%;
+    
+    --primary: 206 63% 16%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 212 23% 39%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --accent: 188 81% 26%;
+    --accent-foreground: 0 0% 100%;
+    
+    --muted: 212 23% 20%;
+    --muted-foreground: 214 15% 65%;
+    
+    --card: 212 23% 16%;
+    --card-foreground: 0 0% 98%;
+    
+    --popover: 212 23% 16%;
+    --popover-foreground: 0 0% 98%;
+    
+    --border: 212 23% 25%;
+    --input: 212 23% 25%;
+    --ring: 188 81% 26%;
+    
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --positive: 150 60% 35%;
+    --positive-foreground: 0 0% 100%;
+    
+    --gold: 43 61% 55%;
+    --gold-foreground: 0 0% 100%;
+    
+    --admin-navy: 206 63% 20%;
+    --admin-navy-foreground: 0 0% 100%;
+    --admin-teal: 188 81% 30%;
+    --admin-teal-foreground: 0 0% 100%;
+    --admin-bg: 211 30% 13%;
+    --admin-sidebar: 211 30% 10%;
+    --admin-sidebar-foreground: 0 0% 100%;
+    --admin-border: 212 23% 25%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  
+  * {
+    border-color: hsl(var(--border));
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-feature-settings: "kern", "liga", "calt";
+    overflow-x: clip;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+  
+  h1 {
+    font-size: clamp(2.25rem, 5vw, 3.75rem);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+  }
+  
+  h2 {
+    font-size: clamp(1.5rem, 3vw, 1.875rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  p {
+    line-height: 1.625;
+  }
+}
+
+@layer components {
+  .container-custom {
+    max-width: 80rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .container-custom {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .container-custom {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+  
+  @media (min-width: 768px) {
+    .section-spacing {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+  
+  .card-shadow {
+    box-shadow: 0 1px 3px 0 hsl(var(--primary) / 0.1), 0 1px 2px -1px hsl(var(--primary) / 0.08);
+  }
+  
+  .card-shadow-lg {
+    box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.08), 0 4px 6px -4px hsl(var(--primary) / 0.05);
+  }
+  
+  .card-shadow-xl {
+    box-shadow: 0 20px 25px -5px hsl(var(--primary) / 0.08), 0 8px 10px -6px hsl(var(--primary) / 0.05);
+  }
+  
+  .professional-card {
+    background-color: hsl(var(--card));
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px 0 hsl(var(--primary) / 0.1), 0 1px 2px -1px hsl(var(--primary) / 0.08);
+    transition: all 0.3s;
+  }
+  
+  .professional-card:hover {
+    box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.08), 0 4px 6px -4px hsl(var(--primary) / 0.05);
+  }
+  
+  .btn-primary {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-primary:hover {
+    background-color: hsl(var(--primary) / 0.9);
+  }
+  
+  .btn-primary:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-secondary {
+    background-color: hsl(var(--secondary));
+    color: hsl(var(--secondary-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-secondary:hover {
+    background-color: hsl(var(--secondary) / 0.9);
+  }
+  
+  .btn-secondary:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-accent {
+    background-color: hsl(var(--accent));
+    color: hsl(var(--accent-foreground));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-accent:hover {
+    background-color: hsl(var(--accent) / 0.9);
+  }
+  
+  .btn-accent:active {
+    transform: scale(0.98);
+  }
+  
+  .btn-outline {
+    border: 2px solid hsl(var(--primary));
+    color: hsl(var(--primary));
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    transition: all 0.2s;
+  }
+  
+  .btn-outline:hover {
+    background-color: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+  
+  .btn-outline:active {
+    transform: scale(0.98);
+  }
+
+  /* Equal-height card grid system */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  .card-grid-2 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .card-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid-3 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .card-grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .card-grid-4 {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 768px) {
+    .card-grid-4 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .card-grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .card-flex {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: stretch;
+  }
+
+  .card-flex > * {
+    flex: 1 1 280px;
+    min-width: 0;
+  }
+
+  @media (min-width: 768px) {
+    .card-flex > * {
+      flex: 1 1 320px;
+    }
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .card-content-grow {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-footer-bottom {
+    margin-top: auto;
+  }
+  
+  /* Admin Dashboard Styles */
+  .admin-sidebar {
+    background-color: hsl(var(--admin-sidebar));
+    color: hsl(var(--admin-sidebar-foreground));
+    border-right: 1px solid hsl(var(--admin-border));
+  }
+  
+  .admin-nav-item {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    color: hsl(var(--admin-sidebar-foreground) / 0.8);
+  }
+  
+  .admin-nav-item:hover {
+    background-color: hsl(var(--admin-teal) / 0.1);
+    color: hsl(var(--admin-sidebar-foreground));
+  }
+  
+  .admin-nav-item.active {
+    background-color: hsl(var(--admin-teal));
+    color: hsl(var(--admin-teal-foreground));
+  }
+  
+  .admin-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .admin-table th {
+    background-color: hsl(var(--muted));
+    padding: 0.75rem 1rem;
+    text-align: left;
+    font-weight: 600;
+    border-bottom: 2px solid hsl(var(--border));
+  }
+  
+  .admin-table td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid hsl(var(--border));
+  }
+  
+  .admin-table tr:hover {
+    background-color: hsl(var(--muted) / 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
