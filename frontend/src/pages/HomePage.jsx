@@ -27,11 +27,13 @@ import SectionHeader from '@/components/SectionHeader.jsx';
 import MarketCard from '@/components/MarketCard.jsx';
 import InfoCard from '@/components/InfoCard.jsx';
 import ReportCard from '@/components/ReportCard.jsx';
-import StatsCard from '@/components/StatsCard.jsx';
 import CTASection from '@/components/CTASection.jsx';
 import ComplianceStrip from '@/components/ComplianceStrip.jsx';
 import HowToOpenAccount from '@/components/HowToOpenAccount.jsx';
 import { Button } from '@/components/ui/button';
+import MarketsOverview from '@/components/MarketsOverview'
+import TickerTape from '@/components/TickerTape'
+
 
 function HomePage() {
   const markets = [
@@ -282,6 +284,8 @@ function HomePage() {
         {/* Bottom fade */}
         <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/30 to-transparent pointer-events-none z-10" />
       </section>
+
+      <TickerTape />
 
       {/* Company Intro */}
       <section className="section-spacing bg-muted">
@@ -629,59 +633,7 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Market Snapshot */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Live market snapshot"
-            subtitle="Real-time pricing for key commodity and futures contracts"
-          />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {markets.slice(0, 3).map((market, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <MarketCard {...market} />
-              </motion.div>
-            ))}
-          </motion.div>
-          <div className="text-center mt-12">
-            <Link to="/markets">
-              <Button size="lg" variant="outline" className="border-accent text-accent hover:bg-accent hover:text-accent-foreground">
-                View all markets
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Markets Overview */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Trade global commodities"
-            subtitle="Access international commodity and futures markets with professional execution and competitive pricing"
-          />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
-            {markets.map((market, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <MarketCard {...market} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
+      <MarketsOverview markets={markets} />
 
       {/* Reports Preview */}
       <section className="section-spacing bg-muted">

@@ -1,6 +1,5 @@
-
 import React, { useState } from 'react';
-import { AlertTriangle } from 'lucide-react';
+import { Trash2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
   AlertDialog,
@@ -28,23 +27,34 @@ function DeleteConfirmation({ isOpen, onClose, onConfirm, reportName }) {
 
   return (
     <AlertDialog open={isOpen} onOpenChange={onClose}>
-      <AlertDialogContent>
-        <AlertDialogHeader>
-          <div className="flex items-center gap-3 mb-2">
-            <div className="h-12 w-12 rounded-full bg-destructive/10 flex items-center justify-center">
-              <AlertTriangle className="h-6 w-6 text-destructive" />
-            </div>
-            <AlertDialogTitle className="text-2xl">Delete report</AlertDialogTitle>
+      <AlertDialogContent className="max-w-md w-[92vw] rounded-2xl">
+
+        {/* Icon */}
+        <div className="flex justify-center mb-2 mt-1">
+          <div className="h-14 w-14 rounded-full bg-destructive/10 border border-destructive/20
+            flex items-center justify-center">
+            <Trash2 className="h-6 w-6 text-destructive" />
           </div>
-          <AlertDialogDescription className="text-base">
-            Are you sure you want to delete <strong>{reportName}</strong>? This action cannot be undone.
+        </div>
+
+        <AlertDialogHeader className="text-center space-y-2">
+          <AlertDialogTitle className="text-lg font-bold">
+            Delete Report?
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-sm text-muted-foreground">
+            You're about to permanently delete{' '}
+            <span className="font-semibold text-foreground">"{reportName}"</span>.
+            <br />
+            <span className="text-destructive/80">This action cannot be undone.</span>
           </AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
+
+        <AlertDialogFooter className="flex-row gap-3 mt-2">
           <Button
             variant="outline"
             onClick={onClose}
             disabled={isDeleting}
+            className="flex-1"
           >
             Cancel
           </Button>
@@ -52,10 +62,23 @@ function DeleteConfirmation({ isOpen, onClose, onConfirm, reportName }) {
             variant="destructive"
             onClick={handleConfirm}
             disabled={isDeleting}
+            className="flex-1"
           >
-            {isDeleting ? 'Deleting...' : 'Delete'}
+            {isDeleting ? (
+              <span className="flex items-center gap-2">
+                <span className="h-3.5 w-3.5 rounded-full border-2 border-white/30
+                  border-t-white animate-spin" />
+                Deleting...
+              </span>
+            ) : (
+              <span className="flex items-center gap-2">
+                <Trash2 className="h-4 w-4" />
+                Delete
+              </span>
+            )}
           </Button>
         </AlertDialogFooter>
+
       </AlertDialogContent>
     </AlertDialog>
   );
