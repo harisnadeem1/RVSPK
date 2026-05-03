@@ -5,10 +5,7 @@ import { motion } from 'framer-motion';
 import {
   TrendingUp,
   Shield,
-  Award,
   Users,
-  Clock,
-  BarChart3,
   Lock,
   Headphones,
   CheckCircle,
@@ -18,21 +15,19 @@ import {
   Gem,
   DollarSign,
   Sparkles,
-  Droplets, CircleDot, ShieldCheck, Monitor
+  Droplets, CircleDot,  Monitor
 } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import Footer from '@/components/Footer.jsx';
 import SectionHeader from '@/components/SectionHeader.jsx';
-import MarketCard from '@/components/MarketCard.jsx';
-import InfoCard from '@/components/InfoCard.jsx';
-import ReportCard from '@/components/ReportCard.jsx';
 import CTASection from '@/components/CTASection.jsx';
 import ComplianceStrip from '@/components/ComplianceStrip.jsx';
 import HowToOpenAccount from '@/components/HowToOpenAccount.jsx';
 import { Button } from '@/components/ui/button';
 import MarketsOverview from '@/components/MarketsOverview'
 import TickerTape from '@/components/TickerTape'
+import ReportsList from '@/components/ReportsList.jsx';
 
 
 function HomePage() {
@@ -635,36 +630,29 @@ function HomePage() {
 
       <MarketsOverview markets={markets} />
 
-      {/* Reports Preview */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Market reports and insights"
-            subtitle="Professional analysis and research to support your trading decisions"
-          />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {featuredReports.map((report, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <ReportCard {...report} />
-              </motion.div>
-            ))}
-          </motion.div>
-          <div className="text-center mt-12">
-            <Link to="/reports">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                View all reports
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      
+{/* Reports Preview */}
+<section className="section-spacing bg-muted">
+  <div className="container-custom">
+    <SectionHeader
+      title="Market reports and insights"
+      subtitle="Professional analysis and research to support your trading decisions"
+    />
+    <ReportsList
+      limit={3}
+      columns={3}
+      emptyMessage="Reports coming soon. Check back shortly."
+    />
+    <div className="text-center mt-12">
+      <Link to="/reports">
+        <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+          View all reports
+          <ArrowRight className="ml-2 h-5 w-5" />
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
 
       {/* CTA Section */}
       <CTASection
