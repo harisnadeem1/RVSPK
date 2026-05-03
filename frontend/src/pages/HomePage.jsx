@@ -17,7 +17,8 @@ import {
   Coins,
   Gem,
   DollarSign,
-  Sparkles
+  Sparkles,
+  Droplets, CircleDot, ShieldCheck, Monitor
 } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
@@ -81,32 +82,7 @@ function HomePage() {
     }
   ];
 
-  const trustIndicators = [
-    {
-      icon: Shield,
-      number: 'SECP',
-      label: 'Regulated',
-      description: 'Licensed by Securities & Exchange Commission of Pakistan'
-    },
-    {
-      icon: Award,
-      number: 'PMEX',
-      label: 'Licensed',
-      description: 'Authorized member of Pakistan Mercantile Exchange'
-    },
-    {
-      icon: Users,
-      number: '2,847',
-      label: 'Active Clients',
-      description: 'Trusted by traders across Pakistan'
-    },
-    {
-      icon: BarChart3,
-      number: '12+',
-      label: 'Years Experience',
-      description: 'Established track record in commodity trading'
-    }
-  ];
+
 
   const whyChooseUs = [
     {
@@ -188,48 +164,470 @@ function HomePage() {
       <Navbar />
 
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
+
+        {/* Background image + overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://images.unsplash.com/photo-1640340435016-1964cf4e723b"
+            src="/home/hero_banner.png"
             alt=""
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/95 via-primary/90 to-secondary/95" />
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-primary/65 to-secondary/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
         </div>
 
-        <div className="container-custom relative z-10">
+        {/* Decorative blobs */}
+        <div className="absolute top-1/4 left-1/4 w-48 h-48 sm:w-96 sm:h-96 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
+        <div className="absolute bottom-1/4 right-1/4 w-36 h-36 sm:w-72 sm:h-72 rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
+
+        <div className="container-custom relative z-10 px-5 py-14 sm:py-20">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6">
-              Professional commodity and futures trading
-            </h1>
-            <p className="text-xl md:text-2xl text-primary-foreground/90 leading-relaxed mb-10 max-w-3xl mx-auto">
-              Access global commodity markets with confidence. SECP regulated, PMEX licensed brokerage serving traders across Pakistan.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-6 text-lg">
+
+            {/* Sub-heading */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="text-xs sm:text-base font-semibold tracking-[0.2em] uppercase text-primary-foreground/80 mb-3"
+            >
+              Invest with Right Vision
+            </motion.p>
+
+            {/* Main heading */}
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
+              className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.1] tracking-tight mb-5 sm:mb-6"
+            >
+              Professional commodity & futures trading
+            </motion.h1>
+
+            {/* Description */}
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45 }}
+              className="text-sm sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-8 sm:mb-10 max-w-2xl mx-auto"
+            >
+              Access global commodity markets with confidence. Serving traders
+              across Pakistan with regulated, transparent, and professional
+              brokerage services.
+            </motion.p>
+
+            {/* CTA buttons — equal width on mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-3 justify-center items-stretch sm:items-center"
+            >
+              <Link to="/contact" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
+                >
                   Get started today
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/markets">
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary px-8 py-6 text-lg">
+              <Link to="/markets" className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  className="w-full sm:w-auto bg-primary-foreground/15 border border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground/25 hover:border-primary-foreground px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold backdrop-blur-sm transition-all hover:-translate-y-0.5"
+                >
                   Explore markets
                 </Button>
               </Link>
-            </div>
+            </motion.div>
+
+            {/* Market pills */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="mt-10 sm:mt-16 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+            >
+              {[
+                { label: 'Gold', Icon: Coins },
+                { label: 'Silver', Icon: CircleDot },
+                { label: 'Platinum', Icon: Gem },
+                { label: 'Crude Oil', Icon: Droplets },
+                { label: 'Dollar', Icon: DollarSign },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.85 + i * 0.08 }}
+                  className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2"
+                >
+                  <item.Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary-foreground/80 shrink-0" />
+                  <span className="text-xs sm:text-sm font-medium text-primary-foreground/90 whitespace-nowrap">
+                    {item.label}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+
           </motion.div>
+        </div>
+
+        {/* Bottom fade */}
+        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-background/30 to-transparent pointer-events-none z-10" />
+      </section>
+
+      {/* Company Intro */}
+      <section className="section-spacing bg-muted">
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+            {/* Left — text */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+                Who We Are
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
+                Pakistan's trusted commodity & futures brokerage
+              </h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
+                Right Vision Securities is a SECP regulated and PMEX licensed brokerage firm
+                specializing in commodity and futures trading. We provide professional trading
+                services with a commitment to transparency, regulatory compliance, and client success.
+              </p>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+                With over a decade of experience, our team of professional traders and market analysts
+                helps clients navigate global commodity markets with clarity and confidence.
+              </p>
+              <Link to="/about/introduction">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+                >
+                  Learn more about us
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
+            </motion.div>
+
+            {/* Right — stat cards */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-2 gap-3 sm:gap-4"
+            >
+              {[
+                {
+                  value: 'Global',
+                  label: 'Market Access',
+                  description: 'Trade international commodity markets directly from Pakistan',
+                },
+                {
+                  value: 'Real-Time',
+                  label: 'Market Data',
+                  description: 'Live price feeds and up-to-date market intelligence',
+                },
+                {
+                  value: 'Expert',
+                  label: 'Advisory Team',
+                  description: 'Seasoned analysts guiding every trading decision',
+                },
+                {
+                  value: 'Direct',
+                  label: 'Fund Management',
+                  description: 'Transparent DFM model — your funds stay in your control',
+                },
+              ].map((stat, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+                >
+                  <div className="text-base sm:text-lg font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
+                    {stat.value}
+                  </div>
+                  <div className="text-xs sm:text-sm font-semibold text-foreground mb-1.5">
+                    {stat.label}
+                  </div>
+                  <div className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
+                    {stat.description}
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
       {/* How to Open Account Section */}
       <HowToOpenAccount />
+
+      {/* Trust Indicators */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Our Credentials
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Trusted and regulated
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              Building confidence through regulatory compliance and professional service
+            </p>
+          </div>
+
+          {/* Main layout — cards left, doc image right */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 items-center">
+
+            {/* LEFT — stacked cards */}
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex flex-col gap-4 sm:gap-5"
+            >
+
+              {/* SECP */}
+              <motion.div
+                variants={itemVariants}
+                className="bg-muted rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-4 sm:gap-5 mb-4">
+                  <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
+                    <img
+                      src="/company_logo/secp.png"
+                      alt="SECP"
+                      className="h-full w-full object-contain"
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                        e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
+                      SECP Regulated
+                    </div>
+                    <div className="text-xs text-accent font-medium">
+                      Est. 1999 · Government of Pakistan
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                  The Securities & Exchange Commission of Pakistan (SECP) is the primary corporate
+                  and financial regulatory authority of Pakistan — overseeing capital markets,
+                  corporate governance, insurance, and non-banking financial companies.
+                </p>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    'Established in 1999',
+                    'Regulates capital markets',
+                    'Investor protection mandate',
+                    '9 offices nationwide',
+                  ].map((fact, i) => (
+                    <div key={i} className="flex items-start gap-1.5">
+                      <CheckCircle className="h-3.5 w-3.5 text-accent mt-0.5 shrink-0" />
+                      <span className="text-xs text-muted-foreground leading-snug">{fact}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+              {/* PMEX */}
+              <motion.div
+                variants={itemVariants}
+                className="bg-muted rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 group"
+              >
+                <div className="flex items-center gap-4 sm:gap-5 mb-4">
+                  <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
+                    <img
+                      src="/company_logo/pmex.svg"
+                      alt="PMEX"
+                      className="h-full w-full object-contain"
+                      onError={(e) => {
+                        e.target.style.display = 'none'
+                        e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>'
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
+                      PMEX Licensed
+                    </div>
+                    <div className="text-xs text-accent font-medium">
+                      Est. 2007 · Pakistan's Only Commodity Exchange
+                    </div>
+                  </div>
+                </div>
+
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed mb-4">
+                  Pakistan Mercantile Exchange (PMEX) is Pakistan's first and only
+                  multi-commodity futures exchange licensed by SECP — offering metals,
+                  agriculture, energy, and financial futures on a fully electronic platform.
+                </p>
+
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    'Founded in 2007',
+                    'Metals, Agri & Energy futures',
+                    'MT5 & WebTrade platforms',
+                    'Member of FIA (USA) & AFM',
+                  ].map((fact, i) => (
+                    <div key={i} className="flex items-start gap-1.5">
+                      <CheckCircle className="h-3.5 w-3.5 text-accent mt-0.5 shrink-0" />
+                      <span className="text-xs text-muted-foreground leading-snug">{fact}</span>
+                    </div>
+                  ))}
+                </div>
+              </motion.div>
+
+            </motion.div>
+
+            {/* RIGHT — licence document image */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="flex items-center justify-center mt-2 lg:mt-0"
+            >
+              <div className="relative w-full max-w-xs sm:max-w-sm xl:max-w-md">
+                {/* Subtle glow behind doc */}
+                <div className="absolute inset-0 rounded-3xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
+
+                {/* Document image */}
+                <div className="relative rounded-2xl overflow-hidden border border-border/60 shadow-2xl">
+                  <img
+                    src="/documents/licence/secp_licence.jpeg"
+                    alt="SECP Licence Document — Right Vision Securities"
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card/60 to-transparent" />
+                </div>
+
+                {/* Floating badge */}
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-2 shadow-lg whitespace-nowrap">
+                  <CheckCircle className="h-4 w-4 text-accent shrink-0" />
+                  <span className="text-xs font-semibold text-foreground">Official SECP Licence</span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Why Choose Us
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Why trade with Right Vision
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              RVSPK is the right choice for investors looking to channelize their savings into
+              income streams through agri and non-agri commodity futures trading.
+            </p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          >
+            {[
+              {
+                icon: Shield,
+                title: 'Regulated & Licensed',
+                description:
+                  'A SECP licensed and PMEX registered Universal Trading Broker — strictly adhering to all regulatory compliance frameworks set by front-line and apex regulatory bodies.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Diversified Futures Contracts',
+                description:
+                  'Access a wide array of futures contracts in local and international soft and hard commodities — including agri, metals, and energy — all on a single platform.',
+              },
+              {
+                icon: Monitor,
+                title: 'Robust Trading Platform',
+                description:
+                  'Trade on PMEX\'s robust, secure, and user-friendly electronic trading platform where orders are placed and executed swiftly and seamlessly.',
+              },
+              {
+                icon: Lock,
+                title: 'Investor Protection',
+                description:
+                  'Client funds are safeguarded through segregated accounts and strict regulatory compliance, ensuring your hard-earned savings remain secure at all times.',
+              },
+              {
+                icon: Headphones,
+                title: 'Responsive Client Support',
+                description:
+                  'Excellent, responsive, and timely support for resolution of client queries over multiple channels — so you\'re never left without guidance.',
+              },
+              {
+                icon: Users,
+                title: 'Market Awareness Programs',
+                description:
+                  'Committed to educating investors about commodity markets through awareness programs, empowering clients to make informed trading decisions.',
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+              >
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                  <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
+                  {feature.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
 
       {/* Market Snapshot */}
       <section className="section-spacing bg-muted">
@@ -262,29 +660,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Trust Indicators */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <SectionHeader
-            title="Trusted and regulated"
-            subtitle="Building confidence through regulatory compliance and professional service"
-          />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
-          >
-            {trustIndicators.map((indicator, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <StatsCard {...indicator} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Markets Overview */}
       <section className="section-spacing bg-muted">
         <div className="container-custom">
@@ -302,29 +677,6 @@ function HomePage() {
             {markets.map((market, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <MarketCard {...market} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <SectionHeader
-            title="Why trade with Right Vision"
-            subtitle="Professional service backed by regulatory compliance and market expertise"
-          />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            {whyChooseUs.map((feature, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <InfoCard {...feature} />
               </motion.div>
             ))}
           </motion.div>
@@ -362,83 +714,12 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Clients Area Preview */}
-      <section className="section-spacing bg-gradient-to-br from-primary via-primary/95 to-secondary">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto text-center">
-            <Lock className="h-16 w-16 text-accent mx-auto mb-6" />
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-foreground mb-6">
-              Secure client portal
-            </h2>
-            <p className="text-lg text-primary-foreground/90 leading-relaxed mb-8 max-w-2xl mx-auto">
-              Access your account information, trading history, reports, and documents through our secure client portal.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/clients">
-                <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Access client portal
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link to="/contact">
-                <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
-                  Request access
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Company Intro */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
-                About Right Vision Securities
-              </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Right Vision Securities is a SECP regulated and PMEX licensed brokerage firm specializing in commodity and futures trading in Pakistan. We provide professional trading services with a commitment to transparency, regulatory compliance, and client success.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                With over a decade of experience in commodity markets, our team of professional traders and market analysts helps clients navigate global commodity markets with confidence.
-              </p>
-              <Link to="/about">
-                <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90">
-                  Learn more about us
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="relative"
-            >
-              <img
-                src="https://images.unsplash.com/photo-1662062656486-2bffb88aafa3"
-                alt="Right Vision Securities office"
-                className="rounded-2xl shadow-xl w-full h-[400px] object-cover"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Section */}
       <CTASection
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-        secondaryCTA={{ text: 'Learn about markets', href: '/markets' }}
+        secondaryCTA={{ text: 'Open account now', href: '/contact' }}
       />
 
       <ComplianceStrip />
