@@ -1,93 +1,100 @@
+import React from 'react'
+import { Helmet } from 'react-helmet'
+import { motion } from 'framer-motion'
+import {
+  Shield,
+  Target,
+  TrendingUp,
+  Users,
+  Award,
+  CheckCircle,
+  MapPin,
+  Mail,
+  Phone,
+  Eye,
+  Lightbulb,
+  BookOpen,
+  HandshakeIcon,
+  ArrowRight,
+} from 'lucide-react'
+import { Link } from 'react-router-dom'
+import { Button } from '@/components/ui/button'
+import TrustBar from '@/components/TrustBar.jsx'
+import Navbar from '@/components/Navbar.jsx'
+import Footer from '@/components/Footer.jsx'
+import PageHero from '@/components/PageHero.jsx'
+import CTASection from '@/components/CTASection.jsx'
+import ComplianceStrip from '@/components/ComplianceStrip.jsx'
 
-import React from 'react';
-import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Shield, Target, TrendingUp, Users, Award, CheckCircle, MapPin, Mail, Phone } from 'lucide-react';
-import TrustBar from '@/components/TrustBar.jsx';
-import Navbar from '@/components/Navbar.jsx';
-import Footer from '@/components/Footer.jsx';
-import PageHero from '@/components/PageHero.jsx';
-import SectionHeader from '@/components/SectionHeader.jsx';
-import InfoCard from '@/components/InfoCard.jsx';
-import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+/* ─── animation variants (same as HomePage) ─── */
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+}
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+}
 
+/* ─── data ─── */
+const coreValues = [
+  {
+    icon: Shield,
+    title: 'Integrity',
+    description:
+      'We observe the highest ethical values and professional principles in every client interaction, ensuring trust is never compromised.',
+  },
+  {
+    icon: TrendingUp,
+    title: 'Transparency',
+    description:
+      'Clear pricing, open communication, and straightforward terms. No hidden fees or surprises — what you see is what you get.',
+  },
+  {
+    icon: Target,
+    title: 'Excellence',
+    description:
+      'Delivering outstanding brokerage services through continuous improvement, investment in people, and cutting-edge market tools.',
+  },
+  {
+    icon: Users,
+    title: 'Client-First',
+    description:
+      'Our clients\' investment goals are our priority. We serve both individual and institutional investors with equal dedication and care.',
+  },
+  {
+    icon: Lightbulb,
+    title: 'Financial Literacy',
+    description:
+      'Promoting awareness of commodity business across Pakistan, enabling retail-level investors to access markets with confidence.',
+  },
+  {
+    icon: BookOpen,
+    title: 'Education',
+    description:
+      'Transferring the savings of the general public into progressive, income-generating investment vehicles that grow with the economy.',
+  },
+]
+
+const milestones = [
+  { year: '2014', event: 'Right Vision Securities founded in Lahore with a mission to serve investors across Pakistan.' },
+  { year: '2015', event: 'SECP regulatory approval received — registration no. SEC/TREC-034/2015.' },
+  { year: '2016', event: 'Granted PMEX membership; commenced commodity futures trading services.' },
+  { year: '2018', event: 'Expanded office infrastructure and grew the client support team.' },
+  { year: '2021', event: 'Launched secure online client portal for seamless account management.' },
+  { year: '2023', event: 'Reached significant active client milestone; deepened financial literacy outreach.' },
+  { year: '2026', event: 'Continuing to serve Pakistan\'s trading community with expanded asset coverage.' },
+]
+
+/* ─── component ─── */
 function AboutPage() {
-  const coreValues = [
-    {
-      icon: Shield,
-      title: 'Integrity',
-      description: 'Operating with honesty and transparency in all client interactions, maintaining the highest ethical standards in the financial services industry.'
-    },
-    {
-      icon: TrendingUp,
-      title: 'Transparency',
-      description: 'Clear pricing, open communication, and straightforward terms. No hidden fees or surprise charges in our trading services.'
-    },
-    {
-      icon: Target,
-      title: 'Excellence',
-      description: 'Committed to delivering professional service quality through continuous improvement and investment in our team and technology.'
-    },
-    {
-      icon: Users,
-      title: 'Client-focused',
-      description: 'Your trading success is our priority. Dedicated support team available to assist with market analysis and account management.'
-    }
-  ];
-
-  const milestones = [
-    { year: '2014', event: 'Right Vision Securities founded in Lahore' },
-    { year: '2015', event: 'SECP regulatory approval received' },
-    { year: '2016', event: 'PMEX membership granted, began commodity trading' },
-    { year: '2018', event: 'Expanded office space and client support team' },
-    { year: '2021', event: 'Launched secure online client portal' },
-    { year: '2023', event: 'Reached 2,500+ active client milestone' },
-    { year: '2026', event: 'Continuing to serve Pakistan\'s trading community' }
-  ];
-
-  const trustCertifications = [
-    {
-      icon: Shield,
-      title: 'SECP regulated',
-      description: 'Licensed and regulated by the Securities and Exchange Commission of Pakistan under registration number SEC/TREC-034/2015.'
-    },
-    {
-      icon: Award,
-      title: 'PMEX licensed',
-      description: 'Authorized trading member of Pakistan Mercantile Exchange Limited, enabling commodity and futures trading services.'
-    },
-    {
-      icon: CheckCircle,
-      title: 'Compliance certified',
-      description: 'Maintaining strict compliance with all applicable financial regulations and industry standards for client protection.'
-    }
-  ];
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }
-    }
-  };
-
   return (
     <>
       <Helmet>
-        <title>About Us - Right Vision Securities</title>
+        <title>About Us — Right Vision Securities</title>
         <meta
           name="description"
-          content="Learn about Right Vision Securities, a SECP regulated and PMEX licensed brokerage firm with over 12 years of experience in commodity and futures trading."
+          content="Right Vision Securities is a SECP regulated and PMEX licensed commodity brokerage firm based in Lahore, dedicated to transparent, efficient, and outstanding trading services."
         />
       </Helmet>
 
@@ -96,194 +103,353 @@ function AboutPage() {
 
       <PageHero
         title="About Right Vision Securities"
-        subtitle="Professional commodity and futures trading services backed by regulatory compliance and market expertise"
+        subtitle="Efficient, transparent, and outstanding commodity brokerage services — backed by regulatory compliance since 2014"
         backgroundImage="https://images.unsplash.com/photo-1662062656486-2bffb88aafa3"
         breadcrumbs={[
           { label: 'Home', path: '/' },
-          { label: 'About' }
+          { label: 'About' },
         ]}
       />
 
-      {/* Company Overview */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <div className="max-w-4xl mx-auto">
-            <SectionHeader
-              title="Our story"
-              subtitle="Building trust through professional service and regulatory compliance"
-              align="center"
-            />
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Right Vision Securities was established in 2014 with a mission to provide professional commodity and futures trading services to clients across Pakistan. As a SECP regulated and PMEX licensed brokerage firm, we maintain the highest standards of regulatory compliance and client service.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Our commitment to transparency, ethical business practices, and client success has helped us build lasting relationships with traders throughout Pakistan. We understand that commodity trading requires expertise, reliable execution, and ongoing support — values that guide every aspect of our operations.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                Operating from our Lahore office, we serve a diverse client base ranging from individual traders to institutional investors. Our team of experienced market professionals provides comprehensive support across crude oil, gold, silver, platinum, and currency futures trading.
-              </p>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                With over a decade of experience in commodity markets, Right Vision Securities continues to invest in technology, regulatory compliance, and team development to deliver exceptional service to our clients.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* ── Mission & Vision ── */}
+<section className="section-spacing bg-muted">
+  <div className="container-custom px-4 sm:px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
 
-      {/* Core Values */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Our core values"
-            subtitle="Principles that guide our operations and client relationships"
-          />
+      {/* Mission */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
+      >
+        <div className="flex items-center gap-3 mb-5">
+          <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 flex-shrink-0">
+            <Target className="h-5 w-5 text-accent" />
+          </div>
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
+            Our Mission
+          </span>
+        </div>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+          Serving investors with purpose
+        </h2>
+        <div className="space-y-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <p>
+            Right Vision Securities was launched with the mission to serve its clients on
+            priority and other general investors by providing them{' '}
+            <strong className="text-foreground">efficient, transparent, reliable, and outstanding</strong>{' '}
+            brokerage services related to investment in different asset classes — including
+            agri and non-agri commodities.
+          </p>
+          <p>
+            We contemplate transferring the savings of the general public into progressive,
+            income-generating investment vehicles that enable participation in the economic
+            growth of the economy.
+          </p>
+          <p>
+            To achieve this mission, the Company observes the{' '}
+            <strong className="text-foreground">highest ethical values and professional principles</strong>{' '}
+            to deliver on client expectations, enabling them to fulfil their aspirations and
+            investment goals successfully.
+          </p>
+        </div>
+      </motion.div>
+
+      {/* Vision */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
+      >
+        <div className="flex items-center gap-3 mb-5">
+          <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-primary/10 flex-shrink-0">
+            <Eye className="h-5 w-5 text-primary" />
+          </div>
+          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
+            Our Vision
+          </span>
+        </div>
+        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+          Leading financial literacy in Pakistan
+        </h2>
+        <div className="space-y-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+          <p>
+            The foresight of establishing Right Vision Securities as a Commodity Futures
+            Broker is to assume a{' '}
+            <strong className="text-foreground">leading role in promoting financial literacy</strong>{' '}
+            across the country in collaboration with PMEX stakeholders, and exploring new
+            avenues of co-operation by establishing a platform to achieve the primary goal of
+            gaining desired returns.
+          </p>
+          <p>
+            We shall strive hard to invest in human capital, creating awareness of commodities
+            business to consolidate local commerce and to enable{' '}
+            <strong className="text-foreground">easy market access at the retail investor level</strong>.
+          </p>
+        </div>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
+      
+
+      {/* ── Core Values ── */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              What We Stand For
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Our core values
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              The principles that guide how we operate, serve clients, and grow Pakistan's investment community
+            </p>
+          </div>
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
           >
-            {coreValues.map((value, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <InfoCard {...value} />
+            {coreValues.map((value, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                  <value.icon className="h-5 w-5 text-accent" />
+                </div>
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
+                  {value.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {value.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Company Timeline */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <SectionHeader
-            title="Our journey"
-            subtitle="Key milestones in Right Vision Securities' development"
-          />
-          <div className="max-w-3xl mx-auto">
-            <div className="space-y-6">
-              {milestones.map((milestone, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="flex gap-6 items-start"
-                >
-                  <div className="flex-shrink-0">
-                    <div className="h-16 w-16 rounded-xl bg-accent/10 flex items-center justify-center">
-                      <span className="text-accent font-bold text-lg">{milestone.year}</span>
-                    </div>
-                  </div>
-                  <div className="flex-1 pt-3">
-                    <p className="text-lg text-foreground font-medium">{milestone.event}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+     
 
-      {/* Trust & Compliance */}
+      {/* ── Regulatory Compliance ── */}
       <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Regulatory compliance"
-            subtitle="Licensed and regulated by Pakistan's financial authorities"
-          />
+        <div className="container-custom px-4 sm:px-6">
+          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Our Credentials
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Regulatory compliance
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              Licensed and regulated by Pakistan's foremost financial authorities
+            </p>
+          </div>
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-5"
           >
-            {trustCertifications.map((cert, index) => (
-              <motion.div key={index} variants={itemVariants}>
-                <InfoCard {...cert} />
+            {[
+              {
+                icon: Shield,
+                title: 'SECP Regulated',
+                tag: 'Est. 1999 · Government of Pakistan',
+                description:
+                  'Licensed and regulated by the Securities and Exchange Commission of Pakistan under registration number SEC/TREC-034/2015.',
+              },
+              {
+                icon: Award,
+                title: 'PMEX Licensed',
+                tag: 'Est. 2007 · Pakistan\'s Only Commodity Exchange',
+                description:
+                  'Authorised trading member of Pakistan Mercantile Exchange Limited, enabling agri, non-agri, and currency futures trading.',
+              },
+              {
+                icon: CheckCircle,
+                title: 'Full Compliance',
+                tag: 'Investor Protection',
+                description:
+                  'Strict compliance with all applicable financial regulations and industry standards — your investments protected at every step.',
+              },
+            ].map((cert, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+              >
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                  <cert.icon className="h-5 w-5 text-accent" />
+                </div>
+                <div className="text-xs text-accent font-medium mb-1">{cert.tag}</div>
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
+                  {cert.title}
+                </h3>
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {cert.description}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Office Location */}
+{/* ── Office / Contact ── */}
       <section className="section-spacing bg-card">
-        <div className="container-custom">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+
+            {/* Left — contact details */}
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">
+              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+                Find Us
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 leading-tight">
                 Visit our office
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                Our Lahore office serves as the headquarters for Right Vision Securities' operations. We welcome clients to visit us for consultations, account opening, or to discuss trading strategies with our team.
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+                Our Lahore head office is open to clients for consultations, account opening,
+                or to discuss trading strategies with our experienced team.
               </p>
-              <div className="space-y-4">
-                <div className="flex items-start gap-4">
-                  <MapPin className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-semibold text-foreground mb-1">Address</div>
-                    <p className="text-muted-foreground">
-                      Office 204, 2nd Floor, Ali Trade Center<br />
-                      Gulberg III, Lahore, Pakistan
-                    </p>
+
+              <div className="space-y-3">
+                {[
+                  { icon: MapPin, label: 'Address', content: '74-R, GCP Society, Johar Town, Lahore, Pakistan', href: null },
+                  { icon: Phone, label: 'Phone', content: '042-35191194  ·  042-351911', href: 'tel:04235191194' },
+                  { icon: Mail, label: 'Email', content: 'hello@rvspk.com', href: 'mailto:hello@rvspk.com' },
+                  { icon: HandshakeIcon, label: 'Website', content: 'www.rvspk.com.pk', href: 'https://www.rvspk.com.pk' },
+                ].map(({ icon: Icon, label, content, href }) => (
+                  <div
+                    key={label}
+                    className="flex items-start gap-4 bg-card rounded-xl p-4 border border-border/60"
+                  >
+                    <div className="h-9 w-9 rounded-lg bg-accent/10 flex items-center justify-center flex-shrink-0">
+                      <Icon className="h-4 w-4 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-0.5">
+                        {label}
+                      </p>
+                      {href ? (
+                        <a
+                          href={href}
+                          target={href.startsWith('http') ? '_blank' : undefined}
+                          rel="noopener noreferrer"
+                          className="text-sm text-accent hover:text-accent/80 transition-colors font-medium"
+                        >
+                          {content}
+                        </a>
+                      ) : (
+                        <p className="text-sm text-foreground font-medium">{content}</p>
+                      )}
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Phone className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-semibold text-foreground mb-1">Phone</div>
-                    <a href="tel:+92423587123" className="text-accent hover:text-accent/80">
-                      +92 42 3587 123
-                    </a>
-                  </div>
-                </div>
-                <div className="flex items-start gap-4">
-                  <Mail className="h-6 w-6 text-accent flex-shrink-0 mt-1" />
-                  <div>
-                    <div className="font-semibold text-foreground mb-1">Email</div>
-                    <a href="mailto:info@rightvision.com.pk" className="text-accent hover:text-accent/80">
-                      info@rightvision.com.pk
-                    </a>
-                  </div>
-                </div>
+                ))}
               </div>
             </motion.div>
+
+            {/* Right — map card */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="rounded-xl sm:rounded-2xl overflow-hidden border border-border/60 shadow-lg bg-card"
             >
-              <img
-                src="https://images.unsplash.com/photo-1693305886158-24d846d889f9"
-                alt="Right Vision Securities office building"
-                className="rounded-2xl shadow-xl w-full h-[500px] object-cover"
-              />
+              {/* Decorative map header */}
+              <div className="relative h-52 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 flex items-center justify-center overflow-hidden">
+                <div
+                  className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage:
+                      'linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)',
+                    backgroundSize: '40px 40px',
+                  }}
+                />
+                <div className="relative z-10 flex flex-col items-center gap-3">
+                  <div className="h-14 w-14 rounded-full bg-accent flex items-center justify-center shadow-xl">
+                    <MapPin className="h-7 w-7 text-accent-foreground" />
+                  </div>
+                  <div className="bg-card rounded-xl px-4 py-2 shadow-md border border-border text-center">
+                    <p className="text-sm font-semibold text-foreground">Right Vision Securities</p>
+                    <p className="text-xs text-muted-foreground">Johar Town, Lahore</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Address + CTA */}
+              <div className="p-5 sm:p-6 space-y-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">
+                    Head Office
+                  </p>
+                  <p className="text-sm font-semibold text-foreground">
+                    Right Vision Securities (Pvt.) Limited
+                  </p>
+                  <p className="text-xs sm:text-sm text-muted-foreground mt-1 leading-relaxed">
+                    74-R, GCP Society, Johar Town<br />
+                    Lahore, Punjab, Pakistan
+                  </p>
+                </div>
+
+                <div className="flex flex-col sm:flex-row gap-3">
+                  <a
+                    href="https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 flex items-center justify-center gap-2 bg-accent text-accent-foreground rounded-xl py-3 px-4 text-sm font-medium hover:bg-accent/90 transition-colors"
+                  >
+                    <MapPin className="h-4 w-4" />
+                    Open in Google Maps
+                  </a>
+                  <a
+                    href="tel:04235191194"
+                    className="flex-1 flex items-center justify-center gap-2 border border-border text-foreground rounded-xl py-3 px-4 text-sm font-medium hover:bg-muted transition-colors"
+                  >
+                    <Phone className="h-4 w-4" />
+                    Call us
+                  </a>
+                </div>
+              </div>
             </motion.div>
+
           </div>
         </div>
       </section>
+      
 
       <CTASection
-        headline="Start your trading journey"
-        description="Open an account with Right Vision Securities and benefit from professional support, transparent pricing, and regulatory protection."
+        headline="Ready to start trading?"
+        description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-        secondaryCTA={{ text: 'Client portal', href: '/clients' }}
+        secondaryCTA={{ text: 'Open account now', href: '/contact' }}
       />
 
       <ComplianceStrip />
       <Footer />
     </>
-  );
+  )
 }
 
-export default AboutPage;
+export default AboutPage

@@ -15,7 +15,7 @@ import {
   Gem,
   DollarSign,
   Sparkles,
-  Droplets, CircleDot,  Monitor
+  Droplets, CircleDot, Monitor
 } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
@@ -375,11 +375,98 @@ function HomePage() {
         </div>
       </section>
 
-      {/* How to Open Account Section */}
-      <HowToOpenAccount />
+      {/* Why Choose Us */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Why Choose Us
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Why trade with Right Vision
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              RVSPK is the right choice for investors looking to channelize their savings into
+              income streams through agri and non-agri commodity futures trading.
+            </p>
+          </div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          >
+            {[
+              {
+                icon: Shield,
+                title: 'Regulated & Licensed',
+                description:
+                  'A SECP licensed and PMEX registered Universal Trading Broker — strictly adhering to all regulatory compliance frameworks set by front-line and apex regulatory bodies.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Diversified Futures Contracts',
+                description:
+                  'Access a wide array of futures contracts in local and international soft and hard commodities — including agri, metals, and energy — all on a single platform.',
+              },
+              {
+                icon: Monitor,
+                title: 'Robust Trading Platform',
+                description:
+                  'Trade on PMEX\'s robust, secure, and user-friendly electronic trading platform where orders are placed and executed swiftly and seamlessly.',
+              },
+              {
+                icon: Lock,
+                title: 'Investor Protection',
+                description:
+                  'Client funds are safeguarded through segregated accounts and strict regulatory compliance, ensuring your hard-earned savings remain secure at all times.',
+              },
+              {
+                icon: Headphones,
+                title: 'Responsive Client Support',
+                description:
+                  'Excellent, responsive, and timely support for resolution of client queries over multiple channels — so you\'re never left without guidance.',
+              },
+              {
+                icon: Users,
+                title: 'Market Awareness Programs',
+                description:
+                  'Committed to educating investors about commodity markets through awareness programs, empowering clients to make informed trading decisions.',
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+              >
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                  <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
+                </div>
+
+                {/* Title */}
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
+                  {feature.title}
+                </h3>
+
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
+
 
       {/* Trust Indicators */}
-      <section className="section-spacing bg-card">
+      <section className="section-spacing bg-muted">
         <div className="container-custom px-4 sm:px-6">
 
           {/* Section header */}
@@ -518,7 +605,7 @@ function HomePage() {
                 <div className="absolute inset-0 rounded-3xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
 
                 {/* Document image */}
-                <div className="relative rounded-2xl overflow-hidden border border-border/60 shadow-2xl">
+                <div className="relative rounded-2xl overflow-hidden border ">
                   <img
                     src="/documents/licence/secp_licence.jpeg"
                     alt="SECP Licence Document — Right Vision Securities"
@@ -539,120 +626,37 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
-      <section className="section-spacing bg-card">
-        <div className="container-custom px-4 sm:px-6">
-
-          {/* Section header */}
-          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
-              Why Choose Us
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Why trade with Right Vision
-            </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-              RVSPK is the right choice for investors looking to channelize their savings into
-              income streams through agri and non-agri commodity futures trading.
-            </p>
-          </div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
-          >
-            {[
-              {
-                icon: Shield,
-                title: 'Regulated & Licensed',
-                description:
-                  'A SECP licensed and PMEX registered Universal Trading Broker — strictly adhering to all regulatory compliance frameworks set by front-line and apex regulatory bodies.',
-              },
-              {
-                icon: TrendingUp,
-                title: 'Diversified Futures Contracts',
-                description:
-                  'Access a wide array of futures contracts in local and international soft and hard commodities — including agri, metals, and energy — all on a single platform.',
-              },
-              {
-                icon: Monitor,
-                title: 'Robust Trading Platform',
-                description:
-                  'Trade on PMEX\'s robust, secure, and user-friendly electronic trading platform where orders are placed and executed swiftly and seamlessly.',
-              },
-              {
-                icon: Lock,
-                title: 'Investor Protection',
-                description:
-                  'Client funds are safeguarded through segregated accounts and strict regulatory compliance, ensuring your hard-earned savings remain secure at all times.',
-              },
-              {
-                icon: Headphones,
-                title: 'Responsive Client Support',
-                description:
-                  'Excellent, responsive, and timely support for resolution of client queries over multiple channels — so you\'re never left without guidance.',
-              },
-              {
-                icon: Users,
-                title: 'Market Awareness Programs',
-                description:
-                  'Committed to educating investors about commodity markets through awareness programs, empowering clients to make informed trading decisions.',
-              },
-            ].map((feature, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
-              >
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-                  <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
-                </div>
-
-                {/* Title */}
-                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
-                  {feature.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
-            ))}
-          </motion.div>
-
-        </div>
-      </section>
 
       <MarketsOverview markets={markets} />
 
-      
-{/* Reports Preview */}
-<section className="section-spacing bg-muted">
-  <div className="container-custom">
-    <SectionHeader
-      title="Market reports and insights"
-      subtitle="Professional analysis and research to support your trading decisions"
-    />
-    <ReportsList
-      limit={3}
-      columns={3}
-      emptyMessage="Reports coming soon. Check back shortly."
-    />
-    <div className="text-center mt-12">
-      <Link to="/reports">
-        <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-          View all reports
-          <ArrowRight className="ml-2 h-5 w-5" />
-        </Button>
-      </Link>
-    </div>
-  </div>
-</section>
+
+      {/* How to Open Account Section */}
+      <HowToOpenAccount />
+
+  
+
+      {/* Reports Preview */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom">
+          <SectionHeader
+            title="Market reports and insights"
+            subtitle="Professional analysis and research to support your trading decisions"
+          />
+          <ReportsList
+            limit={3}
+            columns={3}
+            emptyMessage="Reports coming soon. Check back shortly."
+          />
+          <div className="text-center mt-12">
+            <Link to="/reports">
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                View all reports
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* CTA Section */}
       <CTASection

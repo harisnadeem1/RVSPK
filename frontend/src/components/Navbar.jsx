@@ -14,14 +14,14 @@ function Navbar() {
   const isActiveSection = (paths) => paths.some((path) => location.pathname.startsWith(path))
 
   const aboutItems = [
-    { label: 'Introduction', path: '/about/introduction' },
-    { label: 'Company Profile', path: '/about/company-profile' },
+    { label: 'Introduction', path: '/about' },
+    { label: 'Company Profile', path: '/company-profile' },
     {
       label: 'Governance',
       children: [
-        { label: "BOD's Profile", path: '/about/governance/bods' },
-        { label: 'Name of Auditor', path: '/about/governance/auditor' },
-        { label: 'Name of Legal Advisor', path: '/about/governance/legal-advisor' },
+        { label: "BOD's Profile", path: '/about/board' },
+        { label: 'Name of Auditor', path: '/about/auditors' },
+        { label: 'Name of Legal Advisor', path: '/about/legal' },
       ],
     },
   ]
@@ -64,14 +64,14 @@ function Navbar() {
   ]
 
   const aboutMobileItems = [
-    { label: 'Introduction', path: '/about/introduction' },
-    { label: 'Company Profile', path: '/about/company-profile' },
+    { label: 'Introduction', path: '/about' },
+    { label: 'Company Profile', path: '/company-profile' },
     {
       label: 'Governance',
       children: [
-        { label: "BOD's Profile", path: '/about/governance/bods' },
-        { label: 'Name of Auditor', path: '/about/governance/auditor' },
-        { label: 'Name of Legal Advisor', path: '/about/governance/legal-advisor' },
+        { label: "BOD's Profile", path: '/about/board' },
+        { label: 'Name of Auditor', path: '/about/auditors' },
+        { label: 'Name of Legal Advisor', path: '/about/legal' },
       ],
     },
   ]
@@ -184,7 +184,14 @@ function Navbar() {
                 <MegaMenu label="Markets" sections={marketSections} isActive={isActiveSection(['/markets'])} />
                 <DropdownMenu label="Policies" items={policyItems} isActive={isActiveSection(['/policies'])} />
                 <DropdownMenu label="Client Area" items={clientAreaItems} isActive={isActiveSection(['/clients'])} />
-                <DropdownMenu label="Reports" items={reportsItems} isActive={isActiveSection(['/reports'])} />
+                <Link
+                  to="/reports"
+                  className={`whitespace-nowrap font-medium transition-colors ${
+                    isActive('/reports') ? 'text-accent' : 'text-foreground hover:text-accent'
+                  }`}
+                >
+                  Reports
+                </Link>
               </div>
             </div>
 
@@ -270,12 +277,15 @@ function Navbar() {
               onItemClick={() => setMobileMenuOpen(false)}
               isActive={isActiveSection(['/clients'])}
             />
-            <MobileNavAccordion
-              label="Reports"
-              items={reportsItems}
-              onItemClick={() => setMobileMenuOpen(false)}
-              isActive={isActiveSection(['/reports'])}
-            />
+           <Link
+              to="/reports"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${
+  isActive('/reports') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+}`}
+            >
+              Reports
+            </Link>
 
             <Link
               to="/contact"

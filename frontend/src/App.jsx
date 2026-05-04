@@ -11,14 +11,15 @@ import MarketsPage from './pages/MarketsPage.jsx';
 import ReportsPage from './pages/ReportsPage.jsx';
 import ClientsAreaPage from './pages/ClientsAreaPage.jsx';
 import CompanyProfilePage from './pages/CompanyProfilePage.jsx';
-import BoardPage from './pages/BoardPage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
-import LegalPage from './pages/LegalPage.jsx';
 import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 import UploadReports from './pages/admin/UploadReports.jsx';
 import ManageReports from './pages/admin/ManageReports.jsx';
 import ManageAdmins from './pages/admin/ManageAdmins.jsx';
+import BodPage from './pages/profiles/BodPage'
+import AuditorsPage from './pages/profiles/AuditorsPage'
+import LegalPage from './pages/profiles/LegalPage'
 
 function AppContent() {
   const location = useLocation();
@@ -31,15 +32,16 @@ function AppContent() {
 
       <Routes>
         {/* Public Routes */}
-        <Route path="/"                element={<HomePage />} />
-        <Route path="/about"           element={<AboutPage />} />
-        <Route path="/markets"         element={<MarketsPage />} />
-        <Route path="/reports"         element={<ReportsPage />} />
-        <Route path="/clients"         element={<ClientsAreaPage />} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/markets" element={<MarketsPage />} />
+        <Route path="/reports" element={<ReportsPage />} />
+        <Route path="/clients" element={<ClientsAreaPage />} />
         <Route path="/company-profile" element={<CompanyProfilePage />} />
-        <Route path="/board"           element={<BoardPage />} />
-        <Route path="/contact"         element={<ContactPage />} />
-        <Route path="/legal"           element={<LegalPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/about/board" element={<BodPage />} />
+        <Route path="/about/auditors" element={<AuditorsPage />} />
+        <Route path="/about/legal" element={<LegalPage />} />
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />

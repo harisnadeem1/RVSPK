@@ -6,7 +6,6 @@ import { Checkbox } from '@/components/ui/checkbox'
 function DisclaimerModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [isAgreed, setIsAgreed] = useState(false)
-  // ✅ REMOVE the <1 | 2> generic in .jsx
   const [step, setStep] = useState(1)
 
   useEffect(() => {
@@ -32,17 +31,17 @@ function DisclaimerModal() {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/70 backdrop-blur-sm"
         onClick={handleClose}
         aria-hidden="true"
       />
 
       {/* Modal */}
       <div
-        className="relative bg-card rounded-2xl shadow-2xl max-w-3xl w-full mx-4 max-h-[90vh] overflow-hidden"
+        className="relative bg-card rounded-2xl shadow-2xl w-full max-w-2xl mx-auto max-h-[90vh] flex flex-col overflow-hidden"
         role="dialog"
         aria-modal="true"
         aria-labelledby="disclaimer-title"
@@ -50,223 +49,216 @@ function DisclaimerModal() {
         {/* Close button */}
         <button
           onClick={handleClose}
-          className="absolute top-4 right-4 z-10 p-2 rounded-lg hover:bg-muted transition-colors"
+          className="absolute top-3 right-3 z-20 p-2 rounded-lg hover:bg-muted transition-colors"
           aria-label="Close disclaimer"
         >
           <X className="h-5 w-5 text-muted-foreground" />
         </button>
 
-        {/* Scrollable content */}
-        <div className="overflow-y-auto max-h-[90vh] p-6 md:p-8">
-          {/* Header */}
-          <div className="flex items-start gap-3 mb-6">
-            <div className="h-12 w-12 rounded-xl bg-gold/10 flex items-center justify-center flex-shrink-0">
-              <AlertTriangle className="h-7 w-7 text-gold" />
-            </div>
-            <div>
-              <h2
-                id="disclaimer-title"
-                className="text-2xl md:text-3xl font-bold text-foreground mb-1"
+        {/* Step Indicator */}
+        <div className="flex items-center gap-2 px-5 pt-5 pb-3 border-b border-border">
+          {[1, 2].map((s) => (
+            <div key={s} className="flex items-center gap-2">
+              <div
+                className={`h-7 w-7 rounded-full flex items-center justify-center text-xs font-bold transition-all duration-300 ${
+                  step >= s
+                    ? 'bg-accent text-accent-foreground'
+                    : 'bg-muted text-muted-foreground'
+                }`}
               >
-                Important disclaimer
-              </h2>
-              <p className="text-xs md:text-sm text-muted-foreground">
-                Please read carefully before proceeding
-              </p>
+                {s}
+              </div>
+              {s < 2 && (
+                <div
+                  className={`h-0.5 w-10 rounded transition-all duration-300 ${
+                    step > s ? 'bg-accent' : 'bg-muted'
+                  }`}
+                />
+              )}
+            </div>
+          ))}
+          <span className="ml-2 text-xs text-muted-foreground">
+            {step === 1 ? 'Website Disclaimer' : 'SECP Advisory'}
+          </span>
+        </div>
+
+        {/* ──────────────── STEP 1 – RV Disclaimer IMAGE ──────────────── */}
+        {step === 1 && (
+          <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto bg-white">
+              <img
+                src="/documents/secp_disclamir.png"
+                alt="Right Vision Securities Website Disclaimer"
+                className="w-full h-auto object-contain"
+              />
+            </div>
+
+            <div className="border-t border-border bg-card px-5 py-4 flex flex-col sm:flex-row gap-3">
+              <Button
+                onClick={() => setStep(2)}
+                className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 py-3 text-sm md:text-base font-medium"
+              >
+                Continue →
+              </Button>
+              <Button
+                onClick={handleClose}
+                variant="outline"
+                className="sm:w-auto border-border text-foreground hover:bg-muted py-3 text-sm md:text-base"
+              >
+                Close
+              </Button>
             </div>
           </div>
+        )}
 
-          {/* STEP 1 – Image / branding disclaimer */}
-          {step === 1 && (
-            <div className="space-y-6">
-              {/* Image / branding card */}
-              <div className="rounded-xl overflow-hidden border border-border">
-                <div className="bg-gradient-to-br from-primary/5 to-accent/5 px-6 py-10 text-center">
-                  <div className="max-w-xl mx-auto">
-                    <div className="h-20 w-20 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto mb-5">
-                      {/* Replace this span with your logo <img> if you want */}
-                      <span className="text-primary font-bold text-3xl">RV</span>
-                    </div>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-                      Right Vision Securities
-                    </h3>
-                    <p className="text-sm md:text-base text-muted-foreground">
-                      SECP Regulated &nbsp;|&nbsp; PMEX Licensed
-                    </p>
-                  </div>
+        {/* ──────────────── STEP 2 – SECP Caution FULL TEXT ──────────────── */}
+        {step === 2 && (
+          <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 md:px-8 py-5 space-y-5">
+
+              {/* Header */}
+              <div className="flex items-start gap-3">
+                <div className="h-11 w-11 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+                  <AlertTriangle className="h-6 w-6 text-red-600" />
+                </div>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-widest text-red-600 mb-0.5">
+                    SECP
+                  </p>
+                  <h2
+                    id="disclaimer-title"
+                    className="text-lg md:text-xl font-bold text-foreground leading-snug"
+                  >
+                    Caution Against Online Investment &amp; Trading Scams
+                  </h2>
                 </div>
               </div>
 
-              {/* Short intro text */}
-              <div className="bg-muted rounded-xl p-5">
-                <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                  Trading in commodity futures and derivatives involves a high level of risk.
-                  In the next step you will see a detailed risk disclaimer explaining these
-                  risks and your responsibilities as a client.
+              {/* Paragraph 1 — exact text from image */}
+              <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5 text-sm md:text-base text-foreground leading-relaxed">
+                <p>
+                 This website is operated and maintained by Right vision Securities (Pvt.) Limited (hereinafter referred as "The
+Company"/"RVSPL"). The visitors of the website www.rvspk.com.pk are informed that the information provided by Right Vision
+Securities (Pvt.) Limited should be considered for general information, knowledge and education purpose only though all
+information on this website are provided in good faith after due authenticity of the source and knowledge. However, the
+company does not provide warranty or makes no representation of any kind in respect of accuracy, legitimacy consistency or
+entirety of any information on this website. The Company shall continue to do at its best to provide authentic, relevant, precise
+and accurate information for its visitors/users of this website. The visitors should understand that reliance on any information
+provided at this website is solely at their own risk and consequences. The company shall not own or take responsibility for any
+loss or damage of any kind incurred by using of this website. In order to avoid such situation, the visitors are advised to consult
+professional advisor prior to take any decision or action based upon such information as the company does not provide any
+professional financial advisory services. Resultantly, it is the sole responsibility of the users of the information contained on this
+website for any loss or damage at their own risk and consequences.
                 </p>
               </div>
 
-              {/* Step 1 actions */}
-              <div className="flex flex-col sm:flex-row gap-3">
-                <Button
-                  onClick={() => setStep(2)}
-                  className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 py-4 text-sm md:text-base font-medium"
-                >
-                  Continue to full disclaimer
-                </Button>
-                <Button
-                  onClick={handleClose}
-                  variant="outline"
-                  className="sm:w-auto border-border text-foreground hover:bg-muted py-4 text-sm md:text-base"
-                >
-                  Close
-                </Button>
+              {/* Paragraph 2 — exact text from image */}
+              <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+                  Further stated that any opinion, statistical data, explanation, research, analysis contained on the website of Right Vision
+Securities (Pvt.) Limited (RVSPL) have been provided for sole purpose of general market commentary which should not be
+necessarily constitute investment advice for the readers and investors. Hence, the use and reliance of such information doesn't
+establish the liability of RVSPL for any loss or damage of your additional investment, loss of profit and the principal amount
+invested in commodities and/or any other financial products. However, the RVSPL at its utmost efforts has taken reliable and
+reasonable measures to ensure the accuracy
+time to time without prior notice.
+                </p>
               </div>
+
+              {/* Paragraph 3 — exact text from image */}
+              <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+                  There is possibility of linkage of external links integrated with the website that may have contents belonging to or originating
+from third parties for which accuracy, reliability, validity or completeness are not investigated, monitored or checked by the
+Company. Hence, such information offered by the third parties are not warranted, endorsed and the company does not assume
+responsibility for its accuracy and reliability. Further, neither the RVSPL nor its employees endorse the links to the Company's
+website from a third party websites. The same applied for the products and services offered on a third party website linked to
+the RVSPL are not offered or owned by the Company unless indicated, the accuracy of such information posted at third party
+websites cannot be attested by the Company.
+                </p>
+              </div>
+
+
+              {/* Paragraph 4 — exact text from image */}
+              <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+                The users of the company's products and/or services may submit or provide testimonials at this website which reflect their own
+experiences and opinions that may be different from user to user as individual results may vary. Hence, such views and opinions
+contained in the testimonials are solely belong to individual user and should not consider it the company's views and opinions.
+Further advised, the testimonials regarding past performance are not necessarily be taken as a guarantee or an indicative of
+future results and may not be representative of the experience of all other investors. Rules and Regulations applied to the
+Commodity Exchange are subject to change and also the commissions or other charges of the brokerage house as well.
+                </p>
+              </div>
+
+              {/* Paragraph 5 — exact text from image */}
+              <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+               Despite every attempt to ensure authenticity of the information from reliable sources, the company shall not take responsibility
+for any errors or omissions. Further, the results obtained from the usage of the information are the sole responsibility of the
+users of the services and/or products provided at the website as there is no guarantee of completeness, accuracy or validity of
+such information, hence no damages or loss are claimable.
+                </p>
+              </div>
+
+               {/* Paragraph 6 — exact text from image */}
+              <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
+                <p>
+              Should you have any query, complaints, comments, feedback, suggestions, requests for technical support or other inquiries,
+please don't hesitate to contact the company by email: hello@rvspk.com or at Phone numbers:042-35191194, 042-351911.
+                </p>
+              </div>
+
+              
+
+              
             </div>
-          )}
 
-          {/* STEP 2 – Full text disclaimer */}
-          {step === 2 && (
-            <>
-              {/* Disclaimer content */}
-              <div className="space-y-5 mb-6">
-                <div className="bg-gold/10 border border-gold/20 rounded-xl p-5">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-3">
-                    Risk warning
-                  </h3>
-                  <p className="text-sm md:text-base text-foreground leading-relaxed mb-3">
-                    Trading in commodity futures and derivatives involves substantial risk of
-                    loss and may not be suitable for all investors. You should carefully
-                    consider whether trading is appropriate for you in light of your
-                    experience, objectives, financial resources, and other relevant
-                    circumstances.
-                  </p>
-                  <p className="text-sm md:text-base text-foreground leading-relaxed">
-                    The high degree of leverage that is often obtainable in commodity
-                    futures trading can work against you as well as for you. The use of
-                    leverage can lead to large losses as well as gains. Past performance is
-                    not indicative of future results.
-                  </p>
-                </div>
-
-                <div className="space-y-3">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
-                    Key risks
-                  </h3>
-                  <ul className="space-y-2 text-sm md:text-base text-muted-foreground">
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold mt-1 flex-shrink-0">•</span>
-                      <span>
-                        <strong className="text-foreground">Market risk:</strong> Commodity
-                        prices can fluctuate rapidly and substantially due to economic,
-                        political, and market conditions.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold mt-1 flex-shrink-0">•</span>
-                      <span>
-                        <strong className="text-foreground">Leverage risk:</strong> Trading on
-                        margin means you can lose more than your initial investment.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold mt-1 flex-shrink-0">•</span>
-                      <span>
-                        <strong className="text-foreground">Liquidity risk:</strong> Certain
-                        contracts may be difficult to liquidate at favorable prices during
-                        volatile conditions.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-gold mt-1 flex-shrink-0">•</span>
-                      <span>
-                        <strong className="text-foreground">Operational risk:</strong> Technical
-                        failures, system errors, or communication disruptions may affect
-                        trading.
-                      </span>
-                    </li>
-                  </ul>
-                </div>
-
-                <div className="bg-muted rounded-xl p-5 space-y-3">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground">
-                    Regulatory information
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    Right Vision Securities (Private) Limited is regulated by the Securities
-                    and Exchange Commission of Pakistan (SECP) under registration number
-                    SEC/TREC-034/2015 and is an authorized trading member of Pakistan
-                    Mercantile Exchange Limited (PMEX).
-                  </p>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    While we maintain strict compliance with all applicable regulations,
-                    regulatory oversight does not eliminate trading risks or guarantee
-                    profits. All trading decisions are made independently by clients at
-                    their own risk.
-                  </p>
-                </div>
-
-                <div className="bg-muted rounded-xl p-5">
-                  <h3 className="text-lg md:text-xl font-semibold text-foreground mb-2">
-                    No investment advice
-                  </h3>
-                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
-                    Right Vision Securities provides execution services and market
-                    information but does not provide investment advice or recommendations.
-                    All information provided is for educational purposes only and should
-                    not be construed as a solicitation to trade. We recommend consulting
-                    with qualified financial advisors before engaging in commodity futures
-                    trading.
-                  </p>
-                </div>
+            {/* ── PINNED BOTTOM — always visible ── */}
+            <div className="border-t border-border bg-card px-5 md:px-8 py-4 space-y-3">
+              {/* Checkbox */}
+              <div className="flex items-start gap-3">
+                <Checkbox
+                  id="disclaimer-agree"
+                  checked={isAgreed}
+                  onCheckedChange={(value) => setIsAgreed(Boolean(value))}
+                  className="mt-1 flex-shrink-0"
+                />
+                <label
+                  htmlFor="disclaimer-agree"
+                  className="text-xs md:text-sm text-foreground leading-relaxed cursor-pointer select-none"
+                >
+                  I/We fully understand and agree with the contents of the above mentioned
+                  disclaimer. I/We assure not to hold the company, directors, and employees
+                  responsible for any loss or damage.
+                </label>
               </div>
 
-              {/* Acknowledgement checkbox */}
-              <div className="bg-card border-2 border-border rounded-xl p-5 mb-5">
-                <div className="flex items-start gap-3">
-                  <Checkbox
-                    id="disclaimer-agree"
-                    checked={isAgreed}
-                    onCheckedChange={(value) => setIsAgreed(Boolean(value))}
-                    className="mt-1"
-                  />
-                  <label
-                    htmlFor="disclaimer-agree"
-                    className="text-sm md:text-base text-foreground leading-relaxed cursor-pointer select-none"
-                  >
-                    I/We fully understand and agree with the contents of the above
-                    disclaimer. I/We assure not to hold the company, directors, and
-                    employees responsible for any loss or damage.
-                  </label>
-                </div>
-              </div>
-
-              {/* Step 2 actions */}
+              {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={handleAccept}
                   disabled={!isAgreed}
-                  className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-60 disabled:cursor-not-allowed py-4 text-sm md:text-base font-medium"
+                  className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed py-3 text-sm md:text-base font-medium"
                 >
                   Agree and continue
                 </Button>
                 <Button
                   onClick={() => setStep(1)}
                   variant="outline"
-                  className="sm:w-auto border-border text-foreground hover:bg-muted py-4 text-sm md:text-base"
+                  className="sm:w-auto border-border text-foreground hover:bg-muted py-3 text-sm md:text-base"
                 >
-                  Back
+                  ← Back
                 </Button>
               </div>
 
-              {/* Footer note */}
-              <p className="text-xs md:text-sm text-muted-foreground text-center mt-4">
-                By clicking &quot;Agree and continue&quot;, you acknowledge that you have
-                read, understood, and agree to the terms outlined in this disclaimer.
+              <p className="text-xs text-muted-foreground text-center">
+                By clicking &quot;Agree and continue&quot; you acknowledge you have read and
+                understood this disclaimer.
               </p>
-            </>
-          )}
-        </div>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   )
