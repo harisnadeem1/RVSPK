@@ -72,6 +72,119 @@ export const profileGroups = {
       'Right Vision Securities maintains rigorous financial oversight through its Chief Financial Officer and dedicated audit function, ensuring transparency, regulatory compliance and sound financial controls at all levels.',
     members: [
       {
+        id: 'a-a-company',
+        name: 'AA & Company  ',
+        role: 'External Auditor',
+        department: 'Finance & Audit',
+        initials: 'AA',
+        bio: '',
+        fullBio: [
+         ],
+        responsibilities: [
+        
+        ],
+        credentials: [
+         
+        ],
+      },
+       {
+        id: 'saddam-qaisar',
+        name: 'Mr. Saddam Qaisar',
+        role: 'Internal Auditor',
+        department: 'Finance & Audit',
+        initials: 'SQ',
+        bio: '',
+        fullBio: [
+         ],
+        responsibilities: [
+        
+        ],
+        credentials: [
+         
+        ],
+      },
+    ],
+  },
+
+  legal: {
+    key: 'legal',
+    label: 'Legal & Research',
+    icon: Scale,
+    tagline: 'Legal Advisory & Research',
+    description:
+      'Right Vision Securities retains qualified legal counsel and research professionals to ensure all operations are handled in full accordance with Pakistani law, financial regulations and best market practices.',
+    members: [
+      {
+        id: 'taram-bashir',
+        name: 'Advocate Taram Bashir',
+        role: 'Company Secretary',
+        department: 'Legal & Compliance',
+        initials: 'TB',
+        bio: 'Advocate Taram Bashir is a legal and corporate compliance professional with a strong foundation in company law, regulatory compliance and corporate governance, supported by academic training in Commerce, Law and Applied Economics. She has recently assumed the role of Company Secretary, where she supports the Board and management in fulfilling statutory obligations and maintaining effective governance standards.',
+        fullBio: [
+          'Her professional experience includes advising on corporate documentation, regulatory filings, compliance frameworks, board processes and internal governance policies, ensuring alignment with applicable laws and regulatory requirements. She works closely with senior management and key stakeholders to promote transparency, accountability and regulatory discipline within the organization.',
+          'She also brings experience in capacity building and institutional training, having delivered structured, compliance-focused sessions on legal and regulatory frameworks for public sector institutions and professional audiences. This experience strengthens her ability to support governance awareness, compliance culture and informed decision-making at the organizational level.',
+          'With prior engagement in international organizations and regulated environments, she adopts a disciplined, ethical and detail-oriented approach to company secretarial functions, contributing to sound corporate governance and sustainable organizational growth.',
+        ],
+        responsibilities: [
+          'Company secretarial functions and statutory obligations',
+          'Corporate documentation and regulatory filings',
+          'Board process support and governance policy',
+          'SECP and PMEX compliance frameworks',
+          'Capacity building and compliance training',
+          'Stakeholder transparency and accountability',
+        ],
+        credentials: [
+          'Academic background in Commerce, Law & Applied Economics',
+          'Experience in international organizations',
+          'Corporate governance and regulatory compliance specialist',
+          'Institutional trainer — public sector legal frameworks',
+        ],
+      },
+      {
+        id: 'muhammad-nabeel-pasha',
+        name: 'Muhammad Nabeel Pasha',
+        role: 'Head of Research & Training',
+        department: 'Research & Training',
+        initials: 'NP',
+        bio: 'Muhammad Nabeel Pasha is an ACCA-qualified finance professional with over 12 years of extensive experience in global financial markets. He also holds Commodity Brokerage and Stock Brokerage certifications from the Institute of Financial Markets of Pakistan (IFMP).',
+        fullBio: [
+          'His professional career reflects deep expertise in trading, brokerage operations and market advisory services, with significant exposure through the Pakistan Mercantile Exchange (PMEX). His advisory approach emphasizes risk awareness, regulatory alignment and informed investment decision-making rather than speculative outcomes.',
+          'He has held senior leadership positions, including Head of Research & Trading and Senior Manager – Business Development, where he successfully led market research functions, trading strategy development and client portfolio growth initiatives. His work demonstrates a strong command of financial market structures, diverse trading instruments and risk-based investment frameworks.',
+          'Mr. Pasha\'s core competencies include market research and analysis, risk management, client relationship management and both fundamental and technical analysis. He is widely recognized for his ability to translate complex market dynamics into clear, actionable insights. In addition to his professional roles, he has conducted numerous training sessions on risk management and trading discipline, contributing to informed decision-making and sustainable participation in financial markets.',
+        ],
+        responsibilities: [
+          'Market research and trading strategy development',
+          'Client portfolio growth and advisory services',
+          'Risk management training and education',
+          'Fundamental and technical market analysis',
+          'PMEX trading operations oversight',
+          'Business development and client relationship management',
+        ],
+        credentials: [
+          'ACCA Qualified',
+          'Commodity Brokerage Certification — IFMP',
+          'Stock Brokerage Certification — IFMP',
+          '12+ years in global financial markets',
+          'Former Head of Research & Trading',
+          'Former Senior Manager — Business Development',
+        ],
+      },
+    ],
+  },
+
+
+
+
+  management: {
+    key: 'management',
+    label: 'Management',
+    icon: Users,
+    tagline: 'Leadership & Strategic Direction',
+    description:
+      'Right Vision Securities is led by a team of experienced professionals who provide strategic direction and operational leadership to ensure the company operates at the highest standards of excellence and compliance.',
+    members: [
+       {
         id: 'rehan-javaid-butt',
         name: 'Rehan Javaid Butt',
         role: 'Chief Financial Officer (CFO)',
@@ -97,17 +210,6 @@ export const profileGroups = {
           'Corporate sector & CA audit firm experience',
         ],
       },
-    ],
-  },
-
-  legal: {
-    key: 'legal',
-    label: 'Legal & Research',
-    icon: Scale,
-    tagline: 'Legal Advisory & Research',
-    description:
-      'Right Vision Securities retains qualified legal counsel and research professionals to ensure all operations are handled in full accordance with Pakistani law, financial regulations and best market practices.',
-    members: [
       {
         id: 'taram-bashir',
         name: 'Advocate Taram Bashir',

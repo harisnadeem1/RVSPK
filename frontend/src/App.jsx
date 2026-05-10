@@ -20,10 +20,18 @@ import ManageAdmins from './pages/admin/ManageAdmins.jsx';
 import BodPage from './pages/profiles/BodPage'
 import AuditorsPage from './pages/profiles/AuditorsPage'
 import LegalPage from './pages/profiles/LegalPage'
+import { Toaster } from 'sonner'; // ← ADD THIS
+import { useContentProtection } from './hooks/useContentProtection.js'
+import PdfViewerPage from './pages/PdfViewerPage.jsx'
+import IntroductionPage from './pages/IntroductionPage.jsx'
+import MissionVisionPage from './pages/MissionVisionPage.jsx'
+import ManagementPage from './pages/profiles/ManagementPage.jsx'; 
 
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
+
+  useContentProtection()
 
   return (
     <>
@@ -41,7 +49,12 @@ function AppContent() {
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/about/board" element={<BodPage />} />
         <Route path="/about/auditors" element={<AuditorsPage />} />
+        <Route path="/about/management" element={<ManagementPage />} />
         <Route path="/about/legal" element={<LegalPage />} />
+        <Route path="/policies/:slug" element={<PdfViewerPage />} />
+        <Route path="/clients/:slug" element={<PdfViewerPage />} />
+        <Route path="/introduction" element={<IntroductionPage />} />
+<Route path="/mission-vision" element={<MissionVisionPage />} />
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -100,6 +113,7 @@ function App() {
   return (
     <Router>
       <AdminAuthProvider>
+        <Toaster position="top-right" richColors closeButton />
         <AppContent />
       </AdminAuthProvider>
     </Router>

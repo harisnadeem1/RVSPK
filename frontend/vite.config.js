@@ -295,23 +295,24 @@ export default defineConfig({
 		addTransformIndexHtml
 	],
 	server: {
-  port: 3000,
-  cors: true,
-  headers: {
-    'Cross-Origin-Embedder-Policy': 'unsafe-none',
-    'Cross-Origin-Opener-Policy': 'unsafe-none',
-    'Content-Security-Policy': [
-      "default-src 'self'",
-      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://s3.tradingview.com https://*.tradingview.com https://*.tradingview-widget.com",
-      "frame-src 'self' https://s3.tradingview.com https://www.tradingview.com https://*.tradingview.com https://*.tradingview-widget.com",
-      "connect-src 'self' http://localhost:5000 ws://localhost:5000 https://*.tradingview.com wss://*.tradingview.com ws://*.tradingview.com https://*.tradingview-widget.com",
-      "img-src 'self' data: blob: https://*.tradingview.com https://*.tradingview-static.com",
-      "style-src 'self' 'unsafe-inline' https://s3.tradingview.com https://*.tradingview.com https://fonts.googleapis.com",
-      "font-src 'self' data: https://*.tradingview.com https://fonts.gstatic.com",
-    ].join('; '),
-  },
-  allowedHosts: true,
-},
+		port: 3000,
+		cors: true,
+		headers: {
+			'Cross-Origin-Embedder-Policy': 'unsafe-none',
+			'Cross-Origin-Opener-Policy': 'unsafe-none',
+			'Content-Security-Policy': [
+  "default-src 'self'",
+  "script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: https://s3.tradingview.com https://*.tradingview.com https://*.tradingview-widget.com",  // ← added blob:
+  "worker-src 'self' blob:",                                                                                                                        // ← simplified
+  "frame-src 'self' http://localhost:5000 https://s3.tradingview.com https://www.tradingview.com https://*.tradingview.com https://*.tradingview-widget.com",
+  "connect-src 'self' http://localhost:5000 ws://localhost:5000 https://*.tradingview.com wss://*.tradingview.com ws://*.tradingview.com https://*.tradingview-widget.com",
+  "img-src 'self' data: blob: https://*.tradingview.com https://*.tradingview-static.com",
+  "style-src 'self' 'unsafe-inline' https://s3.tradingview.com https://*.tradingview.com https://fonts.googleapis.com",
+  "font-src 'self' data: https://*.tradingview.com https://fonts.gstatic.com",
+].join('; '),
+		},
+		allowedHosts: true,
+	},
 	resolve: {
 		extensions: ['.jsx', '.js', '.tsx', '.ts', '.json',],
 		alias: {

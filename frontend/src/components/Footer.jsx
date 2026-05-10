@@ -1,205 +1,273 @@
-
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, ChevronDown } from 'lucide-react';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, MessageCircle } from 'lucide-react'
 
 function Footer() {
-  const currentYear = new Date().getFullYear();
-  const [legalExpanded, setLegalExpanded] = useState(false);
+  const currentYear = new Date().getFullYear()
 
-  const footerLinks = {
-    products: [
-      { label: 'Commodities Trading', path: '/markets' },
-      { label: 'Futures Trading', path: '/markets' },
-      { label: 'Market Reports', path: '/reports' },
-      { label: 'Client Portal', path: '/clients' }
-    ],
-    company: [
-      { label: 'About Us', path: '/about' },
-      { label: 'Company Profile', path: '/company-profile' },
-      { label: 'Board of Directors', path: '/board' },
-      { label: 'Contact', path: '/contact' }
-    ],
-    legal: [
-      { label: 'Terms & Conditions', path: '/legal', state: { tab: 'terms' } },
-      { label: 'Disclaimer', path: '/legal', state: { tab: 'disclaimer' } },
-      { label: 'Privacy Policy', path: '/legal', state: { tab: 'privacy' } },
-      { label: 'Compliance', path: '/legal', state: { tab: 'compliance' } }
-    ],
-    support: [
-      { label: 'Help Center', path: '/contact' },
-      { label: 'Client Support', path: '/contact' },
-      { label: 'Trading FAQs', path: '/contact' },
-      { label: 'Report Issue', path: '/contact' }
-    ]
-  };
+  const aboutLinks = [
+    { label: 'Introduction', path: '/about' },
+    { label: 'Company Profile', path: '/company-profile' },
+    { label: "BOD's Profile", path: '/about/board' },
+    { label: 'Name of Auditor', path: '/about/auditors' },
+    { label: 'Name of Legal Advisor', path: '/about/legal' },
+  ]
+
+  const clientLinks = [
+    { label: 'No Cash Policy', path: '/clients/no-cash-policy' },
+    { label: 'Account Opening Guide', path: '/clients/account-opening-guide' },
+    { label: 'Commission Structure', path: '/clients/commission-structure' },
+    { label: 'PMEX Fee Sheet', path: '/clients/pmex-fee-criteria' },
+    { label: 'Guide to Futures Trading', path: '/clients/guide-futures-pmex' },
+    { label: 'Client Complaint Process', path: '/clients/complaint-process' },
+  ]
+
+  const policyLinks = [
+    { label: 'Privacy Policy', path: '/policies/privacy-policy' },
+    { label: 'Customer Grievances Redressal', path: '/policies/customer-grievances-redressal' },
+    { label: 'Risk Management Policy', path: '/policies/risk-management' },
+    { label: 'CDD / KYC Policy', path: '/policies/cdd-kyc' },
+    { label: 'Whistleblowing Policy', path: '/policies/whistleblowing' },
+    { label: 'Conflict of Interest Policy', path: '/policies/conflict-of-interest' },
+  ]
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container-custom section-spacing">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12">
-          {/* Company Info */}
-          <div className="lg:col-span-4">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-12 w-12 bg-accent rounded-lg flex items-center justify-center">
-                <span className="text-accent-foreground font-bold text-2xl">RV</span>
-              </div>
-              <div>
-                <div className="font-bold text-xl">Right Vision</div>
-                <div className="text-sm opacity-90">Securities</div>
-              </div>
-            </div>
-            <p className="text-primary-foreground/80 leading-relaxed mb-6 max-w-sm">
-              A leading SECP regulated and PMEX licensed brokerage firm specializing in commodity and futures trading in Pakistan.
-            </p>
-            <div className="space-y-3">
-              <div className="flex items-start gap-3">
-                <MapPin className="h-5 w-5 mt-1 flex-shrink-0 text-accent" />
-                <span className="text-sm text-primary-foreground/80">
-                  Office 204, 2nd Floor, Ali Trade Center,<br />
-                  Gulberg III, Lahore, Pakistan
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 flex-shrink-0 text-accent" />
-                <a href="mailto:info@rightvision.com.pk" className="text-sm text-primary-foreground/80 hover:text-accent transition-colors">
-                  info@rightvision.com.pk
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 flex-shrink-0 text-accent" />
-                <a href="tel:+92423587123" className="text-sm text-primary-foreground/80 hover:text-accent transition-colors">
-                  +92 42 3587 123
-                </a>
-              </div>
-            </div>
-          </div>
 
-          {/* Products */}
-          <div className="lg:col-span-2">
-            <h3 className="font-semibold text-lg mb-4">Products</h3>
-            <ul className="space-y-2">
-              {footerLinks.products.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+      {/* Main footer body */}
+      <div className="container-custom py-14 sm:py-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
 
-          {/* Company */}
-          <div className="lg:col-span-2">
-            <h3 className="font-semibold text-lg mb-4">Company</h3>
-            <ul className="space-y-2">
-              {footerLinks.company.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* ── Col 1 — Brand + Contact ── */}
+          <div className="sm:col-span-2 lg:col-span-4">
 
-          {/* Legal - Expandable */}
-          <div className="lg:col-span-2">
-            <button
-              onClick={() => setLegalExpanded(!legalExpanded)}
-              className="flex items-center justify-between w-full font-semibold text-lg mb-4 lg:cursor-default"
-            >
-              <span>Legal</span>
-              <ChevronDown
-                className={`h-5 w-5 lg:hidden transition-transform duration-200 ${
-                  legalExpanded ? 'rotate-180' : ''
-                }`}
+            {/* Logo */}
+            <Link to="/" className="inline-flex items-center mb-5">
+              <img
+                src="/rvspk_logo.png"
+                alt="Right Vision Securities"
+                className="h-14 w-auto brightness-0 invert"
               />
-            </button>
-            <ul className={`space-y-2 ${legalExpanded ? 'block' : 'hidden lg:block'}`}>
-              {footerLinks.legal.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    state={link.state}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+            </Link>
 
-          {/* Support */}
-          <div className="lg:col-span-2">
-            <h3 className="font-semibold text-lg mb-4">Support</h3>
-            <ul className="space-y-2">
-              {footerLinks.support.map((link, index) => (
-                <li key={index}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-primary-foreground/80 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-primary-foreground/20 mt-12 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-primary-foreground/80">
-              © {currentYear} Right Vision Securities. All rights reserved.
-            </div>
-            <div className="flex items-center gap-4">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-foreground/80 hover:text-accent transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-foreground/80 hover:text-accent transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary-foreground/80 hover:text-accent transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-          <div className="mt-6 text-xs text-primary-foreground/70 text-center md:text-left">
-            <p>
-              Right Vision Securities is regulated by SECP and licensed by PMEX. Trading in commodity futures involves substantial risk and may not be suitable for all investors. Please ensure you understand the risks involved.
+            {/* About blurb */}
+            <p className="text-sm text-primary-foreground/75 leading-relaxed mb-6 max-w-sm">
+              Right Vision Securities (Pvt.) Limited is a SECP regulated Futures Broker
+              and PMEX licensed firm — dedicated to providing efficient, transparent, and
+              reliable brokerage services in commodity and futures trading across Pakistan.
             </p>
+
+            {/* Contact details */}
+            <ul className="space-y-3">
+              <li>
+                <a
+                  href="tel:+923108248717"
+                  className="flex items-start gap-3 group"
+                >
+                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                    <Phone className="h-3.5 w-3.5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                      +92 310 8248717
+                    </div>
+                    <div className="text-xs text-primary-foreground/55">Call / WhatsApp · Business hours</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="mailto:hello@rvspk.com"
+                  className="flex items-start gap-3 group"
+                >
+                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                    <Mail className="h-3.5 w-3.5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                      hello@rvspk.com
+                    </div>
+                    <div className="text-xs text-primary-foreground/55">We reply within 24 hours</div>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 group"
+                >
+                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                    <MapPin className="h-3.5 w-3.5 text-accent" />
+                  </div>
+                  <div>
+                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                      74-R, GCP Housing Society, Johar Town
+                    </div>
+                    <div className="text-xs text-primary-foreground/55">Lahore, Punjab, Pakistan</div>
+                  </div>
+                </a>
+              </li>
+            </ul>
           </div>
+
+          {/* ── Col 2 — About ── */}
+          <div className="lg:col-span-2">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/50 mb-4">
+              About Us
+            </h3>
+            <ul className="space-y-2.5">
+              {aboutLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-primary-foreground/75 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+              <li>
+                <Link
+                  to="/contact"
+                  className="text-sm text-primary-foreground/75 hover:text-accent transition-colors"
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* ── Col 3 — Client Area ── */}
+          <div className="lg:col-span-3">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/50 mb-4">
+              Client Area
+            </h3>
+            <ul className="space-y-2.5">
+              {clientLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-primary-foreground/75 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ── Col 4 — Policies ── */}
+          <div className="lg:col-span-3">
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/50 mb-4">
+              Policies
+            </h3>
+            <ul className="space-y-2.5">
+              {policyLinks.map((link, i) => (
+                <li key={i}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-primary-foreground/75 hover:text-accent transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Reports quick link */}
+            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground/50 mb-4 mt-8">
+              Reports
+            </h3>
+            <ul className="space-y-2.5">
+              <li>
+                <Link
+                  to="/reports"
+                  className="text-sm text-primary-foreground/75 hover:text-accent transition-colors"
+                >
+                 Daily & Monthly Reports
+                </Link>
+              </li>
+              
+            </ul>
+          </div>
+
         </div>
       </div>
+
+      {/* Divider */}
+      <div className="border-t border-primary-foreground/15" />
+
+      {/* Regulatory disclaimer */}
+      <div className="container-custom py-5">
+        <p className="text-xs text-primary-foreground/50 leading-relaxed text-center">
+          Right Vision Securities (Pvt.) Limited is licensed by the Securities & Exchange
+          Commission of Pakistan (SECP) as a Futures Broker (Licence No. BRC-406) and holds
+          a Trading Right Entitlement Certificate (TREC No. 037) from Pakistan Mercantile
+          Exchange (PMEX). Trading in commodity futures involves substantial risk and may not
+          be suitable for all investors. Past performance is not indicative of future results.
+          Please ensure you fully understand the risks before trading.
+        </p>
+      </div>
+
+      {/* Divider */}
+      <div className="border-t border-primary-foreground/15" />
+
+      {/* Bottom bar */}
+      <div className="container-custom py-5">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+
+          {/* Copyright */}
+          <p className="text-xs text-primary-foreground/50 text-center sm:text-left">
+            © {currentYear} Right Vision Securities (Pvt.) Limited. All rights reserved.
+          </p>
+
+          {/* Social links */}
+          <div className="flex items-center gap-3">
+            <a
+              href="https://wa.me/923108248717"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="WhatsApp"
+              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
+            >
+              <MessageCircle className="h-4 w-4" />
+            </a>
+            <a
+              href="https://facebook.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
+            >
+              <Facebook className="h-4 w-4" />
+            </a>
+            <a
+              href="https://twitter.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Twitter / X"
+              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
+            >
+              <Twitter className="h-4 w-4" />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
+            >
+              <Linkedin className="h-4 w-4" />
+            </a>
+          </div>
+
+        </div>
+      </div>
+
     </footer>
-  );
+  )
 }
 
-export default Footer;
+export default Footer

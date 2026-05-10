@@ -1,12 +1,9 @@
 import React, { useEffect, useRef } from 'react'
-import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight } from 'lucide-react'
-import { Button } from '@/components/ui/button'
 import { INDEX_SYMBOLS } from '@/data/marketSymbols'
 
-// ── Indices Watchlist ─────────────────────────────────────────
-function IndicesWatchlist() {
+// ── Market Quotes Widget ─────────────────────────────────────
+function MarketQuotes() {
   const containerRef = useRef(null)
 
   useEffect(() => {
@@ -26,39 +23,42 @@ function IndicesWatchlist() {
     wrapper.appendChild(inner)
 
     const script = document.createElement('script')
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js'
+    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-market-quotes.js'
     script.type = 'text/javascript'
     script.async = true
     script.innerHTML = JSON.stringify({
-      colorTheme: 'light',
-      dateRange: '12M',
-      showChart: true,
-      locale: 'en',
       width: '100%',
       height: '100%',
-      largeChartUrl: '',
-      isTransparent: true,
-      showSymbolLogo: true,
-      showFloatingTooltip: true,
-      plotLineColorGrowing: 'rgba(41, 98, 255, 1)',
-      plotLineColorFalling: 'rgba(41, 98, 255, 1)',
-      gridLineColor: 'rgba(240, 243, 250, 0)',
-      scaleFontColor: 'rgba(106, 109, 120, 1)',
-      belowLineFillColorGrowing: 'rgba(41, 98, 255, 0.12)',
-      belowLineFillColorFalling: 'rgba(41, 98, 255, 0.12)',
-      belowLineFillColorGrowingBottom: 'rgba(41, 98, 255, 0)',
-      belowLineFillColorFallingBottom: 'rgba(41, 98, 255, 0)',
-      symbolActiveColor: 'rgba(41, 98, 255, 0.12)',
-      tabs: [
+      symbolsGroups: [
         {
-          title: 'Indices',
-          symbols: INDEX_SYMBOLS.map(s => ({
-            s: s.proName,
-            d: s.shortName,
-          })),
-          originalTitle: 'Indices',
+          name: 'Americas',
+          symbols: [
+            { name: 'FOREXCOM:SPXUSD',  displayName: 'S&P 500'    },
+            { name: 'FOREXCOM:NSXUSD',  displayName: 'NASDAQ 100' },
+            { name: 'FOREXCOM:DJI',     displayName: 'Dow Jones'  },
+          ],
+        },
+        {
+          name: 'European',
+          symbols: [
+            { name: 'INDEX:DAX',        displayName: 'DAX 40'     },
+            { name: 'FOREXCOM:UKXGBP',  displayName: 'FTSE 100'   },
+            { name: 'INDEX:CAC40',      displayName: 'CAC 40'     },
+          ],
+        },
+        {
+          name: 'Asian & Pacific',
+          symbols: [
+            { name: 'INDEX:NKY',        displayName: 'Nikkei 225' },
+            { name: 'INDEX:HSI',        displayName: 'Hang Seng'  },
+            { name: 'BSE:SENSEX',       displayName: 'SENSEX'     },
+          ],
         },
       ],
+      showSymbolLogo: true,
+      isTransparent: true,
+      colorTheme: 'light',
+      locale: 'en',
     })
 
     wrapper.appendChild(script)
@@ -67,7 +67,14 @@ function IndicesWatchlist() {
   }, [])
 
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '550px' }} />
+    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+      {/* Blocks all clicks to prevent navigation to TradingView */}
+      <div
+        style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'default' }}
+        aria-hidden="true"
+      />
+      <div ref={containerRef} style={{ width: '100%', height: '100%' }} />
+    </div>
   )
 }
 
@@ -91,7 +98,7 @@ function MarketsOverview() {
           </p>
         </div>
 
-        {/* Watchlist */}
+        {/* Quotes Widget */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -99,27 +106,13 @@ function MarketsOverview() {
           transition={{ duration: 0.6 }}
           className="rounded-xl overflow-hidden border border-border/60 bg-card shadow-sm"
         >
-          <IndicesWatchlist />
+          <MarketQuotes />
         </motion.div>
 
         {/* Disclaimer */}
         <p className="text-center text-[11px] sm:text-xs text-muted-foreground/60 mt-4">
-          Market data provided by TradingView. Prices are for reference only and may be delayed.
+          Prices are for reference only and may be delayed.
         </p>
-
-        {/* CTA */}
-        <div className="text-center mt-6 sm:mt-8">
-          <Link to="/markets">
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 transition-all hover:-translate-y-0.5"
-            >
-              View all markets
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-        </div>
 
       </div>
     </section>

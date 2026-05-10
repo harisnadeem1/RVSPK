@@ -447,3 +447,13 @@
     font-variant-numeric: tabular-nums;
   }
 }
+
+
+
+
+body.protected {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}

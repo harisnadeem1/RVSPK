@@ -24,8 +24,13 @@ function DisclaimerModal() {
     }
   }
 
+  // ✅ Smart close: Step 1 → advance to Step 2, Step 2 → close modal
   const handleClose = () => {
-    setIsOpen(false)
+    if (step === 1) {
+      setStep(2)
+    } else {
+      setIsOpen(false)
+    }
   }
 
   if (!isOpen) return null
@@ -84,31 +89,31 @@ function DisclaimerModal() {
 
         {/* ──────────────── STEP 1 – RV Disclaimer IMAGE ──────────────── */}
         {step === 1 && (
-          <div className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto bg-white">
-              <img
-                src="/documents/secp_disclamir.png"
-                alt="Right Vision Securities Website Disclaimer"
-                className="w-full h-auto object-contain"
-              />
-            </div>
+         <div className="flex flex-col flex-1 overflow-hidden">
+  <div className="flex items-center justify-center bg-white px-4 py-4 flex-1">
+    <img
+      src="/documents/secp_disclamir.png"
+      alt="Right Vision Securities Website Disclaimer"
+      className="w-auto max-w-full max-h-[55vh] object-contain rounded-lg"
+    />
+  </div>
 
-            <div className="border-t border-border bg-card px-5 py-4 flex flex-col sm:flex-row gap-3">
-              <Button
-                onClick={() => setStep(2)}
-                className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 py-3 text-sm md:text-base font-medium"
-              >
-                Continue →
-              </Button>
-              <Button
-                onClick={handleClose}
-                variant="outline"
-                className="sm:w-auto border-border text-foreground hover:bg-muted py-3 text-sm md:text-base"
-              >
-                Close
-              </Button>
-            </div>
-          </div>
+  <div className="border-t border-border bg-card px-5 py-4 flex flex-col sm:flex-row gap-3">
+    <Button
+      onClick={() => setStep(2)}
+      className="flex-1 bg-accent text-accent-foreground hover:bg-accent/90 py-3 text-sm md:text-base font-medium"
+    >
+      Continue →
+    </Button>
+    <Button
+      onClick={handleClose}
+      variant="outline"
+      className="sm:w-auto border-border text-foreground hover:bg-muted py-3 text-sm md:text-base"
+    >
+      Close
+    </Button>
+  </div>
+</div>
         )}
 
         {/* ──────────────── STEP 2 – SECP Caution FULL TEXT ──────────────── */}
@@ -138,7 +143,7 @@ function DisclaimerModal() {
               <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5 text-sm md:text-base text-foreground leading-relaxed">
                 <p>
                  This website is operated and maintained by Right vision Securities (Pvt.) Limited (hereinafter referred as "The
-Company"/"RVSPL"). The visitors of the website www.rvspk.com.pk are informed that the information provided by Right Vision
+Company"/"RVSPL"). The visitors of the website www.rvspk.com are informed that the information provided by Right Vision
 Securities (Pvt.) Limited should be considered for general information, knowledge and education purpose only though all
 information on this website are provided in good faith after due authenticity of the source and knowledge. However, the
 company does not provide warranty or makes no representation of any kind in respect of accuracy, legitimacy consistency or
@@ -205,18 +210,14 @@ such information, hence no damages or loss are claimable.
               <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
                 <p>
               Should you have any query, complaints, comments, feedback, suggestions, requests for technical support or other inquiries,
-please don't hesitate to contact the company by email: hello@rvspk.com or at Phone numbers:042-35191194, 042-351911.
+please don't hesitate to contact the company by email: hello@RVSPL.com or at Phone numbers:042-35191194, 042-351911.
                 </p>
               </div>
 
-              
-
-              
             </div>
 
             {/* ── PINNED BOTTOM — always visible ── */}
             <div className="border-t border-border bg-card px-5 md:px-8 py-4 space-y-3">
-              {/* Checkbox */}
               <div className="flex items-start gap-3">
                 <Checkbox
                   id="disclaimer-agree"
@@ -234,7 +235,6 @@ please don't hesitate to contact the company by email: hello@rvspk.com or at Pho
                 </label>
               </div>
 
-              {/* Buttons */}
               <div className="flex flex-col sm:flex-row gap-3">
                 <Button
                   onClick={handleAccept}

@@ -45,8 +45,8 @@ function HowToOpenAccount({
       description: "Deposit funds through 1Bill and start trading on WebTrade or MT5."
     }
   ],
-  primaryCTA = { text: "Open account now", href: "/contact" },
-  secondaryCTA = { text: "Learn more", href: "/about" },
+  primaryCTA = { text: "Open account now", href: "https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==" },
+  secondaryCTA = { text: "Learn more", href: "/clients/account-opening-guide" },
   infoNote = "Once your account is created, you can fund it through your bank's online bill payment and start trading right away."
 }) {
   const containerVariants = {
@@ -145,14 +145,19 @@ function HowToOpenAccount({
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
         >
-          <Link to={primaryCTA.href} className="w-full sm:w-auto">
-            <Button 
-              size="lg" 
-              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5"
-            >
-              {primaryCTA.text}
-            </Button>
-          </Link>
+          <a
+  href={primaryCTA.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full sm:w-auto"
+>
+  <Button
+    size="lg"
+    className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5"
+  >
+    {primaryCTA.text}
+  </Button>
+</a>
           <Link 
             to={secondaryCTA.href}
             className="text-accent hover:text-accent/80 font-semibold text-sm sm:text-base transition-colors"

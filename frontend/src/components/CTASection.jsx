@@ -3,19 +3,48 @@ import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';
 
+const AOF_LINK = 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=='
+
 function CTASection({ headline, description, primaryCTA, secondaryCTA, background = 'gradient' }) {
   const bgClasses = {
     gradient: 'bg-gradient-to-br from-primary via-primary/95 to-secondary',
     accent: 'bg-accent',
     muted: 'bg-muted',
-  };
+  }
 
-  const isMuted = background === 'muted';
+  const isMuted = background === 'muted'
+
+  function CTALink({ cta, children, className }) {
+    // Treat '/contact' account-opening links and explicit http links as external AOF
+    const resolvedHref =
+      cta.href === '/contact' && cta.text?.toLowerCase().includes('account')
+        ? AOF_LINK
+        : cta.href
+
+    const isExternal = resolvedHref.startsWith('http')
+
+    if (isExternal) {
+      return (
+        <a
+          href={resolvedHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={className}
+        >
+          {children}
+        </a>
+      )
+    }
+    return (
+      <Link to={resolvedHref} className={className}>
+        {children}
+      </Link>
+    )
+  }
 
   return (
     <div className={`${bgClasses[background]} relative overflow-hidden`}>
 
-      {/* Decorative blobs — only on gradient/accent backgrounds */}
       {!isMuted && (
         <>
           <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
@@ -32,8 +61,12 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
               ? 'bg-accent/10 border border-accent/20'
               : 'bg-white/10 border border-white/20'
           }`}>
-            <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${isMuted ? 'bg-accent' : 'bg-white/80'}`} />
-            <span className={`text-xs font-semibold tracking-[0.15em] uppercase ${isMuted ? 'text-accent' : 'text-white/80'}`}>
+            <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${
+              isMuted ? 'bg-accent' : 'bg-white/80'
+            }`} />
+            <span className={`text-xs font-semibold tracking-[0.2em] uppercase ${
+              isMuted ? 'text-accent' : 'text-white/80'
+            }`}>
               Get Started Today
             </span>
           </div>
@@ -54,8 +87,9 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
 
           {/* Buttons */}
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
+
             {primaryCTA && (
-              <Link to={primaryCTA.href} className="w-full sm:w-auto">
+              <CTALink cta={primaryCTA} className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className={`w-full sm:w-auto px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
@@ -67,10 +101,11 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
                   {primaryCTA.text}
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
-              </Link>
+              </CTALink>
             )}
+
             {secondaryCTA && (
-              <Link to={secondaryCTA.href} className="w-full sm:w-auto">
+              <CTALink cta={secondaryCTA} className="w-full sm:w-auto">
                 <Button
                   size="lg"
                   className={`w-full sm:w-auto px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
@@ -81,14 +116,14 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
                 >
                   {secondaryCTA.text}
                 </Button>
-              </Link>
+              </CTALink>
             )}
-          </div>
 
+          </div>
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default CTASection;
+export default CTASection

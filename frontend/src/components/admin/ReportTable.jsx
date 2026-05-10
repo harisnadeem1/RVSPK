@@ -107,7 +107,7 @@ function ReportTable({ reports, onEdit, onDelete }) {
                   >
                     <Eye className="h-4 w-4" />
                   </Button>
-                  <Button
+                  {/* <Button
                     size="sm" variant="ghost"
                     onClick={() => onEdit(report)}
                     className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground
@@ -115,7 +115,7 @@ function ReportTable({ reports, onEdit, onDelete }) {
                     title="Edit"
                   >
                     <Edit className="h-4 w-4" />
-                  </Button>
+                  </Button> */}
                   <Button
                     size="sm" variant="ghost"
                     onClick={() => onDelete(report)}

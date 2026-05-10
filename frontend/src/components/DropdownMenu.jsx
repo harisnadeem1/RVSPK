@@ -1,3 +1,4 @@
+// DropdownMenu.jsx
 import React, { useState, useRef, useEffect } from 'react'
 import { ChevronDown, ChevronRight } from 'lucide-react'
 import { Link } from 'react-router-dom'
@@ -15,11 +16,11 @@ function FlyoutItem({ item, onClose }) {
       <Link
         to={item.path}
         onClick={onClose}
-        className="block px-4 py-3 text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200"
+        className="block px-3 py-2.5 rounded-lg text-[13.5px] font-medium whitespace-nowrap text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200"
       >
-        <div className="font-medium">{item.label}</div>
+        {item.label}
         {item.description && (
-          <div className="text-sm text-muted-foreground mt-0.5">{item.description}</div>
+          <div className="text-xs text-muted-foreground mt-0.5">{item.description}</div>
         )}
       </Link>
     )
@@ -36,23 +37,25 @@ function FlyoutItem({ item, onClose }) {
         timeoutRef.current = setTimeout(() => setFlyoutOpen(false), 150)
       }}
     >
-      <button className="flex w-full items-center justify-between px-4 py-3 text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200">
-        <span className="font-medium">{item.label}</span>
-        <ChevronRight className="h-3.5 w-3.5 opacity-60" />
+      <button className="flex w-full items-center justify-between gap-6 px-3 py-2.5 rounded-lg text-[13.5px] font-medium whitespace-nowrap text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200">
+        <span>{item.label}</span>
+        <ChevronRight className="h-3.5 w-3.5 opacity-50 flex-shrink-0" />
       </button>
 
       {flyoutOpen && (
-        <div className="absolute left-full top-0 z-50 pl-1">
-          <div className="min-w-[200px] rounded-xl border border-border bg-card shadow-xl overflow-hidden">
-            <div className="py-2">
+        <div className="absolute left-full top-0 z-50 pl-2">
+          <div className="w-max min-w-48 rounded-xl border border-border bg-card shadow-xl overflow-hidden">
+            {/* Top accent bar */}
+            <div className="h-[3px] bg-accent" />
+            <div className="py-1.5 px-1.5">
               {item.children.map((child, i) => (
                 <Link
                   key={i}
                   to={child.path}
                   onClick={onClose}
-                  className="block px-4 py-3 text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200"
+                  className="block px-3 py-2.5 rounded-lg text-[13.5px] font-medium whitespace-nowrap text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200"
                 >
-                  <div className="font-medium">{child.label}</div>
+                  {child.label}
                 </Link>
               ))}
             </div>
@@ -106,8 +109,15 @@ function DropdownMenu({ label, items, isActive }) {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 mt-2 w-56 bg-card rounded-xl shadow-xl border border-border overflow-visible z-50">
-          <div className="py-2">
+        // w-max so panel grows to fit longest item, min-w-52 so it never looks too thin
+        <div className="absolute top-full left-0 mt-3 w-max min-w-52 bg-card rounded-xl shadow-xl border border-border overflow-visible z-50">
+
+          {/* Top accent bar */}
+          <div className="overflow-hidden rounded-t-xl">
+            <div className="h-[3px] bg-accent" />
+          </div>
+
+          <div className="p-2">
             {items.map((item, index) => (
               <FlyoutItem
                 key={index}

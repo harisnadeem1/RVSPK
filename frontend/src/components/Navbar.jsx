@@ -14,8 +14,12 @@ function Navbar() {
   const isActiveSection = (paths) => paths.some((path) => location.pathname.startsWith(path))
 
   const aboutItems = [
-    { label: 'Introduction', path: '/about' },
+    // { label: 'Introduction', path: '/about' },
+    { label: 'Introduction', path: '/introduction' },
+    { label: 'Mission and Vision', path: '/mission-vision' },
     { label: 'Company Profile', path: '/company-profile' },
+    
+
     {
       label: 'Governance',
       children: [
@@ -24,41 +28,45 @@ function Navbar() {
         { label: 'Name of Legal Advisor', path: '/about/legal' },
       ],
     },
+    { label: 'Management', path: '/about/management' },
   ]
 
   const marketSections = [
     {
-      title: 'Agri Commodities',
+      title: 'Metal',
       items: [
-        { label: 'Cotton', path: '/markets/agri/cotton' },
-        { label: 'Wheat', path: '/markets/agri/wheat' },
-        { label: 'Corn', path: '/markets/agri/corn' },
-        { label: 'Soybean', path: '/markets/agri/soybean' },
-        { label: 'Sugar', path: '/markets/agri/sugar' },
+        { label: 'Platinum', path: 'https://pmex.com.pk/products/metal/platinum/' },
+        { label: 'Palladium', path: 'https://pmex.com.pk/products/metal/palladium/' },
+        { label: 'Aluminium', path: 'https://pmex.com.pk/products/metal/aluminium/' },
+        { label: 'Gold Milli Ounce', path: 'https://pmex.com.pk/products/metal/gold-milli-ounce/' },
+        { label: 'Silver', path: 'https://pmex.com.pk/products/metal/silver/' },
+        { label: 'Copper', path: 'https://pmex.com.pk/products/metal/copper/' },
+        { label: 'Gold', path: 'https://pmex.com.pk/products/metal/gold/' },
       ],
     },
     {
-      title: 'Non-Agri Commodities',
-      subGroups: [
-        {
-          label: 'Metals',
-          items: [
-            { label: 'Gold', path: '/markets/non-agri/metals/gold' },
-            { label: 'Silver', path: '/markets/non-agri/metals/silver' },
-            { label: 'Copper', path: '/markets/non-agri/metals/copper' },
-            { label: 'Platinum', path: '/markets/non-agri/metals/platinum' },
-            { label: 'Palladium', path: '/markets/non-agri/metals/palladium' },
-            { label: 'Aluminum', path: '/markets/non-agri/metals/aluminum' },
-          ],
-        },
-        {
-          label: 'Energy',
-          items: [
-            { label: 'Crude Oil', path: '/markets/non-agri/energy/crude-oil' },
-            { label: 'Brent Crude Oil', path: '/markets/non-agri/energy/brent-crude' },
-            { label: 'Natural Gas', path: '/markets/non-agri/energy/natural-gas' },
-          ],
-        },
+      title: 'Agriculture',
+      items: [
+        { label: 'Rice', path: 'https://pmex.com.pk/products/agriculture/rice/' },
+        { label: 'Sugar', path: 'https://pmex.com.pk/products/agriculture/sugar/' },
+        { label: 'Wheat', path: 'https://pmex.com.pk/products/agriculture/wheat/' },
+        { label: 'Soybean', path: 'https://pmex.com.pk/products/agriculture/soybean/' },
+        { label: 'Cotton', path: 'https://pmex.com.pk/products/agriculture/cotton/' },
+        { label: 'Corn', path: 'https://pmex.com.pk/products/agriculture/corn/' },
+      ],
+    },
+    {
+      title: 'Energy',
+      items: [
+        { label: 'Natural Gas', path: 'https://pmex.com.pk/products/energy/natural-gas/' },
+        { label: 'Crude Oil', path: 'https://pmex.com.pk/products/energy/crude-oil/' },
+        { label: 'Brent Crude Oil', path: 'https://pmex.com.pk/products/energy/brent-crude-oil/' },
+      ],
+    },
+    {
+      title: 'Financials',
+      items: [
+        { label: 'Indices', path: 'https://pmex.com.pk/products/financials/indices/' },
       ],
     },
   ]
@@ -76,63 +84,36 @@ function Navbar() {
     },
   ]
 
-  // 3-level: Markets > Agri/Non-Agri > Metals/Energy > items
-  const marketMobileItems = [
-    {
-      label: 'Agri Commodities',
-      children: [
-        { label: 'Cotton', path: '/markets/agri/cotton' },
-        { label: 'Wheat', path: '/markets/agri/wheat' },
-        { label: 'Corn', path: '/markets/agri/corn' },
-        { label: 'Soybean', path: '/markets/agri/soybean' },
-        { label: 'Sugar', path: '/markets/agri/sugar' },
-      ],
-    },
-    {
-      label: 'Non-Agri Commodities',
-      children: [
-        {
-          label: 'Metals',
-          children: [
-            { label: 'Gold', path: '/markets/non-agri/metals/gold' },
-            { label: 'Silver', path: '/markets/non-agri/metals/silver' },
-            { label: 'Copper', path: '/markets/non-agri/metals/copper' },
-            { label: 'Platinum', path: '/markets/non-agri/metals/platinum' },
-            { label: 'Palladium', path: '/markets/non-agri/metals/palladium' },
-            { label: 'Aluminum', path: '/markets/non-agri/metals/aluminum' },
-          ],
-        },
-        {
-          label: 'Energy',
-          children: [
-            { label: 'Crude Oil', path: '/markets/non-agri/energy/crude-oil' },
-            { label: 'Brent Crude Oil', path: '/markets/non-agri/energy/brent-crude' },
-            { label: 'Natural Gas', path: '/markets/non-agri/energy/natural-gas' },
-          ],
-        },
-      ],
-    },
-  ]
+  // ✅ Derived directly from marketSections — same titles, same links
+  const marketMobileItems = marketSections.map((section) => ({
+    label: section.title,
+    children: section.items.map((item) => ({
+      label: item.label,
+      path: item.path,
+      external: true,
+    })),
+  }))
 
   const policyItems = [
     { label: 'Privacy Policy', path: '/policies/privacy-policy' },
-    { label: 'Customer Grievances Redressal', path: '/policies/customer-grievances-redressal' },
+    { label: 'Customer Grievances Redressal Policy', path: '/policies/customer-grievances-redressal' },
     { label: 'Risk Management Policy', path: '/policies/risk-management' },
-    { label: 'CDD / KYC Policy', path: '/policies/cdd-kyc' },
+    { label: 'CDD / KYC Policy & Procedure', path: '/policies/cdd-kyc' },
+    { label: 'Whistleblowing Policy & Procedure', path: '/policies/whistleblowing' },
     { label: 'Conflict of Interest Policy', path: '/policies/conflict-of-interest' },
   ]
 
   const clientAreaItems = [
     { label: 'No Cash Policy', path: '/clients/no-cash-policy' },
-    { label: "Guidelines for Clients Do's & Don'ts", path: '/clients/guidelines' },
+    { label: "Guidelines for Clients — Do's & Don'ts", path: '/clients/guidelines-clients' },
     { label: 'Account Opening Guide', path: '/clients/account-opening-guide' },
-    { label: 'Direct Funds Model User Manual', path: '/clients/dfm-user-manual' },
-    { label: 'PMEX Guidelines Clients DFM', path: '/clients/pmex-guidelines-dfm' },
+    { label: 'Direct Funds Model (DFM) User Manual', path: '/clients/dfm-user-manual' },
+    { label: 'PMEX Investor Guide', path: '/clients/pmex-guidelines-dfm' },
     { label: 'Guide to Futures Trading at PMEX', path: '/clients/guide-futures-pmex' },
-    { label: 'PMEX Fee Criteria', path: '/clients/pmex-fee-criteria' },
+    { label: 'PMEX Fee Sheet', path: '/clients/pmex-fee-criteria' },
     { label: 'Commission Structure', path: '/clients/commission-structure' },
     { label: 'Client Complaint Process', path: '/clients/complaint-process' },
-    { label: 'Diagram – Redressal', path: '/clients/diagram-redressal' },
+    { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
   ]
 
   const reportsItems = [
@@ -145,24 +126,44 @@ function Navbar() {
       <nav className="sticky top-0 z-50 border-b border-border/60 bg-card/90 backdrop-blur-xl">
         <div className="container-custom">
 
-          {/* Mobile header — hamburger LEFT, logo CENTER */}
-          <div className="grid h-16 grid-cols-3 items-center xl:hidden">
-            <div className="flex justify-start">
-              <button
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground transition hover:bg-muted"
-                onClick={() => setMobileMenuOpen(true)}
-                aria-label="Open menu"
-              >
-                <Menu className="h-5 w-5" />
-              </button>
-            </div>
-            <div className="flex justify-center">
-              <Link to="/" className="flex items-center">
-                <img src="/rvspk_logo.png" alt="Right Vision Securities" className="h-13 w-auto" />
-              </Link>
-            </div>
-            <div />
-          </div>
+          {/* Mobile header — hamburger LEFT, logo CENTER, CTA RIGHT */}
+<div className="grid h-16 grid-cols-[40px_1fr_auto] items-center gap-2 xl:hidden">
+
+  {/* Hamburger */}
+  <div className="flex justify-start shrink-0">
+    <button
+      className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground transition hover:bg-muted"
+      onClick={() => setMobileMenuOpen(true)}
+      aria-label="Open menu"
+    >
+      <Menu className="h-6 w-6" />
+    </button>
+  </div>
+
+  {/* Logo — centered in remaining space */}
+  <div className="flex justify-center min-w-0">
+    <Link to="/" className="flex items-center">
+      <img
+        src="/rvspk_logo.png"
+        alt="Right Vision Securities"
+        className="h-12 w-auto max-w-[140px] object-contain"
+      />
+    </Link>
+  </div>
+
+  {/* Get Started */}
+  <div className="flex justify-end shrink-0">
+    <a
+      href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground hover:bg-accent/90 transition-colors whitespace-nowrap"
+    >
+      Open Account
+    </a>
+  </div>
+
+</div>
 
           {/* Desktop header */}
           <div className="hidden h-20 xl:grid grid-cols-[auto_1fr_auto] items-center gap-8">
@@ -174,21 +175,19 @@ function Navbar() {
               <div className="flex items-center gap-5 2xl:gap-7 text-[15px]">
                 <Link
                   to="/"
-                  className={`whitespace-nowrap font-medium transition-colors ${
-                    isActive('/') ? 'text-accent' : 'text-foreground hover:text-accent'
-                  }`}
+                  className={`whitespace-nowrap font-medium transition-colors ${isActive('/') ? 'text-accent' : 'text-foreground hover:text-accent'
+                    }`}
                 >
                   Home
                 </Link>
                 <DropdownMenu label="About Us" items={aboutItems} isActive={isActiveSection(['/about'])} />
-                <MegaMenu label="Markets" sections={marketSections} isActive={isActiveSection(['/markets'])} />
+                <MegaMenu label="Products" sections={marketSections} isActive={isActiveSection(['/markets'])} />
                 <DropdownMenu label="Policies" items={policyItems} isActive={isActiveSection(['/policies'])} />
                 <DropdownMenu label="Client Area" items={clientAreaItems} isActive={isActiveSection(['/clients'])} />
                 <Link
                   to="/reports"
-                  className={`whitespace-nowrap font-medium transition-colors ${
-                    isActive('/reports') ? 'text-accent' : 'text-foreground hover:text-accent'
-                  }`}
+                  className={`whitespace-nowrap font-medium transition-colors ${isActive('/reports') ? 'text-accent' : 'text-foreground hover:text-accent'
+                    }`}
                 >
                   Reports
                 </Link>
@@ -201,11 +200,15 @@ function Navbar() {
                   Contact Us
                 </Button>
               </Link>
-              <Link to="/contact">
+              <a
+                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-                  Get Started
+                  Open Account
                 </Button>
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -214,17 +217,15 @@ function Navbar() {
 
       {/* Overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${
-          mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
-        }`}
+        className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+          }`}
         onClick={() => setMobileMenuOpen(false)}
       />
 
       {/* Mobile Drawer — LEFT */}
       <div
-        className={`fixed left-0 top-0 z-[70] h-screen w-[85%] max-w-[320px] xl:hidden bg-card border-r border-border shadow-2xl transition-transform duration-300 ease-out flex flex-col ${
-          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed left-0 top-0 z-[70] h-screen w-[85%] max-w-[320px] xl:hidden bg-card border-r border-border shadow-2xl transition-transform duration-300 ease-out flex flex-col ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/60">
@@ -246,9 +247,8 @@ function Navbar() {
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${
-  isActive('/') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
-}`}
+              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+                }`}
             >
               Home
             </Link>
@@ -260,7 +260,7 @@ function Navbar() {
               isActive={isActiveSection(['/about'])}
             />
             <MobileNavAccordion
-              label="Markets"
+              label="Products"
               items={marketMobileItems}
               onItemClick={() => setMobileMenuOpen(false)}
               isActive={isActiveSection(['/markets'])}
@@ -277,12 +277,11 @@ function Navbar() {
               onItemClick={() => setMobileMenuOpen(false)}
               isActive={isActiveSection(['/clients'])}
             />
-           <Link
+            <Link
               to="/reports"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${
-  isActive('/reports') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
-}`}
+              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/reports') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+                }`}
             >
               Reports
             </Link>
@@ -290,9 +289,8 @@ function Navbar() {
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${
-  isActive('/contact') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
-}`}
+              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/contact') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+                }`}
             >
               Contact
             </Link>
@@ -308,13 +306,15 @@ function Navbar() {
           >
             Contact Us
           </Link>
-          <Link
-            to="/contact"
+          <a
+            href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center justify-center w-full rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors"
           >
-            Get Started
-          </Link>
+            Open Account
+          </a>
         </div>
       </div>
     </>

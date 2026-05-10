@@ -10,6 +10,7 @@ import ReportsList from '@/components/ReportsList.jsx';
 import CTASection from '@/components/CTASection.jsx';
 import ComplianceStrip from '@/components/ComplianceStrip.jsx';
 import { Button } from '@/components/ui/button';
+import { Link } from 'react-router-dom'
 
 const tabs = [
   {
@@ -129,9 +130,11 @@ function ReportsPage() {
               Looking for historical market reports? Contact our team to request
               access to archived research materials.
             </p>
-            <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
-              Request archive access
-            </Button>
+            <Link to="/contact">
+  <Button className="bg-accent text-accent-foreground hover:bg-accent/90">
+    Request archive access
+  </Button>
+</Link>
           </div>
         </div>
       </section>

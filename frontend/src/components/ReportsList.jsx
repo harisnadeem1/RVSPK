@@ -4,7 +4,7 @@ import { FileText, Search, Filter, X } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
-import ReportCard from '@/components/ReportCard.jsx'; // ← your preferred card
+import ReportCard from '@/components/ReportCard.jsx';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -17,7 +17,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
-// ── Skeleton matches card-container professional-card structure ──
 function SkeletonCard() {
   return (
     <div className="card-container professional-card animate-pulse">
@@ -59,7 +58,12 @@ function ReportsList({
   const [typeFilter, setTypeFilter] = useState(reportType || 'all');
 
   useEffect(() => { fetchReports(); }, []);
-  useEffect(() => { if (reportType) setTypeFilter(reportType); }, [reportType]);
+
+  // ✅ FIX: reset both search and typeFilter when parent switches tab
+  useEffect(() => {
+    setTypeFilter(reportType || 'all');
+    setSearchQuery('');
+  }, [reportType]);
 
   const fetchReports = async () => {
     try {
@@ -80,6 +84,12 @@ function ReportsList({
     } finally {
       setIsLoading(false);
     }
+  };
+
+  // ✅ FIX: helper so clearing search also re-syncs typeFilter
+  const clearSearch = () => {
+    setSearchQuery('');
+    setTypeFilter(reportType || 'all');
   };
 
   const filteredReports = reports
@@ -138,7 +148,7 @@ function ReportsList({
               />
               {searchQuery && (
                 <button
-                  onClick={() => setSearchQuery('')}
+                  onClick={clearSearch}  // ✅ FIX
                   className="absolute right-3 top-1/2 -translate-y-1/2
                     text-muted-foreground hover:text-foreground"
                 >
@@ -167,7 +177,7 @@ function ReportsList({
               <span className="inline-flex items-center gap-1 text-xs bg-accent/10
                 text-accent px-2 py-0.5 rounded-full border border-accent/20">
                 "{searchQuery}"
-                <button onClick={() => setSearchQuery('')}>
+                <button onClick={clearSearch}>  {/* ✅ FIX */}
                   <X className="h-3 w-3" />
                 </button>
               </span>
@@ -185,7 +195,7 @@ function ReportsList({
           <p className="text-muted-foreground text-sm">{emptyMessage}</p>
           {searchQuery && (
             <Button variant="outline" size="sm" className="mt-4"
-              onClick={() => setSearchQuery('')}>
+              onClick={clearSearch}>  {/* ✅ FIX */}
               Clear search
             </Button>
           )}
@@ -193,12 +203,12 @@ function ReportsList({
       ) : (
         <>
           <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className={`grid ${gridClass} gap-8`}
-          >
+  key={filteredReports.length}
+  variants={containerVariants}
+  initial="hidden"
+  animate="visible"
+  className={`grid ${gridClass} gap-8`}
+>
             {filteredReports.map((report) => (
               <motion.div key={report.id} variants={itemVariants} className="h-full">
                 <ReportCard report={report} />

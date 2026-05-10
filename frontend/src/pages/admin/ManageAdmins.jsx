@@ -278,7 +278,7 @@ function ManageAdmins() {
                 <Input
                   value={form.fullName}
                   onChange={(e) => setForm(p => ({ ...p, fullName: e.target.value }))}
-                  placeholder="John Doe"
+                  placeholder="Abdullah"
                   className={`pl-9 ${formErrors.fullName ? 'border-destructive' : ''}`}
                 />
               </div>
