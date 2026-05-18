@@ -1,67 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import Footer from '@/components/Footer.jsx';
 import PageHero from '@/components/PageHero.jsx';
 import ComplianceStrip from '@/components/ComplianceStrip.jsx';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { toast } from 'sonner';
+import DynamicForm from '@/components/DynamicForm';
+import { contactFormConfig } from '@/config/contactFormConfig';
 
 function ContactPage() {
-  const [formData, setFormData] = useState({
-  name: '',
-  email: '',
-  phone: '',       
-  subject: '',
-  message: ''
-});
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e) => {
-  e.preventDefault()
-  setIsSubmitting(true)
-
-  try {
-    const response = await fetch(`${import.meta.env.VITE_API_URL}/api/contact`, {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify({
-    name: formData.name,
-    email: formData.email,
-    phone: formData.phone || '',
-    subject: formData.subject,
-    message: formData.message,
-  }),
-})
-
-    const data = await response.json()
-
-    if (!response.ok) throw new Error(data.error || 'Server error')
-
-    toast.success('Message sent successfully!', {
-      description: 'We will respond to your inquiry within 24 hours.'
-    })
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' })
-
-  } catch (error) {
-    toast.error('Failed to send message', {
-      description: error.message || 'Please try again or call us directly.'
-    })
-  } finally {
-    setIsSubmitting(false)
-  }
-}
-
   const contactMethods = [
     {
       icon: Phone,
@@ -127,7 +76,6 @@ function ContactPage() {
       {/* ── Contact Method Cards ── */}
       <section className="section-spacing bg-muted">
         <div className="container-custom">
-
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Reach Us
@@ -187,124 +135,27 @@ function ContactPage() {
 
             {/* LEFT — Contact Form */}
             <motion.div
-  initial={{ opacity: 0, x: -30 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
->
-  <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
-    Send a Message
-  </span>
-  <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
-    We'll respond within 24 hours
-  </h2>
-  <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
-    Fill out the form below and a member of our team will get back to you as soon as possible.
-  </p>
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+                Send a Message
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-2">
+                We'll respond within 24 hours
+              </h2>
+              <p className="text-sm text-muted-foreground mb-8 leading-relaxed">
+                Fill out the form below and a member of our team will get back to you as soon as possible.
+              </p>
 
-  <form onSubmit={handleSubmit} className="space-y-5">
+              {/* ↓ ONLY CHANGE: replaced the entire <form> block with this one line */}
+              <DynamicForm config={contactFormConfig} />
 
-    {/* Name + Email */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">
-          Full Name <span className="text-accent">*</span>
-        </label>
-        <Input
-          id="name"
-          name="name"
-          type="text"
-          required
-          value={formData.name}
-          onChange={handleInputChange}
-          placeholder="Your full name"
-          className="text-foreground placeholder:text-muted-foreground"
-        />
-      </div>
-      <div>
-        <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">
-          Email Address <span className="text-accent">*</span>
-        </label>
-        <Input
-          id="email"
-          name="email"
-          type="email"
-          required
-          value={formData.email}
-          onChange={handleInputChange}
-          placeholder="your.email@example.com"
-          className="text-foreground placeholder:text-muted-foreground"
-        />
-      </div>
-    </div>
+            </motion.div>
 
-    {/* Phone + Subject */}
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-      <div>
-        <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-1.5">
-          Phone Number
-        </label>
-        <Input
-          id="phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleInputChange}
-          placeholder="+92 300 0000000"
-          className="text-foreground placeholder:text-muted-foreground"
-        />
-      </div>
-      <div>
-        <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-1.5">
-          Subject <span className="text-accent">*</span>
-        </label>
-        <Input
-          id="subject"
-          name="subject"
-          type="text"
-          required
-          value={formData.subject}
-          onChange={handleInputChange}
-          placeholder="Brief description of your inquiry"
-          className="text-foreground placeholder:text-muted-foreground"
-        />
-      </div>
-    </div>
-
-    {/* Message */}
-    <div>
-      <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">
-        Message <span className="text-accent">*</span>
-      </label>
-      <Textarea
-        id="message"
-        name="message"
-        required
-        value={formData.message}
-        onChange={handleInputChange}
-        placeholder="Please provide details about your inquiry..."
-        rows={6}
-        className="text-foreground placeholder:text-muted-foreground resize-none"
-      />
-    </div>
-
-    <Button
-      type="submit"
-      disabled={isSubmitting}
-      size="lg"
-      className="w-full bg-accent text-accent-foreground hover:bg-accent/90 disabled:opacity-50 disabled:cursor-not-allowed"
-    >
-      {isSubmitting ? 'Sending...' : (
-        <>
-          Send message
-          <ArrowRight className="ml-2 h-4 w-4" />
-        </>
-      )}
-    </Button>
-  </form>
-</motion.div>
-
-            {/* RIGHT — Map Card */}
+            {/* RIGHT — Map Card — UNCHANGED */}
             <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -324,10 +175,7 @@ function ContactPage() {
                 </p>
               </div>
 
-              {/* Map Card */}
               <div className="rounded-xl sm:rounded-2xl overflow-hidden border border-border/60 shadow-lg bg-card">
-
-                {/* Decorative map header */}
                 <div className="relative h-52 bg-gradient-to-br from-primary/20 via-accent/10 to-primary/5 flex items-center justify-center overflow-hidden">
                   <div
                     className="absolute inset-0 opacity-10"
@@ -348,7 +196,6 @@ function ContactPage() {
                   </div>
                 </div>
 
-                {/* Address + CTA */}
                 <div className="p-5 sm:p-6 space-y-4">
                   <div>
                     <p className="text-xs font-bold uppercase tracking-widest text-accent mb-1">
@@ -383,38 +230,13 @@ function ContactPage() {
                   </div>
                 </div>
               </div>
-
-              {/* Business Hours Card */}
-              {/* <div className="bg-muted rounded-xl sm:rounded-2xl p-5 border border-border/60">
-                <div className="flex items-center gap-2 mb-4">
-                  <div className="flex items-center justify-center h-8 w-8 rounded-lg bg-accent/10">
-                    <Clock className="h-4 w-4 text-accent" />
-                  </div>
-                  <p className="text-xs font-bold uppercase tracking-widest text-accent">
-                    Business Hours
-                  </p>
-                </div>
-                <div className="space-y-2">
-                  {[
-                    { day: 'Monday – Friday', hours: '9:00 AM – 5:00 PM' },
-                    { day: 'Saturday & Sunday', hours: 'Closed' },
-                  ].map((row, i) => (
-                    <div key={i} className="flex items-center justify-between py-1.5 border-b border-border/40 last:border-0">
-                      <span className="text-sm text-foreground font-medium">{row.day}</span>
-                      <span className={`text-sm font-semibold ${row.hours === 'Closed' ? 'text-muted-foreground' : 'text-accent'}`}>
-                        {row.hours}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div> */}
-
             </motion.div>
+
           </div>
         </div>
       </section>
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   );

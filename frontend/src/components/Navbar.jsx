@@ -5,6 +5,7 @@ import DropdownMenu from '@/components/DropdownMenu.jsx'
 import MegaMenu from '@/components/MegaMenu.jsx'
 import MobileNavAccordion from '@/components/MobileNavAccordion.jsx'
 import { Button } from '@/components/ui/button.jsx'
+import ComplianceStrip from '@/components/ComplianceStrip.jsx';
 
 function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -13,12 +14,20 @@ function Navbar() {
   const isActive = (path) => location.pathname === path
   const isActiveSection = (paths) => paths.some((path) => location.pathname.startsWith(path))
 
+  const formsItems = [
+    { label: 'Contact Us', path: '/contact' },
+    { label: 'Feedback', path: '/feedback' },
+    { label: 'Complaint Registration', path: '/complaint' },
+    { label: 'Client Grievance', path: '/grievance' },
+    { label: 'Whistleblower', path: '/whistleblower' },
+  ]
+
   const aboutItems = [
     // { label: 'Introduction', path: '/about' },
     { label: 'Introduction', path: '/introduction' },
     { label: 'Mission and Vision', path: '/mission-vision' },
     { label: 'Company Profile', path: '/company-profile' },
-    
+
 
     {
       label: 'Governance',
@@ -71,18 +80,19 @@ function Navbar() {
     },
   ]
 
-  const aboutMobileItems = [
-    { label: 'Introduction', path: '/about' },
-    { label: 'Company Profile', path: '/company-profile' },
-    {
-      label: 'Governance',
-      children: [
-        { label: "BOD's Profile", path: '/about/board' },
-        { label: 'Name of Auditor', path: '/about/auditors' },
-        { label: 'Name of Legal Advisor', path: '/about/legal' },
-      ],
-    },
-  ]
+  const aboutMobileItems = aboutItems;
+  //  [
+  //   { label: 'Introduction', path: '/about' },
+  //   { label: 'Company Profile', path: '/company-profile' },
+  //   {
+  //     label: 'Governance',
+  //     children: [
+  //       { label: "BOD's Profile", path: '/about/board' },
+  //       { label: 'Name of Auditor', path: '/about/auditors' },
+  //       { label: 'Name of Legal Advisor', path: '/about/legal' },
+  //     ],
+  //   },
+  // ]
 
   // ✅ Derived directly from marketSections — same titles, same links
   const marketMobileItems = marketSections.map((section) => ({
@@ -127,43 +137,43 @@ function Navbar() {
         <div className="container-custom">
 
           {/* Mobile header — hamburger LEFT, logo CENTER, CTA RIGHT */}
-<div className="grid h-16 grid-cols-[40px_1fr_auto] items-center gap-2 xl:hidden">
+          <div className="grid h-16 grid-cols-[40px_1fr_auto] items-center gap-2 xl:hidden">
 
-  {/* Hamburger */}
-  <div className="flex justify-start shrink-0">
-    <button
-      className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground transition hover:bg-muted"
-      onClick={() => setMobileMenuOpen(true)}
-      aria-label="Open menu"
-    >
-      <Menu className="h-6 w-6" />
-    </button>
-  </div>
+            {/* Hamburger */}
+            <div className="flex justify-start shrink-0">
+              <button
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-foreground transition hover:bg-muted"
+                onClick={() => setMobileMenuOpen(true)}
+                aria-label="Open menu"
+              >
+                <Menu className="h-6 w-6" />
+              </button>
+            </div>
 
-  {/* Logo — centered in remaining space */}
-  <div className="flex justify-center min-w-0">
-    <Link to="/" className="flex items-center">
-      <img
-        src="/rvspk_logo.png"
-        alt="Right Vision Securities"
-        className="h-12 w-auto max-w-[140px] object-contain"
-      />
-    </Link>
-  </div>
+            {/* Logo — centered in remaining space */}
+            <div className="flex justify-center min-w-0">
+              <Link to="/" className="flex items-center">
+                <img
+                  src="/rvspk_logo.png"
+                  alt="Right Vision Securities"
+                  className="h-12 w-auto max-w-[140px] object-contain"
+                />
+              </Link>
+            </div>
 
-  {/* Get Started */}
-  <div className="flex justify-end shrink-0">
-    <a
-      href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground hover:bg-accent/90 transition-colors whitespace-nowrap"
-    >
-      Open Account
-    </a>
-  </div>
+            {/* Get Started */}
+            <div className="flex justify-end shrink-0">
+              <a
+                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center rounded-lg bg-accent px-3 py-1.5 text-xs font-semibold text-accent-foreground hover:bg-accent/90 transition-colors whitespace-nowrap"
+              >
+                Open Account
+              </a>
+            </div>
 
-</div>
+          </div>
 
           {/* Desktop header */}
           <div className="hidden h-20 xl:grid grid-cols-[auto_1fr_auto] items-center gap-8">
@@ -184,6 +194,11 @@ function Navbar() {
                 <MegaMenu label="Products" sections={marketSections} isActive={isActiveSection(['/markets'])} />
                 <DropdownMenu label="Policies" items={policyItems} isActive={isActiveSection(['/policies'])} />
                 <DropdownMenu label="Client Area" items={clientAreaItems} isActive={isActiveSection(['/clients'])} />
+                <DropdownMenu
+                  label="Forms"
+                  items={formsItems}
+                  isActive={isActiveSection(['/contact', '/feedback', '/complaint', '/grievance', '/whistleblower'])}
+                />
                 <Link
                   to="/reports"
                   className={`whitespace-nowrap font-medium transition-colors ${isActive('/reports') ? 'text-accent' : 'text-foreground hover:text-accent'
@@ -277,6 +292,12 @@ function Navbar() {
               onItemClick={() => setMobileMenuOpen(false)}
               isActive={isActiveSection(['/clients'])}
             />
+            <MobileNavAccordion
+              label="Forms"
+              items={formsItems}
+              onItemClick={() => setMobileMenuOpen(false)}
+              isActive={isActiveSection(['/contact', '/feedback', '/complaint', '/grievance', '/whistleblower'])}
+            />
             <Link
               to="/reports"
               onClick={() => setMobileMenuOpen(false)}
@@ -317,6 +338,8 @@ function Navbar() {
           </a>
         </div>
       </div>
+            <ComplianceStrip />
+
     </>
   )
 }

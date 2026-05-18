@@ -214,7 +214,7 @@ function IntroductionPage() {
         secondaryCTA={{ text: 'Open account now', href: '/contact' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   )

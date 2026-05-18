@@ -12,6 +12,10 @@ import ReportsPage from './pages/ReportsPage.jsx';
 import ClientsAreaPage from './pages/ClientsAreaPage.jsx';
 import CompanyProfilePage from './pages/CompanyProfilePage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
+import FeedbackPage      from './pages/FeedbackPage'
+import ComplaintPage     from './pages/ComplaintPage'
+import GrievancePage     from './pages/GrievancePage'
+import WhistleblowerPage from './pages/WhistleblowerPage'
 import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
 import UploadReports from './pages/admin/UploadReports.jsx';
@@ -47,6 +51,10 @@ function AppContent() {
         <Route path="/clients" element={<ClientsAreaPage />} />
         <Route path="/company-profile" element={<CompanyProfilePage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/feedback"      element={<FeedbackPage />} />
+<Route path="/complaint"     element={<ComplaintPage />} />
+<Route path="/grievance"     element={<GrievancePage />} />
+<Route path="/whistleblower" element={<WhistleblowerPage />} />
         <Route path="/about/board" element={<BodPage />} />
         <Route path="/about/auditors" element={<AuditorsPage />} />
         <Route path="/about/management" element={<ManagementPage />} />

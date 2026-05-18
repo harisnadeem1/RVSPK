@@ -304,7 +304,7 @@ function ClientsAreaPage() {
         secondaryCTA={{ text: 'Learn more', href: '/about' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   );

@@ -128,7 +128,7 @@ export default function FAQSection() {
   const toggle = (key) => setOpenIndex(prev => (prev === key ? null : key))
 
   return (
-    <section className="section-spacing bg-background">
+    <section className="section-spacing bg-card">
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}

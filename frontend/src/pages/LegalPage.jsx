@@ -279,7 +279,7 @@ function LegalPage() {
         </div>
       </section>
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   );

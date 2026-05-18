@@ -193,7 +193,7 @@ function ProfileGroupPage({ group }) {
         secondaryCTA={{ text: 'Company profile', href: '/company-profile' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   )

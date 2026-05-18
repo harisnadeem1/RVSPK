@@ -184,7 +184,7 @@ function PdfViewerPage() {
         </div>
       </section>
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   )

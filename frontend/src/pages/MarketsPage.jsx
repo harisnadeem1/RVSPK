@@ -327,7 +327,7 @@ function MarketsPage() {
         secondaryCTA={{ text: 'View reports', href: '/reports' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   );

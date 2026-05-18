@@ -161,6 +161,7 @@ function HomePage() {
 
       <TrustBar />
       <Navbar />
+       
 
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
@@ -641,7 +642,7 @@ function HomePage() {
 
 
       {/* Reports Preview */}
-      <section className="section-spacing bg-card">
+      <section className="section-spacing bg-muted">
         <div className="container-custom">
           <SectionHeader
             title="Market reports and insights"
@@ -673,7 +674,6 @@ function HomePage() {
         secondaryCTA={{ text: 'Open account now', href: '/contact' }}
       />
 
-      <ComplianceStrip />
       <Footer />
     </>
   );

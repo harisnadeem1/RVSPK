@@ -38,22 +38,22 @@ function MarketQuotes() {
             { name: 'FOREXCOM:DJI',     displayName: 'Dow Jones'  },
           ],
         },
-        {
-          name: 'European',
-          symbols: [
-            { name: 'INDEX:DAX',        displayName: 'DAX 40'     },
-            { name: 'FOREXCOM:UKXGBP',  displayName: 'FTSE 100'   },
-            { name: 'INDEX:CAC40',      displayName: 'CAC 40'     },
-          ],
-        },
-        {
-          name: 'Asian & Pacific',
-          symbols: [
-            { name: 'INDEX:NKY',        displayName: 'Nikkei 225' },
-            { name: 'INDEX:HSI',        displayName: 'Hang Seng'  },
-            { name: 'BSE:SENSEX',       displayName: 'SENSEX'     },
-          ],
-        },
+        // {
+        //   name: 'European',
+        //   symbols: [
+        //     { name: 'INDEX:DAX',        displayName: 'DAX 40'     },
+        //     { name: 'FOREXCOM:UKXGBP',  displayName: 'FTSE 100'   },
+        //     { name: 'INDEX:CAC40',      displayName: 'CAC 40'     },
+        //   ],
+        // },
+        // {
+        //   name: 'Asian & Pacific',
+        //   symbols: [
+        //     { name: 'INDEX:NKY',        displayName: 'Nikkei 225' },
+        //     { name: 'INDEX:HSI',        displayName: 'Hang Seng'  },
+        //     { name: 'BSE:SENSEX',       displayName: 'SENSEX'     },
+        //   ],
+        // },
       ],
       showSymbolLogo: true,
       isTransparent: true,
@@ -67,7 +67,7 @@ function MarketQuotes() {
   }, [])
 
   return (
-    <div style={{ position: 'relative', width: '100%', height: '500px' }}>
+    <div style={{ position: 'relative', width: '100%', height: '160px' }}>
       {/* Blocks all clicks to prevent navigation to TradingView */}
       <div
         style={{ position: 'absolute', inset: 0, zIndex: 10, cursor: 'default' }}
@@ -81,7 +81,7 @@ function MarketQuotes() {
 // ── Markets Overview ─────────────────────────────────────────
 function MarketsOverview() {
   return (
-    <section className="section-spacing bg-card">
+    <section className="section-spacing bg-muted">
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}

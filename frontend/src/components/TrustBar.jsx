@@ -3,8 +3,9 @@ import React from 'react'
 function TrustBar() {
   const items = [
     'Trade with confidence',
-    'SECP Regulated',
-    'PMEX Licensed',
+    'Regulated entity',
+    'SECP Licensed',
+    'PMEX Regulated',
     'Lahore Office',
     'Dedicated Client Support',
   ]

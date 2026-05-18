@@ -7,6 +7,10 @@ import authRoutes from './routes/auth.js';
 import reportsRoutes from './routes/reports.js';
 import usersRoutes from './routes/users.js';
 import contactRoutes from './routes/contact.js';
+import feedbackRoutes from './routes/feedback.js'
+import complaintRoutes    from './routes/complaint.js'
+import grievanceRoutes    from './routes/grievance.js'
+import whistleblowerRoutes from './routes/whistleblower.js'
 import pdfRoutes from './routes/pdf.js'  
 
 
@@ -25,6 +29,10 @@ app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api/feedback', feedbackRoutes)
+app.use('/api/complaint', complaintRoutes)
+app.use('/api/grievance', grievanceRoutes)
+app.use('/api/whistleblower', whistleblowerRoutes)
 app.use('/api/pdf', pdfRoutes);
 
 // Health check

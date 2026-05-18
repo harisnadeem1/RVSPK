@@ -83,7 +83,7 @@ function DisclaimerModal() {
             </div>
           ))}
           <span className="ml-2 text-xs text-muted-foreground">
-            {step === 1 ? 'Website Disclaimer' : 'SECP Advisory'}
+            {step === 1 ? 'SECP' : 'Website Disclaimer'  }
           </span>
         </div>
 
@@ -128,7 +128,7 @@ function DisclaimerModal() {
                 </div>
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-widest text-red-600 mb-0.5">
-                    SECP
+                    Website Disclaimer
                   </p>
                   <h2
                     id="disclaimer-title"

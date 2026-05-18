@@ -68,7 +68,7 @@ const visionPoints = [
   },
   {
     icon: Globe,
-    title: 'Outreach & Value Creation',
+    title: 'Financial Literacy & Outreach Programs',
     desc: 'Educate and create awareness by conducting a series of outreach programs, offering cost-effective, paperless products and services for national and international experience sharing.',
   },
 ]
@@ -275,7 +275,7 @@ function MissionVisionPage() {
         secondaryCTA={{ text: 'Open account now', href: '/contact' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   )

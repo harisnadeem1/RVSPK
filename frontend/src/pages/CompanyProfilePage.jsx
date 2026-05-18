@@ -344,7 +344,7 @@ function CompanyProfilePage() {
               </motion.div>
 
               {[
-                { icon: Shield, title: 'Commodity Futures', items: ['Crude Oil', 'Gold', 'Silver', 'Platinum'] },
+                { icon: Shield, title: 'Products', items: ['Metals', 'Agriculture', 'Energy', 'Financials'] },
                 { icon: Award, title: 'Financial Contracts', items: ['Currency Futures', 'USD Index', 'Financial Derivatives', 'PMEX Listed Contracts'] },
               ].map((block, i) => (
                 <motion.div
@@ -380,7 +380,7 @@ function CompanyProfilePage() {
         secondaryCTA={{ text: 'Open account', href: '/contact' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   )

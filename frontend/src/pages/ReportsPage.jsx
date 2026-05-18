@@ -146,7 +146,7 @@ function ReportsPage() {
         secondaryCTA={{ text: 'Client portal', href: '/clients' }}
       />
 
-      <ComplianceStrip />
+       
       <Footer />
     </>
   );

@@ -1,14 +1,14 @@
 import transporter from '../config/mailer.js'
 
 export const sendContactEmail = async (req, res) => {
-  const { name, email, phone, subject, message } = req.body
+  const { name, email, cell, whatsapp, country, city, address, subject, message } = req.body
 
-  if (!name || !email || !subject || !message) {
-    return res.status(400).json({
-      success: false,
-      error: 'Name, email, subject, and message are required.'
-    })
-  }
+ if (!name || !email || !subject || !message) {
+  return res.status(400).json({
+    success: false,
+    error: 'Name, email, subject, and message are required.'
+  })
+}
 
   const htmlBody = `
     <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -19,7 +19,7 @@ export const sendContactEmail = async (req, res) => {
       <div style="background: #f9f9f9; padding: 24px; border: 1px solid #e0e0e0;">
         <table style="width: 100%; border-collapse: collapse;">
           <tr>
-            <td style="padding: 10px 0; border-bottom: 1px solid #eee; width: 120px;">
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; width: 140px;">
               <b style="color: #555;">Name</b>
             </td>
             <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${name}</td>
@@ -34,18 +34,41 @@ export const sendContactEmail = async (req, res) => {
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
-              <b style="color: #555;">Phone</b>
+              <b style="color: #555;">Cell Number</b>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">
-              ${phone || 'Not provided'}
-            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${cell || 'Not provided'}</td>
           </tr>
           <tr>
             <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <b style="color: #555;">WhatsApp</b>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${whatsapp || 'Not provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <b style="color: #555;">Country</b>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${country || 'Not provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <b style="color: #555;">City</b>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${city || 'Not provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee;">
+              <b style="color: #555;">Address</b>
+            </td>
+            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${address || 'Not provided'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px 0;">
               <b style="color: #555;">Subject</b>
             </td>
-            <td style="padding: 10px 0; border-bottom: 1px solid #eee; color: #222;">${subject}</td>
+            <td style="padding: 10px 0; color: #222;">${subject}</td>
           </tr>
+            
           <tr>
             <td style="padding: 10px 0; vertical-align: top;">
               <b style="color: #555;">Message</b>
