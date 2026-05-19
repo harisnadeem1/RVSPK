@@ -8,7 +8,6 @@ function ComplianceStrip({ message }) {
 
   return (
     <>
-      {/* Local animation styles */}
       <style>
         {`
           @keyframes marquee {
@@ -28,35 +27,34 @@ function ComplianceStrip({ message }) {
         `}
       </style>
 
-      <div className="bg-yellow-500/8 border-t border-b border-yellow-500/20 overflow-hidden">
-        <div className="container-custom px-4 sm:px-6">
-          
-          <div className="flex items-center gap-4 py-3 sm:py-3.5">
+      <div className="bg-green-100 border-t border-b border-green-300 overflow-hidden">
+        <div className="w-full px-4 sm:px-6">
 
-            {/* Fixed Left Side */}
-            <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+          <div className="flex items-center gap-4 py-2.5">
 
-              <div className="shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-yellow-500/15">
-                <AlertTriangle className="h-3.5 w-3.5 text-yellow-600 dark:text-yellow-400" />
-              </div>
+            {/* Left Side */}
+            <div className="flex items-center gap-2.5 shrink-0">
 
-              <span className="text-[10px] font-bold tracking-[0.15em] uppercase text-yellow-600 dark:text-yellow-400 whitespace-nowrap">
-                Risk Warning
-              </span>
+  <div className="shrink-0 flex items-center justify-center h-7 w-7 rounded-full bg-red-100">
+    <AlertTriangle className="h-4 w-4 text-red-600" />
+  </div>
 
-            </div>
+  <span className="text-[11px] font-extrabold tracking-[0.14em] uppercase text-red-600 whitespace-nowrap">
+    Risk Warning
+  </span>
 
-            {/* Moving Text Area */}
+</div>
+
+            {/* Moving Text */}
             <div className="relative overflow-hidden flex-1">
-              
+
               <div className="compliance-marquee whitespace-nowrap">
 
-                <p className="text-[11px] sm:text-xs text-foreground/70 pr-16">
+                <p className="text-[12px] sm:text-[13px] font-medium text-[#0B1F3A]/90 pr-16">
                   {text}
                 </p>
 
-                {/* Duplicate text for smooth infinite loop */}
-                <p className="text-[11px] sm:text-xs text-foreground/70 pr-16">
+                <p className="text-[12px] sm:text-[13px] font-medium text-[#0B1F3A]/90 pr-16">
                   {text}
                 </p>
 

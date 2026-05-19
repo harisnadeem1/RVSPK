@@ -7,15 +7,20 @@ function DisclaimerModal() {
   const [isOpen, setIsOpen] = useState(false)
   const [isAgreed, setIsAgreed] = useState(false)
   const [step, setStep] = useState(1)
+  const [imgLoaded, setImgLoaded] = useState(false)
 
   useEffect(() => {
-    const disclaimerAccepted = localStorage.getItem('disclaimerAccepted')
-    if (!disclaimerAccepted) {
-      setIsOpen(true)
-      setStep(1)
-      setIsAgreed(false)
-    }
-  }, [])
+  const disclaimerAccepted = localStorage.getItem('disclaimerAccepted')
+  if (!disclaimerAccepted) {
+    setIsOpen(true)
+    setStep(1)
+    setIsAgreed(false)
+
+    // ✅ PRELOAD IMAGE (important fix)
+    const img = new Image()
+    img.src = "/documents/secp_disclamir.png"
+  }
+}, [])
 
   const handleAccept = () => {
     if (isAgreed) {
@@ -90,13 +95,27 @@ function DisclaimerModal() {
         {/* ──────────────── STEP 1 – RV Disclaimer IMAGE ──────────────── */}
         {step === 1 && (
          <div className="flex flex-col flex-1 overflow-hidden">
-  <div className="flex items-center justify-center bg-white px-4 py-4 flex-1">
-    <img
-      src="/documents/secp_disclamir.png"
-      alt="Right Vision Securities Website Disclaimer"
-      className="w-auto max-w-full max-h-[55vh] object-contain rounded-lg"
-    />
-  </div>
+  <div className="flex items-center justify-center bg-white px-4 py-4 flex-1 relative">
+  
+  {/* Loader overlay (put ABOVE image) */}
+  {!imgLoaded && (
+    <div className="absolute inset-0 flex items-center justify-center">
+      <div className="text-sm text-muted-foreground animate-pulse">
+        Loading disclaimer...
+      </div>
+    </div>
+  )}
+
+  {/* Image */}
+  <img
+    src="/documents/secp_disclamir.png"
+    alt="Right Vision Securities Website Disclaimer"
+    onLoad={() => setImgLoaded(true)}
+    className={`w-auto max-w-full max-h-[55vh] object-contain rounded-lg transition-opacity duration-500 ${
+      imgLoaded ? "opacity-100" : "opacity-0"
+    }`}
+  />
+</div>
 
   <div className="border-t border-border bg-card px-5 py-4 flex flex-col sm:flex-row gap-3">
     <Button
@@ -122,22 +141,17 @@ function DisclaimerModal() {
             <div className="flex-1 overflow-y-auto px-5 md:px-8 py-5 space-y-5">
 
               {/* Header */}
-              <div className="flex items-start gap-3">
-                <div className="h-11 w-11 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
-                  <AlertTriangle className="h-6 w-6 text-red-600" />
-                </div>
-                <div>
-                  <p className="text-xs font-semibold uppercase tracking-widest text-red-600 mb-0.5">
-                    Website Disclaimer
-                  </p>
-                  <h2
-                    id="disclaimer-title"
-                    className="text-lg md:text-xl font-bold text-foreground leading-snug"
-                  >
-                    Caution Against Online Investment &amp; Trading Scams
-                  </h2>
-                </div>
-              </div>
+              <div className="flex items-center gap-3">
+  <div className="h-11 w-11 rounded-xl bg-red-500/10 flex items-center justify-center flex-shrink-0">
+    <AlertTriangle className="h-6 w-6 text-red-600" />
+  </div>
+
+  <div>
+    <p className="text-xs font-semibold uppercase tracking-widest text-red-600 mb-0.5">
+      Website Disclaimer
+    </p>
+  </div>
+</div>
 
               {/* Paragraph 1 — exact text from image */}
               <div className="bg-red-500/5 border border-red-500/20 rounded-xl p-5 text-sm md:text-base text-foreground leading-relaxed">

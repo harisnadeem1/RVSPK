@@ -30,6 +30,8 @@ import TickerTape from '@/components/TickerTape'
 import ReportsList from '@/components/ReportsList.jsx';
 import FAQSection from '@/components/FAQItem';
 import TradeSafelySection from '@/components/TradeSafely.jsx';
+import MarketCarousel from '@/components/MarketCarousel'
+import TestimonialCarousel from "@/components/TestimonialCarousel"
 
 
 function HomePage() {
@@ -161,7 +163,7 @@ function HomePage() {
 
       <TrustBar />
       <Navbar />
-       
+
 
       {/* Hero Section */}
       <section className="relative min-h-[92vh] flex items-center justify-center overflow-hidden">
@@ -240,36 +242,17 @@ function HomePage() {
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </a>
-              
+
             </motion.div>
 
-            {/* Market pills */}
+            {/* Market Categories Carousel */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.8 }}
-              className="mt-10 sm:mt-16 flex flex-wrap items-center justify-center gap-2 sm:gap-3"
+              className="mt-10 sm:mt-16"
             >
-              {[
-                { label: 'Gold', Icon: Coins },
-                { label: 'Silver', Icon: CircleDot },
-                { label: 'Platinum', Icon: Gem },
-                { label: 'Crude Oil', Icon: Droplets },
-                { label: 'Dollar', Icon: DollarSign },
-              ].map((item, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.85 + i * 0.08 }}
-                  className="inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-primary-foreground/20 bg-primary-foreground/10 backdrop-blur-sm px-3 sm:px-4 py-1.5 sm:py-2"
-                >
-                  <item.Icon className="h-3 w-3 sm:h-3.5 sm:w-3.5 text-primary-foreground/80 shrink-0" />
-                  <span className="text-xs sm:text-sm font-medium text-primary-foreground/90 whitespace-nowrap">
-                    {item.label}
-                  </span>
-                </motion.div>
-              ))}
+              <MarketCarousel />
             </motion.div>
 
           </motion.div>
@@ -300,15 +283,15 @@ function HomePage() {
                 Pakistan's trusted commodity & futures brokerage
               </h2>
               <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
-  Right Vision Securities (Private) Limited is a Future Brokerage Company registered
-  with PMEX and licensed under SECP as a Future Broker — an associated company of the
-  Right Vision Group, which has been serving Pakistan since 2007.
-</p>
-<p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
-  We are committed to providing 24/7 efficient, transparent, and reliable brokerage
-  services across multi-asset classes, with the lowest brokerage commission and a
-  unique Daily Newswire to keep our clients informed on market current affairs.
-</p>
+                Right Vision Securities (Private) Limited is a Future Brokerage Company registered
+                with PMEX and licensed under SECP as a Future Broker — an associated company of the
+                Right Vision Group, which has been serving Pakistan since 2007.
+              </p>
+              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+                We are committed to providing 24/7 efficient, transparent, and reliable brokerage
+                services across multi-asset classes, with the lowest brokerage commission and a
+                unique Daily Newswire to keep our clients informed on market current affairs.
+              </p>
               <Link to="/about">
                 <Button
                   size="lg"
@@ -356,7 +339,10 @@ function HomePage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-card rounded-xl sm:rounded-2xl p-4 sm:p-5 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
+                  className="bg-blue-50/60 rounded-xl sm:rounded-2xl p-4 sm:p-5 
+border border-blue-100 
+hover:bg-blue-50 hover:border-blue-200 
+hover:shadow-md transition-all duration-300 group"
                 >
                   <div className="text-base sm:text-lg font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
                     {stat.value}
@@ -376,159 +362,163 @@ function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-     <section className="section-spacing bg-card">
-  <div className="container-custom px-4 sm:px-6">
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
 
-    {/* Section header */}
-    <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
-      <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
-        Why Choose Us
-      </span>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-        Why trade with Right Vision
-      </h2>
-      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
-        The first and foremost key factor for selection of a broker is the ability of the
-        brokerage house to provide easy access to a trustworthy and secure trading
-        environment in all asset classes.
-      </p>
-    </div>
-
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
-    >
-      {[
-        {
-          icon: Shield,
-          title: 'Regulated & Licensed Entity',
-          description:
-            'RVSPL is a regulated entity registered with PMEX as a Universal Trading Broker licensed under SECP — strictly adhering to the regulatory framework set by Front-line and Apex Regulatory Bodies.',
-        },
-        {
-          icon: TrendingUp,
-          title: 'Agri & Non-Agri Commodity Futures',
-          description:
-            'Channelize your hard-earned savings into an income stream by investing in a diversified wide array of Futures Contracts in Local and International Soft and Hard Commodities.',
-        },
-        {
-          icon: Monitor,
-          title: 'Robust Electronic Trading Platform',
-          description:
-            "Trade on PMEX's robust, secure, and user-friendly Electronic Trading Platform where investors can place orders for seamless execution in a swift and efficient manner under R&D team guidance.",
-        },
-        {
-          icon: Lock,
-          title: 'Investor Protection & Compliance',
-          description:
-            'RVSPL strictly adheres to all regulatory compliance frameworks for the protection of its investors, ensuring your hard-earned savings remain secure at all times.',
-        },
-        {
-          icon: Headphones,
-          title: 'Responsive Multi-Channel Support',
-          description:
-            "RVSPL provides excellent, responsive, and timely support to its clients for resolution of their queries over multiple channels — so you're never left without guidance.",
-        },
-        {
-          icon: Users,
-          title: 'Investor Awareness Programs',
-          description:
-            'RVSPL is determined to conduct awareness programs for investors of the Commodity Market in collaboration with stakeholders, empowering clients to make informed trading decisions.',
-        },
-      ].map((feature, index) => (
-        <motion.div
-          key={index}
-          variants={itemVariants}
-          className="bg-muted rounded-xl sm:rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
-        >
-          {/* Icon */}
-          <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-            <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Why Choose Us
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Why trade with Right Vision
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed max-w-xl mx-auto">
+              The first and foremost key factor for selection of a broker is the ability of the
+              brokerage house to provide easy access to a trustworthy and secure trading
+              environment in all asset classes.
+            </p>
           </div>
 
-          {/* Title */}
-          <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
-            {feature.title}
-          </h3>
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5"
+          >
+            {[
+              {
+                icon: Shield,
+                title: 'Regulated & Licensed Entity',
+                description:
+                  'RVSPL is a regulated entity registered with PMEX as a Universal Trading Broker licensed under SECP — strictly adhering to the regulatory framework set by Front-line and Apex Regulatory Bodies.',
+              },
+              {
+                icon: TrendingUp,
+                title: 'Agri & Non-Agri Commodity Futures',
+                description:
+                  'Channelize your hard-earned savings into an income stream by investing in a diversified wide array of Futures Contracts in Local and International Soft and Hard Commodities.',
+              },
+              {
+                icon: Monitor,
+                title: 'Robust Electronic Trading Platform',
+                description:
+                  "Trade on PMEX's robust, secure, and user-friendly Electronic Trading Platform where investors can place orders for seamless execution in a swift and efficient manner under R&D team guidance.",
+              },
+              {
+                icon: Lock,
+                title: 'Investor Protection & Compliance',
+                description:
+                  'RVSPL strictly adheres to all regulatory compliance frameworks for the protection of its investors, ensuring your hard-earned savings remain secure at all times.',
+              },
+              {
+                icon: Headphones,
+                title: 'Responsive Multi-Channel Support',
+                description:
+                  "RVSPL provides excellent, responsive, and timely support to its clients for resolution of their queries over multiple channels — so you're never left without guidance.",
+              },
+              {
+                icon: Users,
+                title: 'Investor Awareness Programs',
+                description:
+                  'RVSPL is determined to conduct awareness programs for investors of the Commodity Market in collaboration with stakeholders, empowering clients to make informed trading decisions.',
+              },
+            ].map((feature, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+              className="relative bg-blue-50/60 rounded-xl sm:rounded-2xl p-5 sm:p-6 
+border border-blue-100 
+hover:bg-blue-50 hover:border-blue-200 
+hover:shadow-lg hover:-translate-y-1 
+transition-all duration-300 group overflow-hidden"
+              >
+                {/* Icon */}
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
+                  <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
+                </div>
 
-          {/* Description */}
-          <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-            {feature.description}
-          </p>
-        </motion.div>
-      ))}
-    </motion.div>
+                {/* Title */}
+                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
+                  {feature.title}
+                </h3>
 
-  </div>
-</section>
+                {/* Description */}
+                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+
+        </div>
+      </section>
 
 
       {/* Trust Indicators */}
       <section className="section-spacing bg-muted">
-  <div className="container-custom px-4 sm:px-6">
+        <div className="container-custom px-4 sm:px-6">
 
-    {/* Section header */}
-    <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
-      <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
-        Our Credentials
-      </span>
-      <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-        Trusted and regulated
-      </h2>
-      <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-        Building confidence through regulatory compliance and professional service
-      </p>
-    </div>
-
-    {/* 2-column grid */}
-    <motion.div
-      variants={containerVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
-    >
-
-      {/* LEFT — SECP */}
-      <motion.div
-        variants={itemVariants}
-        className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
-      >
-        {/* Logo + title */}
-        <div className="flex items-center gap-4">
-          <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
-            <img
-              src="/company_logo/secp.png"
-              alt="SECP"
-              className="h-full w-full object-contain"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>'
-              }}
-            />
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Our Credentials
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Trusted and regulated
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              Building confidence through regulatory compliance and professional service
+            </p>
           </div>
-          <div>
-            <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
-              SECP Licensed
-            </div>
-            <div className="text-xs text-accent font-medium">
-              Est. 1999 · Government of Pakistan
-            </div>
-          </div>
-        </div>
 
-        {/* Description */}
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          The Securities & Exchange Commission of Pakistan (SECP) is the primary corporate
-          and financial regulatory authority of Pakistan — overseeing capital markets,
-          corporate governance, insurance, and non-banking financial companies.
-        </p>
+          {/* 2-column grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+          >
 
-        {/* Facts */}
-        {/* <div className="grid grid-cols-2 gap-2">
+            {/* LEFT — SECP */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
+            >
+              {/* Logo + title */}
+              <div className="flex items-center gap-4">
+                <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
+                  <img
+                    src="/company_logo/secp.png"
+                    alt="SECP"
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>'
+                    }}
+                  />
+                </div>
+                <div>
+                  <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
+                    SECP Licensed
+                  </div>
+                  <div className="text-xs text-accent font-medium">
+                    Est. 1999 · Government of Pakistan
+                  </div>
+                </div>
+              </div>
+
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                The Securities & Exchange Commission of Pakistan (SECP) is the primary corporate
+                and financial regulatory authority of Pakistan — overseeing capital markets,
+                corporate governance, insurance, and non-banking financial companies.
+              </p>
+
+              {/* Facts */}
+              {/* <div className="grid grid-cols-2 gap-2">
           {[
             'Established in 1999',
             'Regulates capital markets',
@@ -543,59 +533,59 @@ function HomePage() {
         </div>
 
         {/* Licence image */}
-        <div className="relative w-full mt-1">
-          <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
-          <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
-            <img
-              src="/documents/licence/secp_licence.jpg"
-              alt="SECP Licence — Right Vision Securities"
-              className="w-full h-auto object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
-          </div>
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
-            <span className="text-xs font-semibold text-foreground">SECP Licence</span>
-          </div>
-        </div>
-      </motion.div>
+              <div className="relative w-full mt-1">
+                <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
+                <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
+                  <img
+                    src="/documents/licence/secp_licence.jpg"
+                    alt="SECP Licence — Right Vision Securities"
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
+                  <span className="text-xs font-semibold text-foreground">SECP Licence</span>
+                </div>
+              </div>
+            </motion.div>
 
-      {/* RIGHT — PMEX */}
-      <motion.div
-        variants={itemVariants}
-        className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
-      >
-        {/* Logo + title */}
-        <div className="flex items-center gap-4">
-          <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
-            <img
-              src="/company_logo/pmex.svg"
-              alt="PMEX"
-              className="h-full w-full object-contain"
-              onError={(e) => {
-                e.target.style.display = 'none'
-                e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>'
-              }}
-            />
-          </div>
-          <div>
-            <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
-              PMEX Registered
-            </div>
-            <div className="text-xs text-accent font-medium">
-              Est. 2007 · Pakistan's Only Commodity Exchange
-            </div>
-          </div>
-        </div>
+            {/* RIGHT — PMEX */}
+            <motion.div
+              variants={itemVariants}
+              className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
+            >
+              {/* Logo + title */}
+              <div className="flex items-center gap-4">
+                <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
+                  <img
+                    src="/company_logo/pmex.svg"
+                    alt="PMEX"
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>'
+                    }}
+                  />
+                </div>
+                <div>
+                  <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
+                    PMEX Registered
+                  </div>
+                  <div className="text-xs text-accent font-medium">
+                    Est. 2007 · Pakistan's Only Commodity Exchange
+                  </div>
+                </div>
+              </div>
 
-        {/* Description */}
-        <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          Pakistan Mercantile Exchange (PMEX) is Pakistan's first and only
-          multi-commodity futures exchange licensed by SECP — offering metals,
-          agriculture, energy, and financial futures on a fully electronic platform.
-        </p>
+              {/* Description */}
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                Pakistan Mercantile Exchange (PMEX) is Pakistan's first and only
+                multi-commodity futures exchange licensed by SECP — offering metals,
+                agriculture, energy, and financial futures on a fully electronic platform.
+              </p>
 
-        {/* Facts */}
-        {/* <div className="grid grid-cols-2 gap-2">
+              {/* Facts */}
+              {/* <div className="grid grid-cols-2 gap-2">
           {[
             'Founded in 2007',
             'Metals, Agri & Energy futures',
@@ -609,28 +599,28 @@ function HomePage() {
           ))}
         </div> */}
 
-        {/* Licence image */}
-        <div className="relative w-full mt-1">
-          <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
-          <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
-            <img
-              src="/documents/licence/pmex_licence.jpg"
-              alt="PMEX Licence — Right Vision Securities"
-              className="w-full h-auto object-cover"
-            />
-            <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
-          </div>
-          <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
-            <span className="text-xs font-semibold text-foreground">PMEX Licence</span>
-          </div>
+              {/* Licence image */}
+              <div className="relative w-full mt-1">
+                <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
+                <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
+                  <img
+                    src="/documents/licence/pmex_licence.jpg"
+                    alt="PMEX Licence — Right Vision Securities"
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
+                  <span className="text-xs font-semibold text-foreground">PMEX Licence</span>
+                </div>
+              </div>
+            </motion.div>
+
+          </motion.div>
         </div>
-      </motion.div>
+      </section>
 
-    </motion.div>
-  </div>
-</section>
-
-<TradeSafelySection />
+      <TradeSafelySection />
 
 
       <MarketsOverview markets={markets} />
@@ -665,6 +655,7 @@ function HomePage() {
       </section>
 
       <FAQSection />
+      <TestimonialCarousel />
 
       {/* CTA Section */}
       <CTASection
