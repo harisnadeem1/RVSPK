@@ -7,7 +7,7 @@ import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import PageHero from '@/components/PageHero.jsx'
 import CTASection from '@/components/CTASection.jsx'
-import ComplianceStrip from '@/components/ComplianceStrip.jsx'
+  
 
 const containerVariants = {
   hidden: { opacity: 0 },

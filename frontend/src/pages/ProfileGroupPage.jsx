@@ -9,7 +9,7 @@ import PageHero from '@/components/PageHero.jsx';
 import SectionHeader from '@/components/SectionHeader.jsx';
 import ProfileCard from '@/components/ProfileCard.jsx';
 import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 
 function BoardPage() {
   const directors = [

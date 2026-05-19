@@ -10,7 +10,7 @@ import PageHero from '@/components/PageHero.jsx';
 import SectionHeader from '@/components/SectionHeader.jsx';
 import MarketCard from '@/components/MarketCard.jsx';
 import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 
 function MarketsPage() {
   const markets = [

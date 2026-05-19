@@ -8,7 +8,7 @@ import Footer from '@/components/Footer.jsx';
 import PageHero from '@/components/PageHero.jsx';
 import ReportsList from '@/components/ReportsList.jsx';
 import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom'
 

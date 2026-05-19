@@ -6,7 +6,7 @@ import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import Footer from '@/components/Footer.jsx';
 import PageHero from '@/components/PageHero.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 import DynamicForm from '@/components/DynamicForm';
 import { contactFormConfig } from '@/config/contactFormConfig';
 

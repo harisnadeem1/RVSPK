@@ -22,7 +22,7 @@ import Navbar from '@/components/Navbar.jsx';
 import Footer from '@/components/Footer.jsx';
 import SectionHeader from '@/components/SectionHeader.jsx';
 import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 import HowToOpenAccount from '@/components/HowToOpenAccount.jsx';
 import { Button } from '@/components/ui/button';
 import MarketsOverview from '@/components/MarketsOverview'

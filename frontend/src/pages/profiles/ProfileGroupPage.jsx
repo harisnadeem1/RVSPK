@@ -7,8 +7,8 @@ import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import PageHero from '@/components/PageHero.jsx'
 import CTASection from '@/components/CTASection.jsx'
-import ComplianceStrip from '@/components/ComplianceStrip.jsx'
-
+  
+import { useLocation } from "react-router-dom";
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.12 } },
@@ -19,6 +19,15 @@ const itemVariants = {
 }
 
 function ProfileGroupPage({ group }) {
+  const titles = {
+    "/about/management": "Meet the team",
+    "/about/board": "Meet the Board",
+    "/about/auditors": "Meet the Auditors",
+    "/about/legal": "Meet the Legal Advisors",
+
+  };
+
+  const title = titles[location.pathname];
   const Icon = group.icon
   const hasMultiple = group.members.length > 1
 
@@ -43,7 +52,7 @@ function ProfileGroupPage({ group }) {
       />
 
       {/* ── Intro banner ── */}
-      <section className="section-spacing bg-muted">
+      {/* <section className="section-spacing bg-muted">
         <div className="container-custom px-4 sm:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -68,7 +77,7 @@ function ProfileGroupPage({ group }) {
             </div>
           </motion.div>
         </div>
-      </section>
+      </section> */}
 
       {/* ── Member profiles ── */}
       <section className="section-spacing bg-card">
@@ -78,10 +87,12 @@ function ProfileGroupPage({ group }) {
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               {group.tagline}
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Meet the team
-            </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+           {title && (
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+          {title}
+        </h2>
+      )}
+            <p className="text-sm sm:text-sm text-muted-foreground leading-relaxed">
               {hasMultiple
                 ? `${group.members.length} professionals responsible for this function at Right Vision Securities.`
                 : 'The individual responsible for this function at Right Vision Securities.'}

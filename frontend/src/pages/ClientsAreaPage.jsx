@@ -10,7 +10,7 @@ import PageHero from '@/components/PageHero.jsx';
 import SectionHeader from '@/components/SectionHeader.jsx';
 import InfoCard from '@/components/InfoCard.jsx';
 import CTASection from '@/components/CTASection.jsx';
-import ComplianceStrip from '@/components/ComplianceStrip.jsx';
+  ;
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
