@@ -19,7 +19,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173'],
+  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://15.235.184.204', 'https://rvspk.com'],
   credentials: true,
 }));
 app.use(express.json());
