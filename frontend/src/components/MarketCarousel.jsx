@@ -1,85 +1,97 @@
-import useEmblaCarousel from 'embla-carousel-react'
-import { useEffect, useState } from 'react'
-import {
-  LineChart,
-  Zap,
-  Gem,
-  Droplets,
-  ArrowLeftRight,
-  Leaf,
-  Banknote,
-  Globe
-} from 'lucide-react'
+// src/components/MarketCarousel.jsx
+import useEmblaCarousel from "embla-carousel-react"
+import { useEffect, useState, useCallback } from "react"
 
 const items = [
-  { label: 'Indices', Icon: LineChart },
-  { label: 'Energy', Icon: Zap },
-  { label: 'Metals', Icon: Gem },
-  { label: 'Oil', Icon: Droplets },
-  { label: 'COTS', Icon: ArrowLeftRight },
-  { label: 'Agriculture', Icon: Leaf },
-  { label: 'Financials', Icon: Banknote },
-  { label: 'EWR', Icon: Globe }
+  { title: "Indices", desc: "Track global market performance", image: "/hero/indices.png" },
+  { title: "Energy", desc: "Oil, gas & energy commodities", image: "/hero/energy.png" },
+  { title: "Metals", desc: "Gold, silver & precious metals", image: "/hero/metal.png" },
+  { title: "Oil", desc: "Crude oil global trading markets", image: "/hero/oil.png" },
+  { title: "COTS", desc: "Commodity trading opportunities", image: "/hero/cots.png" },
+  { title: "Agriculture", desc: "Wheat, rice, cotton & crops", image: "/hero/agriculture.png" },
+  { title: "Financials", desc: "Currencies & financial instruments", image: "/hero/financials.png" },
+  { title: "EWR", desc: "Global economic indicators", image: "/hero/ewr.png" },
 ]
 
 export default function MarketCarousel() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' })
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    slidesToScroll: 1,
+  })
+
   const [selectedIndex, setSelectedIndex] = useState(0)
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return
+    setSelectedIndex(emblaApi.selectedScrollSnap())
+  }, [emblaApi])
 
   useEffect(() => {
     if (!emblaApi) return
-
-    const onSelect = () => setSelectedIndex(emblaApi.selectedScrollSnap())
-    emblaApi.on('select', onSelect)
-
-    const interval = setInterval(() => {
-      emblaApi.scrollNext()
-    }, 3000)
-
-    return () => clearInterval(interval)
-  }, [emblaApi])
+    onSelect()
+    emblaApi.on("select", onSelect)
+    const interval = setInterval(() => emblaApi.scrollNext(), 4500)
+    return () => {
+      clearInterval(interval)
+      emblaApi.off("select", onSelect)
+    }
+  }, [emblaApi, onSelect])
 
   return (
-    <div className="mt-10 sm:mt-16">
+    <div className="w-full">
+      <div className="rounded-2xl sm:rounded-3xl border border-white/15 bg-white/8 backdrop-blur-xl shadow-2xl shadow-black/20 p-2.5 sm:p-3 md:p-4">
+        <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
+          <div className="flex">
+            {items.map((item, i) => {
+              const isActive = i === selectedIndex
+              return (
+                <div key={i} className="flex-[0_0_100%] min-w-0">
+                  <div
+                    className={`
+                      rounded-2xl p-4 sm:p-5 md:p-6 text-center transition-all duration-500
+                      ${isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"}
+                    `}
+                  >
+                    <div className="mx-auto mb-4 flex h-28 w-28 sm:h-40 sm:w-40 md:h-48 md:w-48 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full object-contain drop-shadow-2xl"
+                      />
+                    </div>
 
-      {/* Carousel */}
-      <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-3">
+                    <h3 className="text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl tracking-tight">
+                      {item.title}
+                    </h3>
 
-          {items.map((item, i) => (
-            <div
+                    <div className="mx-auto mt-3 mb-3 w-8 sm:w-10 h-[2px] rounded-full bg-accent" />
+
+                    <p className="text-primary-foreground/75 text-xs sm:text-sm md:text-[15px] leading-relaxed">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+        </div>
+
+        <div className="flex justify-center gap-2 mt-3 sm:mt-4">
+          {items.map((_, i) => (
+            <button
               key={i}
-              className="flex-[0_0_auto]"
-            >
-              <div className="flex items-center gap-2 px-5 py-3 rounded-full
-                bg-white/10 border border-white/20 backdrop-blur-md
-                text-white hover:bg-white/20 transition-all cursor-pointer
-                min-w-[140px] justify-center"
-              >
-                <item.Icon className="h-4 w-4" />
-                <span className="text-sm font-medium">{item.label}</span>
-              </div>
-            </div>
+              onClick={() => emblaApi?.scrollTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className={`rounded-full transition-all duration-300 ${
+                i === selectedIndex
+                  ? "w-6 sm:w-7 h-2 bg-accent"
+                  : "w-2 h-2 bg-white/35 hover:bg-white/60"
+              }`}
+            />
           ))}
-
         </div>
       </div>
-
-      {/* Dots */}
-      <div className="flex justify-center gap-2 mt-4">
-        {items.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => emblaApi && emblaApi.scrollTo(i)}
-            className={`h-2 rounded-full transition-all ${
-              i === selectedIndex
-                ? 'w-6 bg-white'
-                : 'w-2 bg-white/40'
-            }`}
-          />
-        ))}
-      </div>
-
     </div>
   )
 }

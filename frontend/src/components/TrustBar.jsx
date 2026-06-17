@@ -2,7 +2,7 @@ import React from 'react'
 
 function TrustBar() {
   const items = [
-    'Trade with confidence',
+    'Trade with Right Vision',
     'Regulated entity',
     'SECP Licensed',
     'PMEX Regulated',
@@ -23,7 +23,7 @@ function TrustBar() {
 
         <div className="flex items-center py-2.5 sm:py-3">
           <div
-            className="flex min-w-max shrink-0 items-center will-change-transform"
+            className="flex w-max items-center will-change-transform"
             style={{
               animation: 'trustbar-marquee 28s linear infinite',
             }}

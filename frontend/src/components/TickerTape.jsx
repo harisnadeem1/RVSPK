@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { TICKER_SYMBOLS } from '@/data/marketSymbols'  // ← uses its own list now
+import { TICKER_SYMBOLS } from '@/data/marketSymbols'
 
 function TickerTape() {
   const containerRef = useRef(null)
@@ -17,11 +17,12 @@ function TickerTape() {
     wrapper.appendChild(inner)
 
     const script = document.createElement('script')
-    script.src = 'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js'
+    script.src =
+      'https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js'
     script.type = 'text/javascript'
     script.async = true
     script.innerHTML = JSON.stringify({
-      symbols: TICKER_SYMBOLS,   // ← dedicated ticker list
+      symbols: TICKER_SYMBOLS,
       showSymbolLogo: true,
       isTransparent: true,
       displayMode: 'adaptive',
@@ -31,14 +32,26 @@ function TickerTape() {
 
     wrapper.appendChild(script)
     container.appendChild(wrapper)
-    return () => { container.innerHTML = '' }
+
+    return () => {
+      container.innerHTML = ''
+    }
   }, [])
 
   return (
     <div className="rounded-xl border border-border/60 bg-card shadow-sm overflow-hidden relative">
-      {/* Overlay blocks clicks to TradingView */}
-      <div className="absolute inset-0 z-10" style={{ pointerEvents: 'all', cursor: 'default' }} />
-      <div ref={containerRef} style={{ width: '100%', height: '56px' }} />
+
+      {/* Click blocker overlay */}
+      <div className="absolute inset-0 z-10 pointer-events-auto" />
+
+      {/* Responsive wrapper */}
+      <div
+        ref={containerRef}
+        className="
+          w-full
+          h-[72px] sm:h-[72px] md:h-[45px]
+        "
+      />
     </div>
   )
 }

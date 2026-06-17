@@ -25,6 +25,8 @@ const ALLOWED_PDFS = {
   'commission-structure':            { folder: 'clients', file: 'commission-structure.pdf' },
   'complaint-process':               { folder: 'clients', file: 'complaint-process.pdf' },
   'diagram-redressal':               { folder: 'clients', file: 'diagram-redressal.pdf' },
+  'model-funds-transfer':            { folder: 'clients', file: 'model-funds-transfer.pdf' },
+
 }
 
 export const streamPdf = (req, res) => {

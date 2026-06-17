@@ -457,3 +457,10 @@ body.protected {
   -ms-user-select: none;
   user-select: none;
 }
+
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
+

@@ -50,7 +50,7 @@ function Footer() {
 
       {/* Main footer body */}
       <div className="w-full px-4 sm:px-6 lg:px-12 py-14 sm:py-16">
-        <div className="flex flex-wrap justify-around gap-y-12 gap-x-10 lg:gap-x-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16">
 
           {/* ── Col 1 — Brand + Contact ── */}
           <div className="sm:col-span-2 lg:col-span-4">

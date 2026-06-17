@@ -124,6 +124,8 @@ function Navbar() {
     { label: 'Commission Structure', path: '/clients/commission-structure' },
     { label: 'Client Complaint Process', path: '/clients/complaint-process' },
     { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
+    { label: 'Model of Funds Transfer', path: '/clients/model-funds-transfer' },
+
   ]
 
   const reportsItems = [
@@ -134,7 +136,7 @@ function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-50 border-b border-border/60 bg-card/90 backdrop-blur-xl">
-        <div className="container-custom">
+       <div className="w-full px-6 2xl:px-10">
 
           {/* Mobile header — hamburger LEFT, logo CENTER, CTA RIGHT */}
           <div className="grid h-16 grid-cols-[40px_1fr_auto] items-center gap-2 xl:hidden">
@@ -156,7 +158,7 @@ function Navbar() {
                 <img
                   src="/rvspk_logo.png"
                   alt="Right Vision Securities"
-                  className="h-12 w-auto max-w-[140px] object-contain"
+                  className="h-14 sm:h-16 w-auto max-w-[180px] object-contain"
                 />
               </Link>
             </div>
@@ -176,12 +178,12 @@ function Navbar() {
           </div>
 
           {/* Desktop header */}
-          <div className="hidden h-20 xl:grid grid-cols-[auto_1fr_auto] items-center gap-8">
+          <div className="hidden h-24 xl:grid grid-cols-[220px_1fr_260px] items-center w-full">
             <Link to="/" className="flex items-center shrink-0">
-              <img src="/rvspk_logo.png" alt="Right Vision Securities" className="h-16 w-auto" />
+              <img src="/rvspk_logo.png" alt="Right Vision Securities" className="h-20 2xl:h-22 w-auto" />
             </Link>
 
-            <div className="flex items-center justify-center min-w-0">
+            <div className="flex items-center justify-center w-full px-10">
               <div className="flex items-center gap-5 2xl:gap-7 text-[15px]">
                 <Link
                   to="/"

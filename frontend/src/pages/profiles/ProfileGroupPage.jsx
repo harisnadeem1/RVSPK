@@ -19,16 +19,16 @@ const itemVariants = {
 }
 
 function ProfileGroupPage({ group }) {
+  const location = useLocation();
+
   const titles = {
     "/about/management": "Meet the team",
     "/about/board": "Meet the Board",
     "/about/auditors": "Meet the Auditors",
     "/about/legal": "Meet the Legal Advisors",
-
   };
 
   const title = titles[location.pathname];
-  const Icon = group.icon
   const hasMultiple = group.members.length > 1
 
   return (
@@ -51,33 +51,7 @@ function ProfileGroupPage({ group }) {
         ]}
       />
 
-      {/* ── Intro banner ── */}
-      {/* <section className="section-spacing bg-muted">
-        <div className="container-custom px-4 sm:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 flex flex-col sm:flex-row items-start gap-5"
-          >
-            <div className="h-14 w-14 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0">
-              <Icon className="h-7 w-7 text-accent" />
-            </div>
-            <div>
-              <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-1 inline-block">
-                {group.tagline}
-              </span>
-              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-2 leading-tight">
-                {group.label}
-              </h2>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed max-w-2xl">
-                {group.description}
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section> */}
+      
 
       {/* ── Member profiles ── */}
       <section className="section-spacing bg-card">
