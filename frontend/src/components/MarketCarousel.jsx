@@ -7,7 +7,7 @@ const items = [
   { title: "Energy", desc: "Oil, gas & energy commodities", image: "/hero/energy.png" },
   { title: "Metals", desc: "Gold, silver & precious metals", image: "/hero/metal.png" },
   { title: "Oil", desc: "Crude oil global trading markets", image: "/hero/oil.png" },
-  { title: "COTS", desc: "Commodity trading opportunities", image: "/hero/cots.png" },
+  { title: "COTS", desc: "Commodity trading opportunities", image: "/hero/cots-3.png" },
   { title: "Agriculture", desc: "Wheat, rice, cotton & crops", image: "/hero/agriculture.png" },
   { title: "Financials", desc: "Currencies & financial instruments", image: "/hero/financials.png" },
   { title: "EWR", desc: "Global economic indicators", image: "/hero/ewr.png" },
@@ -53,11 +53,11 @@ export default function MarketCarousel() {
                       ${isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"}
                     `}
                   >
-                    <div className="mx-auto mb-4 flex h-28 w-28 sm:h-40 sm:w-40 md:h-48 md:w-48 items-center justify-center rounded-2xl bg-white/10 ring-1 ring-white/10">
+                    <div className="mx-auto mb-4 flex h-28 w-28 sm:h-40 sm:w-40 md:h-48 md:w-48 items-center justify-center rounded-2xl">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="h-full w-full object-contain drop-shadow-2xl"
+                        className="h-full w-full object-contain drop-shadow-2xl rounded-2xl"
                       />
                     </div>
 

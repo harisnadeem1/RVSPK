@@ -26,6 +26,8 @@ function Footer() {
     { label: 'Commission Structure', path: '/clients/commission-structure' },
     { label: 'Client Complaint Process', path: '/clients/complaint-process' },
     { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
+    { label: 'Model of Funds Transfer', path: '/clients/model-funds-transfer' },
+
   ]
 
   const policyLinks = [
