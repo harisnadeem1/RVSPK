@@ -42,7 +42,7 @@ export const grievanceFormConfig = {
           type: 'select',
           required: true,
           placeholder: 'Select account type',
-          options: ['Individual', 'Joint', 'Corporate'],
+          options: ['Individual', 'Joint', 'Corporate','Sahulat','Others'],
         },
         {
           name: 'tradingAccount',
