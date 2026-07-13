@@ -26,6 +26,8 @@ const ALLOWED_PDFS = {
   'complaint-process':               { folder: 'clients', file: 'complaint-process.pdf' },
   'diagram-redressal':               { folder: 'clients', file: 'diagram-redressal.pdf' },
   'model-funds-transfer':            { folder: 'clients', file: 'model-funds-transfer.pdf' },
+  'sahulat-account-guidelines':            { folder: 'clients', file: 'sahulat-account-guidelines.pdf' },
+
 
 }
 

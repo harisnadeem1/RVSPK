@@ -33,6 +33,8 @@ const DOC_TITLES = {
   'commission-structure':          'Commission Structure',
   'complaint-process':             'Client Complaint Process',
   'diagram-redressal':             'Diagram — Grievance Redressal',
+  'sahulat-account-guidelines':    'Sahulat Account Guidelines',
+
 }
 
 function PdfViewerPage() {
