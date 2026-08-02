@@ -7,12 +7,11 @@ import authRoutes from './routes/auth.js';
 import reportsRoutes from './routes/reports.js';
 import usersRoutes from './routes/users.js';
 import contactRoutes from './routes/contact.js';
-import feedbackRoutes from './routes/feedback.js'
-import complaintRoutes    from './routes/complaint.js'
-import grievanceRoutes    from './routes/grievance.js'
-import whistleblowerRoutes from './routes/whistleblower.js'
-import pdfRoutes from './routes/pdf.js'  
-
+import feedbackRoutes from './routes/feedback.js';
+import complaintRoutes from './routes/complaint.js';
+import grievanceRoutes from './routes/grievance.js';
+import whistleblowerRoutes from './routes/whistleblower.js';
+import pdfRoutes from './routes/pdf.js';
 
 dotenv.config();
 
@@ -29,15 +28,17 @@ app.use(cors({
   credentials: true,
 }));
 
+app.use(express.json());
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/reports', reportsRoutes);
 app.use('/api/users', usersRoutes);
 app.use('/api/contact', contactRoutes);
-app.use('/api/feedback', feedbackRoutes)
-app.use('/api/complaint', complaintRoutes)
-app.use('/api/grievance', grievanceRoutes)
-app.use('/api/whistleblower', whistleblowerRoutes)
+app.use('/api/feedback', feedbackRoutes);
+app.use('/api/complaint', complaintRoutes);
+app.use('/api/grievance', grievanceRoutes);
+app.use('/api/whistleblower', whistleblowerRoutes);
 app.use('/api/pdf', pdfRoutes);
 
 // Health check
@@ -45,7 +46,7 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 
-// ── Seed Super Admin on first run ────────────────────────────
+// Seed Super Admin
 async function seedSuperAdmin() {
   try {
     const existing = await pool.query(
@@ -71,7 +72,7 @@ async function seedSuperAdmin() {
     );
 
     console.log('Super admin seeded successfully');
-    console.log(`   Email: ${process.env.SUPER_ADMIN_EMAIL}`);
+    console.log(`Email: ${process.env.SUPER_ADMIN_EMAIL}`);
   } catch (err) {
     console.error('Seed error:', err);
   }
