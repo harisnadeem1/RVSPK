@@ -261,6 +261,33 @@ function HomePage() {
 
       <TickerTape />
 
+      {/* Global Access Section */}
+<section className="section-spacing bg-card">
+  <div className="container-custom px-4 sm:px-6">
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="mx-auto text-center"
+    >
+      <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+        Global Access
+      </span>
+
+      <h2 className="max-w-5xl mx-auto text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
+        Right Vision Securities, a trusted brokerage house, is your gateway to the world’s markets
+      </h2>
+
+      <p className="max-w-3xl mx-auto text-sm sm:text-base text-muted-foreground leading-relaxed">
+        Right Vision offers low-cost, seamless global access to trading in futures contracts
+        across multiple commodity categories for all types of accountholders, including
+        Individual, Joint, Corporate, and Sahulat accounts.
+      </p>
+    </motion.div>
+  </div>
+</section>
+
       {/* Company Intro */}
       <section className="section-spacing bg-muted">
         <div className="container-custom">
@@ -608,7 +635,7 @@ transition-all duration-300 group overflow-hidden"
                   <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
                 </div>
                 <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
-                  <span className="text-xs font-semibold text-foreground">PMEX Licence</span>
+                  <span className="text-xs font-semibold text-foreground">PMEX TREC</span>
                 </div>
               </div>
             </motion.div>
