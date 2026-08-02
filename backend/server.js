@@ -18,11 +18,16 @@ dotenv.config();
 
 const app = express();
 
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://localhost:5173',
+  process.env.FRONTEND_ORIGIN,
+].filter(Boolean);
+
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:5173', 'http://15.235.184.204', 'https://rvspk.com'],
+  origin: allowedOrigins,
   credentials: true,
 }));
-app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
