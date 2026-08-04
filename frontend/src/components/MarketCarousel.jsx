@@ -7,10 +7,10 @@ const items = [
   { title: "Energy", desc: "Oil, gas & energy commodities", image: "/hero/energy.png" },
   { title: "Metals", desc: "Gold, silver & precious metals", image: "/hero/metal.png" },
   { title: "Oil", desc: "Crude oil global trading markets", image: "/hero/oil.png" },
-  { title: "COTS", desc: "Commodity trading opportunities", image: "/hero/cots-3.png" },
+  { title: "COTS", desc: "Composite order trading system", image: "/hero/cots-3.png" },
   { title: "Agriculture", desc: "Wheat, rice, cotton & crops", image: "/hero/agriculture.png" },
   { title: "Financials", desc: "Currencies & financial instruments", image: "/hero/financials.png" },
-  { title: "EWR", desc: "Global economic indicators", image: "/hero/ewr.png" },
+  { title: "EWR", desc: "Electronic warehouse receipts", image: "/hero/ewr.png" },
 ]
 
 export default function MarketCarousel() {

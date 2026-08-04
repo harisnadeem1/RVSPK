@@ -126,6 +126,8 @@ function Navbar() {
     { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
     { label: 'Model of Funds Transfer', path: '/clients/model-funds-transfer' },
     { label: 'Sahulat Account Guidelines', path: '/clients/sahulat-account-guidelines' },
+    { label: 'Step-by-Step Guidelines', path: '/clients/step-by-step-guidelines' },
+
 
   ]
 

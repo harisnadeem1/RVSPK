@@ -41,21 +41,21 @@ export default function TradeSafelySection() {
               </p>
             </div>
 
-            <ul className="space-y-3">
-              {guidelines.map((item, i) => (
-                <motion.li
-                  key={i}
-                  initial={{ opacity: 0, x: -16 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className="flex items-start gap-3 bg-card rounded-xl px-4 py-3 border border-border/60"
-                >
-                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                  <span className="text-sm text-foreground leading-relaxed">{item}</span>
-                </motion.li>
-              ))}
-            </ul>
+           <ul className=" mt-0">
+  {guidelines.map((item, i) => (
+    <motion.li
+      key={i}
+      initial={{ opacity: 0, x: -16 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.4, delay: i * 0.05 }}
+      className="flex items-start gap-3 bg-card rounded-xl px-4 pt-3"
+    >
+      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+      <span className="text-sm text-foreground leading-relaxed">{item}</span>
+    </motion.li>
+  ))}
+</ul>
           </div>
 
           {/* ── RIGHT — Original PMEX Alert Card (unchanged) ── */}

@@ -27,6 +27,8 @@ function Footer() {
     { label: 'Client Complaint Process', path: '/clients/complaint-process' },
     { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
     { label: 'Model of Funds Transfer', path: '/clients/model-funds-transfer' },
+    { label: 'Sahulat Account Guidelines', path: '/clients/sahulat-account-guidelines' },
+    { label: 'Step-by-Step Guidelines', path: '/clients/step-by-step-guidelines' },
 
   ]
 
@@ -307,7 +309,7 @@ function Footer() {
 
           {/* Copyright */}
           <p className="text-xs text-primary-foreground/50 text-center sm:text-left">
-            © {currentYear} Right Vision Securities (Pvt.) Limited. All rights reserved.
+            © 2025 - {currentYear} Right Vision Securities (Pvt.) Limited. All rights reserved.
           </p>
 
           {/* Social links */}

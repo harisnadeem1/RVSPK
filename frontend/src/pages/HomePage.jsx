@@ -261,6 +261,96 @@ function HomePage() {
 
       <TickerTape />
 
+
+      {/* Sahulat Account */}
+<section className="section-spacing bg-muted">
+  <div className="container-custom px-4 sm:px-6">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+
+      {/* Left — heading & CTA */}
+      <motion.div
+        initial={{ opacity: 0, x: -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+          For Low Risk Investors
+        </span>
+
+        <motion.h2
+          animate={{ opacity: [1, 0.35, 1] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-5"
+          style={{ color: "#79ab19" }}
+        >
+          Sahulat Account for Low Risk Investors
+        </motion.h2>
+
+        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+          A simplified, low-risk account designed for individual investors who want
+          exposure to the commodity market without leverage and with minimal
+          documentation hassle.
+        </p>
+
+        <Link to="/clients/sahulat-account-guidelines">
+          <Button
+            size="lg"
+            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+          >
+           View Sahulat Account Guidelines
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </Link>
+      </motion.div>
+
+      {/* Right — feature list card */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="
+          relative
+          overflow-hidden
+          rounded-xl
+          sm:rounded-2xl
+          p-5
+          sm:p-7
+          bg-white
+          border
+          border-[#79ab19]/20
+          transition-all
+          duration-300
+        "
+      >
+        <div className="absolute left-0 top-0 h-1 w-full bg-[#79ab19]" />
+
+        <ul className="relative z-10 space-y-4">
+          {[
+            "Only national individuals are allowed to open an account",
+            "Quick and simplified account opening process",
+            "No extensive documentation required",
+            "Trade without leverage — no leverage position is allowed",
+            "Exposure limit up to Rs. 3m",
+            "Permissible to open Sahulat Account with multiple brokers",
+          ].map((point, i) => (
+            <li key={i} className="flex items-start gap-3">
+              <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#79ab19]/10">
+                <CheckCircle className="h-3.5 w-3.5 text-[#79ab19]" />
+              </span>
+              <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+                {point}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </motion.div>
+
+    </div>
+  </div>
+</section>
+
       {/* Global Access Section */}
 <section className="section-spacing bg-card">
   <div className="container-custom px-4 sm:px-6">
@@ -358,26 +448,65 @@ function HomePage() {
                 },
               ].map((stat, i) => (
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: i * 0.1 }}
-                  className="bg-blue-50/60 rounded-xl sm:rounded-2xl p-4 sm:p-5 
-border border-blue-100 
-hover:bg-blue-50 hover:border-blue-200 
-hover:shadow-md transition-all duration-300 group"
-                >
-                  <div className="text-base sm:text-lg font-bold text-primary mb-1 group-hover:text-accent transition-colors duration-300">
-                    {stat.value}
-                  </div>
-                  <div className="text-xs sm:text-sm font-semibold text-foreground mb-1.5">
-                    {stat.label}
-                  </div>
-                  <div className="text-[11px] sm:text-xs text-muted-foreground leading-relaxed">
-                    {stat.description}
-                  </div>
-                </motion.div>
+  key={i}
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.5, delay: i * 0.1 }}
+  whileHover={{
+    y: -6,
+    scale: 1.03,
+  }}
+  className="
+    relative
+    overflow-hidden
+    rounded-xl
+    sm:rounded-2xl
+    p-4
+    sm:p-5
+
+    bg-gradient-to-br
+    from-[#79ab19]/5
+    via-white
+    to-[#79ab19]/10
+
+    border
+    border-[#79ab19]/20
+
+    shadow-lg
+    hover:shadow-2xl
+
+    transition-all
+    duration-300
+    group
+  "
+>
+  {/* Top accent line */}
+  <div
+    className="absolute left-0 top-0 h-1 w-full"
+    style={{
+      background: "#79ab19",
+    }}
+  />
+
+  {/* Background glow */}
+  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79ab19]/20 blur-3xl" />
+
+  {/* Content */}
+  <div className="relative z-10">
+    <div className="mb-2 text-base font-bold text-primary transition-colors duration-300 group-hover:text-[#79ab19] sm:text-lg">
+      {stat.value}
+    </div>
+
+    <div className="mb-1.5 text-xs font-semibold text-foreground sm:text-sm">
+      {stat.label}
+    </div>
+
+    <div className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
+      {stat.description}
+    </div>
+  </div>
+</motion.div>
               ))}
             </motion.div>
 
@@ -450,29 +579,58 @@ hover:shadow-md transition-all duration-300 group"
               },
             ].map((feature, index) => (
               <motion.div
-                key={index}
-                variants={itemVariants}
-                className="relative bg-blue-50/60 rounded-xl sm:rounded-2xl p-5 sm:p-6 
-border border-blue-100 
-hover:bg-blue-50 hover:border-blue-200 
-hover:shadow-lg hover:-translate-y-1 
-transition-all duration-300 group overflow-hidden"
-              >
-                {/* Icon */}
-                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors duration-300">
-                  <feature.icon className="h-5 w-5 text-accent" aria-hidden="true" />
-                </div>
+  key={index}
+  variants={itemVariants}
+  className="
+    relative
+    overflow-hidden
+    rounded-xl
+    sm:rounded-2xl
+    p-5
+    sm:p-6
 
-                {/* Title */}
-                <h3 className="text-sm sm:text-base font-semibold text-foreground mb-2 leading-snug">
-                  {feature.title}
-                </h3>
+    bg-gradient-to-br
+    from-[#79ab19]/5
+    via-white
+    to-[#79ab19]/10
 
-                {/* Description */}
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                  {feature.description}
-                </p>
-              </motion.div>
+    border
+    border-[#79ab19]/20
+
+    shadow-lg
+    hover:shadow-2xl
+    hover:-translate-y-1
+
+    transition-all
+    duration-300
+    group
+  "
+>
+  {/* Top accent line */}
+  <div className="absolute left-0 top-0 h-1 w-full bg-[#79ab19]" />
+
+  {/* Background glow */}
+  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79ab19]/20 blur-3xl" />
+
+  {/* Content */}
+  <div className="relative z-10">
+    {/* Icon */}
+    <feature.icon
+      className="mb-4 h-5 w-5 text-[#79ab19]"
+      aria-hidden="true"
+    />
+
+    {/* Title */}
+    <h3 className="mb-2 text-sm font-semibold leading-snug text-foreground sm:text-base">
+      {feature.title}
+    </h3>
+
+    {/* Description */}
+    <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
+      {feature.description}
+    </p>
+  </div>
+</motion.div>
             ))}
           </motion.div>
 
@@ -503,14 +661,14 @@ transition-all duration-300 group overflow-hidden"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            className="flex flex-col gap-8 max-w-4xl mx-auto"
           >
 
             {/* LEFT — SECP */}
             <motion.div
-              variants={itemVariants}
-              className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
-            >
+  variants={itemVariants}
+  className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
+>
               {/* Logo + title */}
               <div className="flex items-center gap-4">
                 <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
@@ -541,20 +699,7 @@ transition-all duration-300 group overflow-hidden"
                 corporate governance, insurance, and non-banking financial companies.
               </p>
 
-              {/* Facts */}
-              {/* <div className="grid grid-cols-2 gap-2">
-          {[
-            'Established in 1999',
-            'Regulates capital markets',
-            'Investor protection mandate',
-            '9 offices nationwide',
-          ].map((fact, i) => (
-            <div key={i} className="flex items-start gap-1.5">
-              <CheckCircle className="h-3.5 w-3.5 text-accent mt-0.5 shrink-0" />
-              <span className="text-xs text-muted-foreground leading-snug">{fact}</span>
-            </div>
-          ))}
-        </div>
+             
 
         {/* Licence image */}
               <div className="relative w-full mt-1">
@@ -574,10 +719,10 @@ transition-all duration-300 group overflow-hidden"
             </motion.div>
 
             {/* RIGHT — PMEX */}
-            <motion.div
-              variants={itemVariants}
-              className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
-            >
+           <motion.div
+  variants={itemVariants}
+  className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
+>
               {/* Logo + title */}
               <div className="flex items-center gap-4">
                 <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">

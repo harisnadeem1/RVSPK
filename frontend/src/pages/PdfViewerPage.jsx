@@ -34,6 +34,8 @@ const DOC_TITLES = {
   'complaint-process':             'Client Complaint Process',
   'diagram-redressal':             'Diagram — Grievance Redressal',
   'sahulat-account-guidelines':    'Sahulat Account Guidelines',
+  'step-by-step-guidelines':    'Sahulat Account Guidelines',
+  
 
 }
 
