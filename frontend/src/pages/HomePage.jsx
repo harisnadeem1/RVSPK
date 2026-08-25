@@ -514,6 +514,182 @@ function HomePage() {
         </div>
       </section>
 
+      
+
+
+      {/* Our Credentials */}
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+
+          {/* Section header */}
+          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-8">
+            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+              Our Credentials
+            </span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Trusted and regulated
+            </h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+              Building confidence through regulatory compliance and professional service
+            </p>
+          </div>
+
+          {/* 2-column grid */}
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="flex flex-col gap-8 max-w-4xl mx-auto"
+          >
+
+            {/* LEFT — SECP */}
+            {/* <motion.div
+  variants={itemVariants}
+  className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
+>
+              <div className="flex items-center gap-4">
+                <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
+                  <img
+                    src="/company_logo/secp.png"
+                    alt="SECP"
+                    className="h-full w-full object-contain"
+                    onError={(e) => {
+                      e.target.style.display = 'none'
+                      e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>'
+                    }}
+                  />
+                </div>
+                <div>
+                  <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
+                    SECP Licensed
+                  </div>
+                  <div className="text-xs text-accent font-medium">
+                    Est. 1999 · Government of Pakistan
+                  </div>
+                </div>
+              </div>
+
+              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                The Securities & Exchange Commission of Pakistan (SECP) is the primary corporate
+                and financial regulatory authority of Pakistan — overseeing capital markets,
+                corporate governance, insurance, and non-banking financial companies.
+              </p>
+
+             
+
+              <div className="relative w-full mt-1">
+                <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
+                <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
+                  <img
+                    src="/documents/licence/secp_licence.jpg"
+                    alt="SECP Licence — Right Vision Securities"
+                    className="w-full h-auto object-cover"
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
+                </div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
+                  <span className="text-xs font-semibold text-foreground">SECP Licence</span>
+                </div>
+              </div>
+            </motion.div> */}
+
+            {/* RIGHT — PMEX */}
+           <motion.div
+  variants={itemVariants}
+  className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-5 rounded-2xl border border-border/60 bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-lg lg:grid-cols-[0.9fr_1.1fr] lg:gap-8 lg:p-6"
+>
+  {/* Left: PMEX information */}
+  <div className="flex flex-col gap-4">
+    {/* Logo and title */}
+    <div className="flex items-center gap-3">
+      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-white p-2 shadow-sm">
+        <img
+          src="/company_logo/pmex.svg"
+          alt="PMEX"
+          className="h-full w-full object-contain"
+        />
+      </div>
+
+      <div>
+        <h3 className="text-base font-bold leading-tight text-foreground sm:text-lg">
+          PMEX Registered
+        </h3>
+
+        <p className="mt-1 text-xs font-medium text-accent">
+          Est. 2007 · Pakistan's Only Commodity Exchange
+        </p>
+      </div>
+    </div>
+
+    {/* Shorter description */}
+    <p className="text-sm leading-relaxed text-muted-foreground">
+      Right Vision Securities is registered with Pakistan Mercantile Exchange
+      (PMEX), Pakistan’s multi-commodity futures exchange regulated by SECP.
+    </p>
+
+    {/* Compact label */}
+    <div className="inline-flex w-fit items-center rounded-full border border-accent/20 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent">
+      PMEX Trading Right Entitlement Certificate
+    </div>
+  </div>
+
+  {/* Right: licence image */}
+  <div className="relative w-full">
+    <div className="pointer-events-none absolute inset-0 scale-95 rounded-2xl bg-accent/10 blur-2xl" />
+
+    <div className="relative overflow-hidden rounded-xl border border-border/60 bg-white shadow-md">
+      <img
+        src="/documents/licence/pmex_licence.jpg"
+        alt="PMEX Licence — Right Vision Securities"
+        className="aspect-[4/3] w-full object-contain p-2 sm:p-3"
+      />
+    </div>
+
+    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-border/60 bg-card px-3 py-1.5 shadow-lg">
+      <span className="text-xs font-semibold text-foreground">PMEX TREC</span>
+    </div>
+  </div>
+</motion.div>
+
+          </motion.div>
+        </div>
+      </section>
+
+      <TradeSafelySection />
+
+
+      <MarketsOverview markets={markets} />
+
+
+      {/* How to Open Account Section */}
+      <HowToOpenAccount />
+
+
+
+      {/* Reports Preview */}
+      {/* <section className="section-spacing bg-muted">
+        <div className="container-custom">
+          <SectionHeader
+            title="Market reports and insights"
+            subtitle="Professional analysis and research to support your trading decisions"
+          />
+          <ReportsList
+            limit={3}
+            columns={3}
+            emptyMessage="Reports coming soon. Check back shortly."
+          />
+          <div className="text-center mt-12">
+            <Link to="/reports">
+              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                View all reports
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </section> */}
+
       {/* Why Choose Us */}
       <section className="section-spacing bg-card">
         <div className="container-custom px-4 sm:px-6">
@@ -637,194 +813,10 @@ function HomePage() {
         </div>
       </section>
 
-
-      {/* Trust Indicators */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom px-4 sm:px-6">
-
-          {/* Section header */}
-          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-16">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
-              Our Credentials
-            </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
-              Trusted and regulated
-            </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-              Building confidence through regulatory compliance and professional service
-            </p>
-          </div>
-
-          {/* 2-column grid */}
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="flex flex-col gap-8 max-w-4xl mx-auto"
-          >
-
-            {/* LEFT — SECP */}
-            <motion.div
-  variants={itemVariants}
-  className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
->
-              {/* Logo + title */}
-              <div className="flex items-center gap-4">
-                <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
-                  <img
-                    src="/company_logo/secp.png"
-                    alt="SECP"
-                    className="h-full w-full object-contain"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>'
-                    }}
-                  />
-                </div>
-                <div>
-                  <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
-                    SECP Licensed
-                  </div>
-                  <div className="text-xs text-accent font-medium">
-                    Est. 1999 · Government of Pakistan
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                The Securities & Exchange Commission of Pakistan (SECP) is the primary corporate
-                and financial regulatory authority of Pakistan — overseeing capital markets,
-                corporate governance, insurance, and non-banking financial companies.
-              </p>
-
-             
-
-        {/* Licence image */}
-              <div className="relative w-full mt-1">
-                <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
-                <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
-                  <img
-                    src="/documents/licence/secp_licence.jpg"
-                    alt="SECP Licence — Right Vision Securities"
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
-                  <span className="text-xs font-semibold text-foreground">SECP Licence</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* RIGHT — PMEX */}
-           <motion.div
-  variants={itemVariants}
-  className="bg-card rounded-2xl p-5 sm:p-6 border border-border/60 hover:border-accent/30 hover:shadow-lg transition-all duration-300 flex flex-col gap-5"
->
-              {/* Logo + title */}
-              <div className="flex items-center gap-4">
-                <div className="shrink-0 flex items-center justify-center h-16 w-16 sm:h-20 sm:w-20 rounded-xl bg-white p-2 border border-border/40 shadow-sm">
-                  <img
-                    src="/company_logo/pmex.svg"
-                    alt="PMEX"
-                    className="h-full w-full object-contain"
-                    onError={(e) => {
-                      e.target.style.display = 'none'
-                      e.target.parentElement.innerHTML = '<div class="flex items-center justify-center w-full h-full text-accent"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg></div>'
-                    }}
-                  />
-                </div>
-                <div>
-                  <div className="text-base sm:text-lg font-bold text-foreground leading-tight mb-0.5">
-                    PMEX Registered
-                  </div>
-                  <div className="text-xs text-accent font-medium">
-                    Est. 2007 · Pakistan's Only Commodity Exchange
-                  </div>
-                </div>
-              </div>
-
-              {/* Description */}
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Pakistan Mercantile Exchange (PMEX) is Pakistan's first and only
-                multi-commodity futures exchange licensed by SECP — offering metals,
-                agriculture, energy, and financial futures on a fully electronic platform.
-              </p>
-
-              {/* Facts */}
-              {/* <div className="grid grid-cols-2 gap-2">
-          {[
-            'Founded in 2007',
-            'Metals, Agri & Energy futures',
-            'MT5 & WebTrade platforms',
-            'Member of FIA (USA) & AFM',
-          ].map((fact, i) => (
-            <div key={i} className="flex items-start gap-1.5">
-              <CheckCircle className="h-3.5 w-3.5 text-accent mt-0.5 shrink-0" />
-              <span className="text-xs text-muted-foreground leading-snug">{fact}</span>
-            </div>
-          ))}
-        </div> */}
-
-              {/* Licence image */}
-              <div className="relative w-full mt-1">
-                <div className="absolute inset-0 rounded-2xl bg-accent/10 blur-2xl scale-95 pointer-events-none" />
-                <div className="relative rounded-xl overflow-hidden border border-border/60 shadow-md">
-                  <img
-                    src="/documents/licence/pmex_licence.jpg"
-                    alt="PMEX Licence — Right Vision Securities"
-                    className="w-full h-auto object-cover"
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-card/70 to-transparent" />
-                </div>
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-card border border-border/60 rounded-full px-4 py-1.5 shadow-lg whitespace-nowrap">
-                  <span className="text-xs font-semibold text-foreground">PMEX TREC</span>
-                </div>
-              </div>
-            </motion.div>
-
-          </motion.div>
-        </div>
-      </section>
-
-      <TradeSafelySection />
-
-
-      <MarketsOverview markets={markets} />
-
-
-      {/* How to Open Account Section */}
-      <HowToOpenAccount />
-
-
-
-      {/* Reports Preview */}
-      <section className="section-spacing bg-muted">
-        <div className="container-custom">
-          <SectionHeader
-            title="Market reports and insights"
-            subtitle="Professional analysis and research to support your trading decisions"
-          />
-          <ReportsList
-            limit={3}
-            columns={3}
-            emptyMessage="Reports coming soon. Check back shortly."
-          />
-          <div className="text-center mt-12">
-            <Link to="/reports">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                View all reports
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      <TestimonialCarousel />
 
       <FAQSection />
-      <TestimonialCarousel />
+
 
       {/* CTA Section */}
       <CTASection

@@ -67,7 +67,7 @@ function HowToOpenAccount({
   };
 
   return (
-    <section className="py-14 sm:py-20 md:py-16 bg-card">
+    <section className="py-14 sm:py-20 md:py-16 bg-muted">
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}

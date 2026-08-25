@@ -16,7 +16,7 @@ const guidelines = [
 
 export default function TradeSafelySection() {
   return (
-    <section className="section-spacing bg-card">
+    <section className="section-spacing bg-muted">
       <div className="container-custom px-4 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

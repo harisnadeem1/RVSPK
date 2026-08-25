@@ -81,7 +81,7 @@ function MarketQuotes() {
 // ── Markets Overview ─────────────────────────────────────────
 function MarketsOverview() {
   return (
-    <section className="section-spacing bg-muted">
+    <section className="section-spacing bg-card">
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}
