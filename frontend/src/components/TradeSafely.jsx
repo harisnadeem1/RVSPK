@@ -41,21 +41,21 @@ export default function TradeSafelySection() {
               </p>
             </div>
 
-           <ul className=" mt-0">
-  {guidelines.map((item, i) => (
-    <motion.li
-      key={i}
-      initial={{ opacity: 0, x: -16 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.4, delay: i * 0.05 }}
-      className="flex items-start gap-3 bg-card rounded-xl px-4 pt-3"
-    >
-      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-      <span className="text-sm text-foreground leading-relaxed">{item}</span>
-    </motion.li>
-  ))}
-</ul>
+            <ul className=" mt-0">
+              {guidelines.map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.05 }}
+                  className="flex items-start gap-3 bg-muted rounded-xl px-4 pt-3"
+                >
+                  <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
+                  <span className="text-sm text-foreground leading-relaxed">{item}</span>
+                </motion.li>
+              ))}
+            </ul>
           </div>
 
           {/* ── RIGHT — Original PMEX Alert Card (unchanged) ── */}
@@ -136,7 +136,7 @@ export default function TradeSafelySection() {
                     size="lg"
                     className="bg-[#8db96e] hover:bg-[#7aa85c] text-white font-bold text-sm sm:text-base px-8 py-6 rounded-2xl transition-all hover:-translate-y-0.5 shadow-md"
                   >
-                    Open Account with Right Vision
+                    Open Account Online with Right Vision
                   </Button>
                 </a>
               </div>

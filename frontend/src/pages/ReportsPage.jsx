@@ -142,7 +142,7 @@ function ReportsPage() {
       <CTASection
         headline="Get exclusive client research"
         description="Open an account with Right Vision Securities to access premium market reports, exclusive trading insights, and personalized research support."
-        primaryCTA={{ text: 'Open account', href: '/contact' }}
+        primaryCTA={{ text: 'Open Account Online', href: '/contact' }}
       />
 
        

@@ -15,7 +15,7 @@ import {
   Gem,
   DollarSign,
   Sparkles,
-  Droplets, CircleDot, Monitor
+  Droplets, CircleDot, Monitor,ExternalLink, FileText
 } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
@@ -231,25 +231,25 @@ function HomePage() {
                 >
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-7 sm:px-8 py-4 sm:py-5 text-sm sm:text-base font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-7 sm:px-8 py-4 sm:py-7 text-sm sm:text-lg font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
                   >
-                    Open Account
+                    Open Account Online
                     <ArrowRight className="ml-2 h-4 w-4" />
                   </Button>
                 </a>
               </motion.div>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <div className="w-full max-w-[340px] sm:max-w-[420px]">
-                <MarketCarousel />
-              </div>
-            </motion.div>
+           <motion.div
+  initial={{ opacity: 0, scale: 0.96 }}
+  animate={{ opacity: 1, scale: 1 }}
+  transition={{ duration: 0.8, delay: 0.2 }}
+  className="flex justify-center lg:justify-end"
+>
+  <div className="w-full max-w-[390px] sm:max-w-[520px] lg:max-w-[560px]">
+    <MarketCarousel />
+  </div>
+</motion.div>
           </div>
         </div>
 
@@ -265,66 +265,79 @@ function HomePage() {
       {/* Sahulat Account */}
 <section className="section-spacing bg-muted">
   <div className="container-custom px-4 sm:px-6">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-
-      {/* Left — heading & CTA */}
+    <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      {/* Left — Sahulat heading & CTA */}
       <motion.div
         initial={{ opacity: 0, x: -30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+        <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
           For Low Risk Investors
         </span>
 
         <motion.h2
           animate={{ opacity: [1, 0.35, 1] }}
           transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-5"
-          style={{ color: "#79ab19" }}
+          className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl"
+          style={{ color: "#79AB19" }}
         >
           Sahulat Account for Low Risk Investors
         </motion.h2>
 
-        <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
-          A simplified, low-risk account designed for individual investors who want
-          exposure to the commodity market without leverage and with minimal
-          documentation hassle.
-        </p>
+     <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-base">
+  Sahulat Account is ideal for beginners and new investors, students,
+  low net-worth investors, and households seeking a simple way to access
+  the commodity market without leverage.
+</p>
 
-        <Link to="/clients/sahulat-account-guidelines">
-          <Button
-            size="lg"
-            className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
-          >
-           View Sahulat Account Guidelines
-            <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
-        </Link>
+
+
+        <div className="flex flex-col items-start gap-4">
+          {/* Main Sahulat CTA */}
+          <Link to="/clients/sahulat-account-guidelines">
+            <Button
+              size="lg"
+              className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+            >
+              View Sahulat Account Guidelines
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Button>
+          </Link>
+          {/* PMEX notification links */}
+          <div className="flex flex-wrap gap-3">
+          <Link
+  to="/notifications/14"
+  className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+>
+  PMEX Notification No. 14
+  <ExternalLink className="h-4 w-4" />
+</Link>
+
+            <Link
+                to="/notifications/38"
+
+              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+            >
+              PMEX Notification No. 38
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </div>
+
+          
+        </div>
       </motion.div>
 
-      {/* Right — feature list card */}
+      {/* Right — Sahulat features card */}
       <motion.div
         initial={{ opacity: 0, x: 30 }}
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="
-          relative
-          overflow-hidden
-          rounded-xl
-          sm:rounded-2xl
-          p-5
-          sm:p-7
-          bg-white
-          border
-          border-[#79ab19]/20
-          transition-all
-          duration-300
-        "
+        className="relative overflow-hidden rounded-xl border border-[#79AB19]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7"
       >
-        <div className="absolute left-0 top-0 h-1 w-full bg-[#79ab19]" />
+        <div className="absolute left-0 top-0 h-1 w-full bg-[#79AB19]" />
 
         <ul className="relative z-10 space-y-4">
           {[
@@ -336,20 +349,22 @@ function HomePage() {
             "Permissible to open Sahulat Account with multiple brokers",
           ].map((point, i) => (
             <li key={i} className="flex items-start gap-3">
-              <span className="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-[#79ab19]/10">
-                <CheckCircle className="h-3.5 w-3.5 text-[#79ab19]" />
+              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AB19]/10">
+                <CheckCircle className="h-3.5 w-3.5 text-[#79AB19]" />
               </span>
-              <span className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+
+              <span className="text-sm leading-relaxed text-muted-foreground sm:text-base">
                 {point}
               </span>
             </li>
           ))}
         </ul>
       </motion.div>
-
     </div>
   </div>
 </section>
+
+
 
       {/* Global Access Section */}
 <section className="section-spacing bg-card">
@@ -375,6 +390,138 @@ function HomePage() {
         Individual, Joint, Corporate, and Sahulat accounts.
       </p>
     </motion.div>
+  </div>
+</section>
+
+
+{/* Micro Futures Contracts — reversed desktop layout */}
+<section className="section-spacing bg-background">
+  <div className="container-custom px-4 sm:px-6">
+    <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+      {/* Left — Micro Futures categories card */}
+      <motion.div
+  initial={{ opacity: 0, x: -30 }}
+  whileInView={{ opacity: 1, x: 0 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.6 }}
+  className="order-2 relative overflow-hidden rounded-xl border border-[#79AB19]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7 lg:order-1"
+>
+        <div className="absolute left-0 top-0 h-1 w-full bg-[#79AB19]" />
+
+        <div className="relative z-10">
+          <div className="mb-6 flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#79AB19]/10">
+              <FileText className="h-5 w-5 text-[#79AB19]" />
+            </div>
+
+            <div>
+              <h3 className="text-base font-bold text-foreground sm:text-lg">
+                Available Contract Categories
+              </h3>
+              <p className="text-xs text-muted-foreground sm:text-sm">
+                Smaller-sized cash-settled futures
+              </p>
+            </div>
+          </div>
+
+          <ul className="space-y-4">
+            {[
+              "Energy Commodities",
+              "Base Metals",
+              "Precious Metals",
+              "US Equity Index Futures",
+            ].map((category, i) => (
+              <li key={i} className="flex items-start gap-3">
+                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AB19]/10">
+                  <CheckCircle className="h-3.5 w-3.5 text-[#79AB19]" />
+                </span>
+
+                <span className="text-sm leading-relaxed text-muted-foreground sm:text-base">
+                  {category}
+                </span>
+              </li>
+            ))}
+          </ul>
+
+          <div className="mt-7 rounded-lg border border-[#79AB19]/15 bg-[#79AB19]/5 p-4">
+            <p className="text-sm font-medium leading-relaxed text-[#5E8410]">
+              Designed for traders seeking market exposure with smaller contract
+              sizes and lower capital requirements.
+            </p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Right — Micro Futures heading & CTA */}
+      <motion.div
+        initial={{ opacity: 0, x: 30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
+          Trade With Smaller Capital
+        </span>
+
+        <motion.h2
+          animate={{ opacity: [1, 0.35, 1] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+          className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl"
+          style={{ color: "#79AB19" }}
+        >
+          Micro Futures Contracts
+        </motion.h2>
+
+        <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          Smaller-sized cash-settled futures contracts are attractive for
+          beginners and traders who prefer to start with smaller capital.
+        </p>
+
+        <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-base">
+          These contracts offer access to selected global commodities and financial
+          markets with clearly defined contract specifications and position limits.
+        </p>
+
+        <div className="flex flex-col items-start gap-4">
+          {/* Main document button */}
+          <a
+            href="/documents/micro-futures-contract-specifications.pdf"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <Button
+              size="lg"
+              className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+            >
+              View Contract Specifications & Position Limits
+                            <ArrowRight className="ml-2 h-4 w-4" />
+
+            </Button>
+          </a>
+
+          {/* PMEX notification links */}
+          <div className="flex flex-wrap gap-3">
+           <Link
+                to="/notifications/39"
+
+              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+            >
+              PMEX Notification No. 39
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+
+            <Link
+                to="/notifications/41"
+
+              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+            >
+              PMEX Notification No. 41
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </motion.div>
+    </div>
   </div>
 </section>
 
@@ -691,10 +838,9 @@ function HomePage() {
       </section> */}
 
       {/* Why Choose Us */}
-      <section className="section-spacing bg-card">
+      {/* <section className="section-spacing bg-card">
         <div className="container-custom px-4 sm:px-6">
 
-          {/* Section header */}
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
             <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Why Choose Us
@@ -782,26 +928,20 @@ function HomePage() {
     group
   "
 >
-  {/* Top accent line */}
   <div className="absolute left-0 top-0 h-1 w-full bg-[#79ab19]" />
 
-  {/* Background glow */}
   <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79ab19]/20 blur-3xl" />
 
-  {/* Content */}
   <div className="relative z-10">
-    {/* Icon */}
     <feature.icon
       className="mb-4 h-5 w-5 text-[#79ab19]"
       aria-hidden="true"
     />
 
-    {/* Title */}
     <h3 className="mb-2 text-sm font-semibold leading-snug text-foreground sm:text-base">
       {feature.title}
     </h3>
 
-    {/* Description */}
     <p className="text-xs leading-relaxed text-muted-foreground sm:text-sm">
       {feature.description}
     </p>
@@ -815,7 +955,7 @@ function HomePage() {
 
       <TestimonialCarousel />
 
-      <FAQSection />
+      <FAQSection /> */}
 
 
       {/* CTA Section */}
@@ -823,7 +963,10 @@ function HomePage() {
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-        secondaryCTA={{ text: 'Open account now', href: '/contact' }}
+         secondaryCTA={{
+    text: 'Open Account Online Now',
+    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+  }}
       />
 
       <Footer />

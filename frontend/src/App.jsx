@@ -30,6 +30,10 @@ import PdfViewerPage from './pages/PdfViewerPage.jsx'
 import IntroductionPage from './pages/IntroductionPage.jsx'
 import MissionVisionPage from './pages/MissionVisionPage.jsx'
 import ManagementPage from './pages/profiles/ManagementPage.jsx'; 
+import WhyChooseUsPage from './pages/WhyChooseUsPage.jsx';  
+import TestimonialsPage from './pages/TestimonialsPage'
+import FAQPage from './pages/FAQPage'
+import CookieBanner from './components/CookieBanner.jsx'
 
 function AppContent() {
   const location = useLocation();
@@ -41,6 +45,7 @@ function AppContent() {
     <>
       <ScrollToTop />
       {!isAdminRoute && <DisclaimerModal />}
+      {!isAdminRoute && <CookieBanner />}
 
       <Routes>
         {/* Public Routes */}
@@ -61,8 +66,13 @@ function AppContent() {
         <Route path="/about/legal" element={<LegalPage />} />
         <Route path="/policies/:slug" element={<PdfViewerPage />} />
         <Route path="/clients/:slug" element={<PdfViewerPage />} />
+        <Route path="/notifications/:slug" element={<PdfViewerPage />} />
         <Route path="/introduction" element={<IntroductionPage />} />
 <Route path="/mission-vision" element={<MissionVisionPage />} />
+<Route path="/why-choose-us" element={<WhyChooseUsPage />} />
+<Route path="/testimonials" element={<TestimonialsPage />} />
+<Route path="/faqs" element={<FAQPage />} />
+
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />

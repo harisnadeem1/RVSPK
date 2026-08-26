@@ -29,6 +29,11 @@ const ALLOWED_PDFS = {
   'sahulat-account-guidelines':            { folder: 'clients', file: 'sahulat-account-guidelines.pdf' },
   'step-by-step-guidelines':            { folder: 'clients', file: 'step-by-step-guidelines.pdf' },
 
+  '14' :           { folder: 'notifications', file: '14.pdf' },
+  '38' :           { folder: 'notifications', file: '38.pdf' },
+  '39' :           { folder: 'notifications', file: '39.pdf' },
+  '41' :           { folder: 'notifications', file: '41.pdf' },
+
 
 
 }

@@ -35,6 +35,10 @@ const DOC_TITLES = {
   'diagram-redressal':             'Diagram — Grievance Redressal',
   'sahulat-account-guidelines':    'Sahulat Account Guidelines',
   'step-by-step-guidelines':    'Sahulat Account Guidelines',
+  '14' :           'Introduction of Sahulat Account Opening Facility',
+  '38' :           'Sahulat Account Holders - Further Relaxations',
+  '39' :           'Listing of Smaller-sized Cash-Settled Futures Contracts',
+  '41' :           'Position Limits - Smaller-sized Cash-Settled Futures Contracts',
   
 
 }

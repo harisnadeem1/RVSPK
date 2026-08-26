@@ -272,7 +272,10 @@ function MissionVisionPage() {
         headline="Aligned with your investment goals"
         description="At Right Vision Securities, your financial growth is our mission. Join us and experience regulated, transparent, and purpose-driven brokerage."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-        secondaryCTA={{ text: 'Open account now', href: '/contact' }}
+         secondaryCTA={{
+    text: 'Open Account Online Now',
+    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+  }}
       />
 
        

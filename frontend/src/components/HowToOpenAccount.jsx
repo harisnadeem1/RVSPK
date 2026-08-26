@@ -45,7 +45,7 @@ function HowToOpenAccount({
       description: "Deposit funds through 1Bill and start trading on WebTrade or MT5."
     }
   ],
-  primaryCTA = { text: "Open account now", href: "https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==" },
+  primaryCTA = { text: "Open Account Online Now", href: "https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==" },
   secondaryCTA = { text: "Learn more", href: "/clients/account-opening-guide" },
   infoNote = "Once your account is created, you can fund it through your bank's online bill payment and start trading right away."
 }) {

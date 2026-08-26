@@ -211,7 +211,10 @@ function IntroductionPage() {
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access capital markets with professional support and full regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-        secondaryCTA={{ text: 'Open account now', href: '/contact' }}
+         secondaryCTA={{
+    text: 'Open Account Online Now',
+    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+  }}
       />
 
        

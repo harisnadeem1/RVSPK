@@ -139,7 +139,7 @@ function Navbar() {
   return (
     <>
       <nav className="sticky top-0 z-50 border-b border-border/60 bg-card/90 backdrop-blur-xl">
-       <div className="w-full px-6 2xl:px-10">
+        <div className="w-full px-6 2xl:px-10">
 
           {/* Mobile header — hamburger LEFT, logo CENTER, CTA RIGHT */}
           <div className="grid h-20 sm:h-24 grid-cols-[44px_1fr_auto] items-center gap-2 xl:hidden">
@@ -159,27 +159,27 @@ function Navbar() {
             <div className="flex justify-center min-w-0">
               <Link to="/" className="flex items-center">
                 <img
-  src="/rvspk_logo.png"
-  alt="Right Vision Securities"
-  className="h-18 sm:h-20 w-auto max-w-[170px] object-contain"
-/>
+                  src="/rvspk_logo.png"
+                  alt="Right Vision Securities"
+                  className="h-18 sm:h-20 w-auto max-w-[170px] object-contain"
+                />
               </Link>
             </div>
 
             {/* Get Started */}
             {/* Open Account */}
-<div className="flex justify-end shrink-0">
-  <a
-    href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Open Account"
-    title="Open Account"
-    className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:bg-accent/90"
-  >
-    <UserPlus className="h-5 w-5" />
-  </a>
-</div>
+            <div className="flex justify-end shrink-0">
+              <a
+                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Open Account Online"
+                title="Open Account"
+                className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:bg-accent/90"
+              >
+                <UserPlus className="h-5 w-5" />
+              </a>
+            </div>
 
           </div>
 
@@ -187,10 +187,10 @@ function Navbar() {
           <div className="hidden h-28 2xl:h-32 xl:flex w-full items-center justify-around gap-8">
             <Link to="/" className="flex items-center shrink-0">
               <img
-  src="/rvspk_logo.png"
-  alt="Right Vision Securities"
-  className="h-[92px] 2xl:h-[108px] w-auto object-contain"
-/>
+                src="/rvspk_logo.png"
+                alt="Right Vision Securities"
+                className="h-[92px] 2xl:h-[108px] w-auto object-contain"
+              />
             </Link>
 
             <div className="flex items-center justify-center w-full px-10">
@@ -222,26 +222,30 @@ function Navbar() {
             </div>
 
             <div className="flex flex-col items-stretch gap-2">
-  <Link to="/contact" className="w-full">
-    <Button
-      variant="outline"
-      className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
-    >
-      Contact Us
-    </Button>
-  </Link>
+              <Link to="/contact" className="w-full">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
+                >
+                  Contact Us
+                </Button>
+              </Link>
 
-  <a
-    href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
-    target="_blank"
-    rel="noopener noreferrer"
-    className="w-full"
-  >
-    <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-      Open Account
-    </Button>
-  </a>
-</div>
+              <a
+                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                target="_blank"
+                rel="noopener noreferrer"
+                
+                className="w-full"
+              >
+                <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  size="lg"
+                >
+                  Open Account Online
+                </Button>
+              </a>
+            </div>
           </div>
 
         </div>
@@ -351,11 +355,11 @@ function Navbar() {
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center justify-center w-full rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors"
           >
-            Open Account
+            Open Account Online
           </a>
         </div>
       </div>
-            <ComplianceStrip />
+      <ComplianceStrip />
 
     </>
   )

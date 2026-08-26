@@ -300,7 +300,7 @@ function ClientsAreaPage() {
       <CTASection
         headline="Not a client yet?"
         description="Open an account with Right Vision Securities to access our secure client portal and professional commodity trading services."
-        primaryCTA={{ text: 'Open account', href: '/contact' }}
+        primaryCTA={{ text: 'Open Account Online', href: '/contact' }}
         secondaryCTA={{ text: 'Learn more', href: '/about' }}
       />
 

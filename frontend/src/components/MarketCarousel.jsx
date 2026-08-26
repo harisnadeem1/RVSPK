@@ -5,12 +5,12 @@ import { useEffect, useState, useCallback } from "react"
 const items = [
   { title: "Indices", desc: "Track global market performance", image: "/hero/indices.png" },
   { title: "Energy", desc: "Oil, gas & energy commodities", image: "/hero/energy.png" },
-  { title: "Metals", desc: "Gold, silver & precious metals", image: "/hero/metal.png" },
+  { title: "Gold & Silver", desc: "Precious Metals", image: "/hero/metal.png" },
   { title: "Oil", desc: "Crude oil global trading markets", image: "/hero/oil.png" },
-  { title: "COTS", desc: "Composite order trading system", image: "/hero/cots-3.png" },
+  { title: "Currencies", desc: "Composite Order Trading System", image: "/hero/cots-3.png" },
   { title: "Agriculture", desc: "Wheat, rice, cotton & crops", image: "/hero/agriculture.png" },
-  { title: "Financials", desc: "Currencies & financial instruments", image: "/hero/financials.png" },
-  { title: "EWR", desc: "Electronic warehouse receipts", image: "/hero/ewr.png" },
+  // { title: "Financials", desc: "Currencies & financial instruments", image: "/hero/financials.png" },
+  // { title: "EWR", desc: "Electronic warehouse receipts", image: "/hero/ewr.png" },
 ]
 
 export default function MarketCarousel() {
@@ -53,13 +53,13 @@ export default function MarketCarousel() {
                       ${isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"}
                     `}
                   >
-                    <div className="mx-auto mb-4 flex h-28 w-28 sm:h-40 sm:w-40 md:h-48 md:w-48 items-center justify-center rounded-2xl">
-                      <img
-                        src={item.image}
-                        alt={item.title}
-                        className="h-full w-full object-contain drop-shadow-2xl rounded-2xl"
-                      />
-                    </div>
+                    <div className="mx-auto mb-5 flex h-44 w-44 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 items-center justify-center rounded-2xl">
+  <img
+    src={item.image}
+    alt={item.title}
+    className="h-full w-full rounded-2xl object-contain drop-shadow-2xl"
+  />
+</div>
 
                     <h3 className="text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl tracking-tight">
                       {item.title}

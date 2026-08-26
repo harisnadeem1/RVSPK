@@ -7,7 +7,7 @@ function TrustBar() {
     'SECP Licensed',
     'PMEX Regulated',
     'Lahore Office',
-    'Dedicated Client Support',
+    'Dedicated Client Support 24/7',
   ]
 
   const tickerItems = [...items, ...items, ...items]
@@ -33,9 +33,9 @@ function TrustBar() {
                 key={`${item}-${index}`}
                 className="flex shrink-0 items-center"
               >
-                <span className="whitespace-nowrap px-8 text-[10px] font-medium tracking-[0.18em] uppercase text-primary-foreground/90 sm:px-10 sm:text-[11px] lg:px-12">
-                  {item}
-                </span>
+                <span className="whitespace-nowrap px-8 text-[12px] font-medium tracking-[0.18em] uppercase text-primary-foreground/90 sm:px-10 lg:px-12">
+  {item}
+</span>
                 <span className="h-[3px] w-[3px] shrink-0 rounded-full bg-primary-foreground/40" />
               </div>
             ))}

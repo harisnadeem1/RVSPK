@@ -50,7 +50,7 @@ export default function HeroSection() {
                 className="w-full sm:w-auto"
               >
                 <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-white px-7 py-5 text-sm font-semibold shadow-md shadow-accent/20 transition-all">
-                  Open Account
+                  Open Account Online
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </a>

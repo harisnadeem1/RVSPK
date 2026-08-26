@@ -1,66 +1,73 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Mail, Phone, Facebook, Twitter, Linkedin, MessageCircle } from 'lucide-react'
+import { MapPin, Mail, Phone } from 'lucide-react'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const aboutLinks = [
-    { label: 'Introduction', path: '/introduction' },
-    { label: 'Mission and Vision', path: '/mission-vision' },
-    { label: 'Company Profile', path: '/company-profile' },
-    { label: "BOD's Profile", path: '/about/board' },
-    { label: 'Name of Auditor', path: '/about/auditors' },
-    { label: 'Name of Legal Advisor', path: '/about/legal' },
-    { label: 'Management', path: '/about/management' },
+  const investorResourceLinks = [
+  {
+    label: 'Investor Grievance Redressal at PMEX',
+    href: 'https://pmex.com.pk/investor-complaints/',
+  },
+  {
+    label: 'PMEX Guide to Futures Trading',
+    href: 'https://pmex.com.pk/wp-content/uploads/2025/11/Futures-Trading-Guide-Updated.pdf',
+  },
+  {
+    label: 'SECP Complaint (Service Desk Management System)',
+    href: 'https://sdms.secp.gov.pk/',
+    image: '/footer/secp-sdms.png',
+    imageAlt: 'SECP Service Desk Management System',
+  },
+]
+
+  const tradingPlatformLinks = [
+    {
+      label: 'MetaTrader 5 for macOS',
+      href: 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg',
+    },
+    {
+      label: 'MetaTrader 5 for Windows',
+      href: 'https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe',
+    },
+    {
+      label: 'MetaTrader 5 for iOS',
+      href: 'https://download.terminal.free/cdn/mobile/mt5/ios',
+    },
+    {
+      label: 'MetaTrader 5 for Android',
+      href: 'https://download.terminal.free/cdn/mobile/mt5/android',
+    },
   ]
 
-  const clientLinks = [
-    { label: 'No Cash Policy', path: '/clients/no-cash-policy' },
-    { label: "Guidelines for Clients — Do's & Don'ts", path: '/clients/guidelines-clients' },
-    { label: 'Account Opening Guide', path: '/clients/account-opening-guide' },
-    { label: 'Direct Funds Model (DFM) User Manual', path: '/clients/dfm-user-manual' },
-    { label: 'PMEX Investor Guide', path: '/clients/pmex-guidelines-dfm' },
-    { label: 'Guide to Futures Trading at PMEX', path: '/clients/guide-futures-pmex' },
-    { label: 'PMEX Fee Sheet', path: '/clients/pmex-fee-criteria' },
-    { label: 'Commission Structure', path: '/clients/commission-structure' },
-    { label: 'Client Complaint Process', path: '/clients/complaint-process' },
-    { label: 'Diagram — Grievance Redressal', path: '/clients/diagram-redressal' },
-    { label: 'Model of Funds Transfer', path: '/clients/model-funds-transfer' },
-    { label: 'Sahulat Account Guidelines', path: '/clients/sahulat-account-guidelines' },
-    { label: 'Step-by-Step Guidelines', path: '/clients/step-by-step-guidelines' },
-
-  ]
-
-  const policyLinks = [
-    { label: 'Privacy Policy', path: '/policies/privacy-policy' },
-    { label: 'Customer Grievances Redressal', path: '/policies/customer-grievances-redressal' },
-    { label: 'Risk Management Policy', path: '/policies/risk-management' },
-    { label: 'CDD / KYC Policy', path: '/policies/cdd-kyc' },
-    { label: 'Whistleblowing Policy', path: '/policies/whistleblowing' },
-    { label: 'Conflict of Interest Policy', path: '/policies/conflict-of-interest' },
-  ]
-
-  const formsLinks = [
-    { label: 'Contact Us', path: '/contact' },
-    { label: 'Feedback', path: '/feedback' },
-    { label: 'Complaint Registration', path: '/complaint' },
-    { label: 'Client Grievance', path: '/grievance' },
-    { label: 'Whistleblower', path: '/whistleblower' },
+  const quickLinks = [
+    {
+      label: 'Why Choose Us',
+      path: '/why-choose-us',
+    },
+    {
+      label: 'Client Testimonials',
+      path: '/testimonials',
+    },
+    {
+      label: 'Frequently Asked Questions',
+      path: '/faqs',
+    },
+    {
+      label: 'Contact Us',
+      path: '/contact',
+    },
   ]
 
   return (
     <footer className="bg-primary text-primary-foreground">
-
       {/* Main footer body */}
-      <div className="w-full px-4 sm:px-6 lg:px-12 py-14 sm:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-16">
-
-          {/* ── Col 1 — Brand + Contact ── */}
-          <div className="sm:col-span-2 lg:col-span-4">
-
-            {/* Logo */}
-            <Link to="/" className="inline-flex items-center mb-5">
+      <div className="w-full px-4 py-14 sm:px-6 sm:py-16 lg:px-12">
+        <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+          {/* Brand + Contact */}
+          <div className="lg:col-span-4">
+            <Link to="/" className="mb-5 inline-flex items-center">
               <img
                 src="/rvspk_logo.png"
                 alt="Right Vision Securities"
@@ -68,152 +75,92 @@ function Footer() {
               />
             </Link>
 
-            <p className="text-sm text-primary-foreground/50 leading-relaxed mb-6 max-w-sm">
-              Right Vision Securities (Pvt.) Limited is a SECP-licensed and PMEX-registered futures brokerage company
-              associated with the Right Vision Group (est. 2007). We provide transparent, reliable, and efficient
-              brokerage services across commodity and financial markets in Pakistan, with a focus on integrity,
+            <p className="mb-6 max-w-sm text-sm leading-relaxed text-primary-foreground/50">
+              Right Vision Securities (Pvt.) Limited is a SECP-licensed and
+              PMEX-registered futures brokerage company associated with the
+              Right Vision Group (est. 2007). We provide transparent,
+              reliable, and efficient brokerage services across commodity and
+              financial markets in Pakistan, with a focus on integrity,
               compliance, and client success.
             </p>
 
-            {/* Contact details */}
             <ul className="space-y-3">
               <li>
                 <a
                   href="tel:+923108248717"
-                  className="flex items-start gap-3 group"
+                  className="group flex items-start gap-3"
                 >
-                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
                     <Phone className="h-3.5 w-3.5 text-stone-50" />
                   </div>
+
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       +92 310 8248717
                     </div>
-                    <div className="text-xs text-primary-foreground/55">Call / WhatsApp · Business hours</div>
+                    <div className="text-xs text-primary-foreground/55">
+                      Call / WhatsApp · Business hours
+                    </div>
                   </div>
                 </a>
               </li>
+
               <li>
                 <a
                   href="mailto:hello@rvspk.com"
-                  className="flex items-start gap-3 group"
+                  className="group flex items-start gap-3"
                 >
-                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
                     <Mail className="h-3.5 w-3.5 text-stone-50" />
                   </div>
+
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       hello@rvspk.com
                     </div>
-                    <div className="text-xs text-primary-foreground/55">We reply within 24 hours</div>
+                    <div className="text-xs text-primary-foreground/55">
+                      We reply within 24 hours
+                    </div>
                   </div>
                 </a>
               </li>
+
               <li>
                 <a
                   href="https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-3 group"
+                  className="group flex items-start gap-3"
                 >
-                  <div className="shrink-0 flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 group-hover:bg-accent/20 transition-colors mt-0.5">
+                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
                     <MapPin className="h-3.5 w-3.5 text-stone-50" />
                   </div>
+
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground group-hover:text-accent transition-colors">
+                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       74-R, GCP Housing Society, Johar Town
                     </div>
-                    <div className="text-xs text-primary-foreground/55">Lahore, Punjab, Pakistan</div>
+                    <div className="text-xs text-primary-foreground/55">
+                      Lahore, Punjab, Pakistan
+                    </div>
                   </div>
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* ── Col 2 — About ── */}
+          {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground mb-4">
-              About Us
-            </h3>
-            <ul className="space-y-2 mt-1">
-              {aboutLinks.map((link, i) => (
-                <li key={i}>
-                  <Link Area
-                    to={link.path}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link
-                  to="/contact"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                  Contact Us
-                </Link>
-              </li>
-            </ul>
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground mb-4 mt-8">
-              MT Trading Platforms
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+              Quick Links
             </h3>
 
-            <ul className="space-y-2 mt-1">
-              <li>
-                <a
-                  href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/MetaTrader5.dmg"
-                  target=""
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                  Metatrader 5 for MacOS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://download.mql5.com/cdn/web/metaquotes.software.corp/mt5/mt5setup.exe"
-                  target=""
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                  Metatrader 5 for Windows
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://download.terminal.free/cdn/mobile/mt5/ios"
-                  target=""
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                 Metatrader 5 for iOS
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://download.terminal.free/cdn/mobile/mt5/android"
-                  target=""
-                  rel="noopener noreferrer"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                >
-                 Metatrader 5 for Android
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* ── Col 3 — Client Area ── */}
-          <div className="lg:col-span-3">
-            <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground mb-4">
-              Client Area
-            </h3>
-            <ul className="space-y-2 mt-1">
-              {clientLinks.map((link, i) => (
-                <li key={i}>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
+                    className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -221,68 +168,83 @@ function Footer() {
               ))}
             </ul>
 
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground mb-4 mt-8">
+            {/* Reports */}
+            <h3 className="mb-4 mt-8 text-sm font-semibold uppercase tracking-widest text-primary-foreground">
               Reports
             </h3>
 
-            <ul className="space-y-2 mt-1">
+            <ul className="space-y-2">
               <li>
                 <Link
                   to="/reports"
-                  className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
+                  className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
                 >
-                  Daily & Monthly Reports
+                  Daily &amp; Monthly Reports
                 </Link>
               </li>
             </ul>
           </div>
 
-
-          {/* ── Col 4 — Policies ── */}
+          {/* Investor Resources */}
           <div className="lg:col-span-3">
-            {/* Policies */}
-            <h3 className="text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground mb-4">
-              Policies
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+              Investor Resources
             </h3>
 
-            <ul className="space-y-2 mt-1">
-              {policyLinks.map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+           
 
-            {/* Forms */}
-            <h3 className="text-sm font-semibold uppercase tracking-widest text-primary-foreground mb-4 mt-8">
-              Forms
+         <ul className="space-y-4">
+  {investorResourceLinks.map((link) => (
+    <li key={link.href}>
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="group block"
+      >
+        {/* Text link */}
+        <div className="flex items-start gap-3 text-sm text-primary-foreground/60 transition-colors group-hover:text-accent">
+          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent transition-colors group-hover:bg-primary-foreground" />
+
+          <span className="leading-relaxed">{link.label}</span>
+        </div>
+
+        {/* Full-width clickable image */}
+        {link.image && (
+          <img
+            src={link.image}
+            alt={link.imageAlt}
+            loading="lazy"
+            className="mt-3 block h-auto w-full object-contain transition-opacity duration-300 group-hover:opacity-85"
+          />
+        )}
+      </a>
+    </li>
+  ))}
+</ul>
+          </div>
+
+          {/* MT Trading Platforms */}
+          <div className="lg:col-span-3">
+            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+              MT Trading Platforms
             </h3>
 
-            <ul className="space-y-2 mt-1">
-              {[
-                { label: 'Contact Us', path: '/contact' },
-                { label: 'Feedback', path: '/feedback' },
-                { label: 'Complaint Registration', path: '/complaint' },
-                { label: 'Client Grievance', path: '/grievance' },
-                { label: 'Whistleblower', path: '/whistleblower' },
-              ].map((link, i) => (
-                <li key={i}>
-                  <Link
-                    to={link.path}
-                    className="text-sm text-primary-foreground/50 hover:text-accent transition-colors"
+            <ul className="space-y-3">
+              {tradingPlatformLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
                   >
                     {link.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
           </div>
-
         </div>
       </div>
 
@@ -291,12 +253,13 @@ function Footer() {
 
       {/* Regulatory disclaimer */}
       <div className="container-custom py-5">
-        <p className="text-xs text-primary-foreground/50 leading-relaxed text-center">
-          Right Vision Securities (Pvt.) Limited is a SECP licensed Futures Broker (BRC-406)
-          and PMEX registered Trading Right Entitlement Certificate holder (TREC #037). All
-          trading involves risk and may not be suitable for all investors. Past performance
-          is not indicative of future results. Clients are advised to fully understand the
-          risks before participating in futures and commodity trading.
+        <p className="text-center text-xs leading-relaxed text-primary-foreground/50">
+          Right Vision Securities (Pvt.) Limited is a SECP licensed Futures
+          Broker (BRC-406) and PMEX registered Trading Right Entitlement
+          Certificate holder (TREC #037). All trading involves risk and may
+          not be suitable for all investors. Past performance is not indicative
+          of future results. Clients are advised to fully understand the risks
+          before participating in futures and commodity trading.
         </p>
       </div>
 
@@ -305,56 +268,13 @@ function Footer() {
 
       {/* Bottom bar */}
       <div className="container-custom py-5">
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-
-          {/* Copyright */}
-          <p className="text-xs text-primary-foreground/50 text-center sm:text-left">
-            © 2025 - {currentYear} Right Vision Securities (Pvt.) Limited. All rights reserved.
+        <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
+          <p className="text-center text-xs text-primary-foreground/50 sm:text-left">
+            © 2025 - {currentYear} Right Vision Securities (Pvt.) Limited. All
+            rights reserved.
           </p>
-
-          {/* Social links */}
-          {/* <div className="flex items-center gap-3">
-            <a
-              href="https://wa.me/923108248717"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
-            >
-              <MessageCircle className="h-4 w-4" />
-            </a>
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Facebook"
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
-            >
-              <Facebook className="h-4 w-4" />
-            </a>
-            <a
-              href="https://twitter.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Twitter / X"
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
-            >
-              <Twitter className="h-4 w-4" />
-            </a>
-            <a
-              href="https://linkedin.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="LinkedIn"
-              className="flex items-center justify-center h-8 w-8 rounded-lg bg-primary-foreground/10 text-primary-foreground/60 hover:bg-accent/20 hover:text-accent transition-colors"
-            >
-              <Linkedin className="h-4 w-4" />
-            </a>
-          </div> */}
-
         </div>
       </div>
-
     </footer>
   )
 }
