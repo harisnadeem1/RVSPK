@@ -53,21 +53,21 @@ export default function MarketCarousel() {
                       ${isActive ? "opacity-100 scale-100" : "opacity-50 scale-95"}
                     `}
                   >
-                    <div className="mx-auto mb-5 flex h-44 w-44 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 items-center justify-center rounded-2xl">
-  <img
-    src={item.image}
-    alt={item.title}
-    className="h-full w-full rounded-2xl object-contain drop-shadow-2xl"
-  />
-</div>
+                    <div className="mx-auto mb-5 flex h-56 w-56 sm:h-64 sm:w-64 md:h-72 md:w-72 lg:h-80 lg:w-80 items-center justify-center rounded-2xl">
+                      <img
+                        src={item.image}
+                        alt={item.title}
+                        className="h-full w-full rounded-2xl object-contain drop-shadow-2xl"
+                      />
+                    </div>
 
-                    <h3 className="text-primary-foreground font-bold text-lg sm:text-xl md:text-2xl tracking-tight">
+                    <h3 className="text-primary-foreground font-bold text-xl sm:text-xl md:text-2xl tracking-tight">
                       {item.title}
                     </h3>
 
                     <div className="mx-auto mt-3 mb-3 w-8 sm:w-10 h-[2px] rounded-full bg-accent" />
 
-                    <p className="text-primary-foreground/75 text-xs sm:text-sm md:text-[15px] leading-relaxed">
+                    <p className="text-primary-foreground/75 text-base sm:text-sm md:text-[15px] leading-relaxed">
                       {item.desc}
                     </p>
                   </div>
@@ -83,11 +83,10 @@ export default function MarketCarousel() {
               key={i}
               onClick={() => emblaApi?.scrollTo(i)}
               aria-label={`Go to slide ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === selectedIndex
+              className={`rounded-full transition-all duration-300 ${i === selectedIndex
                   ? "w-6 sm:w-7 h-2 bg-accent"
                   : "w-2 h-2 bg-white/35 hover:bg-white/60"
-              }`}
+                }`}
             />
           ))}
         </div>

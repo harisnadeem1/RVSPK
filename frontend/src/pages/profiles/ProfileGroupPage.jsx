@@ -58,15 +58,15 @@ function ProfileGroupPage({ group }) {
         <div className="container-custom px-4 sm:px-6">
 
           <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               {group.tagline}
             </span>
            {title && (
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+        <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
           {title}
         </h2>
       )}
-            <p className="text-sm sm:text-sm text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
               {hasMultiple
                 ? `${group.members.length} professionals responsible for this function at Right Vision Securities.`
                 : 'The individual responsible for this function at Right Vision Securities.'}
@@ -90,19 +90,19 @@ function ProfileGroupPage({ group }) {
                 <div className="bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5 px-6 sm:px-8 pt-8 pb-6">
                   <div className="flex flex-col sm:flex-row items-start sm:items-center gap-5">
                     {/* Avatar */}
-                    <div className="h-20 w-20 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 shadow-md">
-                      <span className="text-primary-foreground font-bold text-2xl">
+                    <div className=" h-14 w-14 sm:h-20 sm:w-20 rounded-2xl bg-primary flex items-center justify-center flex-shrink-0 shadow-md">
+                      <span className="text-primary-foreground font-bold text-base sm:text-2xl">
                         {member.initials}
                       </span>
                     </div>
                     <div className="flex-1">
-                      <p className="text-xs font-semibold tracking-[0.15em] uppercase text-accent mb-1">
+                      <p className="text-[15px] font-semibold tracking-[0.15em] uppercase text-accent mb-1">
                         {member.department}
                       </p>
-                      <h3 className="text-xl sm:text-2xl font-bold text-foreground leading-tight mb-0.5">
+                      <h3 className="text-2xl sm:text-2xl font-bold text-foreground leading-tight mb-0.5">
                         {member.name}
                       </h3>
-                      <span className="inline-block bg-accent/10 text-accent text-xs font-semibold px-3 py-1 rounded-full mt-1">
+                      <span className="inline-block bg-accent/10 text-accent text-sm font-semibold px-3 py-1 rounded-full mt-1">
                         {member.role}
                       </span>
                     </div>
@@ -114,14 +114,14 @@ function ProfileGroupPage({ group }) {
 
                   {/* Bio — takes 2 cols */}
                   <div className="lg:col-span-2 space-y-4">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                    <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                       Profile
                     </p>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
                       {member.bio}
                     </p>
                     {member.fullBio?.map((para, i) => (
-                      <p key={i} className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      <p key={i} className="text-base sm:text-sm text-muted-foreground leading-relaxed">
                         {para}
                       </p>
                     ))}
@@ -132,14 +132,14 @@ function ProfileGroupPage({ group }) {
 
                     {/* Responsibilities */}
                     <div>
-                      <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                      <p className="text-[15px] font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                         Key responsibilities
                       </p>
                       <ul className="space-y-2">
                         {member.responsibilities.map((item, i) => (
                           <li key={i} className="flex items-start gap-2">
                             <CheckCircle className="h-3.5 w-3.5 text-accent mt-0.5 flex-shrink-0" />
-                            <span className="text-xs text-muted-foreground leading-snug">{item}</span>
+                            <span className="text-base text-muted-foreground leading-snug">{item}</span>
                           </li>
                         ))}
                       </ul>
@@ -148,14 +148,14 @@ function ProfileGroupPage({ group }) {
                     {/* Credentials */}
                     {member.credentials?.length > 0 && (
                       <div>
-                        <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-3">
+                        <p className="text-[15px] font-semibold uppercase tracking-wider text-muted-foreground mb-3">
                           Credentials
                         </p>
                         <ul className="space-y-2">
                           {member.credentials.map((item, i) => (
                             <li key={i} className="flex items-start gap-2">
                               <GraduationCap className="h-3.5 w-3.5 text-accent mt-0.5 flex-shrink-0" />
-                              <span className="text-xs text-muted-foreground leading-snug">{item}</span>
+                              <span className="text-base text-muted-foreground leading-snug">{item}</span>
                             </li>
                           ))}
                         </ul>

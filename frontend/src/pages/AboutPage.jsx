@@ -24,7 +24,7 @@ import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import PageHero from '@/components/PageHero.jsx'
 import CTASection from '@/components/CTASection.jsx'
-  
+
 
 /* ─── animation variants (same as HomePage) ─── */
 const containerVariants = {
@@ -112,92 +112,92 @@ function AboutPage() {
       />
 
       {/* ── Mission & Vision ── */}
-<section className="section-spacing bg-muted">
-  <div className="container-custom px-4 sm:px-6">
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+      <section className="section-spacing bg-muted">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
 
-      {/* Mission */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
-      >
-        <div className="flex items-center gap-3 mb-5">
-          <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 flex-shrink-0">
-            <Target className="h-5 w-5 text-accent" />
+            {/* Mission */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 flex-shrink-0">
+                  <Target className="h-5 w-5 text-accent" />
+                </div>
+                <span className="text-[15px] font-semibold tracking-[0.2em] uppercase text-accent">
+                  Our Mission
+                </span>
+              </div>
+              <h2 className="text-2xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                Serving investors with purpose
+              </h2>
+              <div className="space-y-3 text-base sm:text-sm text-foreground leading-relaxed">
+                <p>
+                  Right Vision Securities was launched with the mission to serve its clients on
+                  priority and other general investors by providing them{' '}
+                  <strong className="text-foreground">efficient, transparent, reliable, and outstanding</strong>{' '}
+                  brokerage services related to investment in different asset classes — including
+                  agri and non-agri commodities.
+                </p>
+                <p>
+                  We contemplate transferring the savings of the general public into progressive,
+                  income-generating investment vehicles that enable participation in the economic
+                  growth of the economy.
+                </p>
+                <p>
+                  To achieve this mission, the Company observes the{' '}
+                  <strong className="text-foreground">highest ethical values and professional principles</strong>{' '}
+                  to deliver on client expectations, enabling them to fulfil their aspirations and
+                  investment goals successfully.
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Vision */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
+            >
+              <div className="flex items-center gap-3 mb-5">
+                <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-primary/10 flex-shrink-0">
+                  <Eye className="h-5 w-5 text-primary" />
+                </div>
+                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
+                  Our Vision
+                </span>
+              </div>
+              <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
+                Leading financial literacy in Pakistan
+              </h2>
+              <div className="space-y-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                <p>
+                  The foresight of establishing Right Vision Securities as a Commodity Futures
+                  Broker is to assume a{' '}
+                  <strong className="text-foreground">leading role in promoting financial literacy</strong>{' '}
+                  across the country in collaboration with PMEX stakeholders, and exploring new
+                  avenues of co-operation by establishing a platform to achieve the primary goal of
+                  gaining desired returns.
+                </p>
+                <p>
+                  We shall strive hard to invest in human capital, creating awareness of commodities
+                  business to consolidate local commerce and to enable{' '}
+                  <strong className="text-foreground">easy market access at the retail investor level</strong>.
+                </p>
+              </div>
+            </motion.div>
+
           </div>
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-            Our Mission
-          </span>
         </div>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
-          Serving investors with purpose
-        </h2>
-        <div className="space-y-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          <p>
-            Right Vision Securities was launched with the mission to serve its clients on
-            priority and other general investors by providing them{' '}
-            <strong className="text-foreground">efficient, transparent, reliable, and outstanding</strong>{' '}
-            brokerage services related to investment in different asset classes — including
-            agri and non-agri commodities.
-          </p>
-          <p>
-            We contemplate transferring the savings of the general public into progressive,
-            income-generating investment vehicles that enable participation in the economic
-            growth of the economy.
-          </p>
-          <p>
-            To achieve this mission, the Company observes the{' '}
-            <strong className="text-foreground">highest ethical values and professional principles</strong>{' '}
-            to deliver on client expectations, enabling them to fulfil their aspirations and
-            investment goals successfully.
-          </p>
-        </div>
-      </motion.div>
+      </section>
 
-      {/* Vision */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="bg-card rounded-xl sm:rounded-2xl p-5 sm:p-8 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300"
-      >
-        <div className="flex items-center gap-3 mb-5">
-          <div className="inline-flex items-center justify-center h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-primary/10 flex-shrink-0">
-            <Eye className="h-5 w-5 text-primary" />
-          </div>
-          <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
-            Our Vision
-          </span>
-        </div>
-        <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-foreground mb-4 leading-tight">
-          Leading financial literacy in Pakistan
-        </h2>
-        <div className="space-y-3 text-xs sm:text-sm text-muted-foreground leading-relaxed">
-          <p>
-            The foresight of establishing Right Vision Securities as a Commodity Futures
-            Broker is to assume a{' '}
-            <strong className="text-foreground">leading role in promoting financial literacy</strong>{' '}
-            across the country in collaboration with PMEX stakeholders, and exploring new
-            avenues of co-operation by establishing a platform to achieve the primary goal of
-            gaining desired returns.
-          </p>
-          <p>
-            We shall strive hard to invest in human capital, creating awareness of commodities
-            business to consolidate local commerce and to enable{' '}
-            <strong className="text-foreground">easy market access at the retail investor level</strong>.
-          </p>
-        </div>
-      </motion.div>
 
-    </div>
-  </div>
-</section>
-
-      
 
       {/* ── Core Values ── */}
       <section className="section-spacing bg-card">
@@ -242,7 +242,7 @@ function AboutPage() {
         </div>
       </section>
 
-     
+
 
       {/* ── Regulatory Compliance ── */}
       <section className="section-spacing bg-muted">
@@ -310,7 +310,7 @@ function AboutPage() {
         </div>
       </section>
 
-{/* ── Office / Contact ── */}
+      {/* ── Office / Contact ── */}
       <section className="section-spacing bg-card">
         <div className="container-custom px-4 sm:px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
@@ -437,19 +437,19 @@ function AboutPage() {
           </div>
         </div>
       </section>
-      
+
 
       <CTASection
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-         secondaryCTA={{
-    text: 'Open Account Online Now',
-    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
-  }}
+        secondaryCTA={{
+          text: 'Open Account Online Now',
+          href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+        }}
       />
 
-       
+
       <Footer />
     </>
   )

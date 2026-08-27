@@ -14,7 +14,7 @@ import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import PageHero from '@/components/PageHero.jsx'
 import CTASection from '@/components/CTASection.jsx'
-  
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -69,13 +69,13 @@ function IntroductionPage() {
       <section className="section-spacing bg-muted">
         <div className="container-custom px-4 sm:px-6">
           <div className="max-w-3xl mx-auto text-center mb-10 sm:mb-14">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Who We Are
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-4 leading-tight">
               Right Vision Securities (Pvt.) Limited
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
               Right Vision Securities (Private) Limited (RVSPL) is an associated company of the{' '}
               <strong className="text-foreground">Right Vision Group of Companies</strong>, founded in 2007.
               RVSPL was established with a mission to serve investors on priority by providing them{' '}
@@ -90,7 +90,7 @@ function IntroductionPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="max-w-4xl mx-auto bg-card rounded-2xl p-6 sm:p-10 border border-border/60 shadow-sm space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed mb-12"
+            className="max-w-4xl mx-auto bg-card rounded-2xl p-6 sm:p-10 border border-border/60 shadow-sm space-y-4 text-base sm:text-base text-muted-foreground leading-relaxed mb-12"
           >
             <p>
               The Company shall observe the highest ethical values, is fully compliant with the regulatory
@@ -123,13 +123,13 @@ function IntroductionPage() {
       <section className="section-spacing bg-card">
         <div className="container-custom px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center mb-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Our Parent Group
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
               Right Vision Group of Companies
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
               Founded in 2007, the Right Vision Group operates across multiple industries in Pakistan
             </p>
           </div>
@@ -145,24 +145,21 @@ function IntroductionPage() {
               <motion.div
                 key={i}
                 variants={itemVariants}
-                className={`rounded-2xl p-5 border transition-all duration-300 ${
-                  company.highlight
+                className={`rounded-2xl p-5 border transition-all duration-300 ${company.highlight
                     ? 'bg-accent/10 border-accent/40 shadow-md'
                     : 'bg-muted border-border/60 hover:border-accent/30 hover:shadow-md'
-                }`}
+                  }`}
               >
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-accent/10 mb-4">
-                  <company.icon className="h-5 w-5 text-accent" />
+                <div className="flex items-center justify-start gap-4 mb-2">
+                  <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-accent/10 ">
+                    <company.icon className="h-5 w-5 text-accent" />
+                  </div>
+                  <h3 className="flex items-center text-base font-semibold text-foreground mb-1 leading-snug">
+                    {company.name}
+                  </h3>
                 </div>
-                <h3 className="text-sm font-semibold text-foreground mb-1 leading-snug">
-                  {company.name}
-                </h3>
-                <p className="text-xs text-muted-foreground">{company.desc}</p>
-                {company.highlight && (
-                  <span className="inline-block mt-2 text-xs font-semibold text-accent uppercase tracking-wider">
-                    ← That's us
-                  </span>
-                )}
+                <p className="text-sm text-muted-foreground">{company.desc}</p>
+                {company.highlight}
               </motion.div>
             ))}
           </motion.div>
@@ -173,10 +170,10 @@ function IntroductionPage() {
       <section className="section-spacing bg-muted">
         <div className="container-custom px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center mb-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Why Choose Us
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
               What sets us apart
             </h2>
           </div>
@@ -198,8 +195,8 @@ function IntroductionPage() {
                   <h.icon className="h-5 w-5 text-accent" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-foreground mb-0.5">{h.label}</h3>
-                  <p className="text-xs text-muted-foreground">{h.detail}</p>
+                  <h3 className="text-base font-semibold text-foreground mb-0.5">{h.label}</h3>
+                  <p className="text-sm text-muted-foreground">{h.detail}</p>
                 </div>
               </motion.div>
             ))}
@@ -211,13 +208,13 @@ function IntroductionPage() {
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access capital markets with professional support and full regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-         secondaryCTA={{
-    text: 'Open Account Online Now',
-    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
-  }}
+        secondaryCTA={{
+          text: 'Open Account Online Now',
+          href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+        }}
       />
 
-       
+
       <Footer />
     </>
   )

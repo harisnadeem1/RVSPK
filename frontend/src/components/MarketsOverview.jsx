@@ -85,14 +85,14 @@ function MarketsOverview() {
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}
-        <div className="max-w-2xl mx-auto text-center mb-8 sm:mb-12">
-          <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+        <div className="max-w-2xl mx-auto text-left sm:text-center mb-8 sm:mb-12">
+          <span className="inline-block text-base font-semibold tracking-[0.2em] uppercase text-accent mb-3">
             Our Markets
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+          <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
             Trade global indices
           </h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-base text-foreground leading-relaxed">
             Live market data for world indices — trade the same instruments
             through Right Vision Securities
           </p>

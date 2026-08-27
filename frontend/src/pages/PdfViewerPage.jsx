@@ -100,7 +100,7 @@ function PdfViewerPage() {
 
           <button
             onClick={() => navigate(-1)}
-            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-accent transition-colors mb-6"
+            className="flex items-center gap-2 text-base text-muted-foreground hover:text-accent transition-colors mb-6"
           >
             <ArrowLeft className="h-4 w-4" />
             Go back
@@ -110,14 +110,14 @@ function PdfViewerPage() {
 
             {/* Header */}
             <div className="flex items-center gap-3 px-5 py-4 border-b border-border/60 bg-card">
-              <div className="flex items-center justify-center h-9 w-9 rounded-lg bg-accent/10 shrink-0">
-                <svg className="h-4 w-4 text-accent" fill="currentColor" viewBox="0 0 24 24">
+              <div className="flex items-center justify-center h-12 w-12 rounded-lg bg-accent/10 shrink-0">
+                <svg className="h-8 w-8 text-accent" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M14,2H6A2,2 0 0,0 4,4V20A2,2 0 0,0 6,22H18A2,2 0 0,0 20,20V8L14,2M18,20H6V4H13V9H18V20Z" />
                 </svg>
               </div>
               <div>
-                <p className="text-sm font-semibold text-foreground">{title}</p>
-                <p className="text-xs text-muted-foreground">
+                <p className="text-base font-semibold text-foreground">{title}</p>
+                <p className="text-sm text-muted-foreground">
                   Right Vision Securities (Pvt.) Limited
                   {numPages && (
                     <span className="ml-2 text-accent font-medium">

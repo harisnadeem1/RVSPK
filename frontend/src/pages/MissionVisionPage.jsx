@@ -16,7 +16,7 @@ import Navbar from '@/components/Navbar.jsx'
 import Footer from '@/components/Footer.jsx'
 import PageHero from '@/components/PageHero.jsx'
 import CTASection from '@/components/CTASection.jsx'
-  
+
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -114,14 +114,14 @@ function MissionVisionPage() {
                 <div className="inline-flex items-center justify-center h-11 w-11 rounded-xl bg-accent/10 flex-shrink-0">
                   <Target className="h-5 w-5 text-accent" />
                 </div>
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
+                <span className="text-[15px] font-semibold tracking-[0.2em] uppercase text-accent">
                   Our Mission — Clients First
                 </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 leading-tight">
                 Serving investors with purpose
               </h2>
-              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              <div className="space-y-3 text-base text-foreground leading-relaxed">
                 <p>
                   Right Vision Securities was incorporated as a Commodity Future Broker with the mission
                   to serve its clients on priority and other general investors by providing them{' '}
@@ -158,14 +158,14 @@ function MissionVisionPage() {
                 <div className="inline-flex items-center justify-center h-11 w-11 rounded-xl bg-primary/10 flex-shrink-0">
                   <Eye className="h-5 w-5 text-primary" />
                 </div>
-                <span className="text-xs font-semibold tracking-[0.2em] uppercase text-accent">
+                <span className="text-[15px] font-semibold tracking-[0.2em] uppercase text-accent">
                   Our Vision — Broaden Investor Base
                 </span>
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 leading-tight">
                 Leading financial literacy in Pakistan
               </h2>
-              <div className="space-y-3 text-sm text-muted-foreground leading-relaxed">
+              <div className="space-y-3 text-base text-muted-foreground leading-relaxed">
                 <p>
                   The foresight of establishing Right Vision Securities as a Commodity Futures Broker is
                   to assume a{' '}
@@ -200,10 +200,10 @@ function MissionVisionPage() {
       <section className="section-spacing bg-card">
         <div className="container-custom px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center mb-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Mission Pillars
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
               How we fulfil our mission
             </h2>
           </div>
@@ -221,11 +221,14 @@ function MissionVisionPage() {
                 variants={itemVariants}
                 className="bg-muted rounded-2xl p-5 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
               >
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-accent/10 mb-4 group-hover:bg-accent/20 transition-colors">
-                  <point.icon className="h-5 w-5 text-accent" />
+                <div className="flex items-center justify-start mb-4 gap-3">
+                <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <point.icon className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="text-sm font-semibold text-foreground mb-2">{point.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{point.desc}</p>
+                <h3 className="text-lg font-bold text-foreground ">{point.title}</h3>
+                </div>
+
+                <p className="text-base text-muted-foreground leading-relaxed">{point.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -236,10 +239,10 @@ function MissionVisionPage() {
       <section className="section-spacing bg-muted">
         <div className="container-custom px-4 sm:px-6">
           <div className="max-w-2xl mx-auto text-center mb-10">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Vision Pillars
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
               How we realise our vision
             </h2>
           </div>
@@ -257,11 +260,14 @@ function MissionVisionPage() {
                 variants={itemVariants}
                 className="bg-card rounded-2xl p-5 border border-border/60 hover:border-accent/30 hover:shadow-md transition-all duration-300 group"
               >
-                <div className="inline-flex items-center justify-center h-10 w-10 rounded-xl bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
-                  <point.icon className="h-5 w-5 text-primary" />
+                <div className="flex items-center justify-start mb-4 gap-3">
+
+                <div className="inline-flex items-center justify-center h-12 w-12 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors">
+                  <point.icon className="h-6 w-6 text-accent" />
                 </div>
-                <h3 className="text-sm font-semibold text-foreground mb-2">{point.title}</h3>
-                <p className="text-xs text-muted-foreground leading-relaxed">{point.desc}</p>
+                <h3 className="text-lg font-bold text-foreground ">{point.title}</h3>
+                </div>
+                <p className="text-base text-muted-foreground leading-relaxed">{point.desc}</p>
               </motion.div>
             ))}
           </motion.div>
@@ -272,13 +278,13 @@ function MissionVisionPage() {
         headline="Aligned with your investment goals"
         description="At Right Vision Securities, your financial growth is our mission. Join us and experience regulated, transparent, and purpose-driven brokerage."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-         secondaryCTA={{
-    text: 'Open Account Online Now',
-    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
-  }}
+        secondaryCTA={{
+          text: 'Open Account Online Now',
+          href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+        }}
       />
 
-       
+
       <Footer />
     </>
   )

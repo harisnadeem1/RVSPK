@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { FileText, Upload, CheckCircle, Shield, Key, Wallet, Info } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-function HowToOpenAccount({ 
+function HowToOpenAccount({
   heading = "How to open your account",
   subheading = "Open your account digitally in a few simple steps and start trading with ease.",
   steps = [
@@ -71,11 +71,14 @@ function HowToOpenAccount({
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}
-        <div className="max-w-2xl mx-auto text-center mb-10 sm:mb-14">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
+        <div className="max-w-2xl mx-auto text-left sm:text-center mb-10 sm:mb-14">
+          <span className="inline-block text-base font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+            Start Trading in Minutes
+          </span>
+          <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3 sm:mb-4">
             {heading}
           </h2>
-          <p className="text-sm sm:text-base md:text-lg text-muted-foreground leading-relaxed">
+          <p className="text-base sm:text-base md:text-lg text-foreground leading-relaxed">
             {subheading}
           </p>
         </div>
@@ -97,18 +100,18 @@ function HowToOpenAccount({
               {/* Step number badge */}
               <div className="flex items-start justify-between mb-4 sm:mb-5">
                 <div className="h-10 w-10 sm:h-11 sm:w-11 rounded-xl bg-accent/10 flex items-center justify-center">
-                  <step.icon className="h-5 w-5 sm:h-5.5 sm:w-5.5 text-accent" aria-hidden="true" />
+                  <step.icon className="h-5.5 w-5.5 sm:h-5.5 sm:w-5.5 text-accent" aria-hidden="true" />
                 </div>
                 <div className="h-8 w-8 sm:h-9 sm:w-9 rounded-full bg-primary/10 flex items-center justify-center">
-                  <span className="text-primary font-bold text-sm sm:text-base">{step.number}</span>
+                  <span className="text-primary font-bold text-base sm:text-base">{step.number}</span>
                 </div>
               </div>
 
               {/* Step content */}
-              <h3 className="text-base sm:text-lg font-semibold text-foreground mb-2">
+              <h3 className="text-lg sm:text-lg font-semibold text-foreground mb-2">
                 {step.title}
               </h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
                 {step.description}
               </p>
             </motion.div>
@@ -130,7 +133,7 @@ function HowToOpenAccount({
                   <Info className="h-4 w-4 sm:h-4.5 sm:w-4.5 text-accent" aria-hidden="true" />
                 </div>
               </div>
-              <p className="text-xs sm:text-sm text-foreground leading-relaxed flex-1">
+              <p className="text-base sm:text-sm text-foreground leading-relaxed flex-1">
                 {infoNote}
               </p>
             </div>
@@ -143,24 +146,24 @@ function HowToOpenAccount({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6"
+          className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 "
         >
           <a
-  href={primaryCTA.href}
-  target="_blank"
-  rel="noopener noreferrer"
-  className="w-full sm:w-auto"
->
-  <Button
-    size="lg"
-    className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5"
-  >
-    {primaryCTA.text}
-  </Button>
-</a>
-          <Link 
+            href={primaryCTA.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto "
+          >
+            <Button
+              size="lg"
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5"
+            >
+              {primaryCTA.text}
+            </Button>
+          </a>
+          <Link
             to={secondaryCTA.href}
-            className="text-accent hover:text-accent/80 font-semibold text-sm sm:text-base transition-colors"
+            className="text-accent hover:text-accent/80 font-semibold text-base sm:text-base transition-colors"
           >
             {secondaryCTA.text} →
           </Link>

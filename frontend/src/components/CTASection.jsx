@@ -64,7 +64,7 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
             <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${
               isMuted ? 'bg-accent' : 'bg-white/80'
             }`} />
-            <span className={`text-xs font-semibold tracking-[0.2em] uppercase ${
+            <span className={`text-[15px] font-semibold tracking-[0.2em] uppercase ${
               isMuted ? 'text-accent' : 'text-white/80'
             }`}>
               Get Started Today
@@ -72,14 +72,14 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
           </div>
 
           {/* Headline */}
-          <h2 className={`text-2xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 ${
+          <h2 className={`text-3xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 ${
             isMuted ? 'text-foreground' : 'text-primary-foreground'
           }`}>
             {headline}
           </h2>
 
           {/* Description */}
-          <p className={`text-sm sm:text-base leading-relaxed mb-8 max-w-xl mx-auto ${
+          <p className={`text-base sm:text-base leading-relaxed mb-8 max-w-xl mx-auto ${
             isMuted ? 'text-muted-foreground' : 'text-primary-foreground/80'
           }`}>
             {description}
@@ -92,7 +92,7 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
               <CTALink cta={primaryCTA} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className={`w-full sm:w-auto px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
+                  className={`w-full sm:w-auto px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
                     isMuted
                       ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20'
                       : 'bg-white text-primary hover:bg-white/90 shadow-lg shadow-black/20'
@@ -108,7 +108,7 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
               <CTALink cta={secondaryCTA} className="w-full sm:w-auto">
                 <Button
                   size="lg"
-                  className={`w-full sm:w-auto px-8 py-5 sm:py-6 text-sm sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
+                  className={`w-full sm:w-auto px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
                     isMuted
                       ? 'bg-transparent border border-primary text-primary hover:bg-primary hover:text-primary-foreground'
                       : 'bg-white/10 border border-white/40 text-primary-foreground hover:bg-white/20 hover:border-white/70 backdrop-blur-sm'

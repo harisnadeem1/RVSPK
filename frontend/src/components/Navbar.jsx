@@ -266,7 +266,7 @@ function Navbar() {
         {/* Drawer header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-border/60">
           <Link to="/" onClick={() => setMobileMenuOpen(false)}>
-            <img src="/rvspk_logo.png" alt="Right Vision Securities" className="h-9 w-auto" />
+            <img src="/rvspk_logo.png" alt="Right Vision Securities" className="h-28 w-auto" />
           </Link>
           <button
             className="flex h-8 w-8 items-center justify-center rounded-lg text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
@@ -283,7 +283,7 @@ function Navbar() {
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
                 }`}
             >
               Home
@@ -322,7 +322,7 @@ function Navbar() {
             <Link
               to="/reports"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/reports') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/reports') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
                 }`}
             >
               Reports
@@ -331,7 +331,7 @@ function Navbar() {
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[15px] font-medium transition-colors ${isActive('/contact') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/contact') ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
                 }`}
             >
               Contact

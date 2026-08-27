@@ -44,11 +44,11 @@ function PageHero({ title, subtitle, backgroundImage, breadcrumbs }) {
                 <ChevronRight className="h-3 w-3 text-white/30 flex-shrink-0" />
                 {crumb.path ? (
                   <Link to={crumb.path}
-                    className="text-[11px] font-medium text-white/60 hover:text-accent transition-colors">
+                    className="text-[14px] font-medium text-white/60 hover:text-accent transition-colors">
                     {crumb.label}
                   </Link>
                 ) : (
-                  <span className="text-[11px] font-semibold text-white/90">
+                  <span className="text-[14px] font-semibold text-white/90">
                     {crumb.label}
                   </span>
                 )}
@@ -62,7 +62,7 @@ function PageHero({ title, subtitle, backgroundImage, breadcrumbs }) {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.08 }}
-          className="text-2xl sm:text-3xl md:text-4xl font-bold text-white
+          className="text-3xl sm:text-3xl md:text-4xl font-bold text-white
             leading-tight tracking-tight mb-3 capitalize"
         >
           {title}
@@ -74,7 +74,7 @@ function PageHero({ title, subtitle, backgroundImage, breadcrumbs }) {
             initial={{ opacity: 0, y: 8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="text-sm sm:text-base text-white/65 leading-relaxed
+            className="text-base sm:text-base text-white/65 leading-relaxed
               max-w-xl mx-auto"
           >
             {subtitle}

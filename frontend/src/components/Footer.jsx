@@ -71,11 +71,11 @@ function Footer() {
               <img
                 src="/rvspk_logo.png"
                 alt="Right Vision Securities"
-                className="h-14 w-auto brightness-0 invert"
+                className="h-20 w-auto brightness-0 invert"
               />
             </Link>
 
-            <p className="mb-6 max-w-sm text-sm leading-relaxed text-primary-foreground/50">
+            <p className="mb-6 max-w-sm text-base leading-relaxed text-primary-foreground/50">
               Right Vision Securities (Pvt.) Limited is a SECP-licensed and
               PMEX-registered futures brokerage company associated with the
               Right Vision Group (est. 2007). We provide transparent,
@@ -90,15 +90,15 @@ function Footer() {
                   href="tel:+923108248717"
                   className="group flex items-start gap-3"
                 >
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
-                    <Phone className="h-3.5 w-3.5 text-stone-50" />
+                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
+                    <Phone className="h-5 w-5 text-stone-50" />
                   </div>
 
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
+                    <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       +92 310 8248717
                     </div>
-                    <div className="text-xs text-primary-foreground/55">
+                    <div className="text-base text-primary-foreground/55">
                       Call / WhatsApp · Business hours
                     </div>
                   </div>
@@ -110,15 +110,15 @@ function Footer() {
                   href="mailto:hello@rvspk.com"
                   className="group flex items-start gap-3"
                 >
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
-                    <Mail className="h-3.5 w-3.5 text-stone-50" />
+                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
+                    <Mail className="h-5 w-5 text-stone-50" />
                   </div>
 
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
+                    <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       hello@rvspk.com
                     </div>
-                    <div className="text-xs text-primary-foreground/55">
+                    <div className="text-base text-primary-foreground/55">
                       We reply within 24 hours
                     </div>
                   </div>
@@ -132,15 +132,15 @@ function Footer() {
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3"
                 >
-                  <div className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
-                    <MapPin className="h-3.5 w-3.5 text-stone-50" />
+                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
+                    <MapPin className="h-5 w-5 text-stone-50" />
                   </div>
 
                   <div>
-                    <div className="text-sm font-medium text-primary-foreground transition-colors group-hover:text-accent">
+                    <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
                       74-R, GCP Housing Society, Johar Town
                     </div>
-                    <div className="text-xs text-primary-foreground/55">
+                    <div className="text-base text-primary-foreground/55">
                       Lahore, Punjab, Pakistan
                     </div>
                   </div>
@@ -151,7 +151,7 @@ function Footer() {
 
           {/* Quick Links */}
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+            <h3 className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
               Quick Links
             </h3>
 
@@ -160,7 +160,7 @@ function Footer() {
                 <li key={link.path}>
                   <Link
                     to={link.path}
-                    className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
+                    className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </Link>
@@ -169,7 +169,7 @@ function Footer() {
             </ul>
 
             {/* Reports */}
-            <h3 className="mb-4 mt-8 text-sm font-semibold uppercase tracking-widest text-primary-foreground">
+            <h3 className="mb-4 mt-8 text-lg font-semibold uppercase tracking-widest text-primary-foreground">
               Reports
             </h3>
 
@@ -177,7 +177,7 @@ function Footer() {
               <li>
                 <Link
                   to="/reports"
-                  className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
+                  className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
                 >
                   Daily &amp; Monthly Reports
                 </Link>
@@ -187,7 +187,7 @@ function Footer() {
 
           {/* Investor Resources */}
           <div className="lg:col-span-3">
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+            <h3 className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
               Investor Resources
             </h3>
 
@@ -203,8 +203,7 @@ function Footer() {
         className="group block"
       >
         {/* Text link */}
-        <div className="flex items-start gap-3 text-sm text-primary-foreground/60 transition-colors group-hover:text-accent">
-          <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent transition-colors group-hover:bg-primary-foreground" />
+        <div className="flex items-start gap-3 text-base text-primary-foreground/60 transition-colors group-hover:text-accent">
 
           <span className="leading-relaxed">{link.label}</span>
         </div>
@@ -226,7 +225,7 @@ function Footer() {
 
           {/* MT Trading Platforms */}
           <div className="lg:col-span-3">
-            <h3 className="mb-4 text-sm font-bold uppercase tracking-[0.18em] text-primary-foreground">
+            <h3 className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
               MT Trading Platforms
             </h3>
 
@@ -237,7 +236,7 @@ function Footer() {
                     href={link.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-sm text-primary-foreground/50 transition-colors hover:text-accent"
+                    className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
                   >
                     {link.label}
                   </a>

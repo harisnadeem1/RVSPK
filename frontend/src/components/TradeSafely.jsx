@@ -29,13 +29,13 @@ export default function TradeSafelySection() {
           {/* ── LEFT — Investor Guidelines ── */}
           <div className="flex flex-col gap-5">
             <div>
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-2">
+              <span className="inline-block text-base font-semibold tracking-[0.2em] uppercase text-accent mb-2">
                 Investor Awareness
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-foreground leading-tight mb-2">
+              <h2 className="text-3xl sm:text-3xl font-extrabold text-foreground leading-tight mb-2">
                 Investor Guidelines
               </h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-base text-foreground leading-relaxed">
                 Follow these guidelines to protect your investment and trade safely
                 on Pakistan's regulated commodity futures exchange.
               </p>
@@ -52,7 +52,7 @@ export default function TradeSafelySection() {
                   className="flex items-start gap-3 bg-muted rounded-xl px-4 pt-3"
                 >
                   <span className="mt-2 h-1.5 w-1.5 rounded-full bg-accent shrink-0" />
-                  <span className="text-sm text-foreground leading-relaxed">{item}</span>
+                  <span className="text-base text-foreground leading-relaxed">{item}</span>
                 </motion.li>
               ))}
             </ul>
@@ -75,9 +75,7 @@ export default function TradeSafelySection() {
                     alt="Right Vision Securities"
                     className="h-10 sm:h-12 w-auto object-contain"
                   />
-                  <span className="text-[10px] sm:text-xs text-muted-foreground mt-0.5 italic">
-                    Invest with Right Vision
-                  </span>
+                  
                 </div>
               </div>
 
@@ -90,7 +88,7 @@ export default function TradeSafelySection() {
 
               {/* Block 1 — SBP Advisory */}
               <div className="px-1 py-1">
-                <p className="text-xs sm:text-sm text-foreground leading-relaxed">
+                <p className="text-base sm:text-sm text-foreground leading-relaxed">
                   The State Bank of Pakistan (SBP) has issued an{" "}
                   <a
                     href="https://www.sbp.org.pk/press/2022/Pr-18-May-2022.pdf"
@@ -109,7 +107,7 @@ export default function TradeSafelySection() {
 
               {/* Block 2 — PMEX legitimacy */}
               <div className="px-1 py-1">
-                <p className="text-xs sm:text-sm text-foreground leading-relaxed">
+                <p className="text-base sm:text-sm text-foreground leading-relaxed">
                   PMEX is Pakistan's only SECP-licensed and regulated commodity futures exchange.
                   Any app, group, or individual offering trading outside this framework is
                   unregulated and puts your money at risk. Always trade through PMEX-licensed
@@ -119,7 +117,7 @@ export default function TradeSafelySection() {
 
               {/* Block 3 — Bold closing statement */}
               <div className="px-1 py-1">
-                <p className="text-xs sm:text-sm font-bold text-foreground leading-relaxed">
+                <p className="text-base sm:text-sm font-bold text-foreground leading-relaxed">
                   Stay vigilant, stay informed, and trade confidently on Pakistan's only
                   regulated commodity futures exchange.
                 </p>
@@ -134,7 +132,7 @@ export default function TradeSafelySection() {
                 >
                   <Button
                     size="lg"
-                    className="bg-[#8db96e] hover:bg-[#7aa85c] text-white font-bold text-sm sm:text-base px-8 py-6 rounded-2xl transition-all hover:-translate-y-0.5 shadow-md"
+                    className="bg-[#79AD14] hover:bg-[#7aa85c] text-white font-bold text-base sm:text-base px-8 py-6 rounded-2xl transition-all hover:-translate-y-0.5 shadow-md"
                   >
                     Open Account Online with Right Vision
                   </Button>

@@ -29,7 +29,7 @@ function SubAccordion({ item, onItemClick, depth = 1 }) {
       <Link
         to={item.path}
         onClick={onItemClick}
-        className={`flex items-center gap-2 ${paddingLeft} py-2.5 text-sm text-muted-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
+        className={`flex items-center gap-2 ${paddingLeft} py-2.5 text-[16px] text-sm text-muted-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
       >
         <span className="h-1 w-1 rounded-full bg-muted-foreground/40 shrink-0" />
         {item.label}
@@ -45,7 +45,7 @@ function SubAccordion({ item, onItemClick, depth = 1 }) {
     <div>
       <button
         onClick={() => setOpen(!open)}
-        className={`flex w-full items-center justify-between ${paddingLeft} py-2.5 text-sm font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
+        className={`flex w-full items-center justify-between ${paddingLeft} py-2.5 text-[16px] font-medium text-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
       >
         <div className="flex items-center gap-2">
           <span className="h-1 w-1 rounded-full bg-muted-foreground/40 shrink-0" />
@@ -87,7 +87,7 @@ function MobileNavAccordion({ label, items, onItemClick, isActive }) {
     <div>
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className={`w-full flex items-center justify-between px-4 py-3 font-medium transition-colors duration-200 ${
+        className={`w-full flex items-center justify-between px-4 py-3 text-[18px] font-medium transition-colors duration-200 ${
           isActive ? 'text-accent bg-accent/10' : 'text-foreground hover:bg-muted'
         }`}
         aria-expanded={isExpanded}

@@ -15,7 +15,7 @@ import {
   Gem,
   DollarSign,
   Sparkles,
-  Droplets, CircleDot, Monitor,ExternalLink, FileText
+  Droplets, CircleDot, Monitor, ExternalLink, FileText
 } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
@@ -194,7 +194,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-[10px] sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-primary-foreground/80 mb-3 sm:mb-4"
+                className="text-[16px] sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-primary-foreground/80 mb-3 sm:mb-4"
               >
                 Invest with
               </motion.p>
@@ -203,7 +203,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-4 sm:mb-5"
+                className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-4 sm:mb-5"
               >
                 Right Vision
               </motion.h1>
@@ -212,7 +212,7 @@ function HomePage() {
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.45 }}
-                className="text-sm sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-7 sm:mb-10 max-w-xl mx-auto lg:mx-0"
+                className="text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-7 sm:mb-10 max-w-xl mx-auto lg:mx-0"
               >
                 Trade Oil, Gold, Silver, Platinum, Dollar like other international markets, fully regulated and licensed. Join international trading now.
               </motion.p>
@@ -231,7 +231,7 @@ function HomePage() {
                 >
                   <Button
                     size="lg"
-                    className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-7 sm:px-8 py-4 sm:py-7 text-sm sm:text-lg font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
+                    className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-7 sm:px-8 py-6 sm:py-7 text-base sm:text-lg font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
                   >
                     Open Account Online
                     <ArrowRight className="ml-2 h-4 w-4" />
@@ -240,16 +240,16 @@ function HomePage() {
               </motion.div>
             </motion.div>
 
-           <motion.div
-  initial={{ opacity: 0, scale: 0.96 }}
-  animate={{ opacity: 1, scale: 1 }}
-  transition={{ duration: 0.8, delay: 0.2 }}
-  className="flex justify-center lg:justify-end"
->
-  <div className="w-full max-w-[390px] sm:max-w-[520px] lg:max-w-[560px]">
-    <MarketCarousel />
-  </div>
-</motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex justify-center lg:justify-end"
+            >
+              <div className="w-full max-w-[390px] sm:max-w-[520px] lg:max-w-[560px]">
+                <MarketCarousel />
+              </div>
+            </motion.div>
           </div>
         </div>
 
@@ -263,267 +263,267 @@ function HomePage() {
 
 
       {/* Sahulat Account */}
-<section className="section-spacing bg-muted">
-  <div className="container-custom px-4 sm:px-6">
-    <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      {/* Left — Sahulat heading & CTA */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          For Low Risk Investors
-        </span>
-
-        <motion.h2
-          animate={{ opacity: [1, 0.35, 1] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl"
-          style={{ color: "#79AB19" }}
-        >
-          Sahulat Account for Low Risk Investors
-        </motion.h2>
-
-     <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-base">
-  Sahulat Account is ideal for beginners and new investors, students,
-  low net-worth investors, and households seeking a simple way to access
-  the commodity market without leverage.
-</p>
-
-
-
-        <div className="flex flex-col items-start gap-4">
-          {/* Main Sahulat CTA */}
-          <Link to="/clients/sahulat-account-guidelines">
-            <Button
-              size="lg"
-              className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+      <section className="section-spacing bg-muted">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left — Sahulat heading & CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              View Sahulat Account Guidelines
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
-          {/* PMEX notification links */}
-          <div className="flex flex-wrap gap-3">
-          <Link
-  to="/notifications/14"
-  className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
->
-  PMEX Notification No. 14
-  <ExternalLink className="h-4 w-4" />
-</Link>
+              <span className="mb-4 inline-block text-[15px] font-semibold uppercase tracking-[0.2em] text-accent">
+                For Low Risk Investors
+              </span>
 
-            <Link
-                to="/notifications/38"
+              <motion.h2
+                animate={{ opacity: [1, 0.35, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                className="mb-5 text-3xl font-bold leading-tight sm:text-3xl md:text-4xl"
+                style={{ color: "#79AD14" }}
+              >
+                Sahulat Account for Low Risk Investors
+              </motion.h2>
 
-              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+              <p className="mb-8 text-base leading-relaxed text-foreground sm:text-base">
+                Sahulat Account is ideal for beginners and new investors, students,
+                low net-worth investors, and households seeking a simple way to access
+                the commodity market without leverage.
+              </p>
+
+
+
+              <div className="flex flex-col items-start gap-4">
+                {/* Main Sahulat CTA */}
+                <Link to="/clients/sahulat-account-guidelines">
+                  <Button
+                    size="lg"
+                    className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+                  >
+                    View Sahulat Account Guidelines
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+                {/* PMEX notification links */}
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    to="/notifications/14"
+                    className="inline-flex items-center gap-2 rounded-md border border-[#79AD14]/35 bg-[#79AD14]/5 px-4 py-2.5 text-base font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    PMEX Notification No. 14
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+
+                  <Link
+                    to="/notifications/38"
+
+                    className="inline-flex items-center gap-2 rounded-md border border-[#79AD14]/35 bg-[#79AD14]/5 px-4 py-2.5 text-base font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    PMEX Notification No. 38
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+                </div>
+
+
+              </div>
+            </motion.div>
+
+            {/* Right — Sahulat features card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="relative overflow-hidden rounded-xl border border-[#79AD14]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7"
             >
-              PMEX Notification No. 38
-              <ExternalLink className="h-4 w-4" />
-            </Link>
+              <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
+
+              <ul className="relative z-10 space-y-4">
+                {[
+                  "Only national individuals are allowed to open an account",
+                  "Quick and simplified account opening process",
+                  "No extensive documentation required",
+                  "Trade without leverage — no leverage position is allowed",
+                  "Exposure limit up to Rs. 3m",
+                  "Permissible to open Sahulat Account with multiple brokers",
+                ].map((point, i) => (
+                  <li key={i} className="flex items-start gap-3">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AD14]/10">
+                      <CheckCircle className="h-3.5 w-3.5 text-[#79AD14]" />
+                    </span>
+
+                    <span className="text-base leading-relaxed text-muted-foreground sm:text-base">
+                      {point}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
           </div>
-
-          
         </div>
-      </motion.div>
-
-      {/* Right — Sahulat features card */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="relative overflow-hidden rounded-xl border border-[#79AB19]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7"
-      >
-        <div className="absolute left-0 top-0 h-1 w-full bg-[#79AB19]" />
-
-        <ul className="relative z-10 space-y-4">
-          {[
-            "Only national individuals are allowed to open an account",
-            "Quick and simplified account opening process",
-            "No extensive documentation required",
-            "Trade without leverage — no leverage position is allowed",
-            "Exposure limit up to Rs. 3m",
-            "Permissible to open Sahulat Account with multiple brokers",
-          ].map((point, i) => (
-            <li key={i} className="flex items-start gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AB19]/10">
-                <CheckCircle className="h-3.5 w-3.5 text-[#79AB19]" />
-              </span>
-
-              <span className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                {point}
-              </span>
-            </li>
-          ))}
-        </ul>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
 
 
       {/* Global Access Section */}
-<section className="section-spacing bg-card">
-  <div className="container-custom px-4 sm:px-6">
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="mx-auto text-center"
-    >
-      <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
-        Global Access
-      </span>
-
-      <h2 className="max-w-5xl mx-auto text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
-        Right Vision Securities, a trusted brokerage house, is your gateway to the world’s markets
-      </h2>
-
-      <p className="max-w-3xl mx-auto text-sm sm:text-base text-muted-foreground leading-relaxed">
-        Right Vision offers low-cost, seamless global access to trading in futures contracts
-        across multiple commodity categories for all types of accountholders, including
-        Individual, Joint, Corporate, and Sahulat accounts.
-      </p>
-    </motion.div>
-  </div>
-</section>
-
-
-{/* Micro Futures Contracts — reversed desktop layout */}
-<section className="section-spacing bg-background">
-  <div className="container-custom px-4 sm:px-6">
-    <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      {/* Left — Micro Futures categories card */}
-      <motion.div
-  initial={{ opacity: 0, x: -30 }}
-  whileInView={{ opacity: 1, x: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.6 }}
-  className="order-2 relative overflow-hidden rounded-xl border border-[#79AB19]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7 lg:order-1"
->
-        <div className="absolute left-0 top-0 h-1 w-full bg-[#79AB19]" />
-
-        <div className="relative z-10">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#79AB19]/10">
-              <FileText className="h-5 w-5 text-[#79AB19]" />
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold text-foreground sm:text-lg">
-                Available Contract Categories
-              </h3>
-              <p className="text-xs text-muted-foreground sm:text-sm">
-                Smaller-sized cash-settled futures
-              </p>
-            </div>
-          </div>
-
-          <ul className="space-y-4">
-            {[
-              "Energy Commodities",
-              "Base Metals",
-              "Precious Metals",
-              "US Equity Index Futures",
-            ].map((category, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AB19]/10">
-                  <CheckCircle className="h-3.5 w-3.5 text-[#79AB19]" />
-                </span>
-
-                <span className="text-sm leading-relaxed text-muted-foreground sm:text-base">
-                  {category}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-7 rounded-lg border border-[#79AB19]/15 bg-[#79AB19]/5 p-4">
-            <p className="text-sm font-medium leading-relaxed text-[#5E8410]">
-              Designed for traders seeking market exposure with smaller contract
-              sizes and lower capital requirements.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Right — Micro Futures heading & CTA */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-      >
-        <span className="mb-4 inline-block text-xs font-semibold uppercase tracking-[0.2em] text-accent">
-          Trade With Smaller Capital
-        </span>
-
-        <motion.h2
-          animate={{ opacity: [1, 0.35, 1] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="mb-5 text-2xl font-bold leading-tight sm:text-3xl md:text-4xl"
-          style={{ color: "#79AB19" }}
-        >
-          Micro Futures Contracts
-        </motion.h2>
-
-        <p className="mb-4 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          Smaller-sized cash-settled futures contracts are attractive for
-          beginners and traders who prefer to start with smaller capital.
-        </p>
-
-        <p className="mb-8 text-sm leading-relaxed text-muted-foreground sm:text-base">
-          These contracts offer access to selected global commodities and financial
-          markets with clearly defined contract specifications and position limits.
-        </p>
-
-        <div className="flex flex-col items-start gap-4">
-          {/* Main document button */}
-          <a
-            href="/documents/micro-futures-contract-specifications.pdf"
-            target="_blank"
-            rel="noreferrer"
+      <section className="section-spacing bg-card">
+        <div className="container-custom px-4 sm:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mx-auto text-left sm:text-center"
           >
-            <Button
-              size="lg"
-              className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+            <span className="inline-block text-[15px] font-semibold tracking-[0.2em] text-left sm:text-center uppercase text-accent mb-4">
+              Global Access
+            </span>
+
+            <h2 className="max-w-5xl mx-auto text-3xl sm:text-3xl md:text-4xl text-left sm:text-center font-bold text-foreground leading-tight mb-5">
+              Right Vision Securities, a trusted brokerage house, is your gateway to the world’s markets
+            </h2>
+
+            <p className="max-w-3xl mx-auto text-base sm:text-base text-left sm:text-center text-foreground leading-relaxed">
+              Right Vision offers low-cost, seamless global access to trading in futures contracts
+              across multiple commodity categories for all types of accountholders, including
+              Individual, Joint, Corporate, and Sahulat accounts.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+
+      {/* Micro Futures Contracts — reversed desktop layout */}
+      <section className="section-spacing bg-background">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Left — Micro Futures categories card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 relative overflow-hidden rounded-xl border border-[#79AD14]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7 lg:order-1"
             >
-              View Contract Specifications & Position Limits
-                            <ArrowRight className="ml-2 h-4 w-4" />
+              <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
 
-            </Button>
-          </a>
+              <div className="relative z-10">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#79AD14]/10">
+                    <FileText className="h-5 w-5 text-[#79AD14]" />
+                  </div>
 
-          {/* PMEX notification links */}
-          <div className="flex flex-wrap gap-3">
-           <Link
-                to="/notifications/39"
+                  <div>
+                    <h3 className="text-base font-bold text-foreground sm:text-lg">
+                      Available Contract Categories
+                    </h3>
+                    <p className="text-sm text-muted-foreground sm:text-sm">
+                      Smaller-sized cash-settled futures
+                    </p>
+                  </div>
+                </div>
 
-              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
+                <ul className="space-y-4">
+                  {[
+                    "Energy Commodities",
+                    "Base Metals",
+                    "Precious Metals",
+                    "US Equity Index Futures",
+                  ].map((category, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AD14]/10">
+                        <CheckCircle className="h-3.5 w-3.5 text-[#79AD14]" />
+                      </span>
+
+                      <span className="text-base leading-relaxed text-muted-foreground sm:text-base">
+                        {category}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 rounded-lg border border-[#79AD14]/15 bg-[#79AD14]/5 p-4">
+                  <p className="text-sm font-medium leading-relaxed text-[#5E8410]">
+                    Designed for traders seeking market exposure with smaller contract
+                    sizes and lower capital requirements.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right — Micro Futures heading & CTA */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
             >
-              PMEX Notification No. 39
-              <ExternalLink className="h-4 w-4" />
-            </Link>
+              <span className="mb-4 inline-block text-[15px] font-semibold uppercase tracking-[0.2em] text-accent">
+                Trade With Smaller Capital
+              </span>
 
-            <Link
-                to="/notifications/41"
+              <motion.h2
+                animate={{ opacity: [1, 0.35, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                className="mb-5 text-3xl font-bold leading-tight sm:text-3xl md:text-4xl"
+                style={{ color: "#79AD14" }}
+              >
+                Micro Futures Contracts
+              </motion.h2>
 
-              className="inline-flex items-center gap-2 rounded-md border border-[#79AB19]/35 bg-[#79AB19]/5 px-4 py-2.5 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AB19] hover:text-white"
-            >
-              PMEX Notification No. 41
-              <ExternalLink className="h-4 w-4" />
-            </Link>
+              <p className="mb-4 text-base leading-relaxed text-foreground sm:text-base">
+                Smaller-sized cash-settled futures contracts are attractive for
+                beginners and traders who prefer to start with smaller capital.
+              </p>
+
+              <p className="mb-8 text-base leading-relaxed text-foreground sm:text-base">
+                These contracts offer access to selected global commodities and financial
+                markets with clearly defined contract specifications and position limits.
+              </p>
+
+              <div className="flex flex-col items-start gap-4">
+                {/* Main document button */}
+                <a
+                  href="/documents/micro-futures-contract-specifications.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    className="bg-primary py-6 text-base text-primary-foreground transition-all hover:-translate-y-0.5 hover:bg-primary/90 sm:py-6"
+                  >
+                    View Contract Specifications & Position Limits
+                    <ArrowRight className="ml-2 h-4 w-4" />
+
+                  </Button>
+                </a>
+
+                {/* PMEX notification links */}
+                <div className="flex flex-wrap gap-3">
+                  <Link
+                    to="/notifications/39"
+
+                    className="inline-flex items-center gap-2 rounded-md border border-[#79AD14]/35 bg-[#79AD14]/5 px-4 py-2.5 text-base font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    PMEX Notification No. 39
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+
+                  <Link
+                    to="/notifications/41"
+
+                    className="inline-flex items-center gap-2 rounded-md border border-[#79AD14]/35 bg-[#79AD14]/5 px-4 py-2.5 text-base font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    PMEX Notification No. 41
+                    <ExternalLink className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Company Intro */}
       <section className="section-spacing bg-muted">
@@ -537,18 +537,18 @@ function HomePage() {
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
             >
-              <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-4">
+              <span className="inline-block text-base font-semibold tracking-[0.2em] uppercase text-accent mb-4">
                 Who We Are
               </span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
+              <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground leading-tight mb-5">
                 Pakistan's trusted commodity & futures brokerage
               </h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-4">
+              <p className="text-base sm:text-base text-foreground leading-relaxed mb-4">
                 Right Vision Securities (Private) Limited is a Future Brokerage Company registered
                 with PMEX and licensed under SECP as a Future Broker — an associated company of the
                 Right Vision Group, which has been serving Pakistan since 2007.
               </p>
-              <p className="text-sm sm:text-base text-muted-foreground leading-relaxed mb-8">
+              <p className="text-base sm:text-base text-foreground leading-relaxed mb-8">
                 We are committed to providing 24/7 efficient, transparent, and reliable brokerage
                 services across multi-asset classes, with the lowest brokerage commission and a
                 unique Daily Newswire to keep our clients informed on market current affairs.
@@ -556,7 +556,7 @@ function HomePage() {
               <Link to="/about">
                 <Button
                   size="lg"
-                  className="bg-primary text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
+                  className="bg-primary text-base py-6 text-primary-foreground hover:bg-primary/90 transition-all hover:-translate-y-0.5"
                 >
                   Learn more about us
                   <ArrowRight className="ml-2 h-4 w-4" />
@@ -595,16 +595,16 @@ function HomePage() {
                 },
               ].map((stat, i) => (
                 <motion.div
-  key={i}
-  initial={{ opacity: 0, y: 20 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.5, delay: i * 0.1 }}
-  whileHover={{
-    y: -6,
-    scale: 1.03,
-  }}
-  className="
+                  key={i}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  whileHover={{
+                    y: -6,
+                    scale: 1.03,
+                  }}
+                  className="
     relative
     overflow-hidden
     rounded-xl
@@ -613,12 +613,12 @@ function HomePage() {
     sm:p-5
 
     bg-gradient-to-br
-    from-[#79ab19]/5
+    from-[#79AD14]/5
     via-white
-    to-[#79ab19]/10
+    to-[#79AD14]/10
 
     border
-    border-[#79ab19]/20
+    border-[#79AD14]/20
 
     shadow-lg
     hover:shadow-2xl
@@ -627,33 +627,33 @@ function HomePage() {
     duration-300
     group
   "
->
-  {/* Top accent line */}
-  <div
-    className="absolute left-0 top-0 h-1 w-full"
-    style={{
-      background: "#79ab19",
-    }}
-  />
+                >
+                  {/* Top accent line */}
+                  <div
+                    className="absolute left-0 top-0 h-1 w-full"
+                    style={{
+                      background: "#79AD14",
+                    }}
+                  />
 
-  {/* Background glow */}
-  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79ab19]/20 blur-3xl" />
+                  {/* Background glow */}
+                  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79AD14]/20 blur-3xl" />
 
-  {/* Content */}
-  <div className="relative z-10">
-    <div className="mb-2 text-base font-bold text-primary transition-colors duration-300 group-hover:text-[#79ab19] sm:text-lg">
-      {stat.value}
-    </div>
+                  {/* Content */}
+                  <div className="relative z-10">
+                    <div className="mb-2 text-lg font-bold text-primary transition-colors duration-300 group-hover:text-[#79AD14] sm:text-lg">
+                      {stat.value}
+                    </div>
 
-    <div className="mb-1.5 text-xs font-semibold text-foreground sm:text-sm">
-      {stat.label}
-    </div>
+                    <div className="mb-1.5 text-base font-semibold text-foreground sm:text-sm">
+                      {stat.label}
+                    </div>
 
-    <div className="text-[11px] leading-relaxed text-muted-foreground sm:text-xs">
-      {stat.description}
-    </div>
-  </div>
-</motion.div>
+                    <div className="text-[15px] leading-relaxed text-muted-foreground sm:text-xs">
+                      {stat.description}
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </motion.div>
 
@@ -661,7 +661,7 @@ function HomePage() {
         </div>
       </section>
 
-      
+
 
 
       {/* Our Credentials */}
@@ -669,14 +669,14 @@ function HomePage() {
         <div className="container-custom px-4 sm:px-6">
 
           {/* Section header */}
-          <div className="max-w-2xl mx-auto text-center mb-12 sm:mb-8">
-            <span className="inline-block text-xs font-semibold tracking-[0.2em] uppercase text-accent mb-3">
+          <div className="max-w-2xl mx-auto text-left sm:text-center mb-12 sm:mb-8">
+            <span className="inline-block text-base font-semibold tracking-[0.2em] uppercase text-accent mb-3">
               Our Credentials
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
+            <h2 className="text-3xl sm:text-3xl md:text-4xl font-bold text-foreground mb-3">
               Trusted and regulated
             </h2>
-            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-base sm:text-base text-foreground leading-relaxed">
               Building confidence through regulatory compliance and professional service
             </p>
           </div>
@@ -742,62 +742,62 @@ function HomePage() {
             </motion.div> */}
 
             {/* RIGHT — PMEX */}
-           <motion.div
-  variants={itemVariants}
-  className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-5 rounded-2xl border border-border/60 bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-lg lg:grid-cols-[0.9fr_1.1fr] lg:gap-8 lg:p-6"
->
-  {/* Left: PMEX information */}
-  <div className="flex flex-col gap-4">
-    {/* Logo and title */}
-    <div className="flex items-center gap-3">
-      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-white p-2 shadow-sm">
-        <img
-          src="/company_logo/pmex.svg"
-          alt="PMEX"
-          className="h-full w-full object-contain"
-        />
-      </div>
+            <motion.div
+              variants={itemVariants}
+              className="mx-auto grid w-full max-w-5xl grid-cols-1 items-center gap-5 rounded-2xl border border-border/60 bg-card p-5 transition-all duration-300 hover:border-accent/30 hover:shadow-lg lg:grid-cols-[0.9fr_1.1fr] lg:gap-8 lg:p-6"
+            >
+              {/* Left: PMEX information */}
+              <div className="flex flex-col gap-4">
+                {/* Logo and title */}
+                <div className="flex items-center gap-3">
+                  <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl border border-border/40 bg-white p-2 shadow-sm">
+                    <img
+                      src="/company_logo/pmex.svg"
+                      alt="PMEX"
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
 
-      <div>
-        <h3 className="text-base font-bold leading-tight text-foreground sm:text-lg">
-          PMEX Registered
-        </h3>
+                  <div>
+                    <h3 className="text-lg font-bold leading-tight text-foreground sm:text-lg">
+                      PMEX Registered
+                    </h3>
 
-        <p className="mt-1 text-xs font-medium text-accent">
-          Est. 2007 · Pakistan's Only Commodity Exchange
-        </p>
-      </div>
-    </div>
+                    <p className="mt-1 text-sm font-medium text-accent">
+                      Est. 2007 · Pakistan's Only Commodity Exchange
+                    </p>
+                  </div>
+                </div>
 
-    {/* Shorter description */}
-    <p className="text-sm leading-relaxed text-muted-foreground">
-      Right Vision Securities is registered with Pakistan Mercantile Exchange
-      (PMEX), Pakistan’s multi-commodity futures exchange regulated by SECP.
-    </p>
+                {/* Shorter description */}
+                <p className="text-base leading-relaxed text-foreground">
+                  Right Vision Securities is registered with Pakistan Mercantile Exchange
+                  (PMEX), Pakistan’s multi-commodity futures exchange regulated by SECP.
+                </p>
 
-    {/* Compact label */}
-    <div className="inline-flex w-fit items-center rounded-full border border-accent/20 bg-accent/10 px-3 py-1.5 text-xs font-semibold text-accent">
-      PMEX Trading Right Entitlement Certificate
-    </div>
-  </div>
+                {/* Compact label */}
+                <div className="inline-flex w-fit items-center rounded-full border border-accent/20 bg-accent/10 px-3 py-1.5 text-sm font-semibold text-accent">
+                  PMEX Trading Right Entitlement Certificate
+                </div>
+              </div>
 
-  {/* Right: licence image */}
-  <div className="relative w-full">
-    <div className="pointer-events-none absolute inset-0 scale-95 rounded-2xl bg-accent/10 blur-2xl" />
+              {/* Right: licence image */}
+              <div className="relative w-full">
+                <div className="pointer-events-none absolute inset-0 scale-95 rounded-2xl bg-accent/10 blur-2xl" />
 
-    <div className="relative overflow-hidden rounded-xl border border-border/60 bg-white shadow-md">
-      <img
-        src="/documents/licence/pmex_licence.jpg"
-        alt="PMEX Licence — Right Vision Securities"
-        className="aspect-[4/3] w-full object-contain p-2 sm:p-3"
-      />
-    </div>
+                <div className="relative overflow-hidden rounded-xl border border-border/60 bg-white shadow-md">
+                  <img
+                    src="/documents/licence/pmex_licence.jpg"
+                    alt="PMEX Licence — Right Vision Securities"
+                    className="aspect-[4/3] w-full object-contain p-2 sm:p-3"
+                  />
+                </div>
 
-    <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-border/60 bg-card px-3 py-1.5 shadow-lg">
-      <span className="text-xs font-semibold text-foreground">PMEX TREC</span>
-    </div>
-  </div>
-</motion.div>
+                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-border/60 bg-card px-3 py-1.5 shadow-lg">
+                  <span className="text-xs font-semibold text-foreground">PMEX TREC</span>
+                </div>
+              </div>
+            </motion.div>
 
           </motion.div>
         </div>
@@ -912,12 +912,12 @@ function HomePage() {
     sm:p-6
 
     bg-gradient-to-br
-    from-[#79ab19]/5
+    from-[#79AD14]/5
     via-white
-    to-[#79ab19]/10
+    to-[#79AD14]/10
 
     border
-    border-[#79ab19]/20
+    border-[#79AD14]/20
 
     shadow-lg
     hover:shadow-2xl
@@ -928,13 +928,13 @@ function HomePage() {
     group
   "
 >
-  <div className="absolute left-0 top-0 h-1 w-full bg-[#79ab19]" />
+  <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
 
-  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79ab19]/20 blur-3xl" />
+  <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-[#79AD14]/20 blur-3xl" />
 
   <div className="relative z-10">
     <feature.icon
-      className="mb-4 h-5 w-5 text-[#79ab19]"
+      className="mb-4 h-5 w-5 text-[#79AD14]"
       aria-hidden="true"
     />
 
@@ -963,10 +963,10 @@ function HomePage() {
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}
-         secondaryCTA={{
-    text: 'Open Account Online Now',
-    href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
-  }}
+        secondaryCTA={{
+          text: 'Open Account Online Now',
+          href: 'https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ==',
+        }}
       />
 
       <Footer />
