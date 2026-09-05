@@ -32,23 +32,23 @@ function ComplianceStrip({ message }) {
           <div className="flex items-center gap-4 py-3">
             {/* Left Side */}
             <div className="flex items-center gap-2.5 shrink-0">
-             <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#FFF3C4]">
-  <AlertTriangle className="h-5 w-5 text-[#5C4A0A]" />
-</div>
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#ffd5d5]">
+                <AlertTriangle className="h-5 w-5 text-[#b8071f]" />
+              </div>
 
-<span className="hidden sm:inline whitespace-nowrap text-sm font-extrabold uppercase tracking-[0.14em] text-[#FFF3C4]">
-  Risk Warning
-</span>
+              <span className="hidden sm:inline whitespace-nowrap text-sm font-extrabold uppercase tracking-[0.14em] text-[#b8071f]">
+                Risk Warning
+              </span>
             </div>
 
             {/* Moving Text */}
             <div className="relative flex-1 overflow-hidden">
               <div className="compliance-marquee whitespace-nowrap">
-                <p className="pr-16 text-base font-semibold text-[#F8FAFC]">
+                <p className="pr-16 text-base font-semibold text-[#42409a]">
                   {text}
                 </p>
 
-                <p className="pr-16 text-base font-semibold text-[#F8FAFC]">
+                <p className="pr-16 text-base font-semibold text-[#42409a]">
                   {text}
                 </p>
               </div>

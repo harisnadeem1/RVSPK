@@ -34,6 +34,7 @@ import WhyChooseUsPage from './pages/WhyChooseUsPage.jsx';
 import TestimonialsPage from './pages/TestimonialsPage'
 import FAQPage from './pages/FAQPage'
 import CookieBanner from './components/CookieBanner.jsx'
+import BookOnlineSessionPage from './pages/BookOnlineSessionPage.jsx';
 
 function AppContent() {
   const location = useLocation();
@@ -72,6 +73,10 @@ function AppContent() {
 <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
 <Route path="/testimonials" element={<TestimonialsPage />} />
 <Route path="/faqs" element={<FAQPage />} />
+<Route
+  path="/book-online-session"
+  element={<BookOnlineSessionPage />}
+/>
 
 
         {/* Admin Routes */}

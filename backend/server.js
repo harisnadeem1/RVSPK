@@ -12,6 +12,7 @@ import complaintRoutes from './routes/complaint.js';
 import grievanceRoutes from './routes/grievance.js';
 import whistleblowerRoutes from './routes/whistleblower.js';
 import pdfRoutes from './routes/pdf.js';
+import bookingRoutes from './routes/booking.js';
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use('/api/complaint', complaintRoutes);
 app.use('/api/grievance', grievanceRoutes);
 app.use('/api/whistleblower', whistleblowerRoutes);
 app.use('/api/pdf', pdfRoutes);
+app.use('/api/bookings', bookingRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {
