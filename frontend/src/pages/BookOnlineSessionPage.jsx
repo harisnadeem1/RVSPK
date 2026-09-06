@@ -9,6 +9,7 @@ import {
     Clock3,
     Mail,
     MessageSquare,
+    Phone,
     Send,
     UserRound,
 } from 'lucide-react';
@@ -97,11 +98,15 @@ function BookOnlineSessionPage() {
     const [selectedTime, setSelectedTime] = useState('');
     const [bookingError, setBookingError] = useState('');
     const [submitted, setSubmitted] = useState(false);
-   
+
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        whatsappNumber: '',
+        profession: '',
+        city: '',
+        country: '',
         subject: '',
         message: '',
     });
@@ -151,79 +156,83 @@ function BookOnlineSessionPage() {
         }));
     };
 
-  const handleSubmit = async (event) => {
-  event.preventDefault();
+    const handleSubmit = async (event) => {
+        event.preventDefault();
 
-  if (ENABLE_SESSION_SCHEDULING && !selectedDate && !selectedTime) {
-    setBookingError(
-      'Please select both a session date and time before submitting.'
-    );
-    return;
-  }
+        if (ENABLE_SESSION_SCHEDULING && !selectedDate && !selectedTime) {
+            setBookingError(
+                'Please select both a session date and time before submitting.'
+            );
+            return;
+        }
 
-  if (ENABLE_SESSION_SCHEDULING && !selectedDate) {
-    setBookingError('Please select a preferred session date.');
-    return;
-  }
+        if (ENABLE_SESSION_SCHEDULING && !selectedDate) {
+            setBookingError('Please select a preferred session date.');
+            return;
+        }
 
-  if (ENABLE_SESSION_SCHEDULING && !selectedTime) {
-    setBookingError('Please select a preferred session time.');
-    return;
-  }
+        if (ENABLE_SESSION_SCHEDULING && !selectedTime) {
+            setBookingError('Please select a preferred session time.');
+            return;
+        }
 
-  setBookingError('');
+        setBookingError('');
 
-  const apiBaseUrl =
-    import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
+        const apiBaseUrl =
+            import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
 
-  const payload = {
-    name: formData.name.trim(),
-    email: formData.email.trim(),
-    subject: formData.subject.trim(),
-    message: formData.message.trim(),
-  };
+        const payload = {
+            name: formData.name.trim(),
+            email: formData.email.trim(),
+            whatsappNumber: formData.whatsappNumber.trim(),
+            profession: formData.profession,
+            city: formData.city.trim(),
+            country: formData.country.trim(),
+            subject: formData.subject.trim(),
+            message: formData.message.trim(),
+        };
 
-  /*
-    Only booking mode sends sessionDate and sessionTime.
-    When false, neither property exists in the request body.
-  */
-  if (ENABLE_SESSION_SCHEDULING) {
-    payload.sessionDate = formatDateForInput(selectedDate);
-    payload.sessionTime = selectedTime;
-  }
-  setSubmitted(true);
+        /*
+          Only booking mode sends sessionDate and sessionTime.
+          When false, neither property exists in the request body.
+        */
+        if (ENABLE_SESSION_SCHEDULING) {
+            payload.sessionDate = formatDateForInput(selectedDate);
+            payload.sessionTime = selectedTime;
+        }
+        setSubmitted(true);
 
-  try {
-    const response = await fetch(`${apiBaseUrl}/api/bookings`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(payload),
-    });
+        try {
+            const response = await fetch(`${apiBaseUrl}/api/bookings`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload),
+            });
 
-    const contentType = response.headers.get('content-type') || '';
+            const contentType = response.headers.get('content-type') || '';
 
-    const result = contentType.includes('application/json')
-      ? await response.json()
-      : null;
+            const result = contentType.includes('application/json')
+                ? await response.json()
+                : null;
 
-    if (!response.ok || !result?.success) {
-      throw new Error(
-        result?.error ||
-          `Unable to send your request. Server returned ${response.status}.`
-      );
-    }
+            if (!response.ok || !result?.success) {
+                throw new Error(
+                    result?.error ||
+                    `Unable to send your request. Server returned ${response.status}.`
+                );
+            }
 
-  } catch (error) {
-    console.error('Booking submission error:', error);
+        } catch (error) {
+            console.error('Booking submission error:', error);
 
-    setBookingError(
-      error.message ||
-        'Unable to send your request. Please try again later.'
-    );
-  }
-};
+            setBookingError(
+                error.message ||
+                'Unable to send your request. Please try again later.'
+            );
+        }
+    };
 
     const resetForm = () => {
         setSubmitted(false);
@@ -234,6 +243,10 @@ function BookOnlineSessionPage() {
         setFormData({
             name: '',
             email: '',
+            whatsappNumber: '',
+            profession: '',
+            city: '',
+            country: '',
             subject: '',
             message: '',
         });
@@ -265,7 +278,7 @@ function BookOnlineSessionPage() {
 
             <section className="section-spacing bg-muted">
                 <div className="container-custom">
-                    
+
 
                     <motion.div
                         initial={{ opacity: 0, y: 24 }}
@@ -273,8 +286,8 @@ function BookOnlineSessionPage() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.55 }}
                         className={`mx-auto grid max-w-7xl gap-6 lg:gap-8 ${ENABLE_SESSION_SCHEDULING
-                                ? 'grid-cols-1 lg:grid-cols-[minmax(360px,0.9fr)_minmax(0,1fr)]'
-                                : 'max-w-3xl grid-cols-1'
+                            ? 'grid-cols-1 lg:grid-cols-[minmax(360px,0.9fr)_minmax(0,1fr)]'
+                            : 'max-w-3xl grid-cols-1'
                             }`}
                     >
                         {/* ============================================================
@@ -284,18 +297,21 @@ function BookOnlineSessionPage() {
             ============================================================ */}
                         {ENABLE_SESSION_SCHEDULING && (
                             <div className="order-1 rounded-2xl border border-border/60 bg-card p-4 shadow-sm sm:p-6 lg:p-7">
-                                <div className="mb-6">
-                                    <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
+                                <div className="mb-6 flex items-center  gap-3">
+                                    <div className="mb-0 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
                                         <CalendarDays className="h-5 w-5 text-accent" />
                                     </div>
 
-                                    <h2 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
-                                        Select date and time
-                                    </h2>
+                                    <div>
+                                        <h2 className="mb-0 text-xl font-bold text-foreground sm:text-2xl">
+                                            Select date and time
+                                        </h2>
 
-                                    <p className="text-sm leading-relaxed text-muted-foreground">
-                                        Choose a preferred date and an available 30-minute time slot.
-                                    </p>
+                                        <p className="text-sm leading-relaxed text-muted-foreground">
+                                            Choose a preferred date and an available 30-minute time slot.
+                                        </p>
+                                    </div>
+
                                 </div>
 
                                 {/* Calendar */}
@@ -377,12 +393,12 @@ function BookOnlineSessionPage() {
                                                         }
                                                         aria-pressed={isSelected}
                                                         className={`flex aspect-square min-h-8 items-center justify-center rounded-md text-[11px] font-semibold transition-all sm:min-h-10 sm:rounded-lg sm:text-sm ${isSelected
-                                                                ? 'bg-accent text-accent-foreground shadow-sm'
-                                                                : isUnavailable
-                                                                    ? 'cursor-not-allowed text-muted-foreground/35 line-through'
-                                                                    : isToday
-                                                                        ? 'border border-accent text-accent hover:bg-accent/10'
-                                                                        : 'text-foreground hover:bg-muted'
+                                                            ? 'bg-accent text-accent-foreground shadow-sm'
+                                                            : isUnavailable
+                                                                ? 'cursor-not-allowed text-muted-foreground/35 line-through'
+                                                                : isToday
+                                                                    ? 'border border-accent text-accent hover:bg-accent/10'
+                                                                    : 'text-foreground hover:bg-muted'
                                                             }`}
                                                     >
                                                         {date.getDate()}
@@ -417,8 +433,8 @@ function BookOnlineSessionPage() {
                                                     }}
                                                     aria-pressed={isActive}
                                                     className={`min-h-11 rounded-lg border px-2 py-2.5 text-xs font-semibold transition-all sm:px-3 ${isActive
-                                                            ? 'border-accent bg-accent text-accent-foreground shadow-sm'
-                                                            : 'border-border bg-background text-foreground hover:border-accent/50 hover:bg-accent/5'
+                                                        ? 'border-accent bg-accent text-accent-foreground shadow-sm'
+                                                        : 'border-border bg-background text-foreground hover:border-accent/50 hover:bg-accent/5'
                                                         }`}
                                                 >
                                                     {time}
@@ -428,24 +444,7 @@ function BookOnlineSessionPage() {
                                     </div>
                                 </div>
 
-                                {/* Booking summary */}
-                                <div className="mt-5 rounded-xl border border-accent/20 bg-accent/5 p-4">
-                                    <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-accent sm:text-xs">
-                                        Your preferred session
-                                    </p>
-
-                                    <p className="text-sm font-semibold text-foreground">
-                                        {selectedDate
-                                            ? formatSelectedDate(selectedDate)
-                                            : 'No date selected'}
-                                    </p>
-
-                                    <p className="mt-1 text-sm text-muted-foreground">
-                                        {selectedTime
-                                            ? `${selectedTime} — 30-minute session`
-                                            : 'No time selected'}
-                                    </p>
-                                </div>
+                                
                             </div>
                         )}
 
@@ -483,22 +482,27 @@ function BookOnlineSessionPage() {
                                 </div>
                             ) : (
                                 <>
-                                    <div className="mb-7">
-                                        <div className="mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
+                                    <div className="mb-7 flex items-center gap-3 ">
+                                        <div className="mb-0 flex h-11 w-11 items-center justify-center rounded-xl bg-accent/10">
                                             <MessageSquare className="h-5 w-5 text-accent" />
                                         </div>
-
-                                        <h2 className="mb-2 text-xl font-bold text-foreground sm:text-2xl">
+                                        <div>
+                                            <h2 className="mb-0 text-xl font-bold text-foreground sm:text-2xl">
                                             Your details
                                         </h2>
 
                                         <p className="text-sm leading-relaxed text-muted-foreground">
                                             Tell us how we can help. All fields are required.
                                         </p>
+                                        </div>
+
+
+                                        
                                     </div>
 
                                     <form onSubmit={handleSubmit} className="space-y-5">
                                         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                                            {/* Full name */}
                                             <div>
                                                 <label
                                                     htmlFor="name"
@@ -523,6 +527,7 @@ function BookOnlineSessionPage() {
                                                 </div>
                                             </div>
 
+                                            {/* Email */}
                                             <div>
                                                 <label
                                                     htmlFor="email"
@@ -545,6 +550,106 @@ function BookOnlineSessionPage() {
                                                         className="h-12 w-full rounded-xl border border-border bg-background py-3 pl-10 pr-4 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20"
                                                     />
                                                 </div>
+                                            </div>
+
+                                            {/* WhatsApp number */}
+                                            <div>
+                                                <label
+                                                    htmlFor="whatsappNumber"
+                                                    className="mb-2 block text-sm font-semibold text-foreground"
+                                                >
+                                                    WhatsApp number
+                                                </label>
+
+                                                <div className="relative">
+                                                    <Phone className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+
+                                                    <input
+                                                        id="whatsappNumber"
+                                                        name="whatsappNumber"
+                                                        type="tel"
+                                                        required
+                                                        value={formData.whatsappNumber}
+                                                        onChange={handleFieldChange}
+                                                        placeholder="+92 300 1234567"
+                                                        inputMode="tel"
+                                                        autoComplete="tel"
+                                                        className="h-12 w-full rounded-xl border border-border bg-background py-3 pl-10 pr-4 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            {/* Profession */}
+                                            <div>
+                                                <label
+                                                    htmlFor="profession"
+                                                    className="mb-2 block text-sm font-semibold text-foreground"
+                                                >
+                                                    Profession
+                                                </label>
+
+                                                <select
+                                                    id="profession"
+                                                    name="profession"
+                                                    required
+                                                    value={formData.profession}
+                                                    onChange={handleFieldChange}
+                                                    className="h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors focus:border-accent focus:ring-2 focus:ring-accent/20"
+                                                >
+                                                    <option value="" disabled>
+                                                        Select your profession
+                                                    </option>
+                                                    <option value="Student">Student</option>
+                                                    <option value="Business">Business</option>
+                                                    <option value="Service">Service</option>
+                                                    <option value="Household">Household</option>
+                                                    <option value="Retired">Retired</option>
+                                                    <option value="Others">Others</option>
+                                                </select>
+                                            </div>
+
+                                            {/* City */}
+                                            <div>
+                                                <label
+                                                    htmlFor="city"
+                                                    className="mb-2 block text-sm font-semibold text-foreground"
+                                                >
+                                                    City
+                                                </label>
+
+                                                <input
+                                                    id="city"
+                                                    name="city"
+                                                    type="text"
+                                                    required
+                                                    value={formData.city}
+                                                    onChange={handleFieldChange}
+                                                    placeholder="For example: Lahore"
+                                                    autoComplete="address-level2"
+                                                    className="h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20"
+                                                />
+                                            </div>
+
+                                            {/* Country */}
+                                            <div>
+                                                <label
+                                                    htmlFor="country"
+                                                    className="mb-2 block text-sm font-semibold text-foreground"
+                                                >
+                                                    Country
+                                                </label>
+
+                                                <input
+                                                    id="country"
+                                                    name="country"
+                                                    type="text"
+                                                    required
+                                                    value={formData.country}
+                                                    onChange={handleFieldChange}
+                                                    placeholder="For example: Pakistan"
+                                                    autoComplete="country-name"
+                                                    className="h-12 w-full rounded-xl border border-border bg-background px-4 py-3 text-base text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-accent focus:ring-2 focus:ring-accent/20"
+                                                />
                                             </div>
                                         </div>
 
@@ -618,16 +723,45 @@ function BookOnlineSessionPage() {
                                             </>
                                         )}
 
-                                        <button
-                                            type="submit"
-                                            className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground transition-all duration-300 hover:bg-accent/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
-                                        >
-                                            <Send className="h-4 w-4" />
+                                       {/* Selected session summary — displayed immediately above submit button */}
+{ENABLE_SESSION_SCHEDULING && (
+    <div className="rounded-xl border border-accent/20 bg-accent/5 p-4">
+        <div className="flex items-start gap-3">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-accent/10">
+                <CalendarDays className="h-4 w-4 text-accent" />
+            </div>
 
-                                            {ENABLE_SESSION_SCHEDULING
-                                                ? 'Request online session'
-                                                : 'Send message'}
-                                        </button>
+            <div>
+                <p className="mb-1 text-[11px] font-bold uppercase tracking-[0.14em] text-accent sm:text-xs">
+                    Your preferred session
+                </p>
+
+                <p className="text-sm font-semibold text-foreground">
+                    {selectedDate
+                        ? formatSelectedDate(selectedDate)
+                        : 'No date selected'}
+                </p>
+
+                <p className="mt-1 text-sm text-muted-foreground">
+                    {selectedTime
+                        ? `${selectedTime} — 30-minute session`
+                        : 'No time selected'}
+                </p>
+            </div>
+        </div>
+    </div>
+)}
+
+<button
+    type="submit"
+    className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-xl bg-accent px-5 py-3 text-sm font-bold text-accent-foreground transition-all duration-300 hover:bg-accent/90 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+>
+    <Send className="h-4 w-4" />
+
+    {ENABLE_SESSION_SCHEDULING
+        ? 'Request online session'
+        : 'Send message'}
+</button>
 
                                         <p className="text-center text-xs leading-relaxed text-muted-foreground">
                                             By submitting this form, you agree to be contacted by Right
