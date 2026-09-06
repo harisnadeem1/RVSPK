@@ -117,11 +117,11 @@ function ProfileGroupPage({ group }) {
                     <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
                       Profile
                     </p>
-                    <p className="text-base sm:text-sm text-muted-foreground leading-relaxed">
+                    <p className="text-base sm:text-base text-muted-foreground leading-relaxed">
                       {member.bio}
                     </p>
                     {member.fullBio?.map((para, i) => (
-                      <p key={i} className="text-base sm:text-sm text-muted-foreground leading-relaxed">
+                      <p key={i} className="text-base sm:text-base text-muted-foreground leading-relaxed">
                         {para}
                       </p>
                     ))}

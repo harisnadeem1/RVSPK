@@ -33,6 +33,7 @@ const ALLOWED_PDFS = {
   '38' :           { folder: 'notifications', file: '38.pdf' },
   '39' :           { folder: 'notifications', file: '39.pdf' },
   '41' :           { folder: 'notifications', file: '41.pdf' },
+  'services' :           { folder: 'clients', file: 'services.pdf' },
 
 
 

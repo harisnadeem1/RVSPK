@@ -13,13 +13,13 @@ function TrustBar() {
   const tickerItems = [...items, ...items, ...items]
 
   return (
-    <div className="bg-primary text-primary-foreground border-b border-primary-foreground/10 overflow-hidden">
+    <div className="bg-accent text-primary-foreground border-b border-primary-foreground/10 overflow-hidden">
       <div className="relative">
 
         {/* Left fade */}
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-primary to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-accent to-transparent sm:w-20" />
         {/* Right fade */}
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-primary to-transparent sm:w-20" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-accent to-transparent sm:w-20" />
 
         <div className="flex items-center py-2.5 sm:py-3">
           <div

@@ -51,7 +51,7 @@ function Footer() {
       path: '/testimonials',
     },
     {
-      label: 'Frequently Asked Questions',
+      label: 'FAQs',
       path: '/faqs',
     },
     {
@@ -75,14 +75,14 @@ function Footer() {
               />
             </Link>
 
-            <p className="mb-6 max-w-sm text-base leading-relaxed text-primary-foreground/50">
+            {/* <p className="mb-6 max-w-sm text-base leading-relaxed text-primary-foreground/50">
               Right Vision Securities (Pvt.) Limited is a SECP-licensed and
               PMEX-registered futures brokerage company associated with the
               Right Vision Group (est. 2007). We provide transparent,
               reliable, and efficient brokerage services across commodity and
               financial markets in Pakistan, with a focus on integrity,
               compliance, and client success.
-            </p>
+            </p> */}
 
             <ul className="space-y-3">
               <li>

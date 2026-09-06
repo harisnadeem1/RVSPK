@@ -43,87 +43,102 @@ function CTASection({ headline, description, primaryCTA, secondaryCTA, backgroun
   }
 
   return (
-    <div className={`${bgClasses[background]} relative overflow-hidden`}>
+  <section className="bg-card py-8 sm:py-10">
+    <div className="container-custom max-w-7xl px-4 sm:px-6">
+      <div
+        className={`${bgClasses[background]} relative overflow-hidden rounded-2xl border border-[#79AD14]/15 shadow-[0_16px_45px_rgba(121,173,20,0.10)] sm:rounded-3xl`}
+      >
+        {!isMuted && (
+          <>
+            <div className="pointer-events-none absolute left-1/4 top-0 h-64 w-64 rounded-full bg-white/5 blur-3xl sm:h-96 sm:w-96" />
+            <div className="pointer-events-none absolute bottom-0 right-1/4 h-48 w-48 rounded-full bg-white/5 blur-3xl sm:h-72 sm:w-72" />
+          </>
+        )}
 
-      {!isMuted && (
-        <>
-          <div className="absolute top-0 left-1/4 w-64 h-64 sm:w-96 sm:h-96 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-          <div className="absolute bottom-0 right-1/4 w-48 h-48 sm:w-72 sm:h-72 rounded-full bg-white/5 blur-3xl pointer-events-none" />
-        </>
-      )}
+        <div className="relative z-10 px-4 py-14 sm:px-8 sm:py-20 md:px-12 md:py-24">
+          <div className="mx-auto max-w-3xl text-center">
+            {/* Eyebrow */}
+            <div
+              className={`mb-5 inline-flex items-center gap-2 rounded-full px-4 py-1.5 ${
+                isMuted
+                  ? "border border-accent/20 bg-accent/10"
+                  : "border border-white/20 bg-white/10"
+              }`}
+            >
+              <span
+                className={`h-1.5 w-1.5 animate-pulse rounded-full ${
+                  isMuted ? "bg-accent" : "bg-white/80"
+                }`}
+              />
 
-      <div className="relative z-10 container-custom px-4 sm:px-6 py-14 sm:py-20 md:py-24">
-        <div className="max-w-3xl mx-auto text-center">
+              <span
+                className={`text-[15px] font-semibold uppercase tracking-[0.2em] ${
+                  isMuted ? "text-accent" : "text-white/80"
+                }`}
+              >
+                Get Started Today
+              </span>
+            </div>
 
-          {/* Eyebrow */}
-          <div className={`inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-5 ${
-            isMuted
-              ? 'bg-accent/10 border border-accent/20'
-              : 'bg-white/10 border border-white/20'
-          }`}>
-            <span className={`h-1.5 w-1.5 rounded-full animate-pulse ${
-              isMuted ? 'bg-accent' : 'bg-white/80'
-            }`} />
-            <span className={`text-[15px] font-semibold tracking-[0.2em] uppercase ${
-              isMuted ? 'text-accent' : 'text-white/80'
-            }`}>
-              Get Started Today
-            </span>
-          </div>
+            {/* Headline */}
+            <h2
+              className={`mb-4 text-3xl font-bold leading-tight sm:text-3xl md:text-4xl ${
+                isMuted ? "text-foreground" : "text-primary-foreground"
+              }`}
+            >
+              {headline}
+            </h2>
 
-          {/* Headline */}
-          <h2 className={`text-3xl sm:text-3xl md:text-4xl font-bold leading-tight mb-4 ${
-            isMuted ? 'text-foreground' : 'text-primary-foreground'
-          }`}>
-            {headline}
-          </h2>
+            {/* Description */}
+            <p
+              className={`mx-auto mb-8 max-w-xl text-base leading-relaxed sm:text-base ${
+                isMuted
+                  ? "text-muted-foreground"
+                  : "text-primary-foreground/80"
+              }`}
+            >
+              {description}
+            </p>
 
-          {/* Description */}
-          <p className={`text-base sm:text-base leading-relaxed mb-8 max-w-xl mx-auto ${
-            isMuted ? 'text-muted-foreground' : 'text-primary-foreground/80'
-          }`}>
-            {description}
-          </p>
+            {/* Buttons */}
+            <div className="flex flex-col items-center justify-center gap-3 sm:flex-row sm:gap-4">
+              {primaryCTA && (
+                <CTALink cta={primaryCTA} className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className={`w-full px-8 py-6 text-base font-semibold transition-all hover:-translate-y-0.5 sm:w-auto sm:py-6 sm:text-base ${
+                      isMuted
+                        ? "bg-[#79AD14] text-white shadow-lg shadow-[#79AD14]/20 hover:bg-[#5E8410]"
+                        : "bg-white text-[#5E8410] shadow-lg shadow-black/20 hover:bg-white/90"
+                    }`}
+                  >
+                    {primaryCTA.text}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </CTALink>
+              )}
 
-          {/* Buttons */}
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center items-center">
-
-            {primaryCTA && (
-              <CTALink cta={primaryCTA} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className={`w-full sm:w-auto px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
-                    isMuted
-                      ? 'bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20'
-                      : 'bg-white text-primary hover:bg-white/90 shadow-lg shadow-black/20'
-                  }`}
-                >
-                  {primaryCTA.text}
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              </CTALink>
-            )}
-
-            {secondaryCTA && (
-              <CTALink cta={secondaryCTA} className="w-full sm:w-auto">
-                <Button
-                  size="lg"
-                  className={`w-full sm:w-auto px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5 ${
-                    isMuted
-                      ? 'bg-transparent border border-primary text-primary hover:bg-primary hover:text-primary-foreground'
-                      : 'bg-white/10 border border-white/40 text-primary-foreground hover:bg-white/20 hover:border-white/70 backdrop-blur-sm'
-                  }`}
-                >
-                  {secondaryCTA.text}
-                </Button>
-              </CTALink>
-            )}
-
+              {secondaryCTA && (
+                <CTALink cta={secondaryCTA} className="w-full sm:w-auto">
+                  <Button
+                    size="lg"
+                    className={`w-full border px-8 py-6 text-base font-semibold transition-all hover:-translate-y-0.5 sm:w-auto sm:py-6 sm:text-base ${
+                      isMuted
+                        ? "border-[#79AD14]/50 bg-transparent text-[#5E8410] hover:border-[#79AD14] hover:bg-[#79AD14] hover:text-white"
+                        : "border-white/40 bg-white/10 text-primary-foreground backdrop-blur-sm hover:border-white/70 hover:bg-white/20"
+                    }`}
+                  >
+                    {secondaryCTA.text}
+                  </Button>
+                </CTALink>
+              )}
+            </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  </section>
+)
 }
 
 export default CTASection

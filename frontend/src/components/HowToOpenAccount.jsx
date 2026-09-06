@@ -67,7 +67,7 @@ function HowToOpenAccount({
   };
 
   return (
-    <section className="py-14 sm:py-20 md:py-16 bg-muted">
+    <section className="py-14 sm:py-20 md:py-16 bg-card">
       <div className="container-custom px-4 sm:px-6">
 
         {/* Header */}
@@ -148,19 +148,19 @@ function HowToOpenAccount({
           transition={{ duration: 0.6, delay: 0.2 }}
           className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 "
         >
-          <a
-            href={primaryCTA.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full sm:w-auto "
-          >
-            <Button
-              size="lg"
-              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 sm:py-6 text-base sm:text-base font-semibold transition-all hover:-translate-y-0.5"
-            >
-              {primaryCTA.text}
-            </Button>
-          </a>
+        <a
+  href={primaryCTA.href}
+  target="_blank"
+  rel="noopener noreferrer"
+  className="w-full sm:w-auto"
+>
+  <Button
+    size="lg"
+    className="w-full bg-[#79AD14] px-8 py-6 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:w-auto sm:py-6 sm:text-base"
+  >
+    {primaryCTA.text}
+  </Button>
+</a>
           <Link
             to={secondaryCTA.href}
             className="text-accent hover:text-accent/80 font-semibold text-base sm:text-base transition-colors"

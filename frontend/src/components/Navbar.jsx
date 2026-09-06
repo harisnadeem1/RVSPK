@@ -170,11 +170,11 @@ function Navbar() {
             {/* Open Account */}
             <div className="flex justify-end shrink-0">
               <a
-                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                href="https://demotrade.pmex.com.pk/terminal"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Open Account Online"
-                title="Open Account"
+                aria-label="Open Demo Account Online"
+                title="Open Demo Account"
                 className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:bg-accent/90"
               >
                 <UserPlus className="h-5 w-5" />
@@ -222,18 +222,18 @@ function Navbar() {
             </div>
 
             <div className="flex flex-col items-stretch gap-2">
-              <Link to="/contact" className="w-full">
+              <Link to="/book-online-session" className="w-full">
                 <Button
                   variant="outline"
                   size="lg"
                   className="w-full border-primary text-primary hover:bg-primary hover:text-primary-foreground"
                 >
-                  Contact Us
+                  Book an Online Session
                 </Button>
               </Link>
 
               <a
-                href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+                href="https://demotrade.pmex.com.pk/terminal"
                 target="_blank"
                 rel="noopener noreferrer"
                 
@@ -242,7 +242,7 @@ function Navbar() {
                 <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                   size="lg"
                 >
-                  Open Account Online
+                  Open Demo Account Online
                 </Button>
               </a>
             </div>
@@ -342,20 +342,20 @@ function Navbar() {
         {/* CTA buttons */}
         <div className="border-t border-border/60 p-4 space-y-2.5">
           <Link
-            to="/contact"
+            to="/book-online-session"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center justify-center w-full rounded-lg border border-primary px-4 py-2.5 text-sm font-medium text-primary hover:bg-primary hover:text-primary-foreground transition-colors"
           >
-            Contact Us
+            Book an Online Session
           </Link>
           <a
-            href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+            href="https://demotrade.pmex.com.pk/terminal"
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMobileMenuOpen(false)}
             className="flex items-center justify-center w-full rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground hover:bg-accent/90 transition-colors"
           >
-            Open Account Online
+            Open Demo Account Online
           </a>
         </div>
       </div>

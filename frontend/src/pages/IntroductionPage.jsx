@@ -92,7 +92,7 @@ function IntroductionPage() {
             transition={{ duration: 0.6 }}
             className="max-w-4xl mx-auto bg-card rounded-2xl p-6 sm:p-10 border border-border/60 shadow-sm space-y-4 text-base sm:text-base text-muted-foreground leading-relaxed mb-12"
           >
-            {/* <p>
+            <p>
               The Company shall observe the highest ethical values, is fully compliant with the regulatory
               framework, and adheres to professional principles to deliver its services in a timely manner —
               meeting client expectations and leading them to achieve their investment goals successfully.
@@ -114,44 +114,9 @@ function IntroductionPage() {
               <strong className="text-foreground">lowest brokerage commission</strong> along with our unique
               service of publishing a <strong className="text-foreground">"Daily Newswire"</strong> to keep
               valued clients updated on market-related current affairs.
-            </p> */}
-
-            <p>
-              <strong className="text-[#42409a]">(Right Vision Securities (Private) Limited)</strong> (‘The Company’) is a fully compliant multi-asset brokerage
-company founded in 2025, regulated by PMEX and licensed by the SECP as a Future Broker. The
-Company offers streamlined digital account opening of two types of primary accounts; Regular and
-Sahulat. <strong className="text-foreground">Regular Account</strong> includes Individual account, Joint account and Corporate account. <strong className="text-foreground">Sahulat
-Account</strong> has been designed and introduced to target the trading needs of low Net worth Pakistan
-national individuals permitted to avail maximum exposure up to Rs.3m without leverage option
-however; leverage facility is available for all categories of Regular Accounts.
             </p>
 
-               <p>
-             The Company facilitates its clients a seamless access to a wide range of trading instruments in a
-competitive environment provided at the world-wide industry-recognized MT5 Electronic Trading
-Platform and MT5 Back Office offered by PMEX across desktop, web and mobile platforms, with real
-time order management, customizable watch lists, runtime reports, Deal History, Commission amount,
-profit/loss realized and unrealized, CGT amount and many other features essential for easy, fast, glitch-
-free order execution across all financial instruments at the best possible minimum cost.
-            </p>
-             <p>
-             The Company caters to a diverse range of traders, suitable for beginners to experienced, advanced and
-high-frequency traders. Support, Sales and Marketing team is available 24/7 around the clock, ensuring
-accessibility for the clients and covering the majority of market hours. Support offered through live chat,
-email, phone, WhatsApp, and on multiple social media platforms. Our dedicated team also offers a
-comprehensive and well-organized FAQ session, through live chat as well as email. Additionally,
-Research Reports and Daily Newswire exhibiting market updates are also disseminated to the interested
-clients to keep them updates about the market sentiments. However, advisory services are not provided
-on part of the Company or any of its representatives and/or agents. Investment decisions are absolutely
-made personal forecast and predictions of the clients.
-            </p>
-             <p>
-            The Company is committed to provide efficient account opening, swift funding process for deposits and
-withdrawals, secure and transparent trading environment for clients at the minimal flexible commission
-rates suitable for the clients according to their nature and frequency of trades. The Company is also
-contemplating to expand its regulatory footprint to license in other regulatory jurisdictions vis-à-vis
-Pakistan Stock Exchange (PSX).
-            </p>
+         
 
           </motion.div>
         </div>
