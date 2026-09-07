@@ -65,7 +65,6 @@ function CompanyProfilePage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

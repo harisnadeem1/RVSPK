@@ -117,17 +117,16 @@ export const profileGroups = {
       {
         id: 'taram-bashir',
         name: 'Advocate Hafiza Taram Bashir',
-        role: 'Company Secretary',
+        role: 'Legal Advisor',
         department: 'Legal & Compliance',
         initials: 'TB',
-        bio: 'Advocate Taram Bashir is a legal and corporate compliance professional with a strong foundation in company law, regulatory compliance and corporate governance, supported by academic training in Commerce, Law and Applied Economics. She has recently assumed the role of Company Secretary, where she supports the Board and management in fulfilling statutory obligations and maintaining effective governance standards.',
+        bio: 'Advocate Taram Bashir is a legal and corporate compliance professional with a strong foundation in company law, regulatory compliance and corporate governance, supported by academic training in Commerce, Law and Applied Economics.Advocate Taram Bashir is a legal and corporate compliance professional with a strong foundation in company law, regulatory compliance and corporate governance, supported by academic training in Commerce, Law and Applied Economics.',
         fullBio: [
           'Her professional experience includes advising on corporate documentation, regulatory filings, compliance frameworks, board processes and internal governance policies, ensuring alignment with applicable laws and regulatory requirements. She works closely with senior management and key stakeholders to promote transparency, accountability and regulatory discipline within the organization.',
           'She also brings experience in capacity building and institutional training, having delivered structured, compliance-focused sessions on legal and regulatory frameworks for public sector institutions and professional audiences. This experience strengthens her ability to support governance awareness, compliance culture and informed decision-making at the organizational level.',
           'With prior engagement in international organizations and regulated environments, she adopts a disciplined, ethical and detail-oriented approach to company secretarial functions, contributing to sound corporate governance and sustainable organizational growth.',
         ],
         responsibilities: [
-          'Company secretarial functions and statutory obligations',
           'Corporate documentation and regulatory filings',
           'Board process support and governance policy',
           'SECP and PMEX compliance frameworks',
@@ -239,33 +238,7 @@ export const profileGroups = {
     'Expertise in payroll, banking, budgeting and operational management',
   ],
 },
-      {
-        id: 'taram-bashir',
-        name: 'Advocate Hafiza Taram Bashir',
-        role: 'Company Secretary',
-        department: 'Legal & Compliance',
-        initials: 'TB',
-        bio: 'Advocate Hafiza Taram Bashir is a legal and corporate compliance professional with a strong foundation in company law, regulatory compliance and corporate governance, supported by academic training in Commerce, Law and Applied Economics. She has recently assumed the role of Company Secretary, where she supports the Board and management in fulfilling statutory obligations and maintaining effective governance standards.',
-        fullBio: [
-          'Her professional experience includes advising on corporate documentation, regulatory filings, compliance frameworks, board processes and internal governance policies, ensuring alignment with applicable laws and regulatory requirements. She works closely with senior management and key stakeholders to promote transparency, accountability and regulatory discipline within the organization.',
-          'She also brings experience in capacity building and institutional training, having delivered structured, compliance-focused sessions on legal and regulatory frameworks for public sector institutions and professional audiences. This experience strengthens her ability to support governance awareness, compliance culture and informed decision-making at the organizational level.',
-          'With prior engagement in international organizations and regulated environments, she adopts a disciplined, ethical and detail-oriented approach to company secretarial functions, contributing to sound corporate governance and sustainable organizational growth.',
-        ],
-        responsibilities: [
-          'Company secretarial functions and statutory obligations',
-          'Corporate documentation and regulatory filings',
-          'Board process support and governance policy',
-          'SECP and PMEX compliance frameworks',
-          'Capacity building and compliance training',
-          'Stakeholder transparency and accountability',
-        ],
-        credentials: [
-          'Academic background in Commerce, Law & Applied Economics',
-          'Experience in international organizations',
-          'Corporate governance and regulatory compliance specialist',
-          'Institutional trainer — public sector legal frameworks',
-        ],
-      },
+      
       {
         id: 'muhammad-nabeel-pasha',
         name: 'Muhammad Nabeel Pasha',

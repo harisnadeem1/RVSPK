@@ -18,7 +18,6 @@ export default function FeedbackPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

@@ -186,7 +186,6 @@ function MarketsPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

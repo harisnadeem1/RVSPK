@@ -95,7 +95,6 @@ function WhyChooseUsPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

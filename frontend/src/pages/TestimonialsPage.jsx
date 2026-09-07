@@ -120,7 +120,6 @@ function TestimonialsPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

@@ -12,9 +12,9 @@ import ReportsPage from './pages/ReportsPage.jsx';
 import ClientsAreaPage from './pages/ClientsAreaPage.jsx';
 import CompanyProfilePage from './pages/CompanyProfilePage.jsx';
 import ContactPage from './pages/ContactPage.jsx';
-import FeedbackPage      from './pages/FeedbackPage'
-import ComplaintPage     from './pages/ComplaintPage'
-import GrievancePage     from './pages/GrievancePage'
+import FeedbackPage from './pages/FeedbackPage'
+import ComplaintPage from './pages/ComplaintPage'
+import GrievancePage from './pages/GrievancePage'
 import WhistleblowerPage from './pages/WhistleblowerPage'
 import AdminLogin from './pages/admin/AdminLogin.jsx';
 import AdminDashboard from './pages/admin/AdminDashboard.jsx';
@@ -29,8 +29,8 @@ import { useContentProtection } from './hooks/useContentProtection.js'
 import PdfViewerPage from './pages/PdfViewerPage.jsx'
 import IntroductionPage from './pages/IntroductionPage.jsx'
 import MissionVisionPage from './pages/MissionVisionPage.jsx'
-import ManagementPage from './pages/profiles/ManagementPage.jsx'; 
-import WhyChooseUsPage from './pages/WhyChooseUsPage.jsx';  
+import ManagementPage from './pages/profiles/ManagementPage.jsx';
+import WhyChooseUsPage from './pages/WhyChooseUsPage.jsx';
 import TestimonialsPage from './pages/TestimonialsPage'
 import FAQPage from './pages/FAQPage'
 import CookieBanner from './components/CookieBanner.jsx'
@@ -57,10 +57,10 @@ function AppContent() {
         <Route path="/clients" element={<ClientsAreaPage />} />
         <Route path="/company-profile" element={<CompanyProfilePage />} />
         <Route path="/contact" element={<ContactPage />} />
-        <Route path="/feedback"      element={<FeedbackPage />} />
-<Route path="/complaint"     element={<ComplaintPage />} />
-<Route path="/grievance"     element={<GrievancePage />} />
-<Route path="/whistleblower" element={<WhistleblowerPage />} />
+        <Route path="/feedback" element={<FeedbackPage />} />
+        <Route path="/complaint" element={<ComplaintPage />} />
+        <Route path="/grievance" element={<GrievancePage />} />
+        <Route path="/whistleblower" element={<WhistleblowerPage />} />
         <Route path="/about/board" element={<BodPage />} />
         <Route path="/about/auditors" element={<AuditorsPage />} />
         <Route path="/about/management" element={<ManagementPage />} />
@@ -69,14 +69,14 @@ function AppContent() {
         <Route path="/clients/:slug" element={<PdfViewerPage />} />
         <Route path="/notifications/:slug" element={<PdfViewerPage />} />
         <Route path="/introduction" element={<IntroductionPage />} />
-<Route path="/mission-vision" element={<MissionVisionPage />} />
-<Route path="/why-choose-us" element={<WhyChooseUsPage />} />
-<Route path="/testimonials" element={<TestimonialsPage />} />
-<Route path="/faqs" element={<FAQPage />} />
-<Route
-  path="/book-online-session"
-  element={<BookOnlineSessionPage />}
-/>
+        <Route path="/mission-vision" element={<MissionVisionPage />} />
+        <Route path="/why-choose-us" element={<WhyChooseUsPage />} />
+        <Route path="/testimonials" element={<TestimonialsPage />} />
+        <Route path="/faqs" element={<FAQPage />} />
+        <Route
+          path="/book-online-session"
+          element={<BookOnlineSessionPage />}
+        />
 
 
         {/* Admin Routes */}

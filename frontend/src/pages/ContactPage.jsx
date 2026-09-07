@@ -61,7 +61,6 @@ function ContactPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

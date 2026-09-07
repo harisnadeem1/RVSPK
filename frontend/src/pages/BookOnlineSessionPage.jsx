@@ -264,7 +264,6 @@ function BookOnlineSessionPage() {
                 />
             </Helmet>
 
-            <TrustBar />
             <Navbar />
 
             <PageHero

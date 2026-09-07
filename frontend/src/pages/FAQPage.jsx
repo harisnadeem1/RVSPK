@@ -170,7 +170,7 @@ function FAQPage() {
         />
       </Helmet>
 
-      <TrustBar />
+      
       <Navbar />
 
       <PageHero

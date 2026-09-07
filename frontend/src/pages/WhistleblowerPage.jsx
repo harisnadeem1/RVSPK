@@ -19,7 +19,6 @@ export default function WhistleblowerPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

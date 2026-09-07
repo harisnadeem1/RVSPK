@@ -85,7 +85,7 @@ function PdfViewerPage() {
         <title>{title} — Right Vision Securities</title>
       </Helmet>
 
-      <TrustBar />
+      
       <Navbar />
 
       <PageHero

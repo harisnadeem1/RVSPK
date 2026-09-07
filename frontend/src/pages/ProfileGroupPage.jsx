@@ -70,7 +70,6 @@ function BoardPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

@@ -18,7 +18,6 @@ export default function ComplaintPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

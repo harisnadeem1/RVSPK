@@ -20,7 +20,6 @@ function LegalPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

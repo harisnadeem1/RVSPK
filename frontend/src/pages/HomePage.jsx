@@ -162,7 +162,6 @@ function HomePage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
 

@@ -41,7 +41,7 @@ function ReportsPage() {
         />
       </Helmet>
 
-      <TrustBar />
+      
       <Navbar />
 
       <PageHero

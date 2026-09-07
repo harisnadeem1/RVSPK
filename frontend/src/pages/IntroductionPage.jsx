@@ -52,7 +52,6 @@ function IntroductionPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

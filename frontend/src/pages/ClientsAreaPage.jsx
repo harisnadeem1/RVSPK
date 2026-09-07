@@ -117,7 +117,6 @@ function ClientsAreaPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

@@ -98,7 +98,6 @@ function AboutPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

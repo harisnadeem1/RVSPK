@@ -84,7 +84,6 @@ function MissionVisionPage() {
         />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero

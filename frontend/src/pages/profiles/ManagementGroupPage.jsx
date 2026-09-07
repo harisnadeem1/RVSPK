@@ -29,7 +29,6 @@ function ProfileGroupPage({ group }) {
         <meta name="description" content={group.description} />
       </Helmet>
 
-      <TrustBar />
       <Navbar />
 
       <PageHero
