@@ -264,7 +264,7 @@ const location = useLocation()
 
         {/* Main Navbar: always visible */}
         <nav
-          className={`border-b border-border/60 z-30 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${
+          className={`border-b border-border/60 relative z-30 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${
             isScrolled ? 'shadow-lg shadow-black/10' : ''
           }`}
         >
