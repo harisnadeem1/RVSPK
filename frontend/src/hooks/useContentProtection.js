@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 
-const PROTECTION_ENABLED = false // ← toggle ON/OFF from here
+const PROTECTION_ENABLED = true // ← toggle ON/OFF from here
 
 export function useContentProtection() {
   useEffect(() => {
