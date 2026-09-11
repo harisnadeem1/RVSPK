@@ -21,6 +21,12 @@ const app = express();
 const allowedOrigins = [
   'http://localhost:3000',
   'http://localhost:5173',
+  'http://51.79.242.8',
+  'https://51.79.242.8',
+  'http://rvspk.com',
+  'http://www.rvspk.com',
+  'https://rvspk.com',
+  'https://www.rvspk.com',
   process.env.FRONTEND_ORIGIN,
 ].filter(Boolean);
 
