@@ -264,7 +264,7 @@ const location = useLocation()
 
         {/* Main Navbar: always visible */}
         <nav
-          className={`border-b border-border/60 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${
+          className={`border-b border-border/60 z-30 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${
             isScrolled ? 'shadow-lg shadow-black/10' : ''
           }`}
         >
@@ -420,12 +420,12 @@ const location = useLocation()
 
         {/* Bottom Compliance Strip */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-            isScrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100'
-          }`}
-        >
-          <ComplianceStrip />
-        </div>
+  className={`relative z-10 overflow-hidden transition-all duration-300 ease-in-out ${
+    isScrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100'
+  }`}
+>
+  <ComplianceStrip />
+</div>
       </header>
 
       <div
