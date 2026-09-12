@@ -1,8 +1,15 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import {
-  LayoutDashboard, Upload, FileText,
-  LogOut, Menu, X, Shield, User, ChevronRight
+  LayoutDashboard,
+  Upload,
+  FileText,
+  LogOut,
+  Menu,
+  Shield,
+  User,
+  Users,
+  ChevronRight
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/contexts/AdminAuthContext.jsx';
@@ -18,11 +25,24 @@ function AdminLayout({ children }) {
     { icon: LayoutDashboard, label: 'Dashboard',      path: '/admin' },
     { icon: Upload,          label: 'Upload Reports', path: '/admin/upload-reports' },
     { icon: FileText,        label: 'Manage Reports', path: '/admin/manage-reports' },
-    ...(isSuperAdmin
-      ? [{ icon: Shield, label: 'Manage Admins', path: '/admin/manage-admins', superAdminOnly: true }]
-      : []
-    ),
-  ];
+       ...(isSuperAdmin
+    ? [
+        {
+          icon: Users,
+          label: 'Demo Users',
+          path: '/admin/demo-users',
+          superAdminOnly: true
+        },
+        {
+          icon: Shield,
+          label: 'Manage Admins',
+          path: '/admin/manage-admins',
+          superAdminOnly: true
+        }
+      ]
+    : []
+  ),
+];
 
   const isActive = (path) => location.pathname === path;
   const currentPage = menuItems.find(m => isActive(m.path))?.label || 'Admin Dashboard';

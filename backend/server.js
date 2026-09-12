@@ -13,6 +13,8 @@ import grievanceRoutes from './routes/grievance.js';
 import whistleblowerRoutes from './routes/whistleblower.js';
 import pdfRoutes from './routes/pdf.js';
 import bookingRoutes from './routes/booking.js';
+import demoAccountRoutes
+    from "./routes/demoAccounts.js";
 
 dotenv.config();
 
@@ -48,6 +50,10 @@ app.use('/api/grievance', grievanceRoutes);
 app.use('/api/whistleblower', whistleblowerRoutes);
 app.use('/api/pdf', pdfRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use(
+    "/api/demo-accounts",
+    demoAccountRoutes
+);
 
 // Health check
 app.get('/api/health', (req, res) => {

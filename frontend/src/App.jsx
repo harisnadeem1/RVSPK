@@ -35,6 +35,10 @@ import TestimonialsPage from './pages/TestimonialsPage'
 import FAQPage from './pages/FAQPage'
 import CookieBanner from './components/CookieBanner.jsx'
 import BookOnlineSessionPage from './pages/BookOnlineSessionPage.jsx';
+import OpenDemoAccount
+    from "./pages/OpenDemoAccount";
+
+    import DemoUsersPage from "./pages/admin/DemoUsers.jsx";
 
 function AppContent() {
   const location = useLocation();
@@ -78,6 +82,11 @@ function AppContent() {
           element={<BookOnlineSessionPage />}
         />
 
+        <Route
+    path="/open-demo-account"
+    element={<OpenDemoAccount />}
+/>
+
 
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
@@ -90,6 +99,11 @@ function AppContent() {
             </ProtectedAdminRoute>
           }
         />
+
+
+
+
+
         <Route
           path="/admin/upload-reports"
           element={
@@ -116,6 +130,16 @@ function AppContent() {
             </ProtectedSuperAdminRoute>
           }
         />
+        
+
+        <Route
+  path="/admin/demo-users"
+  element={
+    <ProtectedSuperAdminRoute>
+      <DemoUsersPage />
+    </ProtectedSuperAdminRoute>
+  }
+/>
 
         {/* 404 */}
         <Route path="*" element={

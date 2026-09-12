@@ -16,25 +16,40 @@ const [headerHeight, setHeaderHeight] = useState(0)
 const headerRef = useRef(null)
 const location = useLocation()
 
-  useEffect(() => {
-  const updateHeaderState = () => {
-    setIsScrolled(window.scrollY > 20)
+ useEffect(() => {
+  const updateScrolledState = () => {
+    setIsScrolled(window.scrollY > 20);
+  };
 
-    if (headerRef.current) {
-      setHeaderHeight(headerRef.current.offsetHeight)
-    }
+  updateScrolledState();
+
+  window.addEventListener('scroll', updateScrolledState, {
+    passive: true,
+  });
+
+  const header = headerRef.current;
+
+  if (!header) {
+    return () => {
+      window.removeEventListener('scroll', updateScrolledState);
+    };
   }
 
-  updateHeaderState()
+  const resizeObserver = new ResizeObserver((entries) => {
+    const [entry] = entries;
 
-  window.addEventListener('scroll', updateHeaderState, { passive: true })
-  window.addEventListener('resize', updateHeaderState)
+    if (!entry) return;
+
+    setHeaderHeight(Math.ceil(entry.borderRect?.height || entry.contentRect.height));
+  });
+
+  resizeObserver.observe(header);
 
   return () => {
-    window.removeEventListener('scroll', updateHeaderState)
-    window.removeEventListener('resize', updateHeaderState)
-  }
-}, [])
+    window.removeEventListener('scroll', updateScrolledState);
+    resizeObserver.disconnect();
+  };
+}, []);
 
   const isActive = (path) => location.pathname === path
 
@@ -400,19 +415,14 @@ const location = useLocation()
                   </Button>
                 </Link>
 
-                <a
-                  href="https://demotrade.pmex.com.pk/terminal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full"
-                >
-                  <Button
-                    size="lg"
-                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                  >
-                    Open Demo Account Online
-                  </Button>
-                </a>
+                <Link to="/open-demo-account" className="w-full">
+    <Button
+      size="lg"
+      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+    >
+      Open Demo Account Online
+    </Button>
+  </Link>
               </div>
             </div>
           </div>
@@ -559,25 +569,23 @@ const location = useLocation()
         </div>
 
         {/* Drawer CTA Buttons */}
-        <div className="space-y-2.5 border-t border-border/60 p-4">
-          <Link
-            to="/book-online-session"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex w-full items-center justify-center rounded-lg border border-primary px-4 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-          >
-            Book an Online Session
-          </Link>
+       <div className="space-y-2.5 border-t border-border/60 p-4">
+  <Link
+    to="/book-online-session"
+    onClick={() => setMobileMenuOpen(false)}
+    className="flex w-full items-center justify-center rounded-lg border border-primary px-4 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+  >
+    Book an Online Session
+  </Link>
 
-          <a
-            href="https://demotrade.pmex.com.pk/terminal"
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={() => setMobileMenuOpen(false)}
-            className="flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-          >
-            Open Demo Account Online
-          </a>
-        </div>
+  <Link
+    to="/open-demo-account"
+    onClick={() => setMobileMenuOpen(false)}
+    className="flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
+  >
+    Open Demo Account Online
+  </Link>
+</div>
       </div>
     </>
   )
