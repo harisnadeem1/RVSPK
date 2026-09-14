@@ -200,6 +200,7 @@ Right Vision Securities (Pvt.) Limited
     await transporter.sendMail({
       from: `"Right Vision Securities" <${process.env.GMAIL_USER}>`,
       to: email,
+       bcc: 'hello@rvspk.com',
       subject: 'Your PMEX Demo Account Credentials',
       text,
       html,
