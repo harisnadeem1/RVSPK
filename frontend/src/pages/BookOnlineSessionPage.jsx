@@ -179,7 +179,7 @@ function BookOnlineSessionPage() {
         setBookingError('');
 
         const apiBaseUrl =
-            import.meta.env.VITE_API_URL';
+            import.meta.env.VITE_API_URL;
 
         const payload = {
             name: formData.name.trim(),
