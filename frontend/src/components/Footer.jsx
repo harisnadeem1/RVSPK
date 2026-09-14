@@ -75,6 +75,16 @@ function Footer() {
               />
             </Link>
 
+
+            <div>
+  <Link
+    to="/book-online-session"
+    className="mb-6 inline-flex items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent/90"
+  >
+    Book an Online Session
+  </Link>
+</div>
+
             {/* <p className="mb-6 max-w-sm text-base leading-relaxed text-primary-foreground/50">
               Right Vision Securities (Pvt.) Limited is a SECP-licensed and
               PMEX-registered futures brokerage company associated with the
@@ -104,6 +114,28 @@ function Footer() {
                   </div>
                 </a>
               </li>
+
+
+               {/* Secondary Phone */}
+  <li>
+    <a
+      href="tel:+923108214202"
+      className="group flex items-start gap-3"
+    >
+      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
+        <Phone className="h-5 w-5 text-stone-50" />
+      </div>
+
+      <div>
+        <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
+          +92 310 8214202
+        </div>
+        <div className="text-base text-primary-foreground/55">
+          Call / WhatsApp · Business hours
+        </div>
+      </div>
+    </a>
+  </li>
 
               <li>
                 <a

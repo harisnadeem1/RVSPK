@@ -10,46 +10,46 @@ import TrustBar from '@/components/TrustBar.jsx'
 import { Button } from '@/components/ui/button.jsx'
 
 function Navbar() {
-const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-const [isScrolled, setIsScrolled] = useState(false)
-const [headerHeight, setHeaderHeight] = useState(0)
-const headerRef = useRef(null)
-const location = useLocation()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [headerHeight, setHeaderHeight] = useState(0)
+  const headerRef = useRef(null)
+  const location = useLocation()
 
- useEffect(() => {
-  const updateScrolledState = () => {
-    setIsScrolled(window.scrollY > 20);
-  };
+  useEffect(() => {
+    const updateScrolledState = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
 
-  updateScrolledState();
+    updateScrolledState();
 
-  window.addEventListener('scroll', updateScrolledState, {
-    passive: true,
-  });
+    window.addEventListener('scroll', updateScrolledState, {
+      passive: true,
+    });
 
-  const header = headerRef.current;
+    const header = headerRef.current;
 
-  if (!header) {
+    if (!header) {
+      return () => {
+        window.removeEventListener('scroll', updateScrolledState);
+      };
+    }
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      const [entry] = entries;
+
+      if (!entry) return;
+
+      setHeaderHeight(Math.ceil(entry.borderRect?.height || entry.contentRect.height));
+    });
+
+    resizeObserver.observe(header);
+
     return () => {
       window.removeEventListener('scroll', updateScrolledState);
+      resizeObserver.disconnect();
     };
-  }
-
-  const resizeObserver = new ResizeObserver((entries) => {
-    const [entry] = entries;
-
-    if (!entry) return;
-
-    setHeaderHeight(Math.ceil(entry.borderRect?.height || entry.contentRect.height));
-  });
-
-  resizeObserver.observe(header);
-
-  return () => {
-    window.removeEventListener('scroll', updateScrolledState);
-    resizeObserver.disconnect();
-  };
-}, []);
+  }, []);
 
   const isActive = (path) => location.pathname === path
 
@@ -265,23 +265,21 @@ const location = useLocation()
         On scroll: only Navbar remains.
       */}
       <header
-  ref={headerRef}
-  className="fixed left-0 top-0 z-50 w-full"
->
+        ref={headerRef}
+        className="fixed left-0 top-0 z-50 w-full"
+      >
         {/* Top Trust Bar */}
         <div
-          className={`overflow-hidden transition-all duration-300 ease-in-out ${
-            isScrolled ? 'max-h-0 opacity-0' : 'max-h-24 opacity-100'
-          }`}
+          className={`overflow-hidden transition-all duration-300 ease-in-out ${isScrolled ? 'max-h-0 opacity-0' : 'max-h-24 opacity-100'
+            }`}
         >
           <TrustBar />
         </div>
 
         {/* Main Navbar: always visible */}
         <nav
-          className={`border-b border-border/60 relative z-30 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${
-            isScrolled ? 'shadow-lg shadow-black/10' : ''
-          }`}
+          className={`border-b border-border/60 relative z-30 bg-card/95 backdrop-blur-xl transition-shadow duration-300 ${isScrolled ? 'shadow-lg shadow-black/10' : ''
+            }`}
         >
           <div className="w-full px-6 2xl:px-10">
             {/* Mobile Header */}
@@ -337,14 +335,14 @@ const location = useLocation()
 
               {/* Desktop Links */}
               <div className="flex w-full items-center justify-center px-10">
-                <div className="flex items-center gap-5 text-[15px] 2xl:gap-7">
+                <div className="flex items-center gap-5 text-[15px] 2xl:gap-2">
                   <Link
                     to="/"
                     className={`whitespace-nowrap font-medium transition-colors ${
-                      isActive('/')
-                        ? 'text-accent'
-                        : 'text-foreground hover:text-accent'
-                    }`}
+  isActive('/')
+    ? 'bg-[#466601] px-4 py-2 rounded-xl text-white'
+    : 'bg-[#79AD14] px-4 py-2 rounded-xl text-white hover:bg-[#466601] hover:text-white'
+}`}
                   >
                     Home
                   </Link>
@@ -393,10 +391,10 @@ const location = useLocation()
                   <Link
                     to="/reports"
                     className={`whitespace-nowrap font-medium transition-colors ${
-                      isActive('/reports')
-                        ? 'text-accent'
-                        : 'text-foreground hover:text-accent'
-                    }`}
+  isActive('/reports')
+    ? 'bg-[#466601] px-4 py-2 rounded-xl text-white'
+    : 'bg-[#79AD14] px-4 py-2 rounded-xl text-white hover:bg-[#466601] hover:text-white'
+}`}
                   >
                     Reports
                   </Link>
@@ -416,13 +414,13 @@ const location = useLocation()
                 </Link>
 
                 <Link to="/open-demo-account" className="w-full">
-    <Button
-      size="lg"
-      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-    >
-      Open Demo Account Online
-    </Button>
-  </Link>
+                  <Button
+                    size="lg"
+                    className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                  >
+                    Open Demo Account Online
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>
@@ -430,36 +428,33 @@ const location = useLocation()
 
         {/* Bottom Compliance Strip */}
         <div
-  className={`relative z-10 overflow-hidden transition-all duration-300 ease-in-out ${
-    isScrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100'
-  }`}
->
-  <ComplianceStrip />
-</div>
+          className={`relative z-10 overflow-hidden transition-all duration-300 ease-in-out ${isScrolled ? 'max-h-0 opacity-0' : 'max-h-20 opacity-100'
+            }`}
+        >
+          <ComplianceStrip />
+        </div>
       </header>
 
       <div
-  aria-hidden="true"
-  style={{ height: `${headerHeight}px` }}
-  className="w-full"
-/>
+        aria-hidden="true"
+        style={{ height: `${headerHeight}px` }}
+        className="w-full"
+      />
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${
-          mobileMenuOpen
+        className={`fixed inset-0 z-[60] bg-black/50 backdrop-blur-[2px] transition-opacity duration-300 xl:hidden ${mobileMenuOpen
             ? 'pointer-events-auto opacity-100'
             : 'pointer-events-none opacity-0'
-        }`}
+          }`}
         onClick={() => setMobileMenuOpen(false)}
         aria-hidden="true"
       />
 
       {/* Mobile Drawer */}
       <div
-        className={`fixed left-0 top-0 z-[70] flex h-screen w-[85%] max-w-[320px] flex-col border-r border-border bg-card shadow-2xl transition-transform duration-300 ease-out xl:hidden ${
-          mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        }`}
+        className={`fixed left-0 top-0 z-[70] flex h-screen w-[85%] max-w-[320px] flex-col border-r border-border bg-card shadow-2xl transition-transform duration-300 ease-out xl:hidden ${mobileMenuOpen ? 'translate-x-0' : '-translate-x-full'
+          }`}
       >
         {/* Drawer Header */}
         <div className="flex items-center justify-between border-b border-border/60 px-5 py-4">
@@ -487,11 +482,10 @@ const location = useLocation()
             <Link
               to="/"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${
-                isActive('/')
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/')
                   ? 'bg-accent/10 text-accent'
                   : 'text-foreground hover:bg-muted'
-              }`}
+                }`}
             >
               Home
             </Link>
@@ -545,11 +539,10 @@ const location = useLocation()
             <Link
               to="/reports"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${
-                isActive('/reports')
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/reports')
                   ? 'bg-accent/10 text-accent'
                   : 'text-foreground hover:bg-muted'
-              }`}
+                }`}
             >
               Reports
             </Link>
@@ -557,11 +550,10 @@ const location = useLocation()
             <Link
               to="/contact"
               onClick={() => setMobileMenuOpen(false)}
-              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${
-                isActive('/contact')
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/contact')
                   ? 'bg-accent/10 text-accent'
                   : 'text-foreground hover:bg-muted'
-              }`}
+                }`}
             >
               Contact
             </Link>
@@ -569,23 +561,23 @@ const location = useLocation()
         </div>
 
         {/* Drawer CTA Buttons */}
-       <div className="space-y-2.5 border-t border-border/60 p-4">
-  <Link
-    to="/book-online-session"
-    onClick={() => setMobileMenuOpen(false)}
-    className="flex w-full items-center justify-center rounded-lg border border-primary px-4 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
-  >
-    Book an Online Session
-  </Link>
+        <div className="space-y-2.5 border-t border-border/60 p-4">
+          <Link
+            to="/book-online-session"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex w-full items-center justify-center rounded-lg border border-primary px-4 py-2.5 text-sm font-medium text-primary transition-colors hover:bg-primary hover:text-primary-foreground"
+          >
+            Book an Online Session
+          </Link>
 
-  <Link
-    to="/open-demo-account"
-    onClick={() => setMobileMenuOpen(false)}
-    className="flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
-  >
-    Open Demo Account Online
-  </Link>
-</div>
+          <Link
+            to="/open-demo-account"
+            onClick={() => setMobileMenuOpen(false)}
+            className="flex w-full items-center justify-center rounded-lg bg-accent px-4 py-2.5 text-sm font-medium text-accent-foreground transition-colors hover:bg-accent/90"
+          >
+            Open Demo Account Online
+          </Link>
+        </div>
       </div>
     </>
   )

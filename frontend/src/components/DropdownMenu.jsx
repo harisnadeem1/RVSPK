@@ -93,9 +93,11 @@ function DropdownMenu({ label, items, isActive }) {
     >
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`flex items-center gap-1 font-medium transition-colors duration-200 relative ${
-          isActive ? 'text-accent' : 'text-foreground hover:text-accent'
-        }`}
+       className={`flex items-center gap-1 whitespace-nowrap px-4 py-2 rounded-xl font-medium transition-colors duration-200 ${
+  isActive
+    ? 'bg-[#466601] text-white'
+    : 'bg-[#79AD14] text-white hover:bg-[#466601] hover:text-white'
+}`}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
