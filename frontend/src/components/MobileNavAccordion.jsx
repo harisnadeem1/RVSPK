@@ -29,7 +29,7 @@ function SubAccordion({ item, onItemClick, depth = 1 }) {
       <Link
         to={item.path}
         onClick={onItemClick}
-        className={`flex items-center gap-2 ${paddingLeft} py-2.5 text-[16px] text-sm text-muted-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
+        className={`flex items-center gap-2 ${paddingLeft} py-2.5 text-[16px] text-base text-muted-foreground hover:bg-accent/10 hover:text-accent transition-colors duration-200`}
       >
         <span className="h-1 w-1 rounded-full bg-muted-foreground/40 shrink-0" />
         {item.label}
