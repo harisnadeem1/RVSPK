@@ -36,9 +36,10 @@ import FAQPage from './pages/FAQPage'
 import CookieBanner from './components/CookieBanner.jsx'
 import BookOnlineSessionPage from './pages/BookOnlineSessionPage.jsx';
 import OpenDemoAccount
-    from "./pages/OpenDemoAccount";
+  from "./pages/OpenDemoAccount";
 
-    import DemoUsersPage from "./pages/admin/DemoUsers.jsx";
+import DemoUsersPage from "./pages/admin/DemoUsers.jsx";
+import Bookings from "./pages/admin/Bookings.jsx";  
 
 function AppContent() {
   const location = useLocation();
@@ -83,9 +84,9 @@ function AppContent() {
         />
 
         <Route
-    path="/open-demo-account"
-    element={<OpenDemoAccount />}
-/>
+          path="/open-demo-account"
+          element={<OpenDemoAccount />}
+        />
 
 
         {/* Admin Routes */}
@@ -121,6 +122,28 @@ function AppContent() {
           }
         />
 
+
+        <Route
+          path="/admin/demo-users"
+          element={
+            <ProtectedAdminRoute>
+
+              <DemoUsersPage />
+            </ProtectedAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/bookings"
+          element={
+            <ProtectedAdminRoute>
+              <Bookings />
+            </ProtectedAdminRoute>
+          }
+        />
+
+
+
         {/* Super Admin Only */}
         <Route
           path="/admin/manage-admins"
@@ -130,16 +153,8 @@ function AppContent() {
             </ProtectedSuperAdminRoute>
           }
         />
-        
 
-        <Route
-  path="/admin/demo-users"
-  element={
-    <ProtectedSuperAdminRoute>
-      <DemoUsersPage />
-    </ProtectedSuperAdminRoute>
-  }
-/>
+
 
         {/* 404 */}
         <Route path="*" element={

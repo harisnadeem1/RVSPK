@@ -414,7 +414,7 @@ function BookOnlineSessionPage() {
                                         <Clock3 className="h-4 w-4 text-accent" />
 
                                         <p className="text-sm font-bold text-foreground">
-                                            Available time slots
+                                            Select time slot
                                         </p>
                                     </div>
 

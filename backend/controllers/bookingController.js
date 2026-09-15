@@ -1,4 +1,5 @@
 import transporter from '../config/mailer.js';
+import pool from '../config/db.js';
 
 const DAY_NAMES = [
   'Sunday',
@@ -433,6 +434,44 @@ ${cleanMessage}
 `.trim();
 
   try {
+
+const bookingResult = await pool.query(
+  `
+    INSERT INTO bookings (
+      name,
+      email,
+      whatsapp_number,
+      profession,
+      city,
+      country,
+      subject,
+      message,
+      session_date,
+      session_time
+    )
+    VALUES (
+      $1, $2, $3, $4, $5,
+      $6, $7, $8, $9, $10
+    )
+    RETURNING *
+  `,
+  [
+    cleanName,
+    cleanEmail,
+    cleanWhatsappNumber,
+    cleanProfession,
+    cleanCity,
+    cleanCountry,
+    cleanSubject,
+    cleanMessage,
+    cleanSessionDate,
+    cleanSessionTime,
+  ]
+);
+
+const booking = bookingResult.rows[0];
+
+
     await transporter.sendMail({
       from: `"RVSPL Online Booking" <${process.env.GMAIL_USER}>`,
       to: bookingRecipients,
@@ -458,6 +497,130 @@ ${cleanMessage}
     return res.status(500).json({
       success: false,
       error: 'Failed to send your booking request. Please try again.',
+    });
+  }
+};
+
+
+export const getBookings = async (req, res) => {
+  try {
+    const result = await pool.query(`
+      SELECT
+        b.id,
+        b.name,
+        b.email,
+        b.whatsapp_number,
+        b.profession,
+        b.city,
+        b.country,
+        b.subject,
+        b.message,
+        b.session_date,
+        b.session_time,
+
+        b.status,
+        b.admin_comment,
+
+        b.status_updated_by,
+        b.status_updated_at,
+
+        b.created_at,
+        b.updated_at,
+
+        u.full_name AS status_updated_by_name,
+        u.email AS status_updated_by_email
+
+      FROM bookings b
+
+      LEFT JOIN users u
+        ON b.status_updated_by = u.id
+
+      ORDER BY b.created_at DESC
+    `);
+
+    return res.status(200).json({
+      success: true,
+      bookings: result.rows,
+    });
+
+  } catch (error) {
+    console.error(
+      'Get bookings error:',
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to fetch bookings',
+    });
+  }
+};
+
+
+export const updateBookingStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, comment } = req.body;
+
+    const allowedStatuses = [
+      'pending',
+      'in_process',
+      'closed',
+      'rejected',
+    ];
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid booking status',
+      });
+    }
+
+    const updatedBy = req.user.id;
+
+    const result = await pool.query(
+      `
+        UPDATE bookings
+        SET
+          status = $1,
+          admin_comment = $2,
+          status_updated_by = $3,
+          status_updated_at = NOW()
+        WHERE id = $4
+        RETURNING *
+      `,
+      [
+        status,
+        comment?.trim() || null,
+        updatedBy,
+        id,
+      ]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Booking not found',
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message:
+        'Booking updated successfully',
+      booking: result.rows[0],
+    });
+
+  } catch (error) {
+    console.error(
+      'Update booking error:',
+      error
+    );
+
+    return res.status(500).json({
+      success: false,
+      message:
+        'Failed to update booking',
     });
   }
 };

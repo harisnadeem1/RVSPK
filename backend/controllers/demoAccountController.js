@@ -2,29 +2,108 @@ import pool from "../config/db.js";
 import { createPmexAccount } from "../services/pmexPlaywright.js";
 import { sendDemoAccountEmail } from "../services/demoAccountEmail.js";
 
+
+export const updateDemoAccountStatus = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status, comment } = req.body;
+
+    const allowedStatuses = [
+      'pending',
+      'in_process',
+      'closed',
+      'rejected',
+    ];
+
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: 'Invalid status',
+      });
+    }
+
+    // This depends on how verifyToken stores the authenticated user.
+    // Commonly it is req.user.id.
+    const updatedBy = req.user.id;
+
+    const result = await pool.query(
+      `
+      UPDATE demo_accounts
+      SET
+        status = $1,
+        admin_comment = $2,
+        status_updated_by = $3,
+        status_updated_at = NOW()
+      WHERE id = $4
+      RETURNING *
+      `,
+      [
+        status,
+        comment?.trim() || null,
+        updatedBy,
+        id,
+      ]
+    );
+
+    if (result.rows.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'Demo account not found',
+      });
+    }
+
+    return res.status(200).json({
+      success: true,
+      message: 'Demo account updated successfully',
+      account: result.rows[0],
+    });
+
+  } catch (error) {
+    console.error('Update demo account status error:', error);
+
+    return res.status(500).json({
+      success: false,
+      message: 'Failed to update demo account',
+    });
+  }
+};
+
+
 export const getDemoAccounts = async (req, res) => {
   try {
     const result = await pool.query(`
       SELECT
-        id,
-        first_name,
-        last_name,
-        email,
-        phone,
-        dummy_email,
-        dummy_phone,
-        pmex_login,
-        pmex_password,
-        status,
-        created_at
-      FROM demo_accounts
-      ORDER BY created_at DESC
+        da.id,
+        da.first_name,
+        da.last_name,
+        da.email,
+        da.phone,
+        da.dummy_email,
+        da.dummy_phone,
+        da.pmex_login,
+        da.pmex_password,
+        da.status,
+        da.admin_comment,
+        da.status_updated_at,
+        da.status_updated_by,
+        da.created_at,
+
+        u.full_name AS status_updated_by_name,
+        u.email AS status_updated_by_email
+
+      FROM demo_accounts da
+
+      LEFT JOIN users u
+        ON da.status_updated_by = u.id
+
+      ORDER BY da.created_at DESC
     `);
 
     return res.status(200).json({
       success: true,
       accounts: result.rows,
     });
+
   } catch (error) {
     console.error("Get demo accounts error:", error);
 

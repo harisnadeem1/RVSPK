@@ -9,7 +9,8 @@ import {
   Shield,
   User,
   Users,
-  ChevronRight
+  ChevronRight,
+  CalendarDays
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/contexts/AdminAuthContext.jsx';
@@ -21,18 +22,35 @@ function AdminLayout({ children }) {
 
   const isSuperAdmin = admin?.role === 'super_admin';
 
-  const menuItems = [
-    { icon: LayoutDashboard, label: 'Dashboard',      path: '/admin' },
-    { icon: Upload,          label: 'Upload Reports', path: '/admin/upload-reports' },
-    { icon: FileText,        label: 'Manage Reports', path: '/admin/manage-reports' },
-       ...(isSuperAdmin
+ const menuItems = [
+  {
+    icon: LayoutDashboard,
+    label: 'Dashboard',
+    path: '/admin'
+  },
+  {
+    icon: Upload,
+    label: 'Upload Reports',
+    path: '/admin/upload-reports'
+  },
+  {
+    icon: FileText,
+    label: 'Manage Reports',
+    path: '/admin/manage-reports'
+  },
+  {
+    icon: Users,
+    label: 'Demo Users',
+    path: '/admin/demo-users'
+  },
+  {
+    icon: CalendarDays,
+    label: 'Bookings',
+    path: '/admin/bookings'
+  },
+
+  ...(isSuperAdmin
     ? [
-        {
-          icon: Users,
-          label: 'Demo Users',
-          path: '/admin/demo-users',
-          superAdminOnly: true
-        },
         {
           icon: Shield,
           label: 'Manage Admins',
@@ -40,8 +58,7 @@ function AdminLayout({ children }) {
           superAdminOnly: true
         }
       ]
-    : []
-  ),
+    : [])
 ];
 
   const isActive = (path) => location.pathname === path;

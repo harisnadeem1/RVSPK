@@ -1,28 +1,24 @@
-
 import React, { useEffect, useMemo, useState } from 'react';
 
 import {
-  Users,
+  CalendarDays,
   Search,
   RefreshCw,
   Mail,
   Phone,
   UserRound,
-  KeyRound,
-  CalendarDays,
-  Eye,
-  EyeOff,
-  Copy,
-  CheckCircle2,
+  Clock,
+  MessageSquare,
+  MapPin,
+  Briefcase,
   FileDown,
   ChevronLeft,
   ChevronRight,
   Filter,
   Settings,
   X,
-  MessageSquare,
+  CheckCircle2,
   UserCheck,
-  Clock,
   Loader2,
 } from 'lucide-react';
 
@@ -95,10 +91,10 @@ const getStatusClasses = (status) => {
   }
 };
 
-function DemoUsers() {
+function Bookings() {
   const { authFetch } = useAdminAuth();
 
-  const [accounts, setAccounts] = useState([]);
+  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const [search, setSearch] = useState('');
@@ -121,14 +117,8 @@ function DemoUsers() {
   const [itemsPerPage, setItemsPerPage] =
     useState(10);
 
-  const [visiblePasswords, setVisiblePasswords] =
-    useState({});
-
-  const [copiedField, setCopiedField] =
-    useState(null);
-
   // Manage Modal
-  const [selectedAccount, setSelectedAccount] =
+  const [selectedBooking, setSelectedBooking] =
     useState(null);
 
   const [editStatus, setEditStatus] =
@@ -147,15 +137,15 @@ function DemoUsers() {
     useState('');
 
   // ─────────────────────────────────────────────
-  // Fetch Accounts
+  // Fetch Bookings
   // ─────────────────────────────────────────────
 
-  const fetchAccounts = async () => {
+  const fetchBookings = async () => {
     try {
       setLoading(true);
 
       const response = await authFetch(
-        `${API_URL}/api/demo-accounts`
+        `${API_URL}/api/bookings`
       );
 
       if (!response) return;
@@ -166,15 +156,15 @@ function DemoUsers() {
         throw new Error(
           data.message ||
           data.error ||
-          'Failed to fetch demo accounts'
+          'Failed to fetch bookings'
         );
       }
 
-      setAccounts(data.accounts || []);
+      setBookings(data.bookings || []);
 
     } catch (error) {
       console.error(
-        'Fetch demo accounts error:',
+        'Fetch bookings error:',
         error
       );
 
@@ -184,22 +174,22 @@ function DemoUsers() {
   };
 
   useEffect(() => {
-    fetchAccounts();
+    fetchBookings();
   }, []);
 
   // ─────────────────────────────────────────────
   // Manage Modal
   // ─────────────────────────────────────────────
 
-  const openManageModal = (account) => {
-    setSelectedAccount(account);
+  const openManageModal = (booking) => {
+    setSelectedBooking(booking);
 
     setEditStatus(
-      account.status || 'pending'
+      booking.status || 'pending'
     );
 
     setAdminComment(
-      account.admin_comment || ''
+      booking.admin_comment || ''
     );
 
     setSaveError('');
@@ -209,7 +199,7 @@ function DemoUsers() {
   const closeManageModal = () => {
     if (saving) return;
 
-    setSelectedAccount(null);
+    setSelectedBooking(null);
     setEditStatus('pending');
     setAdminComment('');
     setSaveError('');
@@ -217,7 +207,7 @@ function DemoUsers() {
   };
 
   const handleSaveChanges = async () => {
-    if (!selectedAccount) return;
+    if (!selectedBooking) return;
 
     try {
       setSaving(true);
@@ -225,12 +215,14 @@ function DemoUsers() {
       setSaveSuccess('');
 
       const response = await authFetch(
-        `${API_URL}/api/demo-accounts/${selectedAccount.id}/status`,
+        `${API_URL}/api/bookings/${selectedBooking.id}/status`,
         {
           method: 'PATCH',
+
           headers: {
             'Content-Type': 'application/json',
           },
+
           body: JSON.stringify({
             status: editStatus,
             comment: adminComment,
@@ -250,32 +242,30 @@ function DemoUsers() {
         throw new Error(
           data.message ||
           data.error ||
-          'Failed to update demo account'
+          'Failed to update booking'
         );
       }
 
       setSaveSuccess(
-        'Demo account updated successfully.'
+        'Booking updated successfully.'
       );
 
-      // Refresh so Updated By name and timestamp
-      // come directly from the server.
-      await fetchAccounts();
+      await fetchBookings();
 
       setTimeout(() => {
-        setSelectedAccount(null);
+        setSelectedBooking(null);
         setSaveSuccess('');
       }, 700);
 
     } catch (error) {
       console.error(
-        'Update demo account error:',
+        'Update booking error:',
         error
       );
 
       setSaveError(
         error.message ||
-        'Failed to update demo account'
+        'Failed to update booking'
       );
 
     } finally {
@@ -288,43 +278,50 @@ function DemoUsers() {
   // ─────────────────────────────────────────────
 
   const availableYears = useMemo(() => {
-    const years = accounts
-      .map((account) => {
+    const years = bookings
+      .map((booking) => {
         const date = new Date(
-          account.created_at
+          booking.created_at
         );
 
         return date.getFullYear();
       })
-      .filter((year) => !Number.isNaN(year));
+      .filter((year) =>
+        !Number.isNaN(year)
+      );
 
     return [...new Set(years)]
       .sort((a, b) => b - a);
 
-  }, [accounts]);
+  }, [bookings]);
 
   // ─────────────────────────────────────────────
-  // Search + Filter + Sort
+  // Search + Filters + Sorting
   // ─────────────────────────────────────────────
 
-  const filteredAccounts = useMemo(() => {
-    let result = [...accounts];
+  const filteredBookings = useMemo(() => {
+    let result = [...bookings];
 
     const query = search
       .toLowerCase()
       .trim();
 
     if (query) {
-      result = result.filter((account) => {
+      result = result.filter((booking) => {
         return [
-          account.first_name,
-          account.last_name,
-          account.email,
-          account.phone,
-          account.pmex_login,
-          account.status,
-          account.status_updated_by_name,
-          account.admin_comment,
+          booking.name,
+          booking.email,
+          booking.whatsapp_number,
+          booking.profession,
+          booking.city,
+          booking.country,
+          booking.subject,
+          booking.message,
+          booking.session_date,
+          booking.session_time,
+          booking.status,
+          booking.admin_comment,
+          booking.status_updated_by_name,
         ].some((value) =>
           value
             ?.toString()
@@ -334,10 +331,11 @@ function DemoUsers() {
       });
     }
 
+    // Filter based on booking creation date
     if (selectedMonth !== 'all') {
-      result = result.filter((account) => {
+      result = result.filter((booking) => {
         const date = new Date(
-          account.created_at
+          booking.created_at
         );
 
         return (
@@ -348,9 +346,9 @@ function DemoUsers() {
     }
 
     if (selectedYear !== 'all') {
-      result = result.filter((account) => {
+      result = result.filter((booking) => {
         const date = new Date(
-          account.created_at
+          booking.created_at
         );
 
         return (
@@ -362,8 +360,8 @@ function DemoUsers() {
 
     if (selectedStatus !== 'all') {
       result = result.filter(
-        (account) =>
-          account.status === selectedStatus
+        (booking) =>
+          booking.status === selectedStatus
       );
     }
 
@@ -375,24 +373,32 @@ function DemoUsers() {
         );
       }
 
+      if (sortBy === 'session-soonest') {
+        return (
+          new Date(a.session_date) -
+          new Date(b.session_date)
+        );
+      }
+
+      if (sortBy === 'session-latest') {
+        return (
+          new Date(b.session_date) -
+          new Date(a.session_date)
+        );
+      }
+
       if (sortBy === 'name-asc') {
-        const nameA =
-          `${a.first_name || ''} ${a.last_name || ''}`;
-
-        const nameB =
-          `${b.first_name || ''} ${b.last_name || ''}`;
-
-        return nameA.localeCompare(nameB);
+        return (a.name || '')
+          .localeCompare(
+            b.name || ''
+          );
       }
 
       if (sortBy === 'name-desc') {
-        const nameA =
-          `${a.first_name || ''} ${a.last_name || ''}`;
-
-        const nameB =
-          `${b.first_name || ''} ${b.last_name || ''}`;
-
-        return nameB.localeCompare(nameA);
+        return (b.name || '')
+          .localeCompare(
+            a.name || ''
+          );
       }
 
       return (
@@ -404,7 +410,7 @@ function DemoUsers() {
     return result;
 
   }, [
-    accounts,
+    bookings,
     search,
     selectedMonth,
     selectedYear,
@@ -419,23 +425,23 @@ function DemoUsers() {
   const totalPages = Math.max(
     1,
     Math.ceil(
-      filteredAccounts.length /
+      filteredBookings.length /
       itemsPerPage
     )
   );
 
-  const paginatedAccounts = useMemo(() => {
+  const paginatedBookings = useMemo(() => {
     const startIndex =
       (currentPage - 1) *
       itemsPerPage;
 
-    return filteredAccounts.slice(
+    return filteredBookings.slice(
       startIndex,
       startIndex + itemsPerPage
     );
 
   }, [
-    filteredAccounts,
+    filteredBookings,
     currentPage,
     itemsPerPage,
   ]);
@@ -460,49 +466,10 @@ function DemoUsers() {
   }, [currentPage, totalPages]);
 
   // ─────────────────────────────────────────────
-  // Password
-  // ─────────────────────────────────────────────
-
-  const togglePassword = (id) => {
-    setVisiblePasswords((prev) => ({
-      ...prev,
-      [id]: !prev[id],
-    }));
-  };
-
-  // ─────────────────────────────────────────────
-  // Copy
-  // ─────────────────────────────────────────────
-
-  const copyText = async (
-    text,
-    field
-  ) => {
-    if (!text) return;
-
-    try {
-      await navigator.clipboard
-        .writeText(text);
-
-      setCopiedField(field);
-
-      setTimeout(() => {
-        setCopiedField(null);
-      }, 1500);
-
-    } catch (error) {
-      console.error(
-        'Copy failed:',
-        error
-      );
-    }
-  };
-
-  // ─────────────────────────────────────────────
   // Date Format
   // ─────────────────────────────────────────────
 
-  const formatDate = (date) => {
+  const formatDateTime = (date) => {
     if (!date) return '—';
 
     return new Date(date)
@@ -518,12 +485,40 @@ function DemoUsers() {
       );
   };
 
+  const formatSessionDate = (date) => {
+    if (!date) return '—';
+
+    /*
+      Adding T00:00:00 prevents some browsers
+      from interpreting YYYY-MM-DD as UTC and
+      showing the previous day.
+    */
+    const normalizedDate =
+      typeof date === 'string' &&
+      /^\d{4}-\d{2}-\d{2}$/.test(date)
+        ? `${date}T00:00:00`
+        : date;
+
+    return new Date(normalizedDate)
+      .toLocaleDateString(
+        'en-PK',
+        {
+          weekday: 'short',
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+        }
+      );
+  };
+
   // ─────────────────────────────────────────────
   // PDF Export
   // ─────────────────────────────────────────────
 
   const exportPDF = () => {
-    if (filteredAccounts.length === 0) {
+    if (
+      filteredBookings.length === 0
+    ) {
       return;
     }
 
@@ -534,7 +529,7 @@ function DemoUsers() {
     });
 
     let filterTitle =
-      'All Demo Users';
+      'All Online Session Bookings';
 
     if (
       selectedMonth !== 'all' &&
@@ -562,7 +557,9 @@ function DemoUsers() {
 
     if (selectedStatus !== 'all') {
       filterTitle +=
-        ` - ${getStatusLabel(selectedStatus)}`;
+        ` - ${getStatusLabel(
+          selectedStatus
+        )}`;
     }
 
     doc.setFontSize(18);
@@ -576,7 +573,7 @@ function DemoUsers() {
     doc.setFontSize(13);
 
     doc.text(
-      'PMEX Demo Account Users',
+      'Online Session Bookings',
       14,
       23
     );
@@ -590,7 +587,7 @@ function DemoUsers() {
     );
 
     doc.text(
-      `Total Records: ${filteredAccounts.length}`,
+      `Total Records: ${filteredBookings.length}`,
       14,
       35
     );
@@ -607,54 +604,37 @@ function DemoUsers() {
 
       head: [[
         '#',
-        'Name',
+        'Customer',
         'Email',
-        'Phone',
-        'PMEX Login',
+        'WhatsApp',
+        'Profession',
+        'Session',
+        'Time',
+        'Subject',
         'Status',
-        'Updated By',
-        'Created',
       ]],
 
-      body: filteredAccounts.map(
-        (account, index) => [
+      body: filteredBookings.map(
+        (booking, index) => [
           index + 1,
-
-          `${account.first_name || ''} ${
-            account.last_name || ''
-          }`.trim(),
-
-          account.email || '—',
-
-          account.phone || '—',
-
-          account.pmex_login || '—',
-
-          getStatusLabel(
-            account.status
+          booking.name || '—',
+          booking.email || '—',
+          booking.whatsapp_number || '—',
+          booking.profession || '—',
+          formatSessionDate(
+            booking.session_date
           ),
-
-          account.status_updated_by_name ||
-            '—',
-
-          account.created_at
-            ? new Date(
-                account.created_at
-              ).toLocaleDateString(
-                'en-PK',
-                {
-                  day: '2-digit',
-                  month: 'short',
-                  year: 'numeric',
-                }
-              )
-            : '—',
+          booking.session_time || '—',
+          booking.subject || '—',
+          getStatusLabel(
+            booking.status
+          ),
         ]
       ),
 
       styles: {
-        fontSize: 7.5,
-        cellPadding: 2.2,
+        fontSize: 7,
+        cellPadding: 2,
         overflow: 'linebreak',
       },
 
@@ -685,39 +665,26 @@ function DemoUsers() {
     });
 
     let fileName =
-      'demo-users-all';
+      'online-session-bookings';
 
-    if (
-      selectedMonth !== 'all'
-    ) {
+    if (selectedMonth !== 'all') {
       fileName +=
         `-${MONTHS[
           Number(selectedMonth)
         ].toLowerCase()}`;
     }
 
-    if (
-      selectedYear !== 'all'
-    ) {
+    if (selectedYear !== 'all') {
       fileName +=
         `-${selectedYear}`;
     }
 
-    if (
-      selectedStatus !== 'all'
-    ) {
+    if (selectedStatus !== 'all') {
       fileName +=
         `-${selectedStatus}`;
     }
 
-    if (search.trim()) {
-      fileName +=
-        '-search-results';
-    }
-
-    doc.save(
-      `${fileName}.pdf`
-    );
+    doc.save(`${fileName}.pdf`);
   };
 
   // ─────────────────────────────────────────────
@@ -745,34 +712,27 @@ function DemoUsers() {
   // ─────────────────────────────────────────────
 
   const pendingCount =
-    accounts.filter(
-      (account) =>
-        account.status === 'pending'
+    bookings.filter(
+      (booking) =>
+        booking.status === 'pending'
     ).length;
 
   const inProcessCount =
-    accounts.filter(
-      (account) =>
-        account.status === 'in_process'
+    bookings.filter(
+      (booking) =>
+        booking.status === 'in_process'
     ).length;
 
   const closedCount =
-    accounts.filter(
-      (account) =>
-        account.status === 'closed'
+    bookings.filter(
+      (booking) =>
+        booking.status === 'closed'
     ).length;
 
   const rejectedCount =
-    accounts.filter(
-      (account) =>
-        account.status === 'rejected'
-    ).length;
-
-  const accountCreatedCount =
-    accounts.filter(
-      (account) =>
-        account.pmex_login &&
-        account.pmex_password
+    bookings.filter(
+      (booking) =>
+        booking.status === 'rejected'
     ).length;
 
   // ─────────────────────────────────────────────
@@ -795,7 +755,11 @@ function DemoUsers() {
             gap-4
           ">
 
-            <div className="flex items-center gap-3">
+            <div className="
+              flex
+              items-center
+              gap-3
+            ">
 
               <div className="
                 h-10
@@ -807,7 +771,15 @@ function DemoUsers() {
                 justify-center
                 flex-shrink-0
               ">
-                <Users className="h-5 w-5 text-accent" />
+
+                <CalendarDays
+                  className="
+                    h-5
+                    w-5
+                    text-accent
+                  "
+                />
+
               </div>
 
               <div>
@@ -819,14 +791,14 @@ function DemoUsers() {
                   text-foreground
                   leading-tight
                 ">
-                  Demo Users
+                  Online Session Bookings
                 </h2>
 
                 <p className="
                   text-sm
                   text-muted-foreground
                 ">
-                  View and manage PMEX demo account requests
+                  View and manage online session requests
                 </p>
 
               </div>
@@ -835,7 +807,7 @@ function DemoUsers() {
 
             <Button
               variant="outline"
-              onClick={fetchAccounts}
+              onClick={fetchBookings}
               disabled={loading}
             >
 
@@ -871,8 +843,8 @@ function DemoUsers() {
         ">
 
           <SummaryCard
-            label="Total Users"
-            value={accounts.length}
+            label="Total Bookings"
+            value={bookings.length}
             stripe="bg-accent"
           />
 
@@ -899,8 +871,6 @@ function DemoUsers() {
             value={rejectedCount}
             stripe="bg-red-500"
           />
-
-         
 
         </div>
 
@@ -930,7 +900,11 @@ function DemoUsers() {
             border-border
           ">
 
-            <div className="flex flex-col gap-4">
+            <div className="
+              flex
+              flex-col
+              gap-4
+            ">
 
               <div className="
                 flex
@@ -948,7 +922,7 @@ function DemoUsers() {
                     font-semibold
                     text-foreground
                   ">
-                    Demo Account Requests
+                    Booking Requests
                   </h3>
 
                   <p className="
@@ -956,10 +930,10 @@ function DemoUsers() {
                     text-muted-foreground
                     mt-0.5
                   ">
-                    {filteredAccounts.length}{' '}
+                    {filteredBookings.length}{' '}
                     record
                     {
-                      filteredAccounts.length !== 1
+                      filteredBookings.length !== 1
                         ? 's'
                         : ''
                     }{' '}
@@ -981,21 +955,19 @@ function DemoUsers() {
                     sm:w-72
                   ">
 
-                    <Search
-                      className="
-                        absolute
-                        left-3
-                        top-1/2
-                        -translate-y-1/2
-                        h-4
-                        w-4
-                        text-muted-foreground
-                      "
-                    />
+                    <Search className="
+                      absolute
+                      left-3
+                      top-1/2
+                      -translate-y-1/2
+                      h-4
+                      w-4
+                      text-muted-foreground
+                    " />
 
                     <Input
                       type="text"
-                      placeholder="Search users..."
+                      placeholder="Search bookings..."
                       value={search}
                       onChange={(e) =>
                         setSearch(
@@ -1010,7 +982,7 @@ function DemoUsers() {
                   <Button
                     onClick={exportPDF}
                     disabled={
-                      filteredAccounts.length === 0
+                      filteredBookings.length === 0
                     }
                     className="
                       bg-accent
@@ -1019,7 +991,11 @@ function DemoUsers() {
                     "
                   >
 
-                    <FileDown className="h-4 w-4 mr-2" />
+                    <FileDown className="
+                      h-4
+                      w-4
+                      mr-2
+                    " />
 
                     Export PDF
 
@@ -1053,27 +1029,15 @@ function DemoUsers() {
                 </div>
 
                 {/* Status */}
-                <select
+                <FilterSelect
                   value={selectedStatus}
                   onChange={(e) =>
                     setSelectedStatus(
                       e.target.value
                     )
                   }
-                  className="
-                    h-9
-                    rounded-md
-                    border
-                    border-input
-                    bg-background
-                    px-3
-                    text-sm
-                    text-foreground
-                    focus:outline-none
-                    focus:ring-2
-                    focus:ring-ring
-                  "
                 >
+
                   <option value="all">
                     All Statuses
                   </option>
@@ -1088,26 +1052,17 @@ function DemoUsers() {
                       </option>
                     )
                   )}
-                </select>
+
+                </FilterSelect>
 
                 {/* Month */}
-                <select
+                <FilterSelect
                   value={selectedMonth}
                   onChange={(e) =>
                     setSelectedMonth(
                       e.target.value
                     )
                   }
-                  className="
-                    h-9
-                    rounded-md
-                    border
-                    border-input
-                    bg-background
-                    px-3
-                    text-sm
-                    text-foreground
-                  "
                 >
 
                   <option value="all">
@@ -1125,26 +1080,16 @@ function DemoUsers() {
                     )
                   )}
 
-                </select>
+                </FilterSelect>
 
                 {/* Year */}
-                <select
+                <FilterSelect
                   value={selectedYear}
                   onChange={(e) =>
                     setSelectedYear(
                       e.target.value
                     )
                   }
-                  className="
-                    h-9
-                    rounded-md
-                    border
-                    border-input
-                    bg-background
-                    px-3
-                    text-sm
-                    text-foreground
-                  "
                 >
 
                   <option value="all">
@@ -1162,26 +1107,16 @@ function DemoUsers() {
                     )
                   )}
 
-                </select>
+                </FilterSelect>
 
                 {/* Sort */}
-                <select
+                <FilterSelect
                   value={sortBy}
                   onChange={(e) =>
                     setSortBy(
                       e.target.value
                     )
                   }
-                  className="
-                    h-9
-                    rounded-md
-                    border
-                    border-input
-                    bg-background
-                    px-3
-                    text-sm
-                    text-foreground
-                  "
                 >
 
                   <option value="newest">
@@ -1192,6 +1127,14 @@ function DemoUsers() {
                     Oldest First
                   </option>
 
+                  <option value="session-soonest">
+                    Session Soonest
+                  </option>
+
+                  <option value="session-latest">
+                    Session Latest
+                  </option>
+
                   <option value="name-asc">
                     Name A-Z
                   </option>
@@ -1200,9 +1143,10 @@ function DemoUsers() {
                     Name Z-A
                   </option>
 
-                </select>
+                </FilterSelect>
 
                 {hasFilters && (
+
                   <Button
                     variant="ghost"
                     size="sm"
@@ -1210,6 +1154,7 @@ function DemoUsers() {
                   >
                     Clear Filters
                   </Button>
+
                 )}
 
               </div>
@@ -1218,7 +1163,7 @@ function DemoUsers() {
 
           </div>
 
-          {/* Loading */}
+          {/* Content */}
           {loading ? (
 
             <div className="
@@ -1229,26 +1174,24 @@ function DemoUsers() {
               justify-center
             ">
 
-              <RefreshCw
-                className="
-                  h-6
-                  w-6
-                  text-accent
-                  animate-spin
-                  mb-3
-                "
-              />
+              <RefreshCw className="
+                h-6
+                w-6
+                text-accent
+                animate-spin
+                mb-3
+              " />
 
               <p className="
                 text-sm
                 text-muted-foreground
               ">
-                Loading demo users...
+                Loading bookings...
               </p>
 
             </div>
 
-          ) : filteredAccounts.length === 0 ? (
+          ) : filteredBookings.length === 0 ? (
 
             <div className="
               py-20
@@ -1268,13 +1211,11 @@ function DemoUsers() {
                 mb-3
               ">
 
-                <Users
-                  className="
-                    h-5
-                    w-5
-                    text-muted-foreground
-                  "
-                />
+                <CalendarDays className="
+                  h-5
+                  w-5
+                  text-muted-foreground
+                " />
 
               </div>
 
@@ -1283,7 +1224,7 @@ function DemoUsers() {
                 font-semibold
                 text-foreground
               ">
-                No demo users found
+                No bookings found
               </h3>
 
               <p className="
@@ -1291,19 +1232,18 @@ function DemoUsers() {
                 text-muted-foreground
                 mt-1
               ">
-                There are currently no matching demo account requests.
+                There are currently no matching online session bookings.
               </p>
 
             </div>
 
           ) : (
 
-            /* Table */
             <div className="overflow-x-auto">
 
               <table className="
                 w-full
-                min-w-[1450px]
+                min-w-[1400px]
               ">
 
                 <thead>
@@ -1315,14 +1255,24 @@ function DemoUsers() {
                   ">
 
                     <TableHeader>
-                      User
+                      Customer
                     </TableHeader>
 
                     <TableHeader>
                       Contact
                     </TableHeader>
 
-                    
+                    <TableHeader>
+                      Profession
+                    </TableHeader>
+
+                    <TableHeader>
+                      Session
+                    </TableHeader>
+
+                    <TableHeader>
+                      Subject
+                    </TableHeader>
 
                     <TableHeader>
                       Status
@@ -1332,23 +1282,9 @@ function DemoUsers() {
                       Updated By
                     </TableHeader>
 
-                      <TableHeader>
+                    <TableHeader>
                       Action
                     </TableHeader>
-
-                    <TableHeader>
-                      PMEX Login
-                    </TableHeader>
-
-                    <TableHeader>
-                      Password
-                    </TableHeader>
-
-                    <TableHeader>
-                      Created
-                    </TableHeader>
-
-                  
 
                   </tr>
 
@@ -1359,18 +1295,18 @@ function DemoUsers() {
                   divide-border
                 ">
 
-                  {paginatedAccounts.map(
-                    (account) => (
+                  {paginatedBookings.map(
+                    (booking) => (
 
                       <tr
-                        key={account.id}
+                        key={booking.id}
                         className="
                           hover:bg-muted/30
                           transition-colors
                         "
                       >
 
-                        {/* User */}
+                        {/* Customer */}
                         <td className="px-5 py-4">
 
                           <div className="
@@ -1390,17 +1326,15 @@ function DemoUsers() {
                               flex-shrink-0
                             ">
 
-                              <UserRound
-                                className="
-                                  h-4
-                                  w-4
-                                  text-accent
-                                "
-                              />
+                              <UserRound className="
+                                h-4
+                                w-4
+                                text-accent
+                              " />
 
                             </div>
 
-                            <div className="min-w-0">
+                            <div>
 
                               <p className="
                                 text-sm
@@ -1408,32 +1342,24 @@ function DemoUsers() {
                                 text-foreground
                                 whitespace-nowrap
                               ">
-                                {account.first_name}{' '}
-                                {account.last_name}
+                                {booking.name}
                               </p>
 
-                              {account.admin_comment && (
-                                <div
-                                  className="
-                                    flex
-                                    items-center
-                                    gap-1
-                                    mt-1
-                                    text-xs
-                                    text-muted-foreground
-                                    max-w-[180px]
-                                  "
-                                  title={
-                                    account.admin_comment
-                                  }
-                                >
-                                  <MessageSquare className="h-3 w-3 flex-shrink-0" />
+                              <div className="
+                                flex
+                                items-center
+                                gap-1
+                                text-xs
+                                text-muted-foreground
+                                mt-1
+                              ">
 
-                                  <span className="truncate">
-                                    {account.admin_comment}
-                                  </span>
-                                </div>
-                              )}
+                                <MapPin className="h-3 w-3" />
+
+                                {booking.city},{' '}
+                                {booking.country}
+
+                              </div>
 
                             </div>
 
@@ -1460,9 +1386,7 @@ function DemoUsers() {
                                 text-muted-foreground
                               " />
 
-                              <span>
-                                {account.email}
-                              </span>
+                              {booking.email}
 
                             </div>
 
@@ -1476,9 +1400,7 @@ function DemoUsers() {
 
                               <Phone className="h-3.5 w-3.5" />
 
-                              <span>
-                                {account.phone}
-                              </span>
+                              {booking.whatsapp_number}
 
                             </div>
 
@@ -1486,7 +1408,106 @@ function DemoUsers() {
 
                         </td>
 
-                      
+                        {/* Profession */}
+                        <td className="px-5 py-4">
+
+                          <div className="
+                            flex
+                            items-center
+                            gap-2
+                            text-sm
+                            text-foreground
+                          ">
+
+                            <Briefcase className="
+                              h-3.5
+                              w-3.5
+                              text-muted-foreground
+                            " />
+
+                            {booking.profession}
+
+                          </div>
+
+                        </td>
+
+                        {/* Session */}
+                        <td className="px-5 py-4">
+
+                          <div className="space-y-1.5">
+
+                            <div className="
+                              flex
+                              items-center
+                              gap-2
+                              text-sm
+                              font-medium
+                              text-foreground
+                              whitespace-nowrap
+                            ">
+
+                              <CalendarDays className="
+                                h-3.5
+                                w-3.5
+                                text-accent
+                              " />
+
+                              {formatSessionDate(
+                                booking.session_date
+                              )}
+
+                            </div>
+
+                            <div className="
+                              flex
+                              items-center
+                              gap-2
+                              text-xs
+                              text-muted-foreground
+                            ">
+
+                              <Clock className="h-3.5 w-3.5" />
+
+                              {booking.session_time}
+
+                            </div>
+
+                          </div>
+
+                        </td>
+
+                        {/* Subject */}
+                        <td className="px-5 py-4">
+
+                          <div className="max-w-[220px]">
+
+                            <p
+                              className="
+                                text-sm
+                                font-medium
+                                text-foreground
+                                truncate
+                              "
+                              title={booking.subject}
+                            >
+                              {booking.subject}
+                            </p>
+
+                            <p
+                              className="
+                                text-xs
+                                text-muted-foreground
+                                truncate
+                                mt-1
+                              "
+                              title={booking.message}
+                            >
+                              {booking.message}
+                            </p>
+
+                          </div>
+
+                        </td>
 
                         {/* Status */}
                         <td className="px-5 py-4">
@@ -1503,12 +1524,12 @@ function DemoUsers() {
                               font-semibold
                               whitespace-nowrap
                               ${getStatusClasses(
-                                account.status
+                                booking.status
                               )}
                             `}
                           >
                             {getStatusLabel(
-                              account.status
+                              booking.status
                             )}
                           </span>
 
@@ -1517,7 +1538,7 @@ function DemoUsers() {
                         {/* Updated By */}
                         <td className="px-5 py-4">
 
-                          {account.status_updated_by_name ? (
+                          {booking.status_updated_by_name ? (
 
                             <div className="space-y-1">
 
@@ -1537,14 +1558,14 @@ function DemoUsers() {
 
                                 <span className="font-medium">
                                   {
-                                    account
+                                    booking
                                       .status_updated_by_name
                                   }
                                 </span>
 
                               </div>
 
-                              {account.status_updated_at && (
+                              {booking.status_updated_at && (
 
                                 <div className="
                                   flex
@@ -1557,8 +1578,8 @@ function DemoUsers() {
 
                                   <Clock className="h-3 w-3" />
 
-                                  {formatDate(
-                                    account.status_updated_at
+                                  {formatDateTime(
+                                    booking.status_updated_at
                                   )}
 
                                 </div>
@@ -1580,7 +1601,7 @@ function DemoUsers() {
 
                         </td>
 
-                          {/* Action */}
+                        {/* Action */}
                         <td className="px-5 py-4">
 
                           <Button
@@ -1588,7 +1609,7 @@ function DemoUsers() {
                             size="sm"
                             onClick={() =>
                               openManageModal(
-                                account
+                                booking
                               )
                             }
                             className="
@@ -1608,217 +1629,6 @@ function DemoUsers() {
 
                         </td>
 
-                          {/* Login */}
-                        <td className="px-5 py-4">
-
-                          {account.pmex_login ? (
-
-                            <div className="
-                              flex
-                              items-center
-                              gap-2
-                            ">
-
-                              <span className="
-                                text-sm
-                                font-mono
-                                text-foreground
-                              ">
-                                {account.pmex_login}
-                              </span>
-
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  copyText(
-                                    account.pmex_login,
-                                    `login-${account.id}`
-                                  )
-                                }
-                                className="
-                                  p-1.5
-                                  rounded-md
-                                  text-muted-foreground
-                                  hover:text-accent
-                                  hover:bg-accent/10
-                                  transition-colors
-                                "
-                                title="Copy login"
-                              >
-
-                                {copiedField ===
-                                `login-${account.id}` ? (
-
-                                  <CheckCircle2
-                                    className="
-                                      h-3.5
-                                      w-3.5
-                                      text-green-500
-                                    "
-                                  />
-
-                                ) : (
-
-                                  <Copy className="h-3.5 w-3.5" />
-
-                                )}
-
-                              </button>
-
-                            </div>
-
-                          ) : (
-
-                            <span className="
-                              text-sm
-                              text-muted-foreground
-                            ">
-                              —
-                            </span>
-
-                          )}
-
-                        </td>
-
-                        {/* Password */}
-                        <td className="px-5 py-4">
-
-                          {account.pmex_password ? (
-
-                            <div className="
-                              flex
-                              items-center
-                              gap-1
-                            ">
-
-                              <KeyRound className="
-                                h-3.5
-                                w-3.5
-                                text-muted-foreground
-                                mr-1
-                              " />
-
-                              <span className="
-                                text-sm
-                                font-mono
-                                text-foreground
-                                min-w-[80px]
-                              ">
-                                {
-                                  visiblePasswords[
-                                    account.id
-                                  ]
-                                    ? account.pmex_password
-                                    : '••••••••'
-                                }
-                              </span>
-
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  togglePassword(
-                                    account.id
-                                  )
-                                }
-                                className="
-                                  p-1.5
-                                  rounded-md
-                                  text-muted-foreground
-                                  hover:text-accent
-                                  hover:bg-accent/10
-                                "
-                              >
-
-                                {
-                                  visiblePasswords[
-                                    account.id
-                                  ]
-                                    ? (
-                                      <EyeOff className="h-3.5 w-3.5" />
-                                    )
-                                    : (
-                                      <Eye className="h-3.5 w-3.5" />
-                                    )
-                                }
-
-                              </button>
-
-                              <button
-                                type="button"
-                                onClick={() =>
-                                  copyText(
-                                    account.pmex_password,
-                                    `password-${account.id}`
-                                  )
-                                }
-                                className="
-                                  p-1.5
-                                  rounded-md
-                                  text-muted-foreground
-                                  hover:text-accent
-                                  hover:bg-accent/10
-                                "
-                              >
-
-                                {copiedField ===
-                                `password-${account.id}` ? (
-
-                                  <CheckCircle2 className="
-                                    h-3.5
-                                    w-3.5
-                                    text-green-500
-                                  " />
-
-                                ) : (
-
-                                  <Copy className="h-3.5 w-3.5" />
-
-                                )}
-
-                              </button>
-
-                            </div>
-
-                          ) : (
-
-                            <span className="
-                              text-sm
-                              text-muted-foreground
-                            ">
-                              —
-                            </span>
-
-                          )}
-
-                        </td>
-
-                        {/* Created */}
-                        <td className="px-5 py-4">
-
-                          <div className="
-                            flex
-                            items-center
-                            gap-2
-                            text-xs
-                            text-muted-foreground
-                            whitespace-nowrap
-                          ">
-
-                            <CalendarDays className="
-                              h-3.5
-                              w-3.5
-                            " />
-
-                            {formatDate(
-                              account.created_at
-                            )}
-
-                          </div>
-
-                        </td>
-
-                      
-
                       </tr>
 
                     )
@@ -1834,7 +1644,7 @@ function DemoUsers() {
 
           {/* Pagination */}
           {!loading &&
-            filteredAccounts.length > 0 && (
+            filteredBookings.length > 0 && (
 
             <div className="
               px-5
@@ -1876,15 +1686,13 @@ function DemoUsers() {
                     Math.min(
                       currentPage *
                       itemsPerPage,
-                      filteredAccounts.length
+                      filteredBookings.length
                     )
                   }
 
                   {' of '}
 
-                  {
-                    filteredAccounts.length
-                  }
+                  {filteredBookings.length}
 
                 </p>
 
@@ -1971,8 +1779,7 @@ function DemoUsers() {
                   variant="outline"
                   size="sm"
                   disabled={
-                    currentPage ===
-                    totalPages
+                    currentPage === totalPages
                   }
                   onClick={() =>
                     setCurrentPage(
@@ -1999,11 +1806,8 @@ function DemoUsers() {
 
       </div>
 
-      {/* ─────────────────────────────────────── */}
-      {/* Manage Modal */}
-      {/* ─────────────────────────────────────── */}
-
-      {selectedAccount && (
+      {/* Manage Booking Modal */}
+      {selectedBooking && (
 
         <div className="
           fixed
@@ -2029,17 +1833,22 @@ function DemoUsers() {
             relative
             z-10
             w-full
-            max-w-lg
+            max-w-2xl
+            max-h-[90vh]
+            overflow-y-auto
             bg-card
             border
             border-border
             rounded-2xl
             shadow-2xl
-            overflow-hidden
           ">
 
-            {/* Modal Header */}
+            {/* Header */}
             <div className="
+              sticky
+              top-0
+              z-10
+              bg-card
               px-6
               py-5
               border-b
@@ -2057,7 +1866,7 @@ function DemoUsers() {
                   font-bold
                   text-foreground
                 ">
-                  Manage Demo Request
+                  Manage Online Session
                 </h3>
 
                 <p className="
@@ -2065,7 +1874,7 @@ function DemoUsers() {
                   text-muted-foreground
                   mt-1
                 ">
-                  Update the request status and add an admin comment.
+                  Review booking details and update its status.
                 </p>
 
               </div>
@@ -2080,15 +1889,16 @@ function DemoUsers() {
                   text-muted-foreground
                   hover:text-foreground
                   hover:bg-muted
-                  transition-colors
                 "
               >
+
                 <X className="h-4 w-4" />
+
               </button>
 
             </div>
 
-            {/* Modal Body */}
+            {/* Body */}
             <div className="
               px-6
               py-5
@@ -2096,43 +1906,130 @@ function DemoUsers() {
             ">
 
               {/* Customer */}
-              <div className="
-                rounded-xl
-                border
-                border-border
-                bg-muted/30
-                p-4
-              ">
+              <ModalSection title="Customer Details">
 
-                <p className="
-                  text-xs
-                  font-medium
-                  text-muted-foreground
-                  uppercase
-                  tracking-wide
-                  mb-2
+                <div className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  gap-4
                 ">
-                  Customer
-                </p>
 
-                <p className="
-                  text-sm
-                  font-semibold
-                  text-foreground
+                  <DetailItem
+                    label="Name"
+                    value={
+                      selectedBooking.name
+                    }
+                  />
+
+                  <DetailItem
+                    label="Profession"
+                    value={
+                      selectedBooking.profession
+                    }
+                  />
+
+                  <DetailItem
+                    label="Email"
+                    value={
+                      selectedBooking.email
+                    }
+                  />
+
+                  <DetailItem
+                    label="WhatsApp"
+                    value={
+                      selectedBooking.whatsapp_number
+                    }
+                  />
+
+                  <DetailItem
+                    label="City"
+                    value={
+                      selectedBooking.city
+                    }
+                  />
+
+                  <DetailItem
+                    label="Country"
+                    value={
+                      selectedBooking.country
+                    }
+                  />
+
+                </div>
+
+              </ModalSection>
+
+              {/* Session */}
+              <ModalSection title="Requested Session">
+
+                <div className="
+                  grid
+                  grid-cols-1
+                  sm:grid-cols-2
+                  gap-4
                 ">
-                  {selectedAccount.first_name}{' '}
-                  {selectedAccount.last_name}
-                </p>
 
-                <p className="
-                  text-xs
-                  text-muted-foreground
-                  mt-1
-                ">
-                  {selectedAccount.email}
-                </p>
+                  <DetailItem
+                    label="Date"
+                    value={
+                      formatSessionDate(
+                        selectedBooking
+                          .session_date
+                      )
+                    }
+                  />
 
-              </div>
+                  <DetailItem
+                    label="Time"
+                    value={
+                      selectedBooking
+                        .session_time
+                    }
+                  />
+
+                </div>
+
+              </ModalSection>
+
+              {/* Inquiry */}
+              <ModalSection title="Inquiry">
+
+                <div className="space-y-4">
+
+                  <DetailItem
+                    label="Subject"
+                    value={
+                      selectedBooking.subject
+                    }
+                  />
+
+                  <div>
+
+                    <p className="
+                      text-xs
+                      font-medium
+                      text-muted-foreground
+                      mb-1
+                    ">
+                      Message
+                    </p>
+
+                    <p className="
+                      text-sm
+                      text-foreground
+                      leading-relaxed
+                      whitespace-pre-wrap
+                    ">
+                      {selectedBooking.message}
+                    </p>
+
+                  </div>
+
+                </div>
+
+              </ModalSection>
 
               {/* Status */}
               <div>
@@ -2186,7 +2083,7 @@ function DemoUsers() {
 
               </div>
 
-              {/* Comment */}
+              {/* Admin Comment */}
               <div>
 
                 <label className="
@@ -2215,7 +2112,7 @@ function DemoUsers() {
                   disabled={saving}
                   rows={5}
                   maxLength={2000}
-                  placeholder="Add notes about this demo account request..."
+                  placeholder="Add notes about this booking..."
                   className="
                     w-full
                     rounded-md
@@ -2239,87 +2136,73 @@ function DemoUsers() {
                   justify-end
                   mt-1
                 ">
+
                   <span className="
                     text-xs
                     text-muted-foreground
                   ">
                     {adminComment.length}/2000
                   </span>
+
                 </div>
 
               </div>
 
-              {/* Previous Update */}
-              {selectedAccount.status_updated_by_name && (
+              {/* Last Update */}
+              {selectedBooking.status_updated_by_name && (
 
-                <div className="
-                  rounded-xl
-                  border
-                  border-border
-                  p-4
-                ">
+                <ModalSection title="Last Update">
 
-                  <p className="
-                    text-xs
-                    font-medium
-                    text-muted-foreground
-                    uppercase
-                    tracking-wide
-                    mb-3
-                  ">
-                    Last Update
-                  </p>
-
-                  <div className="
-                    flex
-                    items-center
-                    gap-2
-                    text-sm
-                    text-foreground
-                  ">
-
-                    <UserCheck className="
-                      h-4
-                      w-4
-                      text-muted-foreground
-                    " />
-
-                    <span>
-                      {
-                        selectedAccount
-                          .status_updated_by_name
-                      }
-                    </span>
-
-                  </div>
-
-                  {selectedAccount.status_updated_at && (
+                  <div className="space-y-2">
 
                     <div className="
                       flex
                       items-center
                       gap-2
-                      text-xs
-                      text-muted-foreground
-                      mt-2
+                      text-sm
+                      text-foreground
                     ">
 
-                      <Clock className="h-3.5 w-3.5" />
+                      <UserCheck className="
+                        h-4
+                        w-4
+                        text-muted-foreground
+                      " />
 
-                      {formatDate(
-                        selectedAccount
-                          .status_updated_at
-                      )}
+                      {
+                        selectedBooking
+                          .status_updated_by_name
+                      }
 
                     </div>
 
-                  )}
+                    {selectedBooking.status_updated_at && (
 
-                </div>
+                      <div className="
+                        flex
+                        items-center
+                        gap-2
+                        text-xs
+                        text-muted-foreground
+                      ">
+
+                        <Clock className="h-3.5 w-3.5" />
+
+                        {formatDateTime(
+                          selectedBooking
+                            .status_updated_at
+                        )}
+
+                      </div>
+
+                    )}
+
+                  </div>
+
+                </ModalSection>
 
               )}
 
-              {/* Error */}
               {saveError && (
 
                 <div className="
@@ -2337,7 +2220,6 @@ function DemoUsers() {
 
               )}
 
-              {/* Success */}
               {saveSuccess && (
 
                 <div className="
@@ -2364,13 +2246,15 @@ function DemoUsers() {
 
             </div>
 
-            {/* Modal Footer */}
+            {/* Footer */}
             <div className="
+              sticky
+              bottom-0
+              bg-card
               px-6
               py-4
               border-t
               border-border
-              bg-muted/20
               flex
               justify-end
               gap-3
@@ -2436,7 +2320,7 @@ function DemoUsers() {
 }
 
 // ─────────────────────────────────────────────
-// Summary Card
+// Helper Components
 // ─────────────────────────────────────────────
 
 function SummaryCard({
@@ -2484,10 +2368,6 @@ function SummaryCard({
   );
 }
 
-// ─────────────────────────────────────────────
-// Table Header
-// ─────────────────────────────────────────────
-
 function TableHeader({ children }) {
   return (
     <th className="
@@ -2504,5 +2384,89 @@ function TableHeader({ children }) {
   );
 }
 
-export default DemoUsers;
+function FilterSelect({
+  children,
+  ...props
+}) {
+  return (
+    <select
+      {...props}
+      className="
+        h-9
+        rounded-md
+        border
+        border-input
+        bg-background
+        px-3
+        text-sm
+        text-foreground
+        focus:outline-none
+        focus:ring-2
+        focus:ring-ring
+      "
+    >
+      {children}
+    </select>
+  );
+}
 
+function ModalSection({
+  title,
+  children,
+}) {
+  return (
+    <div className="
+      rounded-xl
+      border
+      border-border
+      bg-muted/20
+      p-4
+    ">
+
+      <p className="
+        text-xs
+        font-semibold
+        text-muted-foreground
+        uppercase
+        tracking-wide
+        mb-3
+      ">
+        {title}
+      </p>
+
+      {children}
+
+    </div>
+  );
+}
+
+function DetailItem({
+  label,
+  value,
+}) {
+  return (
+    <div>
+
+      <p className="
+        text-xs
+        font-medium
+        text-muted-foreground
+        mb-1
+      ">
+        {label}
+      </p>
+
+      <p className="
+        text-sm
+        font-medium
+        text-foreground
+        break-words
+      ">
+        {value || '—'}
+      </p>
+
+    </div>
+  );
+}
+
+export default Bookings;
