@@ -34,6 +34,9 @@ const ALLOWED_PDFS = {
   '39' :           { folder: 'notifications', file: '39.pdf' },
   '41' :           { folder: 'notifications', file: '41.pdf' },
   'services' :           { folder: 'clients', file: 'services.pdf' },
+  'daily-newswire' :           { folder: 'notifications', file: 'daily-newswire.pdf' },
+
+
 
 
 

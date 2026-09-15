@@ -40,6 +40,7 @@ const DOC_TITLES = {
   '39' :           'Listing of Smaller-sized Cash-Settled Futures Contracts',
   '41' :           'Position Limits - Smaller-sized Cash-Settled Futures Contracts',
   'services' :           'Services Offered by Right Vision Securities (Pvt.) Limited',
+  'daily-newswire':          'Daily Newswire',
 
   
 
