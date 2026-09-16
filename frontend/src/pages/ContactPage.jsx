@@ -20,11 +20,11 @@ function ContactPage() {
       href: 'tel:+923108248717',
     },
       {
-    icon: MessageCircle,
-    title: 'WhatsApp',
+    icon: Phone,
+    title: 'Call / Whatsapp',
     content: '+92 310 8214202',
-    sub: 'Chat with our team on WhatsApp',
-    href: 'https://wa.me/923108214202',
+    sub: 'Talk with our team on Call',
+    href: 'tel:+923108214202',
   },
     {
       icon: Mail,
