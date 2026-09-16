@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
+import { Phone, Mail, MapPin, Clock,MessageCircle } from 'lucide-react';
 import TrustBar from '@/components/TrustBar.jsx';
 import Navbar from '@/components/Navbar.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -19,6 +19,13 @@ function ContactPage() {
       sub: 'Available during business hours',
       href: 'tel:+923108248717',
     },
+      {
+    icon: MessageCircle,
+    title: 'WhatsApp',
+    content: '+92 310 8214202',
+    sub: 'Chat with our team on WhatsApp',
+    href: 'https://wa.me/923108214202',
+  },
     {
       icon: Mail,
       title: 'Email',
@@ -92,7 +99,7 @@ function ContactPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-5"
           >
             {contactMethods.map((method, index) => {
               const Icon = method.icon;
