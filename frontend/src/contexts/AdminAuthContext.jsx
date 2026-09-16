@@ -104,24 +104,33 @@ export function AdminAuthProvider({ children }) {
   // ── Auto-logout on token expiry via response interceptor ──
   // Call this wrapper instead of raw fetch anywhere in the app
   const authFetch = useCallback(async (url, options = {}) => {
-    const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem('adminToken');
 
-    const res = await fetch(url, {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...options.headers,
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  const isFormData = options.body instanceof FormData;
 
-    if (res.status === 401 || res.status === 403) {
-      silentLogout();
-      return null;
-    }
+  const headers = {
+    ...options.headers,
+    Authorization: `Bearer ${token}`,
+  };
 
-    return res;
-  }, [silentLogout]);
+  // Keep JSON as the default for all existing requests.
+  // For FormData, let the browser set multipart/form-data + boundary.
+  if (!isFormData && !headers['Content-Type']) {
+    headers['Content-Type'] = 'application/json';
+  }
+
+  const res = await fetch(url, {
+    ...options,
+    headers,
+  });
+
+  if (res.status === 401 || res.status === 403) {
+    silentLogout();
+    return null;
+  }
+
+  return res;
+}, [silentLogout]);
 
   const value = {
     isAdminAuthenticated,

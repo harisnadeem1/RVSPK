@@ -41,6 +41,8 @@ import OpenDemoAccount
 import DemoUsersPage from "./pages/admin/DemoUsers.jsx";
 import Bookings from "./pages/admin/Bookings.jsx";  
 
+import UploadNewswire from "./pages/admin/UploadNewswire.jsx";
+
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
@@ -138,6 +140,15 @@ function AppContent() {
           element={
             <ProtectedAdminRoute>
               <Bookings />
+            </ProtectedAdminRoute>
+          }
+        />
+
+        <Route
+          path="/admin/upload-newswire"
+          element={
+            <ProtectedAdminRoute>
+              <UploadNewswire />
             </ProtectedAdminRoute>
           }
         />

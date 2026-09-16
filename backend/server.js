@@ -16,6 +16,8 @@ import bookingRoutes from './routes/booking.js';
 import demoAccountRoutes
     from "./routes/demoAccounts.js";
 
+    import adminNotificationRoutes from "./routes/adminNotificationRoutes.js";
+
 dotenv.config();
 
 const app = express();
@@ -53,6 +55,12 @@ app.use('/api/bookings', bookingRoutes);
 app.use(
     "/api/demo-accounts",
     demoAccountRoutes
+);
+
+
+app.use(
+  "/api/admin/notifications",
+  adminNotificationRoutes
 );
 
 // Health check

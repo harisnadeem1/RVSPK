@@ -10,7 +10,8 @@ import {
   User,
   Users,
   ChevronRight,
-  CalendarDays
+  CalendarDays,
+  Newspaper
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAdminAuth } from '@/contexts/AdminAuthContext.jsx';
@@ -37,6 +38,11 @@ function AdminLayout({ children }) {
     icon: FileText,
     label: 'Manage Reports',
     path: '/admin/manage-reports'
+  },
+   {
+    icon: Newspaper,
+    label: 'Daily Newswire',
+    path: '/admin/upload-newswire'
   },
   {
     icon: Users,
