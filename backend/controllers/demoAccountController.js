@@ -198,22 +198,21 @@ export const createDemoAccount = async (req, res) => {
             phone: dummyPhone
         });
 
-        // 5. Store PMEX credentials
-        await pool.query(
-            `
-            UPDATE demo_accounts
-            SET
-                pmex_login = $1,
-                pmex_password = $2,
-                status = 'completed'
-            WHERE id = $3
-            `,
-            [
-                pmex.login,
-                pmex.password,
-                customer.id
-            ]
-        );
+       // 5. Store PMEX credentials
+await pool.query(
+    `
+    UPDATE demo_accounts
+    SET
+        pmex_login = $1,
+        pmex_password = $2
+    WHERE id = $3
+    `,
+    [
+        pmex.login,
+        pmex.password,
+        customer.id
+    ]
+);
 
         // 6. Email credentials to REAL customer email
         await sendDemoAccountEmail({
