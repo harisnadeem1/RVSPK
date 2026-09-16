@@ -292,7 +292,7 @@ function Navbar() {
                       : 'text-muted-foreground hover:text-accent'
                     }`}
                 >
-                  Newswire
+                  News Wire 
                 </Link>
 
                 <Link
