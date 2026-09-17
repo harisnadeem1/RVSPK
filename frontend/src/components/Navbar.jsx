@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { Menu, X, UserPlus } from 'lucide-react'
+import { Menu, X, UserPlus,Newspaper, FileText, Phone } from 'lucide-react'
 
 import DropdownMenu from '@/components/DropdownMenu.jsx'
 import MegaMenu from '@/components/MegaMenu.jsx'
@@ -275,49 +275,61 @@ function Navbar() {
         >
           <TrustBar />
 
-          {/* Secondary Navigation */}
-          <div
-            className={`hidden xl:block overflow-hidden bg-card border-b border-border/50
+       {/* Secondary Navigation */}
+<div
+  className={`hidden xl:block overflow-hidden bg-card border-b border-border/50
     transition-all duration-300 ease-in-out
-    ${isScrolled ? 'max-h-0 opacity-0' : 'max-h-12 opacity-100'}
+    ${isScrolled ? 'max-h-0 opacity-0' : 'max-h-14 opacity-100'}
   `}
-          >
-            <div className="w-full px-6 2xl:px-10">
-              <div className="h-10 flex items-center justify-end gap-7">
+>
+  <div className="w-full px-6 2xl:px-10">
+    <div className="h-12 flex items-center justify-end gap-3">
 
-                <Link
-                  to="/notifications/daily-newswire"
-                  className={`text-[13px] font-medium transition-colors ${isActive('/notifications/daily-newswire')
-                      ? 'text-accent'
-                      : 'text-muted-foreground hover:text-accent'
-                    }`}
-                >
-                  News Wire 
-                </Link>
+      <Link
+        to="/notifications/daily-newswire"
+        className={`flex items-center gap-2 px-4 py-1.5 rounded-lg
+          text-[13px] font-semibold transition-all duration-200
+          ${
+            isActive('/notifications/daily-newswire')
+              ? 'bg-accent text-white shadow-sm'
+              : 'bg-accent text-white hover:bg-accent/80 hover:shadow-md'
+          }`}
+      >
+        <Newspaper size={15} />
+        News Wire
+      </Link>
 
-                <Link
-                  to="/reports"
-                  className={`text-[13px] font-medium transition-colors ${isActive('/reports')
-                      ? 'text-accent'
-                      : 'text-muted-foreground hover:text-accent'
-                    }`}
-                >
-                  Reports
-                </Link>
+      <Link
+        to="/reports"
+        className={`flex items-center gap-2 px-4 py-1.5 rounded-lg
+          text-[13px] font-semibold transition-all duration-200
+          ${
+            isActive('/reports')
+              ? 'bg-accent text-white shadow-sm'
+              : 'bg-accent text-white hover:bg-accent/80 hover:shadow-md'
+          }`}
+      >
+        <FileText size={15} />
+        Reports
+      </Link>
 
-                <Link
-                  to="/contact"
-                  className={`text-[13px] font-medium transition-colors ${isActive('/contact')
-                      ? 'text-accent'
-                      : 'text-muted-foreground hover:text-accent'
-                    }`}
-                >
-                  Contact Us
-                </Link>
+      <Link
+        to="/contact"
+        className={`flex items-center gap-2 px-4 py-1.5 rounded-lg
+          text-[13px] font-semibold transition-all duration-200
+          ${
+            isActive('/contact')
+              ? 'bg-accent text-white shadow-sm'
+              : 'bg-accent text-white hover:bg-accent/80 hover:shadow-md'
+          }`}
+      >
+        <Phone size={15} />
+        Contact Us
+      </Link>
 
-              </div>
-            </div>
-          </div>
+    </div>
+  </div>
+</div>
         </div>
 
         {/* Main Navbar: always visible */}
@@ -379,81 +391,63 @@ function Navbar() {
 
               {/* Desktop Links */}
               <div className="flex w-full items-center justify-center px-10">
-                <div className="flex items-center gap-5 text-[15px] 2xl:gap-5">
-                  <Link
-                    to="/"
-                    className={`whitespace-nowrap font-medium transition-colors ${isActive('/')
-                      ? 'bg-[#466601] px-4 py-2 rounded-xl text-white'
-                      : 'bg-[#79AD14] px-4 py-2 rounded-xl text-white hover:bg-[#466601] hover:text-white'
-                      }`}
-                  >
-                    Home
-                  </Link>
+  <div className="flex items-center gap-5 text-[15px] 2xl:gap-5">
 
-                  <DropdownMenu
-                    label="About Us"
-                    items={aboutItems}
-                    isActive={isActiveSection([
-                      '/about',
-                      '/introduction',
-                      '/mission-vision',
-                      '/company-profile',
-                    ])}
-                  />
+    <Link
+      to="/"
+      className={`whitespace-nowrap px-4 py-2 rounded-xl font-medium
+        transition-all duration-200 ${
+          isActive('/')
+            ? 'bg-accent/70 text-accent-foreground shadow-sm'
+            : 'bg-accent text-accent-foreground hover:bg-accent/80 hover:shadow-sm'
+        }`}
+    >
+      Home
+    </Link>
 
-                  <MegaMenu
-                    label="Products"
-                    sections={marketSections}
-                    isActive={isActiveSection(['/markets'])}
-                  />
+    <DropdownMenu
+      label="About Us"
+      items={aboutItems}
+      isActive={isActiveSection([
+        '/about',
+        '/introduction',
+        '/mission-vision',
+        '/company-profile',
+      ])}
+    />
 
-                  <DropdownMenu
-                    label="Policies"
-                    items={policyItems}
-                    isActive={isActiveSection(['/policies'])}
-                  />
+    <MegaMenu
+      label="Products"
+      sections={marketSections}
+      isActive={isActiveSection(['/markets'])}
+    />
 
-                  <DropdownMenu
-                    label="Client Area"
-                    items={clientAreaItems}
-                    isActive={isActiveSection(['/clients'])}
-                  />
+    <DropdownMenu
+      label="Policies"
+      items={policyItems}
+      isActive={isActiveSection(['/policies'])}
+    />
 
-                  <DropdownMenu
-                    label="Forms"
-                    items={formsItems}
-                    isActive={isActiveSection([
-                      '/contact',
-                      '/feedback',
-                      '/complaint',
-                      '/grievance',
-                      '/whistleblower',
-                    ])}
-                  />
+    <DropdownMenu
+      label="Client Area"
+      items={clientAreaItems}
+      isActive={isActiveSection(['/clients'])}
+    />
 
-                  {/* <Link
-                    to="/reports"
-                    className={`whitespace-nowrap font-medium transition-colors ${isActive('/reports')
-                        ? 'bg-[#466601] px-4 py-2 rounded-xl text-white'
-                        : 'bg-[#79AD14] px-4 py-2 rounded-xl text-white hover:bg-[#466601] hover:text-white'
-                      }`}
-                  >
-                    Reports
-                  </Link>
+    <DropdownMenu
+      label="Forms"
+      items={formsItems}
+      isActive={isActiveSection([
+        '/contact',
+        '/feedback',
+        '/complaint',
+        '/grievance',
+        '/whistleblower',
+      ])}
+    />
 
-                   <Link
-                    to="/notifications/daily-newswire"
-                    className={`whitespace-nowrap font-medium transition-colors ${isActive('/notifications/daily-newswire')
-                        ? 'bg-[#466601] px-4 py-2 rounded-xl text-white'
-                        : 'bg-[#79AD14] px-4 py-2 rounded-xl text-white hover:bg-[#466601] hover:text-white'
-                      }`}
-                  >
-                    Newswire
-                  </Link> */}
-
-
-                </div>
-              </div>
+  </div>
+</div>
 
               {/* Desktop CTAs */}
               <div className="flex flex-col items-stretch gap-2">
@@ -599,6 +593,17 @@ function Navbar() {
                 }`}
             >
               Reports
+            </Link>
+
+            <Link
+              to="/notifications/daily-newswire"
+              onClick={() => setMobileMenuOpen(false)}
+              className={`flex items-center px-4 py-3 text-[18px] font-medium transition-colors ${isActive('/notifications/daily-newswire')
+                ? 'bg-accent/10 text-accent'
+                : 'text-foreground hover:bg-muted'
+                }`}
+            >
+              Daily News Wire
             </Link>
 
             <Link

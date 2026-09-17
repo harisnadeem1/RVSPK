@@ -77,9 +77,9 @@ function MegaMenu({ label, sections, isActive }) {
       <button
         onClick={() => setIsOpen(!isOpen)}
       className={`flex items-center gap-1 whitespace-nowrap px-4 py-2 rounded-xl font-medium transition-colors duration-200 ${
-  isActive
-    ? 'bg-[#466601] text-white'
-    : 'bg-[#79AD14] text-white hover:bg-[#466601] hover:text-white'
+ isActive
+  ? 'bg-accent/70 text-accent-foreground'
+  : 'bg-accent text-accent-foreground hover:bg-accent/80'
 }`}
         aria-expanded={isOpen}
         aria-haspopup="true"
