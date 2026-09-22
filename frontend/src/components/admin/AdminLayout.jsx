@@ -44,6 +44,11 @@ function AdminLayout({ children }) {
     label: 'Daily Newswire',
     path: '/admin/upload-newswire'
   },
+   {
+    icon: Shield,
+    label: 'Newswire Subscribers',
+    path: '/admin/newswire-subscribers'
+  },
   {
     icon: Users,
     label: 'Demo Users',
@@ -54,6 +59,7 @@ function AdminLayout({ children }) {
     label: 'Bookings',
     path: '/admin/bookings'
   },
+ 
 
   ...(isSuperAdmin
     ? [

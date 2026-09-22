@@ -17,6 +17,7 @@ import demoAccountRoutes
     from "./routes/demoAccounts.js";
 
     import adminNotificationRoutes from "./routes/adminNotificationRoutes.js";
+    import newswireRoutes from './routes/newswireRoutes.js';
 
 dotenv.config();
 
@@ -56,6 +57,8 @@ app.use(
     "/api/demo-accounts",
     demoAccountRoutes
 );
+
+app.use('/api/newswire', newswireRoutes);
 
 
 app.use(

@@ -159,7 +159,7 @@ function Footer() {
 
               <li>
                 <a
-                  href="https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7"
+                  href="https://maps.app.goo.gl/5ZTZKXHzim8s5mqb9"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group flex items-start gap-3"

@@ -293,52 +293,52 @@ function HomePage() {
 
 
 
-             <div className="flex flex-col items-start gap-5">
-  <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-    <Link to="/clients/sahulat-account-guidelines">
-      <Button
-        size="lg"
-        className="w-full bg-[#79AD14] px-6 py-6 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:w-auto"
-      >
-        View Guidelines
-        <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
-    </Link>
+              <div className="flex flex-col items-start gap-5">
+                <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+                  <Link to="/clients/sahulat-account-guidelines">
+                    <Button
+                      size="lg"
+                      className="w-full bg-[#79AD14] px-6 py-6 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:w-auto"
+                    >
+                      View Guidelines
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
 
-    <Link to="/clients/services">
-      <Button
-        size="lg"
-        variant="outline"
-        className="w-full border-[#79AD14]/50 px-6 py-6 text-base font-semibold text-[#5E8410] transition-all hover:-translate-y-0.5 hover:border-[#79AD14] hover:bg-[#79AD14] hover:text-white sm:w-auto"
-      >
-        Services Offered by Us
-        <ArrowRight className="ml-2 h-4 w-4" />
-      </Button>
-    </Link>
-  </div>
+                  <Link to="/clients/services">
+                    <Button
+                      size="lg"
+                      variant="outline"
+                      className="w-full border-[#79AD14]/50 px-6 py-6 text-base font-semibold text-[#5E8410] transition-all hover:-translate-y-0.5 hover:border-[#79AD14] hover:bg-[#79AD14] hover:text-white sm:w-auto"
+                    >
+                      Services Offered by Us
+                      <ArrowRight className="ml-2 h-4 w-4" />
+                    </Button>
+                  </Link>
+                </div>
 
-  <div className="flex flex-wrap items-center gap-3">
-    <span className="text-sm font-medium text-muted-foreground">
-      PMEX notifications:
-    </span>
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    PMEX notifications:
+                  </span>
 
-    <Link
-      to="/notifications/14"
-      className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
-    >
-      No. 14
-      <ExternalLink className="h-3.5 w-3.5" />
-    </Link>
+                  <Link
+                    to="/notifications/14"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    No. 14
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </Link>
 
-    <Link
-      to="/notifications/38"
-      className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
-    >
-      No. 38
-      <ExternalLink className="h-3.5 w-3.5" />
-    </Link>
-  </div>
-</div>
+                  <Link
+                    to="/notifications/38"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    No. 38
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
 
             {/* Right — Sahulat features card */}
@@ -377,6 +377,108 @@ function HomePage() {
       </section>
 
 
+      {/* Shari'ah Compliant Gold Investment */}
+      <section className="bg-[#79AD14]/5 py-8 sm:py-10">
+        <div className="container-custom px-4 sm:px-6">
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="
+        relative
+        overflow-hidden
+        rounded-2xl
+        border border-[#79AD14]/20
+        bg-white
+        p-5 sm:p-6
+      "
+          >
+            {/* Top green accent */}
+            <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
+
+            {/* Background decoration */}
+            <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-[#79AD14]/10 blur-3xl" />
+
+            <div className="relative z-10 grid grid-cols-1 items-center gap-6 md:grid-cols-[230px_1fr] lg:grid-cols-[270px_1fr] lg:gap-9">
+
+              {/* LEFT — Image */}
+              <div className="flex justify-center md:justify-start">
+                <img
+                  src="/home/shariah.png"
+                  alt="Shari'ah Compliant Gold Investment"
+                  className="h-full w-full object-contain"
+                />
+              </div>
+
+              {/* RIGHT — Content */}
+              <div>
+
+                {/* Small label */}
+                <span className="mb-2 inline-block text-xs font-semibold uppercase tracking-[0.18em] text-[#79AD14]">
+                  Shari'ah Compliant Gold Investment
+                </span>
+
+                {/* Heading */}
+                <h2 className="mb-3 text-2xl font-bold leading-tight text-foreground sm:text-3xl">
+                  Low-Risk Golden Opportunity
+                </h2>
+
+                {/* Target audience */}
+                <div className="mb-4 flex flex-wrap gap-x-5 gap-y-2">
+                  {[
+                    "New Investors",
+                    "Students",
+                    "Women",
+                    "Small Savers",
+                  ].map((item, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center gap-2 text-sm font-medium text-foreground"
+                    >
+                      <CheckCircle className="h-4 w-4 shrink-0 text-[#79AD14]" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Product information */}
+                <div className="mb-5 flex flex-wrap items-center gap-2.5">
+
+                  <span className="text-sm font-medium text-muted-foreground">
+                    Initial Investment in Gold:
+                  </span>
+
+                  <span className="rounded-full border border-[#79AD14]/20 bg-[#79AD14]/10 px-3 py-1.5 text-sm font-semibold text-[#5E8410]">
+                    Milli Tola Gold
+                  </span>
+
+                  <span className="rounded-full border border-[#79AD14]/20 bg-[#79AD14]/10 px-3 py-1.5 text-sm font-semibold text-[#5E8410]">
+                    1-Tola Gold
+                  </span>
+
+                </div>
+
+                {/* CTA */}
+                <Link to="/contact">
+                  <Button
+                   size="lg"
+        className="w-full bg-[#79AD14] px-6 py-6 text-base font-semibold text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:w-auto"
+      
+                  >
+                    Learn More
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </Link>
+
+              </div>
+            </div>
+          </motion.div>
+
+        </div>
+      </section>
+
 
       {/* Global Access Section */}
       <section className="section-spacing bg-card">
@@ -407,137 +509,137 @@ function HomePage() {
 
 
       {/* Micro Futures Contracts — reversed desktop layout */}
-     <section className="section-spacing bg-background">
-  <div className="container-custom px-4 sm:px-6">
-    <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
-      {/* Card: second on mobile / first on desktop */}
-      <motion.div
-        initial={{ opacity: 0, x: -30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="order-2 relative overflow-hidden rounded-xl border border-[#79AD14]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7 lg:order-1"
-      >
-        <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
-
-        <div className="relative z-10">
-          <div className="mb-6 flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#79AD14]/10">
-              <FileText className="h-5 w-5 text-[#79AD14]" />
-            </div>
-
-            <div>
-              <h3 className="text-base font-bold text-foreground sm:text-lg">
-                Available Contract Categories
-              </h3>
-
-              <p className="text-sm text-muted-foreground sm:text-sm">
-                Smaller-sized cash-settled futures
-              </p>
-            </div>
-          </div>
-
-          <ul className="space-y-4">
-            {[
-              "Energy Commodities",
-              "Base Metals",
-              "Precious Metals",
-              "US Equity Index Futures",
-            ].map((category, i) => (
-              <li key={i} className="flex items-start gap-3">
-                <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AD14]/10">
-                  <CheckCircle className="h-3.5 w-3.5 text-[#79AD14]" />
-                </span>
-
-                <span className="text-base leading-relaxed text-muted-foreground sm:text-base">
-                  {category}
-                </span>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-7 rounded-lg border border-[#79AD14]/15 bg-[#79AD14]/5 p-4">
-            <p className="text-sm font-medium leading-relaxed text-[#5E8410]">
-              Designed for traders seeking market exposure with smaller contract
-              sizes and lower capital requirements.
-            </p>
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Text: first on mobile / second on desktop */}
-      <motion.div
-        initial={{ opacity: 0, x: 30 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="order-1 lg:order-2"
-      >
-        <span className="mb-4 inline-block text-[15px] font-semibold uppercase tracking-[0.2em] text-accent">
-          Trade With Smaller Capital
-        </span>
-
-        <motion.h2
-          animate={{ opacity: [1, 0.35, 1] }}
-          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
-          className="mb-5 text-3xl font-bold leading-tight sm:text-3xl md:text-4xl"
-          style={{ color: "#79AD14" }}
-        >
-          Micro Futures Contracts
-        </motion.h2>
-
-        <p className="mb-4 text-base leading-relaxed text-foreground sm:text-base">
-          Smaller-sized cash-settled futures contracts are attractive for
-          beginners and traders who prefer to start with smaller capital.
-        </p>
-
-        <p className="mb-8 text-base leading-relaxed text-foreground sm:text-base">
-          These contracts offer access to selected global commodities and
-          financial markets with clearly defined contract specifications and
-          position limits.
-        </p>
-
-        <div className="flex flex-col items-start gap-4">
-          <a
-            href="/documents/micro-futures-contract-specifications.pdf"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <Button
-              size="lg"
-              className="bg-[#79AD14] py-6 text-base text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:py-6"
+      <section className="section-spacing bg-background">
+        <div className="container-custom px-4 sm:px-6">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Card: second on mobile / first on desktop */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-2 relative overflow-hidden rounded-xl border border-[#79AD14]/20 bg-white p-5 transition-all duration-300 sm:rounded-2xl sm:p-7 lg:order-1"
             >
-              View Contract Specifications & Position Limits
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-          </a>
+              <div className="absolute left-0 top-0 h-1 w-full bg-[#79AD14]" />
 
-         <div className="flex flex-wrap items-center gap-3">
-  <span className="text-sm font-medium text-muted-foreground">
-    PMEX notifications:
-  </span>
+              <div className="relative z-10">
+                <div className="mb-6 flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#79AD14]/10">
+                    <FileText className="h-5 w-5 text-[#79AD14]" />
+                  </div>
 
-  <Link
-    to="/notifications/39"
-    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
-  >
-    No. 39
-    <ExternalLink className="h-3.5 w-3.5" />
-  </Link>
+                  <div>
+                    <h3 className="text-base font-bold text-foreground sm:text-lg">
+                      Available Contract Categories
+                    </h3>
 
-  <Link
-    to="/notifications/41"
-    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
-  >
-    No. 41
-    <ExternalLink className="h-3.5 w-3.5" />
-  </Link>
-</div>
+                    <p className="text-sm text-muted-foreground sm:text-sm">
+                      Smaller-sized cash-settled futures
+                    </p>
+                  </div>
+                </div>
+
+                <ul className="space-y-4">
+                  {[
+                    "Energy Commodities",
+                    "Base Metals",
+                    "Precious Metals",
+                    "US Equity Index Futures",
+                  ].map((category, i) => (
+                    <li key={i} className="flex items-start gap-3">
+                      <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-[#79AD14]/10">
+                        <CheckCircle className="h-3.5 w-3.5 text-[#79AD14]" />
+                      </span>
+
+                      <span className="text-base leading-relaxed text-muted-foreground sm:text-base">
+                        {category}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-7 rounded-lg border border-[#79AD14]/15 bg-[#79AD14]/5 p-4">
+                  <p className="text-sm font-medium leading-relaxed text-[#5E8410]">
+                    Designed for traders seeking market exposure with smaller contract
+                    sizes and lower capital requirements.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Text: first on mobile / second on desktop */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="order-1 lg:order-2"
+            >
+              <span className="mb-4 inline-block text-[15px] font-semibold uppercase tracking-[0.2em] text-accent">
+                Trade With Smaller Capital
+              </span>
+
+              <motion.h2
+                animate={{ opacity: [1, 0.35, 1] }}
+                transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                className="mb-5 text-3xl font-bold leading-tight sm:text-3xl md:text-4xl"
+                style={{ color: "#79AD14" }}
+              >
+                Micro Futures Contracts
+              </motion.h2>
+
+              <p className="mb-4 text-base leading-relaxed text-foreground sm:text-base">
+                Smaller-sized cash-settled futures contracts are attractive for
+                beginners and traders who prefer to start with smaller capital.
+              </p>
+
+              <p className="mb-8 text-base leading-relaxed text-foreground sm:text-base">
+                These contracts offer access to selected global commodities and
+                financial markets with clearly defined contract specifications and
+                position limits.
+              </p>
+
+              <div className="flex flex-col items-start gap-4">
+                <a
+                  href="/documents/micro-futures-contract-specifications.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <Button
+                    size="lg"
+                    className="bg-[#79AD14] py-6 text-base text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:py-6"
+                  >
+                    View Contract Specifications & Position Limits
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </a>
+
+                <div className="flex flex-wrap items-center gap-3">
+                  <span className="text-sm font-medium text-muted-foreground">
+                    PMEX notifications:
+                  </span>
+
+                  <Link
+                    to="/notifications/39"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    No. 39
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </Link>
+
+                  <Link
+                    to="/notifications/41"
+                    className="inline-flex items-center gap-2 rounded-full border border-[#79AD14]/30 bg-[#79AD14]/5 px-4 py-2 text-sm font-semibold text-[#5E8410] transition-colors hover:bg-[#79AD14] hover:text-white"
+                  >
+                    No. 41
+                    <ExternalLink className="h-3.5 w-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
-    </div>
-  </div>
-</section>
+      </section>
 
       {/* Company Intro */}
       <section className="section-spacing bg-card">
@@ -567,15 +669,15 @@ function HomePage() {
                 services across multi-asset classes, with the lowest brokerage commission and a
                 unique Daily Newswire to keep our clients informed on market current affairs.
               </p>
-             <Link to="/about">
-  <Button
-    size="lg"
-    className="bg-[#79AD14] py-6 text-base text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:py-6"
-  >
-    Learn More About Us
-    <ArrowRight className="ml-2 h-4 w-4" />
-  </Button>
-</Link>
+              <Link to="/about">
+                <Button
+                  size="lg"
+                  className="bg-[#79AD14] py-6 text-base text-white transition-all hover:-translate-y-0.5 hover:bg-[#5E8410] sm:py-6"
+                >
+                  Learn More About Us
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </motion.div>
 
             {/* Right — stat cards */}
@@ -974,7 +1076,7 @@ function HomePage() {
 
       {/* CTA Section */}
       <CTASection
-      
+
         headline="Ready to start trading?"
         description="Open an account with Right Vision Securities and access global commodity markets with professional support and regulatory protection."
         primaryCTA={{ text: 'Contact us', href: '/contact' }}

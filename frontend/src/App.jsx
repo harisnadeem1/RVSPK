@@ -43,6 +43,9 @@ import Bookings from "./pages/admin/Bookings.jsx";
 
 import UploadNewswire from "./pages/admin/UploadNewswire.jsx";
 
+import NewswireSubscribePopup from "./components/NewswireSubscribePopup.jsx";
+import NewsWireAdminSubscribers from "./pages/admin/NewswireSubscribers.jsx";
+
 function AppContent() {
   const location = useLocation();
   const isAdminRoute = location.pathname.startsWith('/admin');
@@ -91,6 +94,7 @@ function AppContent() {
         />
 
 
+
         {/* Admin Routes */}
         <Route path="/admin/login" element={<AdminLogin />} />
 
@@ -103,6 +107,15 @@ function AppContent() {
           }
         />
 
+
+<Route
+          path="/admin/newswire-subscribers"
+          element={
+            <ProtectedAdminRoute>
+              <NewsWireAdminSubscribers />
+            </ProtectedAdminRoute>
+          }
+        />
 
 
 
@@ -178,6 +191,8 @@ function AppContent() {
           </div>
         } />
       </Routes>
+        {!isAdminRoute && <NewswireSubscribePopup />}
+
     </>
   );
 }

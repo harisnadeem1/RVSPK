@@ -38,7 +38,7 @@ function ContactPage() {
       title: 'Office Address',
       content: '74-R, GCP Housing Society, JT',
       sub: 'Lahore, Punjab, Pakistan',
-      href: 'https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7',
+      href: 'https://maps.app.goo.gl/5ZTZKXHzim8s5mqb9',
     },
     {
       icon: Clock,
@@ -218,7 +218,7 @@ function ContactPage() {
 
                   <div className="flex flex-col sm:flex-row gap-3">
                     <a
-                      href="https://maps.app.goo.gl/eDdUaHJdjvoNTtuW7"
+                      href="https://maps.app.goo.gl/5ZTZKXHzim8s5mqb9"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex-1 flex items-center justify-center gap-2 bg-accent text-accent-foreground rounded-xl py-3 px-4 text-sm font-medium hover:bg-accent/90 transition-colors"
