@@ -6,3 +6,4 @@
 /frontend/.env.demo
 /frontend/dist
 /frontend/build
+backend/private/pdfs/notifications/daily-newswire.pdf
