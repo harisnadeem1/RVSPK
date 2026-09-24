@@ -36,11 +36,11 @@ function NewswireSubscribers() {
     const [loading, setLoading] =
         useState(true);
 
-    const [email, setEmail] =
-        useState('');
+    const [name, setName] = useState('');
 
-    const [phone, setPhone] =
-        useState('');
+const [email, setEmail] = useState('');
+
+const [phone, setPhone] = useState('');
 
     const [adding, setAdding] =
         useState(false);
@@ -111,10 +111,15 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
         setError('');
         setMessage('');
 
-        if (!email.trim()) {
-            setError('Email is required.');
-            return;
-        }
+       if (!name.trim() || !email.trim()) {
+    setError('Full name and email are required.');
+    return;
+}
+
+if (name.trim().length < 2 || name.trim().length > 120) {
+    setError('Name must be between 2 and 120 characters.');
+    return;
+}
 
         try {
             setAdding(true);
@@ -130,9 +135,10 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                     },
 
                     body: JSON.stringify({
-                        email,
-                        phone,
-                    }),
+    name: name.trim().replace(/\s+/g, ' '),
+    email: email.trim().toLowerCase(),
+    phone: phone.trim(),
+}),
                 }
             );
 
@@ -147,8 +153,9 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                 );
             }
 
-            setEmail('');
-            setPhone('');
+           setName('');
+setEmail('');
+setPhone('');
 
             setMessage(
                 'Subscriber added successfully.'
@@ -281,18 +288,22 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
             const q =
                 search.trim().toLowerCase();
 
-            if (q) {
-                result = result.filter(
-                    (subscriber) =>
-                        subscriber.email
-                            ?.toLowerCase()
-                            .includes(q) ||
+           if (q) {
+    result = result.filter(
+        (subscriber) =>
+            subscriber.name
+                ?.toLowerCase()
+                .includes(q) ||
 
-                        subscriber.phone
-                            ?.toLowerCase()
-                            .includes(q)
-                );
-            }
+            subscriber.email
+                ?.toLowerCase()
+                .includes(q) ||
+
+            subscriber.phone
+                ?.toLowerCase()
+                .includes(q)
+    );
+}
 
 
             if (sourceFilter !== 'all') {
@@ -494,17 +505,43 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
 
                     <form
                         onSubmit={addSubscriber}
-                        className="
-              flex
-              flex-col
-              gap-3
-              p-4
-              sm:flex-row
-              sm:items-end
-            "
+                      className="
+    flex
+    flex-col
+    gap-3
+    p-4
+    sm:flex-row
+    sm:flex-wrap
+    sm:items-end
+"
                     >
 
-                        <div className="flex-1">
+                        {/* Full Name */}
+
+<div className="min-w-0 flex-1">
+
+    <label
+        htmlFor="admin-newswire-name"
+        className="mb-1.5 block text-xs font-medium"
+    >
+        Full Name *
+    </label>
+
+    <Input
+        id="admin-newswire-name"
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+        placeholder="Subscriber full name"
+        autoComplete="name"
+        minLength={2}
+        maxLength={120}
+        required
+    />
+
+</div>
+
+                        <div className="min-w-0 flex-1">
 
                             <label className="mb-1.5 block text-xs font-medium">
                                 Email *
@@ -523,7 +560,7 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                         </div>
 
 
-                        <div className="flex-1">
+                        <div className="min-w-0 flex-1">
 
                             <label className="mb-1.5 block text-xs font-medium">
                                 Phone
@@ -619,7 +656,7 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                                 onChange={(e) =>
                                     setSearch(e.target.value)
                                 }
-                                placeholder="Search email or phone..."
+                               placeholder="Search name, email or phone..."
                                 className="pl-9"
                             />
 
@@ -725,6 +762,10 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                                     <tr>
 
                                         <th className="px-5 py-3 text-left text-xs font-semibold">
+    Name
+</th>
+
+                                        <th className="px-5 py-3 text-left text-xs font-semibold">
                                             Email
                                         </th>
 
@@ -758,6 +799,24 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
                                                 key={subscriber.id}
                                                 className="hover:bg-muted/30"
                                             >
+
+                                                {/* Subscriber Name */}
+
+<td className="px-5 py-3 text-sm">
+
+    <div className="flex items-center gap-2">
+
+        <UserRound
+            className="h-3.5 w-3.5 shrink-0 text-muted-foreground"
+        />
+
+        <span className="font-medium text-foreground">
+            {subscriber.name || 'Not provided'}
+        </span>
+
+    </div>
+
+</td>
 
                                                 <td className="px-5 py-3 text-sm">
                                                     <div className="flex items-center gap-2">
@@ -986,8 +1045,8 @@ const [subscriberToDelete, setSubscriberToDelete] = useState(null);
             <div className="min-w-0">
 
               <p className="text-xs text-muted-foreground">
-                Subscriber
-              </p>
+    {subscriberToDelete.name || 'Subscriber'}
+</p>
 
               <p
                 className="

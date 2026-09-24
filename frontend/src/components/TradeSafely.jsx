@@ -130,12 +130,34 @@ export default function TradeSafelySection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Button
-                    size="lg"
-                    className="bg-[#79AD14] hover:bg-[#7aa85c] text-white font-bold text-base sm:text-base px-8 py-6 rounded-2xl transition-all hover:-translate-y-0.5 shadow-md"
-                  >
-                    Open Account Online with Right Vision
-                  </Button>
+                <Button
+  size="lg"
+  className="
+    h-auto
+    w-full
+    max-w-full
+    whitespace-normal
+    break-words
+    rounded-2xl
+    bg-[#79AD14]
+    px-4 py-4
+    text-center
+    text-base
+    font-bold
+    leading-relaxed
+    text-white
+    shadow-md
+    transition-all
+    hover:bg-[#7aa85c]
+    sm:w-auto
+    sm:px-8
+    sm:py-6
+    sm:text-base
+    sm:hover:-translate-y-0.5
+  "
+>
+  Open Account Online with Right Vision
+</Button>
                 </a>
               </div>
 

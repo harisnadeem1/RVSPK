@@ -14,6 +14,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 function NewswireSubscribePopup() {
   const [visible, setVisible] = useState(false);
 
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
 
@@ -49,12 +50,18 @@ function NewswireSubscribePopup() {
 
     setError('');
 
+    const cleanName = name.trim().replace(/\s+/g, ' ');
     const cleanEmail = email.trim().toLowerCase();
     const cleanPhone = phone.trim();
 
     // Required validation
-    if (!cleanEmail || !cleanPhone) {
-      setError('Email and phone number are required.');
+    if (!cleanName || !cleanEmail || !cleanPhone) {
+      setError('Full name, email, and phone number are required.');
+      return;
+    }
+
+    if (cleanName.length < 2 || cleanName.length > 120) {
+      setError('Full name must be between 2 and 120 characters.');
       return;
     }
 
@@ -96,6 +103,7 @@ function NewswireSubscribePopup() {
           },
 
           body: JSON.stringify({
+            name: cleanName,
             email: cleanEmail,
             phone: cleanPhone,
           }),
@@ -117,6 +125,7 @@ function NewswireSubscribePopup() {
       );
 
       // Remove values
+      setName('');
       setEmail('');
       setPhone('');
 
@@ -152,6 +161,8 @@ function NewswireSubscribePopup() {
         z-[60]
         w-[calc(100%-2rem)]
         max-w-sm
+        max-h-[calc(100dvh-2rem)]
+        overflow-y-auto
       "
     >
       <div
@@ -313,6 +324,30 @@ function NewswireSubscribePopup() {
                 className="space-y-3"
               >
 
+                {/* Full name */}
+                <div>
+                  <label
+                    htmlFor="newswire-name"
+                    className="mb-1.5 block text-xs font-medium text-foreground"
+                  >
+                    Full Name <span className="text-red-500">*</span>
+                  </label>
+                  <Input
+                    id="newswire-name"
+                    type="text"
+                    placeholder="Your full name"
+                    value={name}
+                    onChange={(e) => {
+                      setName(e.target.value);
+                      if (error) setError('');
+                    }}
+                    autoComplete="name"
+                    minLength={2}
+                    maxLength={120}
+                    required
+                  />
+                </div>
+
                 {/* Email */}
                 <div>
                   <label
@@ -407,7 +442,13 @@ function NewswireSubscribePopup() {
                   type="submit"
                   disabled={loading}
                   className="
+                    h-auto
                     w-full
+                    max-w-full
+                    whitespace-normal
+                    px-3
+                    py-3
+                    text-center
                     bg-[#79AD14]
                     text-white
                     hover:bg-[#5E8410]
@@ -428,7 +469,7 @@ function NewswireSubscribePopup() {
                     </>
                   ) : (
                     <>
-                      <Mail className="mr-2 h-4 w-4" />
+                      <Mail className="h-4 w-4 shrink-0" />
                       Subscribe to Daily Newswire
                     </>
                   )}

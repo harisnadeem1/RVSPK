@@ -1,6 +1,22 @@
 import pool from '../config/db.js';
 import transporter from '../config/mailer.js';
 
+// ==========================================
+// HTML ESCAPE HELPER
+// ==========================================
+
+const escapeHtml = (value = '') =>
+  String(value).replace(
+    /[&<>"']/g,
+    (char) =>
+      ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;',
+      })[char]
+  );
 
 // ==========================================
 // PUBLIC NEWSWIRE SUBSCRIBE
@@ -8,54 +24,73 @@ import transporter from '../config/mailer.js';
 
 export const subscribeToNewswire = async (req, res) => {
   try {
-    let { email, phone } = req.body;
 
-    // Clean inputs
-    email = email?.trim().toLowerCase();
-    phone = phone?.trim();
+    // ==========================================
+    // GET AND CLEAN INPUTS
+    // ==========================================
 
+    let { name, email, phone } = req.body ?? {};
+
+    name =
+      typeof name === 'string'
+        ? name.trim().replace(/\s+/g, ' ')
+        : '';
+
+    email =
+      typeof email === 'string'
+        ? email.trim().toLowerCase()
+        : '';
+
+    phone =
+      typeof phone === 'string'
+        ? phone.trim()
+        : '';
 
     // ==========================================
     // VALIDATION
     // ==========================================
 
-    // Public form requires both fields
-    if (!email || !phone) {
+    if (!name || !email || !phone) {
       return res.status(400).json({
-        message: 'Email and phone number are required.',
+        success: false,
+        message:
+          'Full name, email and phone number are required.',
       });
     }
 
+    // Validate name
+
+    if (name.length < 2 || name.length > 120) {
+      return res.status(400).json({
+        success: false,
+        message:
+          'Full name must be between 2 and 120 characters.',
+      });
+    }
 
     // Validate email
-    const emailRegex =
-      /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
 
-    if (!emailRegex.test(email)) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email) || email.length > 255) {
       return res.status(400).json({
-        message: 'Please enter a valid email address.',
+        success: false,
+        message:
+          'Please enter a valid email address.',
       });
     }
 
+    // Validate phone
 
-    // Phone must contain digits only
-    const phoneRegex = /^\d+$/;
+    const phoneRegex = /^\d{7,15}$/;
 
     if (!phoneRegex.test(phone)) {
       return res.status(400).json({
-        message: 'Phone number must contain digits only.',
-      });
-    }
-
-
-    // Phone length validation
-    if (phone.length < 7 || phone.length > 15) {
-      return res.status(400).json({
+        success: false,
         message:
-          'Phone number must be between 7 and 15 digits.',
+          'Phone number must contain 7 to 15 digits.',
       });
     }
-
 
     // ==========================================
     // CHECK EXISTING SUBSCRIBER
@@ -65,6 +100,7 @@ export const subscribeToNewswire = async (req, res) => {
       `
         SELECT
           id,
+          name,
           email,
           phone,
           is_active
@@ -75,43 +111,62 @@ export const subscribeToNewswire = async (req, res) => {
       [email]
     );
 
-
     if (existing.rows.length > 0) {
+
       const subscriber = existing.rows[0];
 
-
-      // ==========================================
-      // REACTIVATE DISABLED SUBSCRIBER
-      // ==========================================
+      // ========================================
+      // REACTIVATE INACTIVE SUBSCRIBER
+      // ========================================
 
       if (!subscriber.is_active) {
-        await pool.query(
+
+        const updated = await pool.query(
           `
             UPDATE newswire_subscribers
             SET
-              phone = $1,
+              name = $1,
+              phone = $2,
               is_active = TRUE,
               updated_at = CURRENT_TIMESTAMP
-            WHERE id = $2
+            WHERE id = $3
+            RETURNING
+              id,
+              name,
+              email,
+              phone,
+              is_active
           `,
           [
+            name,
             phone,
             subscriber.id,
           ]
         );
+
+        return res.status(200).json({
+          success: true,
+          reactivated: true,
+          alreadySubscribed: false,
+          subscriber: updated.rows[0],
+          message:
+            'Your Daily Newswire subscription has been reactivated.',
+        });
+
       }
 
+      // ========================================
+      // EXISTING ACTIVE SUBSCRIBER
+      // ========================================
 
-      // Already subscribed users do NOT trigger
-      // another notification email
       return res.status(200).json({
         success: true,
         alreadySubscribed: true,
         message:
           'You are already subscribed to Daily Newswire.',
       });
-    }
 
+    }
 
     // ==========================================
     // CREATE NEW SUBSCRIBER
@@ -121,6 +176,7 @@ export const subscribeToNewswire = async (req, res) => {
       `
         INSERT INTO newswire_subscribers
           (
+            name,
             email,
             phone,
             source
@@ -129,37 +185,61 @@ export const subscribeToNewswire = async (req, res) => {
           (
             $1,
             $2,
+            $3,
             'website'
           )
-        RETURNING *
+        ON CONFLICT DO NOTHING
+        RETURNING
+          id,
+          name,
+          email,
+          phone,
+          source,
+          is_active,
+          created_at
       `,
       [
+        name,
         email,
         phone,
       ]
     );
 
+    // Handle concurrent duplicate subscriptions.
+
+    if (result.rows.length === 0) {
+      return res.status(200).json({
+        success: true,
+        alreadySubscribed: true,
+        message:
+          'This email is already registered. Please refresh and try again if you need to reactivate your subscription.',
+      });
+    }
 
     const newSubscriber = result.rows[0];
 
-
     // ==========================================
-    // RESPOND TO USER IMMEDIATELY
+    // RESPOND TO USER
     // ==========================================
 
     res.status(201).json({
       success: true,
+      alreadySubscribed: false,
       subscriber: newSubscriber,
       message:
         'Successfully subscribed to Daily Newswire.',
     });
 
+    // ==========================================
+    // NOTIFY RVSPK
+    // ==========================================
 
-    // ==========================================
-    // NOTIFY RVSPK IN BACKGROUND
-    // ==========================================
+    const safeName = escapeHtml(name);
+    const safeEmail = escapeHtml(email);
+    const safePhone = escapeHtml(phone);
 
     transporter.sendMail({
+
       from:
         `"RVSPK Website" <${process.env.GMAIL_USER}>`,
 
@@ -177,7 +257,7 @@ export const subscribeToNewswire = async (req, res) => {
           "
         >
 
-          <!-- Header -->
+          <!-- HEADER -->
 
           <div
             style="
@@ -199,8 +279,7 @@ export const subscribeToNewswire = async (req, res) => {
 
           </div>
 
-
-          <!-- Message -->
+          <!-- MESSAGE -->
 
           <p
             style="
@@ -214,8 +293,7 @@ export const subscribeToNewswire = async (req, res) => {
             through the RVSPK website.
           </p>
 
-
-          <!-- Subscriber Information -->
+          <!-- SUBSCRIBER INFORMATION -->
 
           <div
             style="
@@ -233,10 +311,19 @@ export const subscribeToNewswire = async (req, res) => {
                 font-size: 14px;
               "
             >
-              <strong>Email:</strong>
-              ${email}
+              <strong>Full Name:</strong>
+              ${safeName}
             </p>
 
+            <p
+              style="
+                margin: 0 0 12px 0;
+                font-size: 14px;
+              "
+            >
+              <strong>Email:</strong>
+              ${safeEmail}
+            </p>
 
             <p
               style="
@@ -245,9 +332,8 @@ export const subscribeToNewswire = async (req, res) => {
               "
             >
               <strong>Phone:</strong>
-              ${phone}
+              ${safePhone}
             </p>
-
 
             <p
               style="
@@ -261,8 +347,7 @@ export const subscribeToNewswire = async (req, res) => {
 
           </div>
 
-
-          <!-- Footer -->
+          <!-- FOOTER -->
 
           <p
             style="
@@ -276,7 +361,6 @@ export const subscribeToNewswire = async (req, res) => {
             Right Vision Securities website.
           </p>
 
-
           <p
             style="
               margin-top: 10px;
@@ -289,36 +373,42 @@ export const subscribeToNewswire = async (req, res) => {
 
         </div>
       `,
-    })
-    .then(() => {
-      console.log(
-        `Newswire subscription notification sent for: ${email}`
-      );
-    })
-    .catch((mailError) => {
-      // Notification failure does NOT affect
-      // the user's subscription
-      console.error(
-        `Newswire notification email failed for ${email}:`,
-        mailError.message
-      );
-    });
 
+    })
+      .then(() => {
+        console.log(
+          `Newswire notification sent for subscriber ID: ${newSubscriber.id}`
+        );
+      })
+      .catch((mailError) => {
+        console.error(
+          'Newswire notification email failed:',
+          mailError.message
+        );
+      });
 
   } catch (error) {
+
     console.error(
       'Newswire subscription error:',
       error
     );
 
+    if (error.code === '23505') {
+      return res.status(409).json({
+        success: false,
+        message:
+          'This email is already registered.',
+      });
+    }
 
-    // Prevent trying to send another response
-    // if response was already returned
     if (!res.headersSent) {
       return res.status(500).json({
+        success: false,
         message:
           'Unable to subscribe. Please try again.',
       });
     }
+
   }
 };
