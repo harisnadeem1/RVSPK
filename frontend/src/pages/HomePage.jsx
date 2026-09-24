@@ -166,94 +166,245 @@ function HomePage() {
 
 
       {/* Hero Section */}
-      <section className="relative min-h-[92vh] overflow-hidden flex items-center">
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/home/hero_banner.png"
-            alt=""
-            className="w-full h-full object-cover object-center"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/75 to-secondary/80" />
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.18),transparent_42%)]" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
-        </div>
+    <section
+  className="
+    relative
+    flex
+    w-full
+    min-w-0
+    items-center
+    overflow-hidden
+    min-h-0
+    lg:min-h-[92vh]
+  "
+>
+  {/* Background */}
+  <div className="absolute inset-0 z-0">
+    <img
+      src="/home/hero_banner.png"
+      alt=""
+      className="w-full h-full object-cover object-center"
+    />
 
-        <div className="absolute top-12 left-4 sm:top-16 sm:left-10 w-40 h-40 sm:w-72 sm:h-72 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
-        <div className="absolute bottom-8 right-4 sm:bottom-10 sm:right-10 w-32 h-32 sm:w-72 sm:h-72 rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
+    <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/75 to-secondary/80" />
 
-        <div className="container-custom relative z-10 px-4 sm:px-5 py-14 sm:py-16 lg:py-24">
-          <div className="grid items-center gap-8 sm:gap-10 lg:grid-cols-2">
-            <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="max-w-2xl text-center lg:text-left"
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.14),transparent_35%),radial-gradient(circle_at_bottom_right,rgba(0,0,0,0.18),transparent_42%)]" />
+
+    <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
+  </div>
+
+  {/* Background Decorations */}
+  <div className="absolute top-12 left-4 sm:top-16 sm:left-10 w-40 h-40 sm:w-72 sm:h-72 rounded-full bg-accent/10 blur-3xl pointer-events-none" />
+
+  <div className="absolute bottom-8 right-4 sm:bottom-10 sm:right-10 w-32 h-32 sm:w-72 sm:h-72 rounded-full bg-secondary/20 blur-3xl pointer-events-none" />
+
+  {/* Main Container */}
+  <div
+    className="
+      container-custom
+      relative
+      z-10
+      w-full
+      min-w-0
+      px-4
+      sm:px-5
+      py-10
+      sm:py-16
+      lg:py-24
+    "
+  >
+    <div
+      className="
+        grid
+        min-w-0
+        grid-cols-1
+        items-center
+        gap-8
+        sm:gap-10
+        lg:grid-cols-2
+      "
+    >
+      {/* LEFT — Hero Content */}
+      <motion.div
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.8,
+          ease: [0.16, 1, 0.3, 1],
+        }}
+        className="w-full min-w-0 max-w-2xl text-center lg:text-left"
+      >
+        {/* Eyebrow */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.15,
+          }}
+          className="
+            mb-3
+            text-xs
+            font-semibold
+            uppercase
+            tracking-[0.2em]
+            text-primary-foreground/80
+            sm:mb-4
+            sm:text-sm
+            sm:tracking-[0.25em]
+          "
+        >
+          Invest with
+        </motion.p>
+
+        {/* Heading */}
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 0.3,
+          }}
+          className="
+            mb-4
+            text-[clamp(2.25rem,11vw,3rem)]
+            font-bold
+            leading-[1.05]
+            tracking-tight
+            text-primary-foreground
+            sm:mb-5
+            sm:text-5xl
+            md:text-6xl
+            lg:text-7xl
+          "
+        >
+          Right Vision
+        </motion.h1>
+
+        {/* Description */}
+        <motion.p
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.45,
+          }}
+          className="
+            mx-auto
+            mb-6
+            max-w-xl
+            text-sm
+            leading-relaxed
+            text-primary-foreground/80
+            sm:mb-10
+            sm:text-lg
+            md:text-xl
+            lg:mx-0
+          "
+        >
+          Trade Oil, Gold, Silver, Platinum, Dollar like
+          other international markets, fully regulated
+          and licensed. Join international trading now.
+        </motion.p>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.6,
+            delay: 0.6,
+          }}
+          className="
+            flex
+            w-full
+            min-w-0
+            flex-col
+            items-stretch
+            justify-center
+            gap-3
+            sm:flex-row
+            sm:items-center
+            lg:justify-start
+          "
+        >
+          <a
+            href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block w-full min-w-0 max-w-full sm:w-auto"
+          >
+            <Button
+              size="lg"
+              className="
+                h-auto
+                w-full
+                max-w-full
+                whitespace-normal
+                bg-accent
+                px-7
+                py-4
+                text-sm
+                font-semibold
+                text-accent-foreground
+                shadow-lg
+                shadow-accent/25
+                transition-all
+                hover:-translate-y-0.5
+                hover:bg-accent/90
+                hover:shadow-accent/40
+                sm:h-10
+                sm:w-auto
+                sm:whitespace-nowrap
+                sm:px-8
+                sm:py-7
+                sm:text-lg
+              "
             >
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-[16px] sm:text-sm font-semibold tracking-[0.2em] sm:tracking-[0.25em] uppercase text-primary-foreground/80 mb-3 sm:mb-4"
-              >
-                Invest with
-              </motion.p>
+              <span className="min-w-0">
+                Open Account Online
+              </span>
 
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.3 }}
-                className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-[1.05] tracking-tight mb-4 sm:mb-5"
-              >
-                Right Vision
-              </motion.h1>
+              <ArrowRight className="ml-2 h-4 w-4 shrink-0" />
+            </Button>
+          </a>
+        </motion.div>
+      </motion.div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.45 }}
-                className="text-base sm:text-lg md:text-xl text-primary-foreground/80 leading-relaxed mb-7 sm:mb-10 max-w-xl mx-auto lg:mx-0"
-              >
-                Trade Oil, Gold, Silver, Platinum, Dollar like other international markets, fully regulated and licensed. Join international trading now.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.6 }}
-                className="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start items-stretch sm:items-center"
-              >
-                <a
-                  href="https://www.aof.com.pk/?ODc0NTQ4NDE4Nzc3NzU3Mjc0ODU4MzIzNDY4NDcyNzM3MTI3NzQ4OQ=="
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full sm:w-auto"
-                >
-                  <Button
-                    size="lg"
-                    className="w-full sm:w-auto bg-accent text-accent-foreground hover:bg-accent/90 px-7 sm:px-8 py-6 sm:py-7 text-base sm:text-lg font-semibold shadow-lg shadow-accent/25 transition-all hover:shadow-accent/40 hover:-translate-y-0.5"
-                  >
-                    Open Account Online
-                    <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </a>
-              </motion.div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.96 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="flex justify-center lg:justify-end"
-            >
-              <div className="w-full max-w-[390px] sm:max-w-[520px] lg:max-w-[560px]">
-                <MarketCarousel />
-              </div>
-            </motion.div>
-          </div>
+      {/* RIGHT — Market Carousel */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{
+          duration: 0.8,
+          delay: 0.2,
+        }}
+        className="
+          flex
+          w-full
+          min-w-0
+          justify-center
+          lg:justify-end
+        "
+      >
+        <div
+          className="
+            w-full
+            min-w-0
+            max-w-[390px]
+            sm:max-w-[520px]
+            lg:max-w-[560px]
+          "
+        >
+          <MarketCarousel />
         </div>
+      </motion.div>
+    </div>
+  </div>
 
-        <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-t from-background/30 to-transparent pointer-events-none z-10" />
-      </section>
+  {/* Bottom Gradient */}
+  <div className="absolute bottom-0 left-0 right-0 h-20 sm:h-24 bg-gradient-to-t from-background/30 to-transparent pointer-events-none z-10" />
+</section>
       {/* <HeroSection /> */}
 
 
