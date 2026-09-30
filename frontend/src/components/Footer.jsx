@@ -1,26 +1,34 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Mail, Phone } from 'lucide-react'
+import {
+  MapPin,
+  Mail,
+  Phone,
+  Facebook,
+  Instagram,
+  Linkedin,
+  Twitter,
+} from 'lucide-react'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
 
   const investorResourceLinks = [
-  {
-    label: 'Investor Grievance Redressal at PMEX',
-    href: 'https://pmex.com.pk/investor-complaints/',
-  },
-  {
-    label: 'PMEX Guide to Futures Trading',
-    href: 'https://pmex.com.pk/wp-content/uploads/2025/11/Futures-Trading-Guide-Updated.pdf',
-  },
-  {
-    label: 'SECP Complaint (Service Desk Management System)',
-    href: 'https://sdms.secp.gov.pk/',
-    image: '/footer/secp-sdms.png',
-    imageAlt: 'SECP Service Desk Management System',
-  },
-]
+    {
+      label: 'Investor Grievance Redressal at PMEX',
+      href: 'https://pmex.com.pk/investor-complaints/',
+    },
+    {
+      label: 'PMEX Guide to Futures Trading',
+      href: 'https://pmex.com.pk/wp-content/uploads/2025/11/Futures-Trading-Guide-Updated.pdf',
+    },
+    {
+      label: 'SECP Complaint (Service Desk Management System)',
+      href: 'https://sdms.secp.gov.pk/',
+      image: '/footer/secp-sdms.png',
+      imageAlt: 'SECP Service Desk Management System',
+    },
+  ]
 
   const tradingPlatformLinks = [
     {
@@ -75,24 +83,14 @@ function Footer() {
               />
             </Link>
 
-
             <div>
-  <Link
-    to="/book-online-session"
-    className="mb-6 inline-flex items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent/90"
-  >
-    Book an Online Session
-  </Link>
-</div>
-
-            {/* <p className="mb-6 max-w-sm text-base leading-relaxed text-primary-foreground/50">
-              Right Vision Securities (Pvt.) Limited is a SECP-licensed and
-              PMEX-registered futures brokerage company associated with the
-              Right Vision Group (est. 2007). We provide transparent,
-              reliable, and efficient brokerage services across commodity and
-              financial markets in Pakistan, with a focus on integrity,
-              compliance, and client success.
-            </p> */}
+              <Link
+                to="/book-online-session"
+                className="mb-6 inline-flex items-center justify-center rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-accent-foreground transition-all hover:bg-accent/90"
+              >
+                Book an Online Session
+              </Link>
+            </div>
 
             <ul className="space-y-3">
               <li>
@@ -115,27 +113,25 @@ function Footer() {
                 </a>
               </li>
 
+              <li>
+                <a
+                  href="tel:+923108214202"
+                  className="group flex items-start gap-3"
+                >
+                  <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
+                    <Phone className="h-5 w-5 text-stone-50" />
+                  </div>
 
-               {/* Secondary Phone */}
-  <li>
-    <a
-      href="tel:+923108214202"
-      className="group flex items-start gap-3"
-    >
-      <div className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-primary-foreground/10 transition-colors group-hover:bg-accent/20">
-        <Phone className="h-5 w-5 text-stone-50" />
-      </div>
-
-      <div>
-        <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
-          +92 310 8214202
-        </div>
-        <div className="text-base text-primary-foreground/55">
-          Call / WhatsApp · Business hours
-        </div>
-      </div>
-    </a>
-  </li>
+                  <div>
+                    <div className="text-base font-medium text-primary-foreground transition-colors group-hover:text-accent">
+                      +92 310 8214202
+                    </div>
+                    <div className="text-base text-primary-foreground/55">
+                      Call / WhatsApp · Business hours
+                    </div>
+                  </div>
+                </a>
+              </li>
 
               <li>
                 <a
@@ -200,7 +196,6 @@ function Footer() {
               ))}
             </ul>
 
-            {/* Reports */}
             <h3 className="mb-4 mt-8 text-lg font-semibold uppercase tracking-widest text-primary-foreground">
               Reports
             </h3>
@@ -223,36 +218,33 @@ function Footer() {
               Investor Resources
             </h3>
 
-           
+            <ul className="space-y-4">
+              {investorResourceLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group block"
+                  >
+                    <div className="flex items-start gap-3 text-base text-primary-foreground/60 transition-colors group-hover:text-accent">
+                      <span className="leading-relaxed">
+                        {link.label}
+                      </span>
+                    </div>
 
-         <ul className="space-y-4">
-  {investorResourceLinks.map((link) => (
-    <li key={link.href}>
-      <a
-        href={link.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="group block"
-      >
-        {/* Text link */}
-        <div className="flex items-start gap-3 text-base text-primary-foreground/60 transition-colors group-hover:text-accent">
-
-          <span className="leading-relaxed">{link.label}</span>
-        </div>
-
-        {/* Full-width clickable image */}
-        {link.image && (
-          <img
-            src={link.image}
-            alt={link.imageAlt}
-            loading="lazy"
-            className="mt-3 block h-auto w-full object-contain transition-opacity duration-300 group-hover:opacity-85"
-          />
-        )}
-      </a>
-    </li>
-  ))}
-</ul>
+                    {link.image && (
+                      <img
+                        src={link.image}
+                        alt={link.imageAlt}
+                        loading="lazy"
+                        className="mt-3 block h-auto w-full object-contain transition-opacity duration-300 group-hover:opacity-85"
+                      />
+                    )}
+                  </a>
+                </li>
+              ))}
+            </ul>
           </div>
 
           {/* MT Trading Platforms */}
@@ -276,6 +268,49 @@ function Footer() {
               ))}
             </ul>
           </div>
+        </div>
+
+        {/* Social Links - uses existing footer bottom space */}
+        <div className="-mb-7 mt-5 flex items-center justify-center gap-3 sm:justify-end sm:-mb-8">
+          <a
+            href="https://www.facebook.com/p/Right-Vision-Securities-61588292460321/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10 text-primary-foreground/70 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+          >
+            <Facebook className="h-5 w-5" />
+          </a>
+
+          <a
+            href="https://www.instagram.com/right.vision.securities"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10 text-primary-foreground/70 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+          >
+            <Instagram className="h-5 w-5" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/company/right-vision-securities/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10 text-primary-foreground/70 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+          >
+            <Linkedin className="h-5 w-5" />
+          </a>
+
+          <a
+            href="https://x.com/rv_securities"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="X (Twitter)"
+            className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary-foreground/10 text-primary-foreground/70 transition-all duration-300 hover:bg-accent hover:text-accent-foreground"
+          >
+            <Twitter className="h-5 w-5" />
+          </a>
         </div>
       </div>
 
