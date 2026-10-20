@@ -41,8 +41,8 @@ const DOC_TITLES = {
   '41' :           'Position Limits - Smaller-sized Cash-Settled Futures Contracts',
   'services' :           'Services Offered by Right Vision Securities (Pvt.) Limited',
   'daily-newswire':          'Daily Newswire',
-
-  
+  'mili-tola':          'Milli Tola Gold',
+  '1-tola':          '1-Tola Gold',
 
 }
 

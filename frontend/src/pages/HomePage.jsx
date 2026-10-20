@@ -602,23 +602,28 @@ function HomePage() {
         <div className="min-w-0 w-full">
 
           {/* Small label */}
-          <span
-            className="
-              mb-2 block
-              text-center
-              text-[10px]
-              font-semibold
-              uppercase
-              leading-relaxed
-              tracking-[0.12em]
-              text-[#79AD14]
-              sm:text-xs
-              sm:tracking-[0.18em]
-              md:text-left
-            "
-          >
-            Shari'ah Compliant Gold Investment
-          </span>
+         
+<span
+  className="
+    mb-2 inline-block
+    rounded-full
+    bg-[#eff5e6]
+    px-3 py-1.5
+    text-center
+    text-[12px]
+    font-extrabold
+    uppercase
+    leading-relaxed
+    tracking-[0.12em]
+    text-[#466601]
+    sm:text-[12px]
+    sm:tracking-[0.18em]
+    md:text-left
+  "
+>
+  Shari'ah Compliant Gold Investment
+</span>
+
 
           {/* Heading */}
           <h2
@@ -710,39 +715,32 @@ function HomePage() {
               Initial Investment in Gold:
             </span>
 
-            <div
-              className="
-                flex w-full
-                flex-wrap
-                gap-2
-                sm:w-auto
-              "
-            >
-              {[
-                "Milli Tola Gold",
-                "1-Tola Gold",
-              ].map((item) => (
-                <span
-                  key={item}
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    rounded-full
-                    border border-[#79AD14]/20
-                    bg-[#79AD14]/10
-                    px-3 py-2
-                    text-xs
-                    font-semibold
-                    text-[#5E8410]
-                    sm:py-1.5
-                    sm:text-sm
-                  "
-                >
-                  {item}
-                </span>
-              ))}
-            </div>
+           <div className="flex w-full flex-wrap gap-2 sm:w-auto">
+  {[
+    { label: "Milli Tola Gold", href: "/clients/mili-tola" },
+    { label: "1-Tola Gold", href: "/clients/1-tola" },
+  ].map((item) => (
+    <Link
+      key={item.label}
+      to={item.href}
+      className="
+        inline-flex items-center justify-center gap-1.5
+        rounded-full
+        border border-[#79AD14]/20
+        bg-[#79AD14]/10
+        px-3 py-2
+        text-xs font-semibold text-[#5E8410]
+        transition-colors
+        hover:border-[#79AD14]/40
+        hover:bg-[#79AD14]/20
+        sm:py-1.5 sm:text-sm
+      "
+    >
+      {item.label}
+      <ExternalLink size={14} strokeWidth={2.5} />
+    </Link>
+  ))}
+</div>
           </div>
 
           {/* CTA */}

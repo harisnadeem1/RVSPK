@@ -68,6 +68,16 @@ function Footer() {
     },
   ]
 
+  const usefulLinks = [
+    { label: 'SECP', href: 'https://www.secp.gov.pk/' },
+    { label: 'PMEX', href: 'https://pmex.com.pk/' },
+    { label: 'Pakistan Stock Exchange', href: 'https://www.psx.com.pk/' },
+    { label: 'NCCPL', href: 'https://www.nccpl.com.pk/' },
+    { label: 'CDC Pakistan', href: 'https://www.cdcpakistan.com/' },
+    { label: 'NADRA', href: 'https://www.nadra.gov.pk/' },
+    { label: 'State Bank of Pakistan', href: 'https://www.sbp.org.pk/' },
+  ]
+
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Main footer body */}
@@ -196,19 +206,23 @@ function Footer() {
               ))}
             </ul>
 
-            <h3 className="mb-4 mt-8 text-lg font-semibold uppercase tracking-widest text-primary-foreground">
-              Reports
+            <h3 className="mb-4 mt-8 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
+              MT Trading Platforms
             </h3>
 
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  to="/reports"
-                  className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
-                >
-                  Daily &amp; Monthly Reports
-                </Link>
-              </li>
+            <ul className="space-y-3">
+              {tradingPlatformLinks.map((link) => (
+                <li key={link.href}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -247,26 +261,43 @@ function Footer() {
             </ul>
           </div>
 
-          {/* MT Trading Platforms */}
+          {/* Reports + Useful Links */}
           <div className="lg:col-span-3">
             <h3 className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
-              MT Trading Platforms
+              Reports
             </h3>
 
-            <ul className="space-y-3">
-              {tradingPlatformLinks.map((link) => (
-                <li key={link.href}>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
-                  >
-                    {link.label}
-                  </a>
-                </li>
-              ))}
+            <ul className="mb-8 space-y-2">
+              <li>
+                <Link
+                  to="/reports"
+                  className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
+                >
+                  Daily &amp; Monthly Reports
+                </Link>
+              </li>
             </ul>
+
+           
+<h3 className="mb-4 text-lg font-bold uppercase tracking-[0.18em] text-primary-foreground">
+  Useful Links
+</h3>
+
+<ul className="space-y-3">
+  {usefulLinks.map((link) => (
+    <li key={link.href}>
+      <a
+        href={link.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="text-base text-primary-foreground/50 transition-colors hover:text-accent"
+      >
+        {link.label}
+      </a>
+    </li>
+  ))}
+</ul>
+
           </div>
         </div>
 

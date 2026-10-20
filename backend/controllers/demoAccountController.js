@@ -1,6 +1,7 @@
 import pool from "../config/db.js";
 import { createPmexAccount } from "../services/pmexPlaywright.js";
 import { sendDemoAccountEmail } from "../services/demoAccountEmail.js";
+import { sendDemoAccountThankYouEmail } from "../services/demoAccountThankYouEmail.js";
 
 
 export const updateDemoAccountStatus = async (req, res) => {
@@ -221,6 +222,11 @@ await pool.query(
             login: pmex.login,
             password: pmex.password
         });
+
+        await sendDemoAccountThankYouEmail({
+    email,
+    firstName,
+});
 
         return res.json({
             success: true,

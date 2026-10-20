@@ -231,7 +231,7 @@ function DisclaimerModal() {
               <div className="bg-muted rounded-xl p-5 text-sm md:text-base text-muted-foreground leading-relaxed">
                 <p>
                   Should you have any query, complaints, comments, feedback, suggestions, requests for technical support or other inquiries,
-                  please don't hesitate to contact the company by email: hello@RVSPL.com or at Phone numbers:042-35191194, 042-351911.
+                  please don't hesitate to contact the company by email: hello@rvspk.com or at Phone numbers: 042-35191188.
                 </p>
               </div>
 
