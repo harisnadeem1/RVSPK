@@ -76,6 +76,8 @@ function Footer() {
     { label: 'CDC Pakistan', href: 'https://www.cdcpakistan.com/' },
     { label: 'NADRA', href: 'https://www.nadra.gov.pk/' },
     { label: 'State Bank of Pakistan', href: 'https://www.sbp.org.pk/' },
+    { label: 'Naymat Collateral Management Company', href: 'https://naymatcollateral.com/' },
+
   ]
 
   return (

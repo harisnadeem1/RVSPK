@@ -1,5 +1,6 @@
 import transporter from '../config/mailer.js';
 import pool from '../config/db.js';
+import { sendDiscordNotification } from '../utils/discordNotifier.js';
 
 const DAY_NAMES = [
   'Sunday',
@@ -471,6 +472,19 @@ const bookingResult = await pool.query(
 
 const booking = bookingResult.rows[0];
 
+if (hasSessionDate && hasSessionTime) {
+  void sendDiscordNotification({
+    type: "Online Session Booking",
+    name: booking.name,
+    email: booking.email,
+    phone: booking.whatsapp_number,
+    details: `Booking ID: ${booking.id}
+Date: ${formattedDate}
+Time: ${cleanSessionTime} PKT
+Duration: 30 minutes`,
+  });
+}
+
 
     await transporter.sendMail({
       from: `"RVSPL Online Booking" <${process.env.GMAIL_USER}>`,
@@ -487,40 +501,39 @@ const booking = bookingResult.rows[0];
     });
 
     
-if (hasSessionDate && hasSessionTime) {
-  const customerName = escapeHtml(cleanName);
 
+if (hasSessionDate && hasSessionTime) {
   await transporter.sendMail({
     from: `"Right Vision Securities" <${process.env.GMAIL_USER}>`,
     to: cleanEmail,
     subject: "Thank You for Your Interest in Booking an Online Session",
 
     text: `
-Dear ${cleanName},
+Dear Sir/Madam,
 
 Warmly welcome to Right Vision Group of Companies!
 
-Thank you for your interest in Right Vision Securities (Pvt.) Limited and for booking an online session. We appreciate you taking the time to learn more about the commodities market and considering our brokerage services to begin your journey in commodity futures trading.
+We offer our gratitude for your interest in Right Vision Securities (Pvt.) Limited and for reaching out to Book an Online Session. We truly appreciate you taking your precious time to learn more about commodities market and for considering the services offered by our Brokerage Company to facilitate you to start your journey to trade in commodities Futures Contracts.
 
-We confirm receipt of your online session request for the date and time selected:
+We confirm your request for an Online Session as scheduled. Meanwhile, if you have any question or need assistance, please don't hesitate to reply to this email or may call/chat with our representative.
 
-Date: ${formattedDate}
-Time: ${cleanSessionTime} PKT
-Duration: 30 minutes
-
-If you have any questions or need assistance before your session, please reply to this email or contact our representative.
-
-We look forward to connecting with you and helping you better understand the commodities market.
+We look forward to connecting and helping you to achieve your investment goals.
 
 Kindest regards,
+
 Customer Support, Marketing, Research & Training Department
 Right Vision Securities (Pvt.) Limited
+
 74-R, GCP Society, Johar Town, Lahore
 
-Landline: 042-35191194; 042-35191188
-WhatsApp: 0310-8248717; 0310-8214202
-Email: hello@rvspk.com
+Landline #: 042-35191194; 042-35191188
+WhatsApp #: 0310-8248717; 03108214202
+Email Add.: hello@rvspk.com
 Website: https://www.rvspk.com/
+
+RISK DISCLOSURE:
+
+It is imperative to inform you that the Company does not provide advisory services. Be cautious that Future Trading in Commodities involve substantial leverage and risk. Hence, seek an independent professional financial advisor for trading strategies. Always use protective risk controls, independent judgment and disciplined position sizing. Past performance is not an indicate of future success. Responsibility of loss of money could not be imposed on the Company.
     `.trim(),
 
     html: `
@@ -529,34 +542,42 @@ Website: https://www.rvspk.com/
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You for Your Interest in Booking an Online Session</title>
 </head>
+
 <body style="margin:0;padding:0;background:#f3f5f7;font-family:Arial,Helvetica,sans-serif;color:#344054;">
 
   <table role="presentation" width="100%" cellspacing="0" cellpadding="0"
     style="background:#f3f5f7;padding:32px 12px;">
     <tr>
       <td align="center">
+
         <table role="presentation" width="100%" cellspacing="0" cellpadding="0"
           style="max-width:620px;background:#ffffff;border:1px solid #e5e9ee;border-radius:8px;overflow:hidden;">
 
+          <!-- Header -->
           <tr>
             <td style="padding:28px 36px 24px;border-bottom:4px solid #79AD14;">
               <p style="margin:0;color:#466601;font-size:12px;font-weight:bold;letter-spacing:1.5px;">
                 RIGHT VISION GROUP OF COMPANIES
               </p>
+
               <h1 style="margin:12px 0 0;font-size:23px;line-height:1.4;color:#253047;">
                 Thank You for Your Interest
               </h1>
+
               <p style="margin:6px 0 0;font-size:14px;color:#667085;line-height:1.6;">
                 Online Session Booking
               </p>
             </td>
           </tr>
 
+          <!-- Message -->
           <tr>
             <td style="padding:30px 36px;">
-              <p style="margin:0 0 18px;font-size:15px;line-height:1.8;">
-                Dear ${customerName},
+
+              <p style="margin:0 0 18px;font-size:15px;line-height:1.8;color:#344054;">
+                Dear Sir/Madam,
               </p>
 
               <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#466601;font-weight:bold;">
@@ -564,18 +585,23 @@ Website: https://www.rvspk.com/
               </p>
 
               <p style="margin:0 0 16px;font-size:14px;line-height:1.9;color:#475467;">
-                Thank you for your interest in
+                We offer our gratitude for your interest in
                 <strong>Right Vision Securities (Pvt.) Limited</strong>
-                and for booking an online session. We appreciate you taking
-                the time to learn more about the commodities market and
-                considering our brokerage services to begin your journey
-                in commodity futures trading.
+                and for reaching out to Book an Online Session. We truly
+                appreciate you taking your precious time to learn more about
+                commodities market and for considering the services offered
+                by our Brokerage Company to facilitate you to start your
+                journey to trade in commodities Futures Contracts.
               </p>
 
               <p style="margin:0 0 16px;font-size:14px;line-height:1.9;color:#475467;">
-                We have received your online session request with the following details:
+                We confirm your request for an Online Session as scheduled.
+                Meanwhile, if you have any question or need assistance,
+                please don't hesitate to reply to this email or may
+                call/chat with our representative.
               </p>
 
+              <!-- Session Confirmation -->
               <table role="presentation" width="100%" cellspacing="0" cellpadding="0"
                 style="background:#f7f9f3;border:1px solid #dce8c7;border-left:4px solid #79AD14;border-radius:5px;margin:20px 0;">
                 <tr>
@@ -583,12 +609,15 @@ Website: https://www.rvspk.com/
                     <p style="margin:0 0 12px;font-size:12px;font-weight:bold;letter-spacing:1px;color:#466601;">
                       YOUR SESSION DETAILS
                     </p>
+
                     <p style="margin:0 0 8px;font-size:14px;line-height:1.7;color:#344054;">
                       <strong>Date:</strong> ${escapeHtml(formattedDate)}
                     </p>
+
                     <p style="margin:0 0 8px;font-size:14px;line-height:1.7;color:#344054;">
                       <strong>Time:</strong> ${escapeHtml(cleanSessionTime)} PKT
                     </p>
+
                     <p style="margin:0;font-size:14px;line-height:1.7;color:#344054;">
                       <strong>Duration:</strong> 30 minutes
                     </p>
@@ -596,28 +625,31 @@ Website: https://www.rvspk.com/
                 </tr>
               </table>
 
-              <p style="margin:0 0 16px;font-size:14px;line-height:1.9;color:#475467;">
-                If you have any questions or need assistance before your session,
-                please reply to this email or contact our representative.
-              </p>
-
               <p style="margin:0 0 24px;font-size:14px;line-height:1.9;color:#475467;">
-                We look forward to connecting with you and helping you better
-                understand the commodities market.
+                We look forward to connecting and helping you to achieve
+                your investment goals.
               </p>
 
-              <p style="margin:0 0 5px;font-size:14px;color:#475467;">Kindest regards,</p>
+              <!-- Signature -->
+              <p style="margin:0 0 5px;font-size:14px;color:#475467;">
+                Kindest regards,
+              </p>
+
               <p style="margin:0;font-size:14px;line-height:1.8;font-weight:bold;color:#253047;">
                 Customer Support, Marketing, Research &amp; Training Department
               </p>
+
               <p style="margin:3px 0 0;font-size:14px;line-height:1.8;font-weight:bold;color:#466601;">
                 Right Vision Securities (Pvt.) Limited
               </p>
+
             </td>
           </tr>
 
+          <!-- Contact Information -->
           <tr>
             <td style="padding:24px 36px;background:#f8fafc;border-top:1px solid #e5e9ee;">
+
               <p style="margin:0 0 16px;font-size:12px;font-weight:bold;letter-spacing:1px;color:#466601;">
                 CONTACT INFORMATION
               </p>
@@ -628,36 +660,71 @@ Website: https://www.rvspk.com/
               </p>
 
               <p style="margin:0 0 10px;font-size:13px;line-height:1.8;color:#667085;">
-                <strong style="color:#344054;">Landline:</strong><br />
+                <strong style="color:#344054;">Landline #:</strong><br />
                 <a href="tel:+924235191194" style="color:#466601;text-decoration:none;">042-35191194</a>
                 &nbsp;|&nbsp;
                 <a href="tel:+924235191188" style="color:#466601;text-decoration:none;">042-35191188</a>
               </p>
 
               <p style="margin:0 0 10px;font-size:13px;line-height:1.8;color:#667085;">
-                <strong style="color:#344054;">WhatsApp:</strong><br />
+                <strong style="color:#344054;">WhatsApp #:</strong><br />
                 <a href="https://wa.me/923108248717" style="color:#466601;text-decoration:none;">0310-8248717</a>
                 &nbsp;|&nbsp;
-                <a href="https://wa.me/923108214202" style="color:#466601;text-decoration:none;">0310-8214202</a>
+                <a href="https://wa.me/923108214202" style="color:#466601;text-decoration:none;">03108214202</a>
               </p>
 
               <p style="margin:0 0 10px;font-size:13px;line-height:1.8;color:#667085;">
-                <strong style="color:#344054;">Email:</strong><br />
+                <strong style="color:#344054;">Email Add.:</strong><br />
                 <a href="mailto:hello@rvspk.com" style="color:#466601;text-decoration:none;">hello@rvspk.com</a>
               </p>
 
               <p style="margin:0;font-size:13px;line-height:1.8;color:#667085;">
                 <strong style="color:#344054;">Website:</strong><br />
-                <a href="https://www.rvspk.com/" style="color:#466601;text-decoration:none;">www.rvspk.com</a>
+                <a href="https://www.rvspk.com/" target="_blank" style="color:#466601;text-decoration:none;">www.rvspk.com</a>
               </p>
+
             </td>
           </tr>
 
+          <!-- Risk Disclosure -->
+          <tr>
+            <td style="padding:24px 36px;background:#ffffff;">
+
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0"
+                style="background:#f7f9f3;border:1px solid #dce7cd;border-left:4px solid #79AD14;">
+                <tr>
+                  <td style="padding:18px;">
+
+                    <h2 style="margin:0 0 12px;font-size:14px;line-height:1.6;color:#466601;letter-spacing:0.5px;">
+                      RISK DISCLOSURE
+                    </h2>
+
+                    <p style="margin:0;font-size:12px;line-height:1.8;color:#475467;font-style:italic;">
+                      It is imperative to inform you that the Company does not
+                      provide advisory services. Be cautious that Future Trading
+                      in Commodities involve substantial leverage and risk.
+                      Hence, seek an independent professional financial advisor
+                      for trading strategies. Always use protective risk controls,
+                      independent judgment and disciplined position sizing.
+                      Past performance is not an indicate of future success.
+                      Responsibility of loss of money could not be imposed on
+                      the Company.
+                    </p>
+
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
           <tr>
             <td style="padding:16px 24px;background:#466601;text-align:center;">
               <p style="margin:0;font-size:11px;line-height:1.7;color:#ffffff;">
                 Right Vision Securities (Pvt.) Limited
               </p>
+
               <p style="margin:4px 0 0;font-size:11px;line-height:1.7;color:#e8efdc;">
                 Thank you for your interest in booking an online session.
               </p>
@@ -665,9 +732,11 @@ Website: https://www.rvspk.com/
           </tr>
 
         </table>
+
       </td>
     </tr>
   </table>
+
 </body>
 </html>
     `.trim(),
@@ -676,6 +745,7 @@ Website: https://www.rvspk.com/
     disableUrlAccess: true,
   });
 }
+
 
 
     return res.status(200).json({

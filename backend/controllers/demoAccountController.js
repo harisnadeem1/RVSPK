@@ -2,6 +2,8 @@ import pool from "../config/db.js";
 import { createPmexAccount } from "../services/pmexPlaywright.js";
 import { sendDemoAccountEmail } from "../services/demoAccountEmail.js";
 import { sendDemoAccountThankYouEmail } from "../services/demoAccountThankYouEmail.js";
+import { sendDiscordNotification } from "../utils/discordNotifier.js";
+
 
 
 export const updateDemoAccountStatus = async (req, res) => {
@@ -155,6 +157,15 @@ export const createDemoAccount = async (req, res) => {
         );
 
         const customer = result.rows[0];
+
+
+      void sendDiscordNotification({
+    type: "Demo Account Request",
+    name: `${customer.first_name} ${customer.last_name}`,
+    email: customer.email,
+    phone: customer.phone,
+    details: `Demo request ID: ${customer.id}`,
+});
 
         // 2. Generate an alias tied to this database record
         const shortId = customer.id
